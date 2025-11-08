@@ -1,7 +1,8 @@
 class StagesController < ApplicationController
   before_action :require_login, except: [:index, :show]
   before_action :set_stage, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_user, only: [:edit, :update, :destroy]
+  before_action :authorize_user, only: [:edit, :update]
+  before_action :authorize_user_or_admin, only: [:destroy]
 
   def index
     @stages = Stage.includes(:user).recent
@@ -47,7 +48,13 @@ class StagesController < ApplicationController
 
     def authorize_user
       unless @stage.user == current_user
-        redirect_to stages_path, alert: '他のユーザーの投稿は編集・削除できません。'
+        redirect_to stages_path, alert: '他のユーザーの投稿は編集できません。'
+      end
+    end
+
+    def authorize_user_or_admin
+      unless @stage.user == current_user || current_user.admin?
+        redirect_to stages_path, alert: '他のユーザーの投稿は削除できません。'
       end
     end
 

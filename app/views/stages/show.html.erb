@@ -20,7 +20,12 @@
     </div>
 
     <div class="meta">
-      <p>投稿者: <%= @stage.user.username %></p>
+      <p>
+        投稿者: <%= @stage.user.username %>
+        <% if @stage.user.admin? %>
+          <span class="admin-badge">管理者</span>
+        <% end %>
+      </p>
       <p>投稿日: <%= l(@stage.created_at, format: :long) %></p>
       <% if @stage.updated_at != @stage.created_at %>
         <p>更新日: <%= l(@stage.updated_at, format: :long) %></p>
@@ -28,9 +33,13 @@
     </div>
 
     <div class="actions">
-      <% if logged_in? && @stage.user == current_user %>
-        <%= link_to "編集", edit_stage_path(@stage), class: "btn btn-secondary" %>
-        <%= button_to "削除", stage_path(@stage), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      <% if logged_in? %>
+        <% if @stage.user == current_user %>
+          <%= link_to "編集", edit_stage_path(@stage), class: "btn btn-secondary" %>
+          <%= button_to "削除", stage_path(@stage), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% elsif current_user.admin? %>
+          <%= button_to "削除", stage_path(@stage), method: :delete, data: { turbo_confirm: "管理者権限で削除します。本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% end %>
       <% end %>
       <%= link_to "一覧に戻る", stages_path, class: "btn btn-default" %>
     </div>

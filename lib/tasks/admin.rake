@@ -5,19 +5,16 @@ namespace :admin do
     puts "   管理者ユーザー作成ツール"
     puts "=========================================="
     puts "このツールは本番環境での管理者作成に使用できます。"
-    puts "※ 入力した情報はログに記録されません。\n\n"
+    puts "※ 入力した情報はログに記録されません。"
+    puts "※ 管理者は全ての投稿を削除できる権限を持ちます。\n\n"
 
-    # メールアドレスの入力
-    print "メールアドレスを入力してください: "
+    # メールアドレスの入力（任意）
+    print "メールアドレスを入力してください（任意、Enterでスキップ）: "
     email = STDIN.gets.chomp
+    email = nil if email.blank?
 
-    if email.blank?
-      puts "✗ メールアドレスは必須です。"
-      exit 1
-    end
-
-    # 既存ユーザーチェック
-    if User.exists?(email: email)
+    # 既存ユーザーチェック（メールアドレスが入力された場合）
+    if email.present? && User.exists?(email: email)
       puts "✗ このメールアドレスは既に登録されています。"
       exit 1
     end
@@ -62,23 +59,25 @@ namespace :admin do
       exit 1
     end
 
-    # ユーザー作成
+    # 管理者ユーザー作成
     begin
       user = User.create!(
         email: email,
         username: username,
         password: password,
-        password_confirmation: password_confirmation
+        password_confirmation: password_confirmation,
+        admin: true
       )
 
       puts "\n✓ 管理者ユーザーが正常に作成されました！"
       puts "=========================================="
-      puts "  メールアドレス: #{user.email}"
+      puts "  メールアドレス: #{user.email.presence || '(未設定)'}"
       puts "  ユーザー名: #{user.username}"
+      puts "  権限: 管理者"
       puts "  作成日時: #{user.created_at}"
       puts "=========================================="
       puts "\nこのユーザーでログインできます。"
-      puts "ログインURL: #{Rails.application.routes.url_helpers.login_path}"
+      puts "管理者として全ての投稿を削除できる権限があります。"
     rescue ActiveRecord::RecordInvalid => e
       puts "\n✗ ユーザー作成に失敗しました:"
       e.record.errors.full_messages.each do |message|
@@ -100,12 +99,13 @@ namespace :admin do
       puts "ユーザーが登録されていません。"
     else
       users.each_with_index do |user, index|
-        puts "\n[#{index + 1}] #{user.username}"
-        puts "    Email: #{user.email}"
+        admin_badge = user.admin? ? " [管理者]" : ""
+        puts "\n[#{index + 1}] #{user.username}#{admin_badge}"
+        puts "    Email: #{user.email.presence || '(未設定)'}"
         puts "    登録日: #{user.created_at.strftime('%Y-%m-%d %H:%M:%S')}"
         puts "    投稿数: #{user.stages.count}"
       end
-      puts "\n合計: #{users.count}人"
+      puts "\n合計: #{users.count}人 (管理者: #{users.where(admin: true).count}人)"
     end
     puts "=========================================="
   end
@@ -134,7 +134,8 @@ namespace :admin do
 
     puts "\n削除対象ユーザー:"
     puts "  ユーザー名: #{user.username}"
-    puts "  メール: #{user.email}"
+    puts "  メール: #{user.email.presence || '(未設定)'}"
+    puts "  権限: #{user.admin? ? '管理者' : '一般ユーザー'}"
     puts "  投稿数: #{user.stages.count}"
     puts "\n⚠️  このユーザーと関連する全ての投稿が削除されます。"
     print "\n本当に削除しますか? (yes/no): "
@@ -171,7 +172,8 @@ namespace :admin do
       exit 1
     end
 
-    puts "\n対象ユーザー: #{user.username} (#{user.email})"
+    admin_badge = user.admin? ? " [管理者]" : ""
+    puts "\n対象ユーザー: #{user.username}#{admin_badge} (#{user.email.presence || '(未設定)'})"
 
     print "\n新しいパスワードを入力してください (6文字以上): "
     password = STDIN.noecho(&:gets).chomp

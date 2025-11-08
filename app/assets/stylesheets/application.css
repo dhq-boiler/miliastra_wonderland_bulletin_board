@@ -116,6 +116,16 @@ h3 {
   margin-right: 10px;
 }
 
+.admin-badge {
+  background-color: #e74c3c;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-left: 5px;
+  font-weight: normal;
+}
+
 /* Actions */
 .actions {
   margin: 20px 0;
