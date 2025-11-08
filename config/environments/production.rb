@@ -46,8 +46,6 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Solid Cable の設定を修正
-  config.action_cable.adapter = :solid_cable
   # Solid Cache の設定を修正
   config.cache_store = :solid_cache_store
   # Solid Queue の設定を修正
