@@ -31,6 +31,10 @@
 
 /public/assets
 
+# Ignore Tailwind CSS build files
+/app/assets/builds/*
+!/app/assets/builds/.keep
+
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
@@ -179,3 +183,6 @@ zeus.json
 # Ignore kamal secrets
 .kamal/secrets*
 
+
+/app/assets/builds/*
+!/app/assets/builds/.keep
