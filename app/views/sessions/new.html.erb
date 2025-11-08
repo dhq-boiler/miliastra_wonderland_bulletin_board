@@ -4,8 +4,8 @@
 
     <%= form_with url: login_path, local: true do |form| %>
       <div class="form-group">
-        <%= form.label :username, "ユーザー名" %>
-        <%= form.text_field :username, class: "form-control", placeholder: "ユーザー名を入力" %>
+        <%= form.label :login, "ユーザー名またはメールアドレス" %>
+        <%= form.text_field :login, class: "form-control", placeholder: "ユーザー名またはメールアドレスを入力" %>
       </div>
 
       <div class="form-group">

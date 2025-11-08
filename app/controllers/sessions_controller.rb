@@ -3,13 +3,15 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by(username: params[:username])
+    login = params[:login]
+    # メールアドレスまたはユーザー名でユーザーを検索
+    user = User.find_by(email: login) || User.find_by(username: login)
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       redirect_to stages_path, notice: 'ログインしました。'
     else
-      flash.now[:alert] = 'ユーザー名またはパスワードが正しくありません。'
+      flash.now[:alert] = 'ユーザー名/メールアドレスまたはパスワードが正しくありません。'
       render :new, status: :unprocessable_entity
     end
   end
