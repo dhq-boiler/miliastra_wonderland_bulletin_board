@@ -17,7 +17,7 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
-# Production uses PostgreSQL
+## Production uses PostgreSQL
 production:
   primary: &primary_production
     adapter: postgresql
@@ -30,10 +30,13 @@ production:
     port: <%= ENV.fetch("DB_PORT") { 5432 } %>
   cache:
     <<: *primary_production
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>_cache
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>_queue
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>_cable
     migrations_paths: db/cable_migrate
