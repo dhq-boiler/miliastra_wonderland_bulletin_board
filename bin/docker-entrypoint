@@ -1,6 +1,21 @@
 #!/bin/bash -e
 
-# Database migrations are handled by Kamal's post-deploy hook
-# This entrypoint simply starts the server
+# If running the rails server then create or migrate existing database
+if [ "${1}" = "./bin/rails" ] && [ "${2}" = "server" ]; then
+  echo "Running database migrations..."
+
+  # Create database if it doesn't exist
+  ./bin/rails db:create 2>&1 || true
+
+  # Run migrations
+  ./bin/rails db:migrate
+
+  # Migrate Solid Queue, Cache, Cable (load schema if migration fails)
+  ./bin/rails db:migrate:queue 2>&1 || ./bin/rails db:schema:load:queue 2>&1 || true
+  ./bin/rails db:migrate:cache 2>&1 || ./bin/rails db:schema:load:cache 2>&1 || true
+  ./bin/rails db:migrate:cable 2>&1 || ./bin/rails db:schema:load:cable 2>&1 || true
+
+  echo "Database setup complete!"
+fi
 
 exec "${@}"
