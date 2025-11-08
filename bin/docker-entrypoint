@@ -5,7 +5,16 @@
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
   if [ "${SKIP_DB_PREPARE}" != "1" ]; then
     echo "Preparing database..."
-    ./bin/rails db:prepare
+
+    # Try db:prepare first
+    if ! ./bin/rails db:prepare 2>&1; then
+      echo "db:prepare failed, trying db:schema:load..."
+      # If db:prepare fails, try loading from schema files
+      ./bin/rails db:schema:load || true
+      ./bin/rails db:schema:load:cache || true
+      ./bin/rails db:schema:load:queue || true
+      ./bin/rails db:schema:load:cable || true
+    fi
   else
     echo "Skipping database preparation (SKIP_DB_PREPARE=1)"
   fi
