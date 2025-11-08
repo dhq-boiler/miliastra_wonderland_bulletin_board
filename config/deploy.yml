@@ -21,11 +21,15 @@ service: miliastra_wonderland_bulletin_board
 # Name of the container image (use your-user/app-name on external registries).
 image: miliastra_wonderland_bulletin_board
 
+# Deployment timeout (in seconds)
+deploy_timeout: 300
+
 # Deploy to these servers.
 # SERVER_IP_ADDRESS is loaded from .env file
 servers:
   web:
-    - <%= ENV.fetch('SERVER_IP_ADDRESS') %>
+    hosts:
+      - <%= ENV.fetch('SERVER_IP_ADDRESS') %>
   # job:
   #   hosts:
   #     - YOUR_SERVER_IP_ADDRESS
@@ -41,6 +45,10 @@ servers:
 proxy:
   ssl: true
   host: miliastra-wonderland-bulletin-board.com
+  healthcheck:
+    path: /up
+    interval: 10
+    timeout: 120
 
 # Where you keep your container images.
 registry:
@@ -125,9 +133,10 @@ accessories:
     port: 5432
     env:
       clear:
-        POSTGRES_DB: miliastra_wonderland_bulletin_board_production
         POSTGRES_USER: postgres
+        POSTGRES_DB: miliastra_wonderland_bulletin_board_production
       secret:
         - POSTGRES_PASSWORD
-    directories:
-      - data:/var/lib/postgresql/data
+    volumes:
+      - /var/lib/postgresql/data:/var/lib/postgresql/data
+    cmd: postgres -c max_connections=500 -c shared_buffers=256MB
