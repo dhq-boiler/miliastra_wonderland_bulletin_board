@@ -2,7 +2,7 @@
   <div class="auth-form">
     <h1>新規登録</h1>
 
-    <%= form_with(model: @user, url: signup_path) do |form| %>
+    <%= form_with(model: @user, url: signup_path, data: { turbo: false }) do |form| %>
       <% if @user.errors.any? %>
         <div class="error-messages">
           <h3><%= pluralize(@user.errors.count, "個のエラー") %>があります:</h3>

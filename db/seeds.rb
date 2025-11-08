@@ -7,6 +7,32 @@
 
 # サンプルユーザーの作成
 puts "Creating sample users..."
+
+# メインユーザーの作成（メールアドレス、ユーザー名、パスワードの入力が必要）
+puts "\n=== メインユーザーの作成 ==="
+print "メールアドレスを入力してください: "
+main_email = STDIN.gets.chomp
+print "ユーザー名を入力してください: "
+main_username = STDIN.gets.chomp
+print "パスワードを入力してください: "
+main_password = STDIN.gets.chomp
+print "パスワードを再入力してください: "
+main_password_confirmation = STDIN.gets.chomp
+
+if main_password == main_password_confirmation
+  main_user = User.find_or_create_by!(email: main_email) do |u|
+    u.username = main_username
+    u.password = main_password
+    u.password_confirmation = main_password_confirmation
+  end
+  puts "✓ メインユーザーが作成されました"
+  puts "  - メールアドレス: #{main_email}"
+  puts "  - ユーザー名: #{main_username}"
+else
+  puts "✗ パスワードが一致しません。メインユーザーの作成をスキップします。"
+  main_user = nil
+end
+
 user1 = User.find_or_create_by!(username: "admin") do |u|
   u.email = "admin@example.com"
   u.password = "password"
