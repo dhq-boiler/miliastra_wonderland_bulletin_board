@@ -1,8 +1,14 @@
 #!/bin/bash -e
 
 # If running the rails server then create or migrate existing database
+# Set SKIP_DB_PREPARE=1 to skip database preparation (useful for debugging)
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  ./bin/rails db:prepare
+  if [ "${SKIP_DB_PREPARE}" != "1" ]; then
+    echo "Preparing database..."
+    ./bin/rails db:prepare
+  else
+    echo "Skipping database preparation (SKIP_DB_PREPARE=1)"
+  fi
 fi
 
 exec "${@}"
