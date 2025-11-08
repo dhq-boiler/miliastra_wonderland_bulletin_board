@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_08_142602) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_08_152445) do
   create_table "stages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description"
@@ -31,7 +31,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_08_142602) do
     t.string "password_digest"
     t.datetime "updated_at", null: false
     t.string "username"
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, where: "email IS NOT NULL AND email != ''"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 end
