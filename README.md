@@ -98,6 +98,52 @@ bin/rails server
 - 自分が投稿したステージ紹介の詳細ページに「編集」「削除」ボタンが表示されます
 - 他のユーザーの投稿は編集・削除できません
 
+## 管理者ツール
+
+本番環境での管理者ユーザー作成や管理のためのRakeタスクを用意しています。
+
+### 管理者ユーザーの作成
+
+本番環境で管理者ユーザーを作成する場合：
+
+```bash
+# 開発環境
+bin/rails admin:create
+
+# 本番環境（Heroku等）
+heroku run rails admin:create
+
+# 本番環境（SSH接続後）
+RAILS_ENV=production bundle exec rails admin:create
+```
+
+対話式でメールアドレス、ユーザー名、パスワードを入力します。
+入力した情報はログに記録されません。
+
+### ユーザー一覧の表示
+
+```bash
+bin/rails admin:list
+```
+
+登録されている全ユーザーの情報を表示します。
+
+### パスワード変更
+
+```bash
+bin/rails admin:change_password
+```
+
+指定したユーザーのパスワードを変更します。
+
+### ユーザー削除
+
+```bash
+bin/rails admin:delete
+```
+
+⚠️ 注意: ユーザーとその投稿が完全に削除されます。この操作は取り消せません。
+
 ## サンプルアカウント
 
 `bin/rails db:seed` を実行すると、以下のサンプルアカウントが作成されます：
