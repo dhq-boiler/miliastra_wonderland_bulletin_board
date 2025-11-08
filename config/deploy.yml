@@ -1,3 +1,20 @@
+<%
+# Load .env file from current working directory
+env_file = File.join(Dir.pwd, '.env')
+
+if File.exist?(env_file)
+  File.readlines(env_file).each do |line|
+    line = line.strip
+    next if line.empty? || line.start_with?('#')
+    if line =~ /^([^=]+)=(.*)$/
+      key = $1.strip
+      value = $2.strip.gsub(/^["']|["']$/, '')
+      ENV[key] = value unless ENV.key?(key)
+    end
+  end
+end
+%>
+
 # Name of your application. Used to uniquely configure containers.
 service: miliastra_wonderland_bulletin_board
 
@@ -5,7 +22,7 @@ service: miliastra_wonderland_bulletin_board
 image: miliastra_wonderland_bulletin_board
 
 # Deploy to these servers.
-# SERVER_IP_ADDRESS must be set in .env file
+# SERVER_IP_ADDRESS is loaded from .env file
 servers:
   web:
     - <%= ENV.fetch('SERVER_IP_ADDRESS') %>
