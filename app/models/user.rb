@@ -11,4 +11,23 @@ class User < ApplicationRecord
   def admin?
     admin
   end
+
+  # パスワードリセットトークンを生成
+  def generate_password_reset_token
+    self.reset_password_token = SecureRandom.urlsafe_base64
+    self.reset_password_sent_at = Time.current
+    save!(validate: false)
+  end
+
+  # パスワードリセットトークンの有効期限を確認（2時間）
+  def password_reset_token_valid?
+    reset_password_sent_at.present? && reset_password_sent_at > 2.hours.ago
+  end
+
+  # パスワードリセットトークンをクリア
+  def clear_password_reset_token
+    self.reset_password_token = nil
+    self.reset_password_sent_at = nil
+    save!(validate: false)
+  end
 end

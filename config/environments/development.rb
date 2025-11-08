@@ -32,13 +32,29 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Make template changes take effect immediately.
   config.action_mailer.perform_caching = false
 
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
+
+  # メール配信方法（開発環境ではログに出力、本番環境ではAWS SESを使用）
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address: ENV.fetch('SMTP_ADDRESS', 'localhost'),
+    port: ENV.fetch('SMTP_PORT', 1025).to_i,
+    enable_starttls_auto: false
+  }
+
+  # 開発中にメールを実際に送信したい場合は、以下のコメントを外してAWS SESの設定を使用
+  # config.action_mailer.delivery_method = :aws_sdk
+  # config.action_mailer.aws_sdk_settings = {
+  #   region: ENV.fetch('AWS_REGION', 'ap-northeast-1'),
+  #   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+  #   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  # }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

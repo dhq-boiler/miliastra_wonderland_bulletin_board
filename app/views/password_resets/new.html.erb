@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="auth-form">
+    <h1>パスワードリセット</h1>
+
+    <p style="color: #666; margin-bottom: 20px;">
+      登録されているメールアドレスを入力してください。<br>
+      パスワードリセット用のリンクをお送りします。
+    </p>
+
+    <%= form_with url: password_resets_path, method: :post, data: { turbo: false } do |form| %>
+      <div class="form-group">
+        <%= form.label :email, "メールアドレス" %>
+        <%= form.email_field :email, class: "form-control", placeholder: "email@example.com", required: true, autofocus: true %>
+      </div>
+
+      <div class="form-actions">
+        <%= form.submit "リセットメールを送信", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+    <div class="auth-links">
+      <p><%= link_to "ログインに戻る", login_path %></p>
+    </div>
+  </div>
+</div>
+

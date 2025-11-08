@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
+  # パスワードリセット
+  resources :password_resets, only: [:new, :create, :edit, :update]
+
   get "welcome/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

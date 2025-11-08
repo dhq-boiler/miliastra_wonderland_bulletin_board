@@ -55,19 +55,21 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "miliastra-wonderland-bulletin-board.com" }
+  config.action_mailer.default_url_options = {
+    host: ENV.fetch('APP_HOST', 'miliastra-wonderland-bulletin-board.com'),
+    protocol: 'https'
+  }
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via bin/rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
+  # AWS SESを使用してメール送信
+  config.action_mailer.delivery_method = :aws_sdk
+  config.action_mailer.aws_sdk_settings = {
+    region: ENV.fetch('AWS_REGION', 'ap-northeast-1'),
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).

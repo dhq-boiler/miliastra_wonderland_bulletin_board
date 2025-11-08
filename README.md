@@ -18,6 +18,7 @@
   - ハイブリッドログイン（ユーザー名またはメールアドレスでログイン可能）
   - ログアウト
   - セッション管理
+  - パスワードリセット（メールアドレス登録済みユーザー向け、AWS SES使用）
 
 - **管理者機能**
   - 管理者専用作成（`admin:create`タスク）
@@ -247,7 +248,51 @@ bin/kamal app exec 'bin/rails db:create db:migrate'
 bin/kamal app exec 'bin/rails db:seed'
 ```
 
-#### 6. 動作確認
+#### 6. AWS SESの設定（パスワードリセット機能用）
+
+パスワードリセット機能を使用する場合、AWS SESを設定する必要があります。
+
+**1. AWS SESでメールアドレスを検証**
+```bash
+# AWS SESコンソール (https://console.aws.amazon.com/ses/)
+# 1. 左メニューから「Verified identities」を選択
+# 2. 「Create identity」をクリック
+# 3. Email addressを選択し、noreply@miliastra-wonderland-bulletin-board.com を入力
+# 4. 検証メールを確認して認証完了
+```
+
+**2. IAMユーザーを作成してSES権限を付与**
+```bash
+# AWS IAMコンソール (https://console.aws.amazon.com/iam/)
+# 1. 新しいIAMユーザーを作成
+# 2. ポリシー「AmazonSESFullAccess」をアタッチ
+# 3. アクセスキーとシークレットキーを取得
+```
+
+**3. 環境変数を設定**
+```bash
+# .envファイルに以下を追加
+AWS_REGION=ap-northeast-1
+AWS_ACCESS_KEY_ID=your_access_key_here
+AWS_SECRET_ACCESS_KEY=your_secret_key_here
+MAILER_FROM_ADDRESS=noreply@miliastra-wonderland-bulletin-board.com
+
+# 環境変数を本番環境に反映
+bin/kamal env push
+bin/kamal app boot
+```
+
+**4. テストメール送信**
+```bash
+# Railsコンソールでテスト
+bin/kamal app exec -i 'bin/rails console'
+> user = User.find_by(email: 'test@example.com')
+> UserMailer.password_reset(user).deliver_now
+```
+
+**注意**: AWS SESは最初サンドボックス環境です。本番運用する場合は、AWS Supportに申請して制限を解除してください。
+
+#### 7. 動作確認
 ```bash
 curl https://miliastra-wonderland-bulletin-board.com/up
 ```
