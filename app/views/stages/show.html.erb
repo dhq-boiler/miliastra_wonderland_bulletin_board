@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="stage-detail">
+    <h1><%= @stage.title %></h1>
+
+    <div class="stage-info">
+      <span class="stage-number">ステージ: <%= @stage.stage_number %></span>
+      <span class="stage-guid">GUID: <%= @stage.stage_guid %></span>
+      <% if @stage.difficulty.present? %>
+        <span class="difficulty">難易度: <%= @stage.difficulty %></span>
+      <% end %>
+    </div>
+
+    <div class="stage-content">
+      <h3>説明</h3>
+      <p class="description"><%= simple_format(@stage.description) %></p>
+
+      <% if @stage.tips.present? %>
+        <h3>攻略のコツ・ヒント</h3>
+        <p class="tips"><%= simple_format(@stage.tips) %></p>
+      <% end %>
+    </div>
+
+    <div class="meta">
+      <p>投稿者: <%= @stage.user.username %></p>
+      <p>投稿日: <%= l(@stage.created_at, format: :long) %></p>
+      <% if @stage.updated_at != @stage.created_at %>
+        <p>更新日: <%= l(@stage.updated_at, format: :long) %></p>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <% if logged_in? && @stage.user == current_user %>
+        <%= link_to "編集", edit_stage_path(@stage), class: "btn btn-secondary" %>
+        <%= button_to "削除", stage_path(@stage), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      <% end %>
+      <%= link_to "一覧に戻る", stages_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+

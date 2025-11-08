@@ -1,8 +1,5 @@
-# SQLite. Versions 3.8.0 and up are supported.
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem "sqlite3"
+# SQLite. Versions 3.8.0 and up are supported for development and test.
+# PostgreSQL is used for production.
 #
 default: &default
   adapter: sqlite3
@@ -20,22 +17,29 @@ test:
   <<: *default
   database: storage/test.sqlite3
 
-
-# Store production database in the storage/ directory, which by default
-# is mounted as a persistent Docker volume in config/deploy.yml.
+# Production uses PostgreSQL
 production:
-  primary:
-    <<: *default
-    database: storage/production.sqlite3
+  primary: &primary_production
+    adapter: postgresql
+    encoding: unicode
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>
+    username: <%= ENV.fetch("DB_USERNAME") { "postgres" } %>
+    password: <%= ENV["DB_PASSWORD"] %>
+    host: <%= ENV.fetch("DB_HOST") { "miliastra_wonderland_bulletin_board-db" } %>
+    port: <%= ENV.fetch("DB_PORT") { 5432 } %>
   cache:
-    <<: *default
-    database: storage/production_cache.sqlite3
+    <<: *primary_production
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>
+    schema_search_path: solid_cache
     migrations_paths: db/cache_migrate
   queue:
-    <<: *default
-    database: storage/production_queue.sqlite3
+    <<: *primary_production
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>
+    schema_search_path: solid_queue
     migrations_paths: db/queue_migrate
   cable:
-    <<: *default
-    database: storage/production_cable.sqlite3
+    <<: *primary_production
+    database: <%= ENV.fetch("DB_NAME") { "miliastra_wonderland_bulletin_board_production" } %>
+    schema_search_path: solid_cable
     migrations_paths: db/cable_migrate

@@ -1,0 +1,45 @@
+ja:
+  activerecord:
+    models:
+      stage: ステージ
+      user: ユーザー
+    attributes:
+      stage:
+        title: タイトル
+        description: 説明
+        stage_number: ステージ番号
+        stage_guid: ステージGUID
+        difficulty: 難易度
+        tips: 攻略のコツ
+        created_at: 投稿日時
+        updated_at: 更新日時
+        user: 投稿者
+      user:
+        username: ユーザー名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+    errors:
+      messages:
+        blank: を入力してください
+        too_short: は%{count}文字以上で入力してください
+        too_long: は%{count}文字以内で入力してください
+        taken: はすでに使用されています
+        invalid: は無効です
+        confirmation: が一致しません
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日(%a)"
+      short: "%m/%d"
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H:%M"
+      long: "%Y年%m月%d日 %H時%M分%S秒 %Z"
+      short: "%m/%d %H:%M"
+  datetime:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      long: "%Y年%m月%d日 %H時%M分"
+      short: "%m/%d %H:%M"
+

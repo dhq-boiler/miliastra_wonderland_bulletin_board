@@ -23,5 +23,9 @@ module MiliastraWonderlandBulletinBoard
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # 日本語ロケール設定
+    config.i18n.default_locale = :ja
+    config.time_zone = 'Tokyo'
   end
 end

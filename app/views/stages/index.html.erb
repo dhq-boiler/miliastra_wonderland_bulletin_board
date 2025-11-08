@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="header-section">
+    <h1>幻境（ステージ）紹介掲示板</h1>
+
+    <div class="user-actions">
+      <% if logged_in? %>
+        <span class="welcome">ようこそ、<%= current_user.username %>さん</span>
+        <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-secondary" %>
+      <% else %>
+        <%= link_to "ログイン", login_path, class: "btn btn-secondary" %>
+        <%= link_to "新規登録", signup_path, class: "btn btn-secondary" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <% if logged_in? %>
+      <%= link_to "新しいステージ紹介を投稿", new_stage_path, class: "btn btn-primary" %>
+    <% else %>
+      <p class="login-prompt">投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
+    <% end %>
+  </div>
+
+  <div class="stages-list">
+    <% if @stages.any? %>
+      <% @stages.each do |stage| %>
+        <div class="stage-card">
+          <h2><%= link_to stage.title, stage_path(stage) %></h2>
+          <div class="stage-info">
+            <span class="stage-number">ステージ: <%= stage.stage_number %></span>
+            <span class="stage-guid">GUID: <%= stage.stage_guid %></span>
+            <% if stage.difficulty.present? %>
+              <span class="difficulty">難易度: <%= stage.difficulty %></span>
+            <% end %>
+          </div>
+          <p class="description"><%= truncate(stage.description, length: 200) %></p>
+          <div class="meta">
+            <span class="author">投稿者: <%= stage.user.username %></span>
+            <span class="date">投稿日: <%= l(stage.created_at, format: :short) %></span>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-stages">まだステージ紹介の投稿がありません。</p>
+    <% end %>
+  </div>
+</div>
+

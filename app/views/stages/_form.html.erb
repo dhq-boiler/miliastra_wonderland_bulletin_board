@@ -1,0 +1,50 @@
+<%= form_with(model: stage) do |form| %>
+  <% if stage.errors.any? %>
+    <div class="error-messages">
+      <h3><%= pluralize(stage.errors.count, "個のエラー") %>があります:</h3>
+      <ul>
+        <% stage.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title, class: "form-control", placeholder: "例: 第1章 幻想の森を攻略" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stage_number, "ステージ番号" %>
+    <%= form.text_field :stage_number, class: "form-control", placeholder: "例: 1-1 または 第1章" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :stage_guid, "ステージGUID" %>
+    <%= form.number_field :stage_guid, class: "form-control", placeholder: "例: 1001" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :difficulty, "難易度（任意）" %>
+    <%= form.select :difficulty,
+        [["選択してください", ""], ["簡単", "簡単"], ["普通", "普通"], ["難しい", "難しい"], ["とても難しい", "とても難しい"]],
+        {},
+        { class: "form-control" } %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, "ステージの説明" %>
+    <%= form.text_area :description, rows: 8, class: "form-control", placeholder: "ステージの特徴、ギミック、敵の配置などを説明してください" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tips, "攻略のコツ・ヒント（任意）" %>
+    <%= form.text_area :tips, rows: 6, class: "form-control", placeholder: "クリアのコツ、注意点、おすすめの装備などを記入してください" %>
+  </div>
+
+  <div class="form-actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
+

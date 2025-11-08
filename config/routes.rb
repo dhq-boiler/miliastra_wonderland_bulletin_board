@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get "users/new"
+  get "users/create"
+  get "sessions/new"
+  get "sessions/create"
+Rails.application.routes.draw do
+  resources :stages
+
+  # 認証関連
+  get 'signup', to: 'users#new', as: 'signup'
+  post 'signup', to: 'users#create'
+  get 'login', to: 'sessions#new', as: 'login'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy', as: 'logout'
+
   get "welcome/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -11,5 +25,5 @@ Rails.application.routes.draw do
   # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
 
   # Defines the root path route ("/")
-  root "welcome#index"
+  root "stages#index"
 end

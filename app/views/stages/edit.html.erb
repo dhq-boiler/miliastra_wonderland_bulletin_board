@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>ステージ紹介を編集</h1>
+
+  <%= render "form", stage: @stage %>
+
+  <%= link_to "詳細に戻る", stage_path(@stage), class: "btn btn-default" %>
+  <%= link_to "一覧に戻る", stages_path, class: "btn btn-default" %>
+</div>
+
