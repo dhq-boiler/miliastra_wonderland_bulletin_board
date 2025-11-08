@@ -8,7 +8,7 @@ image: miliastra_wonderland_bulletin_board
 # Replace with your actual server IP address
 servers:
   web:
-    - YOUR_SERVER_IP_ADDRESS
+    - <%= ENV.fetch('SERVER_IP_ADDRESS', 'YOUR_SERVER_IP_ADDRESS') %>
   # job:
   #   hosts:
   #     - YOUR_SERVER_IP_ADDRESS
@@ -107,7 +107,7 @@ ssh:
 accessories:
   db:
     image: postgres:16
-    host: YOUR_SERVER_IP_ADDRESS
+    host: <%= ENV.fetch('SERVER_IP_ADDRESS', 'YOUR_SERVER_IP_ADDRESS') %>
     port: "127.0.0.1:5432:5432"
     env:
       clear:

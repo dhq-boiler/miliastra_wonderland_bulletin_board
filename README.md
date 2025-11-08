@@ -210,19 +210,26 @@ openssl rand -base64 32  # DB接続用
 
 # 3. .envファイルを編集して実際の値を設定
 vim .env
+# - SERVER_IP_ADDRESS: サーバーのIPアドレス（例: 54.123.45.67）
 # - RAILS_MASTER_KEY: 上記のmaster.keyの値
 # - DB_HOST: サーバーのIPアドレス
 # - POSTGRES_PASSWORD: 生成したパスワード1
 # - DB_PASSWORD: 生成したパスワード2（または同じ値）
+
+# 重要: SERVER_IP_ADDRESSには実際のサーバーのIPアドレスを設定してください
+# AWS EC2の場合: EC2コンソール → インスタンス → パブリックIPv4アドレス
 ```
 
-#### 2. デプロイ設定
+#### 2. SSHキーの設定
 ```bash
-# config/deploy.ymlを編集して以下を設定
-# - servers.web: サーバーのIPアドレス
-# - accessories.db.host: サーバーのIPアドレス
-# - ssh.keys: SSH鍵のパス
+# config/deploy.ymlのSSHキーのパスを実際のファイル名に変更
+# 例: ~/.ssh/YOUR_SSH_KEY.pem → ~/.ssh/my-ec2-key.pem
+
+# キーのパーミッションを設定
+chmod 400 ~/.ssh/my-ec2-key.pem
 ```
+
+**注意**: `SERVER_IP_ADDRESS` は `.env` ファイルで設定すると、`config/deploy.yml` が自動的に読み込みます。手動で `config/deploy.yml` を編集する必要はありません。
 
 #### 3. DNS設定
 ドメインのDNS設定でAレコードを追加してください。
