@@ -31,9 +31,8 @@
 
 /public/assets
 
-# Ignore Tailwind CSS build files
-/app/assets/builds/*
-!/app/assets/builds/.keep
+# Note: We commit app/assets/builds/tailwind.css to repository
+# since we build it manually instead of using tailwindcss-rails gem
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
