@@ -11,17 +11,23 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.label :title, "タイトル" %>
+    <%= form.label :title do %>
+      タイトル<span class="required">*</span>
+    <% end %>
     <%= form.text_field :title, class: "form-control", placeholder: "例: 第1章 幻想の森を攻略" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :stage_number, "ステージ番号" %>
+    <%= form.label :stage_number do %>
+      ステージ番号<span class="required">*</span>
+    <% end %>
     <%= form.text_field :stage_number, class: "form-control", placeholder: "例: 1-1 または 第1章" %>
   </div>
 
   <div class="form-group">
-    <%= form.label :stage_guid, "ステージGUID" %>
+    <%= form.label :stage_guid do %>
+      ステージGUID<span class="required">*</span>
+    <% end %>
     <%= form.number_field :stage_guid, class: "form-control", placeholder: "例: 1001" %>
   </div>
 
@@ -34,7 +40,9 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :description, "ステージの説明" %>
+    <%= form.label :description do %>
+      ステージの説明<span class="required">*</span>
+    <% end %>
     <%= form.text_area :description, rows: 8, class: "form-control", placeholder: "ステージの特徴、ギミック、敵の配置などを説明してください" %>
   </div>
 

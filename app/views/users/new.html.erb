@@ -15,7 +15,9 @@
       <% end %>
 
       <div class="form-group">
-        <%= form.label :username, "ユーザー名" %>
+        <%= form.label :username do %>
+          ユーザー名<span class="required">*</span>
+        <% end %>
         <%= form.text_field :username, class: "form-control", placeholder: "3〜20文字で入力" %>
       </div>
 
@@ -23,10 +25,14 @@
         <%= form.label :email, "メールアドレス（任意）" %>
         <%= form.email_field :email, class: "form-control", placeholder: "email@example.com" %>
       </div>
-
+        <%= form.label :password do %>
+          パスワード<span class="required">*</span>
+        <% end %>
       <div class="form-group">
         <%= form.label :password, "パスワード" %>
-        <%= form.password_field :password, class: "form-control", placeholder: "6文字以上で入力" %>
+        <%= form.label :password_confirmation do %>
+          パスワード（確認）<span class="required">*</span>
+        <% end %>
       </div>
 
       <div class="form-group">

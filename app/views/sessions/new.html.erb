@@ -4,10 +4,14 @@
 
     <%= form_with url: login_path, method: :post, data: { turbo: false } do |form| %>
       <div class="form-group">
-        <%= form.label :login, "ユーザー名またはメールアドレス" %>
+        <%= form.label :login do %>
+          ユーザー名またはメールアドレス<span class="required">*</span>
+        <% end %>
         <%= form.text_field :login, class: "form-control", placeholder: "ユーザー名またはメールアドレスを入力", required: true %>
       </div>
-
+        <%= form.label :password do %>
+          パスワード<span class="required">*</span>
+        <% end %>
       <div class="form-group">
         <%= form.label :password, "パスワード" %>
         <%= form.password_field :password, class: "form-control", placeholder: "パスワードを入力", required: true %>

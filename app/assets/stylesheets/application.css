@@ -257,6 +257,12 @@ h3 {
   color: #555;
 }
 
+.form-group label .required {
+  color: #e74c3c;
+  margin-left: 3px;
+  font-weight: bold;
+}
+
 .form-control {
   width: 100%;
   padding: 10px;
