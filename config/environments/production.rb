@@ -28,8 +28,7 @@ Rails.application.configure do
   # config.assume_ssl = true
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # Temporarily disabled to test HTTP connection
-  config.force_ssl = false
+  config.force_ssl = true
 
   # Skip http-to-https redirect for the default health check endpoint.
   # config.ssl_options = { redirect: { exclude: ->(request) { request.path == "/up" } } }
@@ -86,6 +85,7 @@ Rails.application.configure do
   config.hosts = [
     "miliastra-wonderland-bulletin-board.com",     # Allow requests from main domain
     "www.miliastra-wonderland-bulletin-board.com", # Allow requests from www subdomain
+    "52.197.165.60",                                # Allow direct IP access
   ]
 
   # Skip DNS rebinding protection for the default health check endpoint.
