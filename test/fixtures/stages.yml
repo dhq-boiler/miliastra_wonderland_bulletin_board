@@ -3,13 +3,11 @@
 one:
   title: MyString
   description: MyText
-  stage_number: MyString
   difficulty: MyString
   tips: MyText
 
 two:
   title: MyString
   description: MyText
-  stage_number: MyString
   difficulty: MyString
   tips: MyText

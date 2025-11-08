@@ -3,7 +3,6 @@ class Stage < ApplicationRecord
 
   validates :title, presence: true
   validates :description, presence: true
-  validates :stage_number, presence: true
   validates :stage_guid, presence: true, numericality: { only_integer: true }
   validates :user_id, presence: true
 
