@@ -64,12 +64,18 @@ Rails.application.configure do
   }
 
   # AWS SESを使用してメール送信
-  config.action_mailer.delivery_method = :aws_sdk
-  config.action_mailer.aws_sdk_settings = {
-    region: ENV.fetch('AWS_REGION', 'ap-northeast-1'),
-    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-  }
+  # AWS SDK credentials should be set via ENV or IAM role
+  if ENV['AWS_ACCESS_KEY_ID'].present?
+    config.action_mailer.delivery_method = :aws_sdk
+  else
+    # Fallback to SMTP if AWS credentials are not set
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      address: 'localhost',
+      port: 25,
+      enable_starttls_auto: false
+    }
+  end
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
