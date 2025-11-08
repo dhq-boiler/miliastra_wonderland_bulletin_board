@@ -96,12 +96,9 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# Replace with your actual SSH key path
+# Use system SSH config (~/.ssh/config) for authentication
 ssh:
   user: ec2-user
-  keys_only: true
-  keys:
-    - ~/.ssh/YOUR_SSH_KEY.pem
 
 # Use accessory services (secrets come from .kamal/secrets).
 accessories:
