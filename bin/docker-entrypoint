@@ -1,43 +1,6 @@
 #!/bin/bash -e
 
-# If running the rails server then create or migrate existing database
-# Set SKIP_DB_PREPARE=1 to skip database preparation (useful for debugging)
-if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
-  if [ "${SKIP_DB_PREPARE}" != "1" ]; then
-    echo "Preparing database..."
-
-    # Create database if it doesn't exist
-    ./bin/rails db:create 2>&1 || true
-
-    # Run migrations for primary database
-    echo "Running db:migrate..."
-    ./bin/rails db:migrate
-
-    # Load or migrate Solid Queue schema
-    echo "Setting up Solid Queue..."
-    if ! ./bin/rails db:migrate:queue 2>&1; then
-      echo "Loading Solid Queue schema..."
-      ./bin/rails db:schema:load:queue || true
-    fi
-
-    # Load or migrate Solid Cache schema
-    echo "Setting up Solid Cache..."
-    if ! ./bin/rails db:migrate:cache 2>&1; then
-      echo "Loading Solid Cache schema..."
-      ./bin/rails db:schema:load:cache || true
-    fi
-
-    # Load or migrate Solid Cable schema
-    echo "Setting up Solid Cable..."
-    if ! ./bin/rails db:migrate:cable 2>&1; then
-      echo "Loading Solid Cable schema..."
-      ./bin/rails db:schema:load:cable || true
-    fi
-
-    echo "Database setup complete!"
-  else
-    echo "Skipping database preparation (SKIP_DB_PREPARE=1)"
-  fi
-fi
+# Database migrations are handled by Kamal's post-deploy hook
+# This entrypoint simply starts the server
 
 exec "${@}"

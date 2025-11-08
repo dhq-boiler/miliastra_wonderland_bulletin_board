@@ -140,3 +140,10 @@ accessories:
     volumes:
       - /var/lib/postgresql/data:/var/lib/postgresql/data
     cmd: postgres -c max_connections=500 -c shared_buffers=256MB
+
+# Run commands after deploying
+hooks:
+  post-deploy:
+    - path: /usr/bin/env bash
+      command: -c './bin/rails db:migrate && ./bin/rails db:migrate:cache && ./bin/rails db:migrate:queue && ./bin/rails db:migrate:cable'
+
