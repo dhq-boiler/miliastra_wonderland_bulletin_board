@@ -7,10 +7,10 @@ image: miliastra_wonderland_bulletin_board
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    - 52.197.165.60
   # job:
   #   hosts:
-  #     - 192.168.0.1
+  #     - 52.197.165.60
   #   cmd: bin/jobs
 
 # Enable SSL auto certification via Let's Encrypt and allow for multiple apps on a single web server.
@@ -92,8 +92,11 @@ builder:
   #   - RAILS_MASTER_KEY
 
 # Use a different ssh user than root
-# ssh:
-#   user: app
+ssh:
+  user: ec2-user
+  keys_only: true
+  keys:
+    - ~/.ssh/miliastra_wonderland_key.pem
 
 # Use accessory services (secrets come from .kamal/secrets).
 # accessories:
