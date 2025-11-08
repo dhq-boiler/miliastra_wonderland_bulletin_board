@@ -42,18 +42,27 @@ cd miliastra_wonderland_bulletin_board
 bundle install
 ```
 
-3. データベースのセットアップ
+3. 環境変数の設定（必要に応じて）
+```bash
+# .env.exampleをコピーして.envファイルを作成
+cp .env.example .env
+
+# .envファイルを編集して必要な環境変数を設定
+# 開発環境では通常は編集不要です
+```
+
+4. データベースのセットアップ
 ```bash
 bin/rails db:migrate
 bin/rails db:seed  # サンプルデータを作成（任意）
 ```
 
-4. サーバーを起動
+5. サーバーを起動
 ```bash
 bin/rails server
 ```
 
-5. ブラウザで http://localhost:3000 にアクセス
+6. ブラウザで http://localhost:3000 にアクセス
 
 ## 使い方
 
@@ -111,7 +120,16 @@ bin/rails server
 
 ### 初回デプロイ手順
 
-#### 1. デプロイ設定
+#### 1. 環境変数の設定
+```bash
+# .envファイルを作成（開発環境で既に作成している場合はスキップ）
+cp .env.example .env
+
+# .envファイルを編集して本番環境の情報を設定
+# vim .env
+```
+
+#### 2. デプロイ設定
 ```bash
 # config/deploy.ymlを編集して以下を設定
 # - servers.web: サーバーのIPアドレス
@@ -119,25 +137,28 @@ bin/rails server
 # - ssh.keys: SSH鍵のパス
 ```
 
-#### 2. DNS設定
+#### 3. DNS設定
 ドメインのDNS設定でAレコードを追加してください。
 
-#### 3. シークレットファイルの作成
+#### 4. シークレットファイルの作成
 ```bash
-# テンプレートからコピー
+# .envファイルに必要な環境変数を設定
+# RAILS_MASTER_KEY: config/master.keyの内容
+cat config/master.key  # この値をコピー
+
+# POSTGRES_PASSWORD: 強力なパスワードを生成
+openssl rand -base64 32  # この値をコピー
+
+# .envファイルを編集して上記の値を設定
+vim .env
+
+# .kamal/secretsファイルを作成（.envから自動読み込み）
 cp .kamal/secrets.example .kamal/secrets
 chmod 600 .kamal/secrets
-
-# 強力なパスワードを生成
-openssl rand -base64 32
-
-# .kamal/secretsを編集して設定
-# RAILS_MASTER_KEY: config/master.keyの内容
-# POSTGRES_PASSWORD: 生成した強力なパスワード
-# DB_PASSWORD: $POSTGRES_PASSWORD
+# .kamal/secretsは.envファイルから環境変数を読み込みます
 ```
 
-#### 4. デプロイ実行
+#### 5. デプロイ実行
 ```bash
 # PostgreSQLとアプリケーションをセットアップ
 bin/kamal setup
@@ -149,7 +170,7 @@ bin/kamal app exec 'bin/rails db:create db:migrate'
 bin/kamal app exec 'bin/rails db:seed'
 ```
 
-#### 5. 動作確認
+#### 6. 動作確認
 ```bash
 curl https://miliastra-wonderland-bulletin-board.com/up
 ```
@@ -184,6 +205,41 @@ bin/kamal app boot
 
 - **本番環境**: https://miliastra-wonderland-bulletin-board.com
 - **開発環境**: http://localhost:3000
+
+## 環境変数管理
+
+このプロジェクトは `dotenv-rails` gemを使用して環境変数を管理しています。
+
+### 開発環境
+```bash
+# .env.exampleをコピー
+cp .env.example .env
+
+# .envファイルを編集（必要に応じて）
+# 開発環境では通常は設定不要です
+```
+
+### 本番環境
+`.env`ファイルに以下の環境変数を設定してください：
+
+- `RAILS_MASTER_KEY`: Rails credentialsの暗号化キー
+- `POSTGRES_PASSWORD`: PostgreSQLデータベースのパスワード
+- `DB_HOST`: データベースサーバーのIPアドレス
+- `DB_PASSWORD`: アプリケーションからのデータベース接続パスワード
+
+`.kamal/secrets`ファイルは`.env`から自動的に環境変数を読み込みます。
+
+## セキュリティ注意事項
+
+⚠️ **重要**: 以下のファイルは絶対にGitにコミットしないでください：
+
+- `.env` - 環境変数（.gitignoreに含まれています）
+- `.kamal/secrets` - デプロイ用シークレット（.gitignoreに含まれています）
+- `config/master.key` - Rails暗号化キー（.gitignoreに含まれています）
+
+✅ **コミットして良いファイル**:
+- `.env.example` - 環境変数のテンプレート
+- `.kamal/secrets.example` - シークレットのテンプレート
 
 ## ライセンス
 
