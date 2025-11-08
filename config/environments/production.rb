@@ -48,15 +48,16 @@ Rails.application.configure do
 
   # Solid Cable の設定を修正
   config.action_cable.adapter = :solid_cable
-  config.solid_cable.connects_to = { database: { writing: :primary } }
-
   # Solid Cache の設定を修正
   config.cache_store = :solid_cache_store
-  config.solid_cache.connects_to = { database: { writing: :primary } }
-
   # Solid Queue の設定を修正
   config.active_job.queue_adapter = :solid_queue
-  config.solid_queue.connects_to = { database: { writing: :primary } }
+  
+  unless Rails.env.test? || ENV['PRECOMPILING_ASSETS']
+    config.solid_cable.connects_to = { database: { writing: :primary } }
+    config.solid_cache.connects_to = { database: { writing: :primary } }
+    config.solid_queue.connects_to = { database: { writing: :primary } }
+  end
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
