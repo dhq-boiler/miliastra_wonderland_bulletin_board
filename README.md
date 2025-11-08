@@ -122,11 +122,23 @@ bin/rails server
 
 #### 1. 環境変数の設定
 ```bash
-# .envファイルを作成（開発環境で既に作成している場合はスキップ）
-cp .env.example .env
+# 本番環境用の.envファイルを作成
+cp .env.production .env
 
-# .envファイルを編集して本番環境の情報を設定
-# vim .env
+# 必要な値を設定
+# 1. RAILS_MASTER_KEYを取得
+cat config/master.key
+
+# 2. 強力なパスワードを生成
+openssl rand -base64 32  # PostgreSQL用
+openssl rand -base64 32  # DB接続用
+
+# 3. .envファイルを編集して実際の値を設定
+vim .env
+# - RAILS_MASTER_KEY: 上記のmaster.keyの値
+# - DB_HOST: サーバーのIPアドレス
+# - POSTGRES_PASSWORD: 生成したパスワード1
+# - DB_PASSWORD: 生成したパスワード2（または同じ値）
 ```
 
 #### 2. デプロイ設定
@@ -142,20 +154,11 @@ cp .env.example .env
 
 #### 4. シークレットファイルの作成
 ```bash
-# .envファイルに必要な環境変数を設定
-# RAILS_MASTER_KEY: config/master.keyの内容
-cat config/master.key  # この値をコピー
-
-# POSTGRES_PASSWORD: 強力なパスワードを生成
-openssl rand -base64 32  # この値をコピー
-
-# .envファイルを編集して上記の値を設定
-vim .env
-
 # .kamal/secretsファイルを作成（.envから自動読み込み）
 cp .kamal/secrets.example .kamal/secrets
 chmod 600 .kamal/secrets
-# .kamal/secretsは.envファイルから環境変数を読み込みます
+
+# 確認: .kamal/secretsは.envファイルから環境変数を自動的に読み込みます
 ```
 
 #### 5. デプロイ実行

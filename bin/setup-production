@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Production Environment Setup Script
+# This script helps you set up the production environment configuration
+
+set -e
+
+echo "================================"
+echo "本番環境セットアップスクリプト"
+echo "================================"
+echo ""
+
+# Check if .env already exists
+if [ -f .env ]; then
+    echo "⚠️  .envファイルが既に存在します。"
+    read -p "上書きしますか？ (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "キャンセルしました。"
+        exit 0
+    fi
+fi
+
+# Copy production template
+echo "📄 .env.productionをコピーして.envを作成中..."
+cp .env.production .env
+
+echo ""
+echo "✅ .envファイルが作成されました！"
+echo ""
+echo "次のステップ:"
+echo ""
+echo "1️⃣  RAILS_MASTER_KEYを取得:"
+echo "   cat config/master.key"
+echo ""
+echo "2️⃣  強力なパスワードを2つ生成:"
+echo "   openssl rand -base64 32"
+echo "   openssl rand -base64 32"
+echo ""
+echo "3️⃣  .envファイルを編集:"
+echo "   vim .env"
+echo ""
+echo "   以下を設定してください:"
+echo "   - RAILS_MASTER_KEY"
+echo "   - DB_HOST (サーバーのIPアドレス)"
+echo "   - POSTGRES_PASSWORD (生成したパスワード1)"
+echo "   - DB_PASSWORD (生成したパスワード2)"
+echo ""
+echo "4️⃣  .kamal/secretsを作成:"
+echo "   cp .kamal/secrets.example .kamal/secrets"
+echo "   chmod 600 .kamal/secrets"
+echo ""
+echo "5️⃣  デプロイを実行:"
+echo "   bin/kamal setup"
+echo ""
+echo "================================"
+
