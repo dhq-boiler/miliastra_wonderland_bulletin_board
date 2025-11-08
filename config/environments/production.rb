@@ -52,12 +52,6 @@ Rails.application.configure do
   config.cache_store = :solid_cache_store
   # Solid Queue の設定を修正
   config.active_job.queue_adapter = :solid_queue
-  
-  unless Rails.env.test? || ENV['PRECOMPILING_ASSETS']
-    config.solid_cable.connects_to = { database: { writing: :primary } }
-    config.solid_cache.connects_to = { database: { writing: :primary } }
-    config.solid_queue.connects_to = { database: { writing: :primary } }
-  end
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
