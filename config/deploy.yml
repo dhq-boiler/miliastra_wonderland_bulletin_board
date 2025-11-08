@@ -5,10 +5,10 @@ service: miliastra_wonderland_bulletin_board
 image: miliastra_wonderland_bulletin_board
 
 # Deploy to these servers.
-# Replace with your actual server IP address
+# SERVER_IP_ADDRESS must be set in .env file
 servers:
   web:
-    - <%= ENV.fetch('SERVER_IP_ADDRESS', 'YOUR_SERVER_IP_ADDRESS') %>
+    - <%= ENV.fetch('SERVER_IP_ADDRESS') %>
   # job:
   #   hosts:
   #     - YOUR_SERVER_IP_ADDRESS
@@ -107,7 +107,7 @@ ssh:
 accessories:
   db:
     image: postgres:16
-    host: <%= ENV.fetch('SERVER_IP_ADDRESS', 'YOUR_SERVER_IP_ADDRESS') %>
+    host: <%= ENV.fetch('SERVER_IP_ADDRESS') %>
     port: "127.0.0.1:5432:5432"
     env:
       clear:
