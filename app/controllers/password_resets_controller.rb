@@ -13,9 +13,9 @@ class PasswordResetsController < ApplicationController
     if @user&.email.present?
       @user.generate_password_reset_token
       UserMailer.password_reset(@user).deliver_now
-      redirect_to login_path, notice: "パスワードリセットのメールを送信しました。メールをご確認ください。"
+      redirect_to login_path, notice: t('password_resets.create.success')
     else
-      flash.now[:alert] = "メールアドレスが登録されていません。"
+      flash.now[:alert] = t('password_resets.create.email_not_found')
       render :new, status: :unprocessable_entity
     end
   end
@@ -27,11 +27,11 @@ class PasswordResetsController < ApplicationController
   # パスワード更新
   def update
     if params[:user][:password].blank?
-      flash.now[:alert] = "パスワードを入力してください。"
+      flash.now[:alert] = t('password_resets.update.password_blank')
       render :edit, status: :unprocessable_entity
     elsif @user.update(password_params)
       @user.clear_password_reset_token
-      redirect_to login_path, notice: "パスワードが変更されました。ログインしてください。"
+      redirect_to login_path, notice: t('password_resets.update.success')
     else
       flash.now[:alert] = @user.errors.full_messages.join(", ")
       render :edit, status: :unprocessable_entity
@@ -43,13 +43,13 @@ class PasswordResetsController < ApplicationController
   def find_user_by_token
     @user = User.find_by(reset_password_token: params[:id])
     unless @user
-      redirect_to new_password_reset_path, alert: "無効なリンクです。"
+      redirect_to new_password_reset_path, alert: t('password_resets.errors.invalid_token')
     end
   end
 
   def check_token_expiration
     unless @user.password_reset_token_valid?
-      redirect_to new_password_reset_path, alert: "パスワードリセットの有効期限が切れています。再度申請してください。"
+      redirect_to new_password_reset_path, alert: t('password_resets.errors.token_expired')
     end
   end
 

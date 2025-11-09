@@ -16,7 +16,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to stages_path, notice: "アカウントが作成されました。"
+      redirect_to stages_path(locale: nil), notice: t('users.create.success')
     else
       render :new, status: :unprocessable_entity
     end
@@ -32,20 +32,20 @@ class UsersController < ApplicationController
     # OAuthユーザーの場合、メールアドレスとパスワードの変更を禁止
     if @user.oauth_user?
       if params[:user][:email].present? && params[:user][:email] != @user.email
-        @user.errors.add(:base, "Google アカウントのメールアドレスは変更できません")
+        @user.errors.add(:base, t('users.errors.oauth_email_readonly'))
         render :edit, status: :unprocessable_entity
         return
       end
 
       if params[:user][:password].present? || params[:user][:current_password].present?
-        @user.errors.add(:base, "Google アカウントのパスワードは変更できません")
+        @user.errors.add(:base, t('users.errors.oauth_password_readonly'))
         render :edit, status: :unprocessable_entity
         return
       end
 
       # OAuthユーザーはニックネームのみ更新可能
       if @user.update(oauth_profile_params)
-        redirect_to profile_path, notice: "プロファイルを更新しました。"
+        redirect_to profile_path(locale: nil), notice: t('users.update.success')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       if params[:user][:current_password].present?
         # 現在のパスワードを確認
         unless @user.authenticate(params[:user][:current_password])
-          @user.errors.add(:current_password, "が正しくありません")
+          @user.errors.add(:current_password, t('users.errors.current_password_incorrect'))
           render :edit, status: :unprocessable_entity
           return
         end
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
           @user.password = params[:user][:password]
           @user.password_confirmation = params[:user][:password_confirmation]
         else
-          @user.errors.add(:password, "を入力してください")
+          @user.errors.add(:password, t('users.errors.new_password_required'))
           render :edit, status: :unprocessable_entity
           return
         end
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
       end
 
       if @user.update(profile_params)
-        redirect_to profile_path, notice: "プロファイルを更新しました。"
+        redirect_to profile_path(locale: nil), notice: t('users.update.success')
       else
         render :edit, status: :unprocessable_entity
       end
@@ -85,14 +85,14 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :nickname, :email, :password, :password_confirmation)
+      params.require(:user).permit(:username, :nickname, :email, :password, :password_confirmation, :locale)
     end
 
     def profile_params
-      params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+      params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :locale)
     end
 
     def oauth_profile_params
-      params.require(:user).permit(:nickname)
+      params.require(:user).permit(:nickname, :locale)
     end
 end

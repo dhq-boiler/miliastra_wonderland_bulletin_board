@@ -7,11 +7,15 @@ class User < ApplicationRecord
   has_many :multiplay_recruitments, dependent: :destroy
   has_many :multiplay_recruitment_comments, dependent: :destroy
 
+  # 対応言語の定義
+  AVAILABLE_LOCALES = %w[ja zh-CN zh-TW en ko es fr ru th vi de id pt tr it].freeze
+
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 30 }
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :password, length: { minimum: 6 }, if: -> { password_required? }
   validates :password_digest, presence: true, if: -> { password_required? }
   validates :nickname, length: { maximum: 50 }, allow_blank: true
+  validates :locale, presence: true, inclusion: { in: AVAILABLE_LOCALES }
 
   # 表示名を取得（ニックネームがあればニックネーム、なければユーザー名）
   def display_name
@@ -54,6 +58,7 @@ class User < ApplicationRecord
       user.username = generate_username_from_email(auth.info.email)
       user.nickname = auth.info.name
       user.password_digest = SecureRandom.hex(32) # ダミーのパスワードダイジェスト
+      user.locale = I18n.default_locale.to_s # デフォルト言語を設定
     end
   end
 

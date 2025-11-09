@@ -1,0 +1,293 @@
+it:
+  activerecord:
+    models:
+      stage: Fase
+      user: Utente
+      multiplay_recruitment: Reclutamento Multigiocatore
+    attributes:
+      stage:
+        title: Titolo
+        description: Descrizione
+        stage_guid: GUID Fase
+        difficulty: Difficoltà
+        tips: Suggerimenti
+        created_at: Pubblicato il
+        updated_at: Aggiornato il
+        user: Autore
+      multiplay_recruitment:
+        title: Titolo
+        description: Contenuto del Reclutamento
+        stage_guid: GUID Fase
+        difficulty: Difficoltà
+        max_players: Giocatori Massimi
+        start_time: Ora di Inizio
+        status: Stato
+        created_at: Pubblicato il
+        updated_at: Aggiornato il
+        user: Autore
+      multiplay_recruitment_comment:
+        content: Contenuto del Commento
+        created_at: Pubblicato il
+        user: Autore
+      user:
+        username: Nome Utente
+        nickname: Soprannome
+        email: Email
+        password: Password
+        password_confirmation: Conferma Password
+        current_password: Password Attuale
+        locale: Lingua
+    errors:
+      messages:
+        blank: non può essere vuoto
+        too_short: è troppo corto (minimo %{count} caratteri)
+        too_long: è troppo lungo (massimo %{count} caratteri)
+        taken: è già in uso
+        invalid: non è valido
+        confirmation: non corrisponde
+        login_required: Login richiesto
+        inclusion: non è un valore valido
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: Login richiesto
+  languages:
+    ja: Giapponese
+    zh-CN: Cinese (Semplificato)
+    zh-TW: Cinese (Tradizionale)
+    en: Inglese
+    ko: Coreano
+    es: Spagnolo
+    fr: Francese
+    ru: Russo
+    th: Thailandese
+    vi: Vietnamita
+    de: Tedesco
+    id: Indonesiano
+    pt: Portoghese
+    tr: Turco
+    it: Italiano
+  app:
+    title: Forum Miliastra Wonderland
+    menu:
+      stages: Fasi
+      multiplay: Multigiocatore
+      my_page: La Mia Pagina
+      account_settings: Impostazioni Account
+      logout: Esci
+      login: Accedi
+      signup: Registrati
+    common:
+      required: "*"
+      optional: "(opzionale)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: o
+      cancel: Annulla
+      update: Aggiorna
+      create: Crea
+      edit: Modifica
+      delete: Elimina
+      back: Indietro
+      confirm_delete: Sei sicuro di voler eliminare?
+      posted_by: Pubblicato da
+      posted_at: Pubblicato il
+      comments_count: "%{count} commenti"
+      guid: "GUID"
+      difficulty_label: Difficoltà
+      max_players: Giocatori Mass.
+      people: " giocatori"
+      start_time: Ora di Inizio
+      status: Stato
+    stages:
+      title: Forum delle Fasi
+      new_post: Pubblica Nuova Fase
+      login_required: È richiesto %{login_link} per pubblicare.
+      no_posts: Ancora nessun post di fasi.
+      show_title: Dettagli della Fase
+      edit_title: Modifica Fase
+      new_title: Nuova Fase
+      form:
+        title_label: Titolo
+        title_placeholder: "es. Guida Capitolo 1"
+        guid_label: GUID Fase
+        guid_placeholder: "es. 20615303240"
+        difficulty_label: Difficoltà
+        difficulty_placeholder: Seleziona
+        difficulty_easy: Facile
+        difficulty_normal: Normale
+        difficulty_hard: Difficile
+        difficulty_very_hard: Molto Difficile
+        description_label: Descrizione
+        description_placeholder: Descrivi le caratteristiche della fase, meccaniche, posizione nemici, ecc.
+        tips_label: Suggerimenti & Consigli
+        tips_placeholder: Condividi suggerimenti, note e equipaggiamento consigliato
+      errors:
+        count: "%{count} errori"
+        has_errors: " trovati"
+    multiplay:
+      title: Forum di Reclutamento Multigiocatore
+      new_post: Pubblica Nuovo Reclutamento
+      login_required: È richiesto %{login_link} per pubblicare.
+      no_active_posts: Nessun reclutamento attivo.
+      no_past_posts: Nessun reclutamento passato.
+      show_title: Dettagli del Reclutamento
+      edit_title: Modifica Reclutamento
+      new_title: Nuovo Reclutamento
+      tab_active: Attivo
+      tab_past: Passato
+      form:
+        title_label: Titolo
+        title_placeholder: "es. Raid Boss Capitolo 1!"
+        guid_label: GUID Fase
+        guid_placeholder: "es. 20615303240"
+        difficulty_label: Difficoltà
+        difficulty_placeholder: Seleziona
+        max_players_label: Giocatori Mass.
+        start_time_label: Ora di Inizio
+        status_label: Stato
+        status_recruiting: Reclutamento
+        status_closed: Chiuso
+        description_label: Descrizione
+        description_placeholder: Descrivi cosa stai cercando
+      comments:
+        title: Commenti
+        new_comment: Pubblica Commento
+        placeholder: Inserisci il tuo commento
+        login_required: È richiesto %{login_link} per commentare.
+    users:
+      signup_title: Registrati
+      login_title: Accedi
+      edit_title: Impostazioni Account
+      show_title: "Pagina di %{name}"
+      form:
+        username_label: Nome Utente
+        username_placeholder: 3-20 caratteri
+        username_hint: Il nome utente non può essere modificato
+        nickname_label: Soprannome
+        nickname_placeholder: Nome visualizzato
+        nickname_hint: Verrà mostrato il nome utente se vuoto
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Password
+        password_placeholder: 6+ caratteri
+        password_confirmation_label: Conferma Password
+        password_confirmation_placeholder: Reinserisci la password
+        current_password_label: Password Attuale
+        current_password_placeholder: Inserisci se stai cambiando la password
+        new_password_label: Nuova Password
+        new_password_placeholder: 6+ caratteri
+        new_password_confirmation_label: Conferma Nuova Password
+        locale_label: Lingua
+        login_field_label: Utente o Email
+        login_field_placeholder: Inserisci utente o email
+      oauth:
+        google_signup: Registrati con Google
+        google_login: Accedi con Google
+        using_google: Connesso con Account Google
+        google_info: Questo account usa l'autenticazione Google. Email e password sono gestiti da Google.
+        email_readonly: L'email dell'account Google non può essere modificata
+        password_readonly: La password dell'account Google non può essere modificata
+      links:
+        have_account: Hai già un account?
+        no_account: Non hai un account?
+        forgot_password: Hai dimenticato la password?
+      sections:
+        basic_info: Informazioni di Base
+        change_password: Cambia Password
+        password_change_note: Lascia vuoto se non stai cambiando la password.
+        posts: Post
+        stages_tab: Fasi
+        multiplay_tab: Multigiocatore
+        no_stages: Ancora nessun post di fasi.
+        no_multiplay: Ancora nessun post di reclutamento.
+    password_resets:
+      new_title: Reimposta Password
+      edit_title: Imposta Nuova Password
+      form:
+        email_label: Indirizzo Email
+        email_placeholder: Inserisci email registrata
+        submit: Invia Email di Reimpostazione
+        new_password_label: Nuova Password
+        new_password_placeholder: 6+ caratteri
+        new_password_confirmation_label: Conferma Nuova Password
+        update: Aggiorna Password
+      links:
+        back_to_login: Torna al Login
+  stages:
+    create:
+      success: La fase è stata pubblicata.
+    update:
+      success: La fase è stata aggiornata.
+    destroy:
+      success: La fase è stata eliminata.
+    errors:
+      not_authorized_to_edit: Non puoi modificare i post di altri utenti.
+      not_authorized_to_delete: Non puoi eliminare i post di altri utenti.
+  multiplay_recruitments:
+    create:
+      success: Il reclutamento è stato pubblicato.
+    update:
+      success: Il reclutamento è stato aggiornato.
+    destroy:
+      success: Il reclutamento è stato eliminato.
+    errors:
+      not_authorized_to_edit: Non puoi modificare i post di altri utenti.
+      not_authorized_to_delete: Non puoi eliminare i post di altri utenti.
+  comments:
+    create:
+      success: Il commento è stato pubblicato.
+      failure: "Pubblicazione del commento fallita: %{errors}"
+    destroy:
+      success: Il commento è stato eliminato.
+    errors:
+      not_authorized_to_delete: Non puoi eliminare i commenti di altri utenti.
+  sessions:
+    create:
+      success: Login effettuato con successo.
+      failure: Nome utente/email o password non corretti.
+    destroy:
+      success: Logout effettuato con successo.
+  omniauth:
+    google:
+      login_success: Connesso con account Google.
+      signup_success: Account creato con account Google.
+      failure: "Login fallito: %{errors}"
+    errors:
+      unknown: Errore sconosciuto
+      authentication_failed: "Autenticazione fallita: %{message}"
+  password_resets:
+    create:
+      success: Email di reimpostazione password inviata. Controlla la tua email.
+      email_not_found: L'indirizzo email non è registrato.
+    update:
+      success: La password è stata cambiata. Effettua il login.
+      password_blank: Inserisci una password.
+    errors:
+      invalid_token: Link non valido.
+      token_expired: Il link di reimpostazione password è scaduto. Richiedine uno nuovo.
+  users:
+    create:
+      success: Account creato.
+    update:
+      success: Profilo aggiornato.
+    errors:
+      oauth_email_readonly: L'email dell'account Google non può essere modificata
+      oauth_password_readonly: La password dell'account Google non può essere modificata
+      current_password_incorrect: non è corretta
+      new_password_required: è richiesta
+

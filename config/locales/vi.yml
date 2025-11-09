@@ -1,0 +1,293 @@
+vi:
+  activerecord:
+    models:
+      stage: Giai đoạn
+      user: Người dùng
+      multiplay_recruitment: Tuyển dụng Chơi nhiều người
+    attributes:
+      stage:
+        title: Tiêu đề
+        description: Mô tả
+        stage_guid: GUID giai đoạn
+        difficulty: Độ khó
+        tips: Mẹo
+        created_at: Đã đăng
+        updated_at: Đã cập nhật
+        user: Tác giả
+      multiplay_recruitment:
+        title: Tiêu đề
+        description: Nội dung tuyển dụng
+        stage_guid: GUID giai đoạn
+        difficulty: Độ khó
+        max_players: Số người chơi tối đa
+        start_time: Thời gian bắt đầu
+        status: Trạng thái
+        created_at: Đã đăng
+        updated_at: Đã cập nhật
+        user: Tác giả
+      multiplay_recruitment_comment:
+        content: Nội dung bình luận
+        created_at: Đã đăng
+        user: Tác giả
+      user:
+        username: Tên người dùng
+        nickname: Biệt danh
+        email: Email
+        password: Mật khẩu
+        password_confirmation: Xác nhận mật khẩu
+        current_password: Mật khẩu hiện tại
+        locale: Ngôn ngữ
+    errors:
+      messages:
+        blank: không được để trống
+        too_short: quá ngắn (tối thiểu %{count} ký tự)
+        too_long: quá dài (tối đa %{count} ký tự)
+        taken: đã được sử dụng
+        invalid: không hợp lệ
+        confirmation: không khớp
+        login_required: Yêu cầu đăng nhập
+        inclusion: không phải là giá trị hợp lệ
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: Yêu cầu đăng nhập
+  languages:
+    ja: Tiếng Nhật
+    zh-CN: Tiếng Trung (Giản thể)
+    zh-TW: Tiếng Trung (Phồn thể)
+    en: Tiếng Anh
+    ko: Tiếng Hàn
+    es: Tiếng Tây Ban Nha
+    fr: Tiếng Pháp
+    ru: Tiếng Nga
+    th: Tiếng Thái
+    vi: Tiếng Việt
+    de: Tiếng Đức
+    id: Tiếng Indonesia
+    pt: Tiếng Bồ Đào Nha
+    tr: Tiếng Thổ Nhĩ Kỳ
+    it: Tiếng Ý
+  app:
+    title: Diễn đàn Miliastra Wonderland
+    menu:
+      stages: Giai đoạn
+      multiplay: Nhiều người chơi
+      my_page: Trang của tôi
+      account_settings: Cài đặt tài khoản
+      logout: Đăng xuất
+      login: Đăng nhập
+      signup: Đăng ký
+    common:
+      required: "*"
+      optional: "(tùy chọn)"
+      admin_badge: Quản trị
+      suffix_san: ""
+      or: hoặc
+      cancel: Hủy
+      update: Cập nhật
+      create: Tạo
+      edit: Chỉnh sửa
+      delete: Xóa
+      back: Quay lại
+      confirm_delete: Bạn có chắc chắn muốn xóa?
+      posted_by: Đăng bởi
+      posted_at: Đăng lúc
+      comments_count: "%{count} bình luận"
+      guid: "GUID"
+      difficulty_label: Độ khó
+      max_players: Người chơi tối đa
+      people: " người"
+      start_time: Thời gian bắt đầu
+      status: Trạng thái
+    stages:
+      title: Diễn đàn Giai đoạn
+      new_post: Đăng Giai đoạn Mới
+      login_required: Cần %{login_link} để đăng.
+      no_posts: Chưa có bài đăng giai đoạn.
+      show_title: Chi tiết Giai đoạn
+      edit_title: Chỉnh sửa Giai đoạn
+      new_title: Giai đoạn Mới
+      form:
+        title_label: Tiêu đề
+        title_placeholder: "vd. Hướng dẫn Chương 1"
+        guid_label: GUID Giai đoạn
+        guid_placeholder: "vd. 20615303240"
+        difficulty_label: Độ khó
+        difficulty_placeholder: Chọn
+        difficulty_easy: Dễ
+        difficulty_normal: Bình thường
+        difficulty_hard: Khó
+        difficulty_very_hard: Rất khó
+        description_label: Mô tả
+        description_placeholder: Mô tả đặc điểm giai đoạn, cơ chế, vị trí kẻ địch, v.v.
+        tips_label: Mẹo & Gợi ý
+        tips_placeholder: Chia sẻ mẹo, ghi chú và trang bị được khuyên dùng
+      errors:
+        count: "%{count} lỗi"
+        has_errors: " được tìm thấy"
+    multiplay:
+      title: Diễn đàn Tuyển dụng Nhiều người chơi
+      new_post: Đăng Tuyển dụng Mới
+      login_required: Cần %{login_link} để đăng.
+      no_active_posts: Không có tuyển dụng đang hoạt động.
+      no_past_posts: Không có tuyển dụng trong quá khứ.
+      show_title: Chi tiết Tuyển dụng
+      edit_title: Chỉnh sửa Tuyển dụng
+      new_title: Tuyển dụng Mới
+      tab_active: Đang hoạt động
+      tab_past: Đã qua
+      form:
+        title_label: Tiêu đề
+        title_placeholder: "vd. Đánh Boss Chương 1!"
+        guid_label: GUID Giai đoạn
+        guid_placeholder: "vd. 20615303240"
+        difficulty_label: Độ khó
+        difficulty_placeholder: Chọn
+        max_players_label: Người chơi Tối đa
+        start_time_label: Thời gian Bắt đầu
+        status_label: Trạng thái
+        status_recruiting: Đang tuyển
+        status_closed: Đã đóng
+        description_label: Mô tả
+        description_placeholder: Mô tả những gì bạn đang tìm kiếm
+      comments:
+        title: Bình luận
+        new_comment: Đăng Bình luận
+        placeholder: Nhập bình luận của bạn
+        login_required: Cần %{login_link} để bình luận.
+    users:
+      signup_title: Đăng ký
+      login_title: Đăng nhập
+      edit_title: Cài đặt Tài khoản
+      show_title: "Trang của %{name}"
+      form:
+        username_label: Tên người dùng
+        username_placeholder: 3-20 ký tự
+        username_hint: Không thể thay đổi tên người dùng
+        nickname_label: Biệt danh
+        nickname_placeholder: Tên hiển thị
+        nickname_hint: Sẽ hiển thị tên người dùng nếu để trống
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Mật khẩu
+        password_placeholder: 6+ ký tự
+        password_confirmation_label: Xác nhận Mật khẩu
+        password_confirmation_placeholder: Nhập lại mật khẩu
+        current_password_label: Mật khẩu Hiện tại
+        current_password_placeholder: Nhập nếu thay đổi mật khẩu
+        new_password_label: Mật khẩu Mới
+        new_password_placeholder: 6+ ký tự
+        new_password_confirmation_label: Xác nhận Mật khẩu Mới
+        locale_label: Ngôn ngữ
+        login_field_label: Người dùng hoặc Email
+        login_field_placeholder: Nhập người dùng hoặc email
+      oauth:
+        google_signup: Đăng ký bằng Google
+        google_login: Đăng nhập bằng Google
+        using_google: Đã đăng nhập bằng Tài khoản Google
+        google_info: Tài khoản này sử dụng xác thực Google. Email và mật khẩu được quản lý bởi Google.
+        email_readonly: Không thể thay đổi email tài khoản Google
+        password_readonly: Không thể thay đổi mật khẩu tài khoản Google
+      links:
+        have_account: Đã có tài khoản?
+        no_account: Chưa có tài khoản?
+        forgot_password: Quên mật khẩu?
+      sections:
+        basic_info: Thông tin Cơ bản
+        change_password: Đổi Mật khẩu
+        password_change_note: Để trống nếu không đổi mật khẩu.
+        posts: Bài đăng
+        stages_tab: Giai đoạn
+        multiplay_tab: Nhiều người chơi
+        no_stages: Chưa có bài đăng giai đoạn.
+        no_multiplay: Chưa có bài đăng tuyển dụng.
+    password_resets:
+      new_title: Đặt lại Mật khẩu
+      edit_title: Đặt Mật khẩu Mới
+      form:
+        email_label: Địa chỉ Email
+        email_placeholder: Nhập email đã đăng ký
+        submit: Gửi Email Đặt lại
+        new_password_label: Mật khẩu Mới
+        new_password_placeholder: 6+ ký tự
+        new_password_confirmation_label: Xác nhận Mật khẩu Mới
+        update: Cập nhật Mật khẩu
+      links:
+        back_to_login: Quay lại Đăng nhập
+  stages:
+    create:
+      success: Giai đoạn đã được đăng.
+    update:
+      success: Giai đoạn đã được cập nhật.
+    destroy:
+      success: Giai đoạn đã được xóa.
+    errors:
+      not_authorized_to_edit: Bạn không thể chỉnh sửa bài đăng của người dùng khác.
+      not_authorized_to_delete: Bạn không thể xóa bài đăng của người dùng khác.
+  multiplay_recruitments:
+    create:
+      success: Tuyển dụng đã được đăng.
+    update:
+      success: Tuyển dụng đã được cập nhật.
+    destroy:
+      success: Tuyển dụng đã được xóa.
+    errors:
+      not_authorized_to_edit: Bạn không thể chỉnh sửa bài đăng của người dùng khác.
+      not_authorized_to_delete: Bạn không thể xóa bài đăng của người dùng khác.
+  comments:
+    create:
+      success: Bình luận đã được đăng.
+      failure: "Đăng bình luận thất bại: %{errors}"
+    destroy:
+      success: Bình luận đã được xóa.
+    errors:
+      not_authorized_to_delete: Bạn không thể xóa bình luận của người dùng khác.
+  sessions:
+    create:
+      success: Đăng nhập thành công.
+      failure: Tên người dùng/email hoặc mật khẩu không đúng.
+    destroy:
+      success: Đăng xuất thành công.
+  omniauth:
+    google:
+      login_success: Đã đăng nhập bằng tài khoản Google.
+      signup_success: Đã tạo tài khoản bằng tài khoản Google.
+      failure: "Đăng nhập thất bại: %{errors}"
+    errors:
+      unknown: Lỗi không xác định
+      authentication_failed: "Xác thực thất bại: %{message}"
+  password_resets:
+    create:
+      success: Email đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra email của bạn.
+      email_not_found: Địa chỉ email không được đăng ký.
+    update:
+      success: Mật khẩu đã được thay đổi. Vui lòng đăng nhập.
+      password_blank: Vui lòng nhập mật khẩu.
+    errors:
+      invalid_token: Liên kết không hợp lệ.
+      token_expired: Liên kết đặt lại mật khẩu đã hết hạn. Vui lòng yêu cầu một liên kết mới.
+  users:
+    create:
+      success: Tài khoản đã được tạo.
+    update:
+      success: Hồ sơ đã được cập nhật.
+    errors:
+      oauth_email_readonly: Email tài khoản Google không thể thay đổi
+      oauth_password_readonly: Mật khẩu tài khoản Google không thể thay đổi
+      current_password_incorrect: không đúng
+      new_password_required: bắt buộc
+

@@ -1,0 +1,293 @@
+ko:
+  activerecord:
+    models:
+      stage: 스테이지
+      user: 사용자
+      multiplay_recruitment: 멀티플레이 모집
+    attributes:
+      stage:
+        title: 제목
+        description: 설명
+        stage_guid: 스테이지 GUID
+        difficulty: 난이도
+        tips: 공략 팁
+        created_at: 게시일
+        updated_at: 수정일
+        user: 작성자
+      multiplay_recruitment:
+        title: 제목
+        description: 모집 내용
+        stage_guid: 스테이지 GUID
+        difficulty: 난이도
+        max_players: 모집 인원
+        start_time: 시작 시간
+        status: 모집 상태
+        created_at: 게시일
+        updated_at: 수정일
+        user: 작성자
+      multiplay_recruitment_comment:
+        content: 댓글 내용
+        created_at: 게시일
+        user: 작성자
+      user:
+        username: 사용자명
+        nickname: 닉네임
+        email: 이메일
+        password: 비밀번호
+        password_confirmation: 비밀번호 확인
+        current_password: 현재 비밀번호
+        locale: 언어
+    errors:
+      messages:
+        blank: 을(를) 입력해주세요
+        too_short: 이(가) 너무 짧습니다 (최소 %{count}자)
+        too_long: 이(가) 너무 깁니다 (최대 %{count}자)
+        taken: 은(는) 이미 사용중입니다
+        invalid: 이(가) 유효하지 않습니다
+        confirmation: 이(가) 일치하지 않습니다
+        login_required: 로그인이 필요합니다
+        inclusion: 은(는) 유효한 값이 아닙니다
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y년 %m월 %d일"
+      short: "%m/%d"
+  time:
+    formats:
+      default: "%Y년 %m월 %d일 %H:%M"
+      long: "%Y년 %m월 %d일 %H시 %M분 %S초 %Z"
+      short: "%m/%d %H:%M"
+  datetime:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      long: "%Y년 %m월 %d일 %H시 %M분"
+      short: "%m/%d %H:%M"
+  errors:
+    messages:
+      login_required: 로그인이 필요합니다
+  languages:
+    ja: 일본어
+    zh-CN: 중국어(간체)
+    zh-TW: 중국어(번체)
+    en: 영어
+    ko: 한국어
+    es: 스페인어
+    fr: 프랑스어
+    ru: 러시아어
+    th: 태국어
+    vi: 베트남어
+    de: 독일어
+    id: 인도네시아어
+    pt: 포르투갈어
+    tr: 터키어
+    it: 이탈리아어
+  app:
+    title: Miliastra Wonderland 포럼
+    menu:
+      stages: 스테이지
+      multiplay: 멀티플레이
+      my_page: 마이 페이지
+      account_settings: 계정 설정
+      logout: 로그아웃
+      login: 로그인
+      signup: 회원가입
+    common:
+      required: "*"
+      optional: "(선택사항)"
+      admin_badge: 관리자
+      suffix_san: "님"
+      or: 또는
+      cancel: 취소
+      update: 업데이트
+      create: 생성
+      edit: 편집
+      delete: 삭제
+      back: 뒤로
+      confirm_delete: 정말 삭제하시겠습니까?
+      posted_by: 작성자
+      posted_at: 게시일
+      comments_count: "%{count}개의 댓글"
+      guid: "GUID"
+      difficulty_label: 난이도
+      max_players: 최대 인원
+      people: "명"
+      start_time: 시작 시간
+      status: 상태
+    stages:
+      title: 스테이지 포럼
+      new_post: 새 스테이지 게시
+      login_required: 게시하려면 %{login_link}이(가) 필요합니다.
+      no_posts: 아직 스테이지 게시물이 없습니다.
+      show_title: 스테이지 상세
+      edit_title: 스테이지 편집
+      new_title: 새 스테이지
+      form:
+        title_label: 제목
+        title_placeholder: "예: 챕터 1 숲 가이드"
+        guid_label: 스테이지 GUID
+        guid_placeholder: "예: 20615303240"
+        difficulty_label: 난이도
+        difficulty_placeholder: 선택
+        difficulty_easy: 쉬움
+        difficulty_normal: 보통
+        difficulty_hard: 어려움
+        difficulty_very_hard: 매우 어려움
+        description_label: 설명
+        description_placeholder: 스테이지 특징, 기믹, 적 배치 등을 설명하세요
+        tips_label: 팁 & 힌트
+        tips_placeholder: 팁, 주의사항, 추천 장비를 공유하세요
+      errors:
+        count: "%{count}개 오류"
+        has_errors: " 발견"
+    multiplay:
+      title: 멀티플레이 모집 포럼
+      new_post: 새 모집 게시
+      login_required: 게시하려면 %{login_link}이(가) 필요합니다.
+      no_active_posts: 활성 모집이 없습니다.
+      no_past_posts: 과거 모집이 없습니다.
+      show_title: 모집 상세
+      edit_title: 모집 편집
+      new_title: 새 모집
+      tab_active: 진행중
+      tab_past: 종료
+      form:
+        title_label: 제목
+        title_placeholder: "예: 챕터 1 보스 레이드!"
+        guid_label: 스테이지 GUID
+        guid_placeholder: "예: 20615303240"
+        difficulty_label: 난이도
+        difficulty_placeholder: 선택
+        max_players_label: 최대 인원
+        start_time_label: 시작 시간
+        status_label: 상태
+        status_recruiting: 모집중
+        status_closed: 종료
+        description_label: 설명
+        description_placeholder: 원하는 내용을 설명하세요
+      comments:
+        title: 댓글
+        new_comment: 댓글 게시
+        placeholder: 댓글을 입력하세요
+        login_required: 댓글을 달려면 %{login_link}이(가) 필요합니다.
+    users:
+      signup_title: 회원가입
+      login_title: 로그인
+      edit_title: 계정 설정
+      show_title: "%{name}님의 페이지"
+      form:
+        username_label: 사용자명
+        username_placeholder: 3-20자
+        username_hint: 사용자명은 변경할 수 없습니다
+        nickname_label: 닉네임
+        nickname_placeholder: 표시 이름
+        nickname_hint: 비어있으면 사용자명이 표시됩니다
+        email_label: 이메일
+        email_placeholder: email@example.com
+        password_label: 비밀번호
+        password_placeholder: 6자 이상
+        password_confirmation_label: 비밀번호 확인
+        password_confirmation_placeholder: 비밀번호 재입력
+        current_password_label: 현재 비밀번호
+        current_password_placeholder: 비밀번호 변경시 입력
+        new_password_label: 새 비밀번호
+        new_password_placeholder: 6자 이상
+        new_password_confirmation_label: 새 비밀번호 확인
+        locale_label: 언어
+        login_field_label: 사용자명 또는 이메일
+        login_field_placeholder: 사용자명 또는 이메일 입력
+      oauth:
+        google_signup: Google로 가입
+        google_login: Google로 로그인
+        using_google: Google 계정으로 로그인됨
+        google_info: 이 계정은 Google 인증을 사용합니다. 이메일과 비밀번호는 Google에서 관리됩니다.
+        email_readonly: Google 계정 이메일은 변경할 수 없습니다
+        password_readonly: Google 계정 비밀번호는 변경할 수 없습니다
+      links:
+        have_account: 이미 계정이 있으신가요?
+        no_account: 계정이 없으신가요?
+        forgot_password: 비밀번호를 잊으셨나요?
+      sections:
+        basic_info: 기본 정보
+        change_password: 비밀번호 변경
+        password_change_note: 비밀번호를 변경하지 않으려면 비워두세요.
+        posts: 게시물
+        stages_tab: 스테이지
+        multiplay_tab: 멀티플레이
+        no_stages: 아직 스테이지 게시물이 없습니다.
+        no_multiplay: 아직 모집 게시물이 없습니다.
+    password_resets:
+      new_title: 비밀번호 재설정
+      edit_title: 새 비밀번호 설정
+      form:
+        email_label: 이메일 주소
+        email_placeholder: 등록된 이메일 입력
+        submit: 재설정 이메일 보내기
+        new_password_label: 새 비밀번호
+        new_password_placeholder: 6자 이상
+        new_password_confirmation_label: 새 비밀번호 확인
+        update: 비밀번호 업데이트
+      links:
+        back_to_login: 로그인으로 돌아가기
+  stages:
+    create:
+      success: 스테이지가 게시되었습니다.
+    update:
+      success: 스테이지가 업데이트되었습니다.
+    destroy:
+      success: 스테이지가 삭제되었습니다.
+    errors:
+      not_authorized_to_edit: 다른 사용자의 게시물을 편집할 수 없습니다.
+      not_authorized_to_delete: 다른 사용자의 게시물을 삭제할 수 없습니다.
+  multiplay_recruitments:
+    create:
+      success: 모집이 게시되었습니다.
+    update:
+      success: 모집이 업데이트되었습니다.
+    destroy:
+      success: 모집이 삭제되었습니다.
+    errors:
+      not_authorized_to_edit: 다른 사용자의 게시물을 편집할 수 없습니다.
+      not_authorized_to_delete: 다른 사용자의 게시물을 삭제할 수 없습니다.
+  comments:
+    create:
+      success: 댓글이 게시되었습니다.
+      failure: "댓글 게시 실패: %{errors}"
+    destroy:
+      success: 댓글이 삭제되었습니다.
+    errors:
+      not_authorized_to_delete: 다른 사용자의 댓글을 삭제할 수 없습니다.
+  sessions:
+    create:
+      success: 로그인되었습니다.
+      failure: 사용자명/이메일 또는 비밀번호가 올바르지 않습니다.
+    destroy:
+      success: 로그아웃되었습니다.
+  omniauth:
+    google:
+      login_success: Google 계정으로 로그인했습니다.
+      signup_success: Google 계정으로 계정을 생성했습니다.
+      failure: "로그인 실패: %{errors}"
+    errors:
+      unknown: 알 수 없는 오류
+      authentication_failed: "인증 실패: %{message}"
+  password_resets:
+    create:
+      success: 비밀번호 재설정 이메일이 전송되었습니다. 이메일을 확인하세요.
+      email_not_found: 이메일 주소가 등록되어 있지 않습니다.
+    update:
+      success: 비밀번호가 변경되었습니다. 로그인하세요.
+      password_blank: 비밀번호를 입력하세요.
+    errors:
+      invalid_token: 유효하지 않은 링크입니다.
+      token_expired: 비밀번호 재설정 링크가 만료되었습니다. 새로 요청하세요.
+  users:
+    create:
+      success: 계정이 생성되었습니다.
+    update:
+      success: 프로필이 업데이트되었습니다.
+    errors:
+      oauth_email_readonly: Google 계정 이메일은 변경할 수 없습니다
+      oauth_password_readonly: Google 계정 비밀번호는 변경할 수 없습니다
+      current_password_incorrect: 올바르지 않습니다
+      new_password_required: 필수입니다
+

@@ -1,9 +1,9 @@
 <div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
-  <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold">幻境紹介を編集</h1>
+  <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold"><%= t('app.stages.edit_title') %></h1>
 
   <%= render "form", stage: @stage %>
 
-  <%= link_to "詳細に戻る", stage_path(@stage), class: "btn btn-default" %>
-  <%= link_to "一覧に戻る", stages_path, class: "btn btn-default" %>
+  <%= link_to t('app.common.back'), stage_path(@stage), class: "btn btn-default" %>
+  <%= link_to t('app.common.back'), stages_path, class: "btn btn-default" %>
 </div>
 

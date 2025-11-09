@@ -1,0 +1,293 @@
+tr:
+  activerecord:
+    models:
+      stage: Aşama
+      user: Kullanıcı
+      multiplay_recruitment: Çok Oyunculu İşe Alım
+    attributes:
+      stage:
+        title: Başlık
+        description: Açıklama
+        stage_guid: Aşama GUID
+        difficulty: Zorluk
+        tips: İpuçları
+        created_at: Yayınlanma
+        updated_at: Güncellenme
+        user: Yazar
+      multiplay_recruitment:
+        title: Başlık
+        description: İşe Alım İçeriği
+        stage_guid: Aşama GUID
+        difficulty: Zorluk
+        max_players: Maksimum Oyuncu
+        start_time: Başlama Saati
+        status: Durum
+        created_at: Yayınlanma
+        updated_at: Güncellenme
+        user: Yazar
+      multiplay_recruitment_comment:
+        content: Yorum İçeriği
+        created_at: Yayınlanma
+        user: Yazar
+      user:
+        username: Kullanıcı Adı
+        nickname: Takma Ad
+        email: E-posta
+        password: Şifre
+        password_confirmation: Şifre Onayı
+        current_password: Mevcut Şifre
+        locale: Dil
+    errors:
+      messages:
+        blank: boş bırakılamaz
+        too_short: çok kısa (minimum %{count} karakter)
+        too_long: çok uzun (maksimum %{count} karakter)
+        taken: zaten kullanılıyor
+        invalid: geçersiz
+        confirmation: eşleşmiyor
+        login_required: Giriş gerekli
+        inclusion: geçerli bir değer değil
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d.%m"
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d.%m %H:%M"
+  datetime:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d.%m %H:%M"
+  errors:
+    messages:
+      login_required: Giriş gerekli
+  languages:
+    ja: Japonca
+    zh-CN: Çince (Basitleştirilmiş)
+    zh-TW: Çince (Geleneksel)
+    en: İngilizce
+    ko: Korece
+    es: İspanyolca
+    fr: Fransızca
+    ru: Rusça
+    th: Tayca
+    vi: Vietnamca
+    de: Almanca
+    id: Endonezce
+    pt: Portekizce
+    tr: Türkçe
+    it: İtalyanca
+  app:
+    title: Miliastra Wonderland Forumu
+    menu:
+      stages: Aşamalar
+      multiplay: Çok Oyunculu
+      my_page: Sayfam
+      account_settings: Hesap Ayarları
+      logout: Çıkış
+      login: Giriş
+      signup: Kayıt Ol
+    common:
+      required: "*"
+      optional: "(isteğe bağlı)"
+      admin_badge: Yönetici
+      suffix_san: ""
+      or: veya
+      cancel: İptal
+      update: Güncelle
+      create: Oluştur
+      edit: Düzenle
+      delete: Sil
+      back: Geri
+      confirm_delete: Silmek istediğinizden emin misiniz?
+      posted_by: Gönderen
+      posted_at: Gönderilme
+      comments_count: "%{count} yorum"
+      guid: "GUID"
+      difficulty_label: Zorluk
+      max_players: Maks. Oyuncu
+      people: " oyuncu"
+      start_time: Başlangıç Zamanı
+      status: Durum
+    stages:
+      title: Aşama Forumu
+      new_post: Yeni Aşama Gönder
+      login_required: Göndermek için %{login_link} gerekli.
+      no_posts: Henüz aşama gönderisi yok.
+      show_title: Aşama Detayları
+      edit_title: Aşamayı Düzenle
+      new_title: Yeni Aşama
+      form:
+        title_label: Başlık
+        title_placeholder: "örn. Bölüm 1 Rehberi"
+        guid_label: Aşama GUID
+        guid_placeholder: "örn. 20615303240"
+        difficulty_label: Zorluk
+        difficulty_placeholder: Seç
+        difficulty_easy: Kolay
+        difficulty_normal: Normal
+        difficulty_hard: Zor
+        difficulty_very_hard: Çok Zor
+        description_label: Açıklama
+        description_placeholder: Aşama özelliklerini, mekaniklerini, düşman konumlarını vb. açıklayın
+        tips_label: İpuçları & Öneriler
+        tips_placeholder: İpuçlarını, notları ve önerilen ekipmanı paylaşın
+      errors:
+        count: "%{count} hata"
+        has_errors: " bulundu"
+    multiplay:
+      title: Çok Oyunculu İşe Alım Forumu
+      new_post: Yeni İşe Alım Gönder
+      login_required: Göndermek için %{login_link} gerekli.
+      no_active_posts: Aktif işe alım yok.
+      no_past_posts: Geçmiş işe alım yok.
+      show_title: İşe Alım Detayları
+      edit_title: İşe Alımı Düzenle
+      new_title: Yeni İşe Alım
+      tab_active: Aktif
+      tab_past: Geçmiş
+      form:
+        title_label: Başlık
+        title_placeholder: "örn. Bölüm 1 Boss Baskını!"
+        guid_label: Aşama GUID
+        guid_placeholder: "örn. 20615303240"
+        difficulty_label: Zorluk
+        difficulty_placeholder: Seç
+        max_players_label: Maks. Oyuncu
+        start_time_label: Başlangıç Zamanı
+        status_label: Durum
+        status_recruiting: İşe Alım
+        status_closed: Kapalı
+        description_label: Açıklama
+        description_placeholder: Ne aradığınızı açıklayın
+      comments:
+        title: Yorumlar
+        new_comment: Yorum Gönder
+        placeholder: Yorumunuzu girin
+        login_required: Yorum yapmak için %{login_link} gerekli.
+    users:
+      signup_title: Kayıt Ol
+      login_title: Giriş
+      edit_title: Hesap Ayarları
+      show_title: "%{name}'nin Sayfası"
+      form:
+        username_label: Kullanıcı Adı
+        username_placeholder: 3-20 karakter
+        username_hint: Kullanıcı adı değiştirilemez
+        nickname_label: Takma Ad
+        nickname_placeholder: Görünen ad
+        nickname_hint: Boşsa kullanıcı adı görüntülenecek
+        email_label: E-posta
+        email_placeholder: email@example.com
+        password_label: Şifre
+        password_placeholder: 6+ karakter
+        password_confirmation_label: Şifre Onayı
+        password_confirmation_placeholder: Şifreyi tekrar girin
+        current_password_label: Mevcut Şifre
+        current_password_placeholder: Şifre değiştiriyorsan gir
+        new_password_label: Yeni Şifre
+        new_password_placeholder: 6+ karakter
+        new_password_confirmation_label: Yeni Şifre Onayı
+        locale_label: Dil
+        login_field_label: Kullanıcı veya E-posta
+        login_field_placeholder: Kullanıcı veya e-posta girin
+      oauth:
+        google_signup: Google ile Kayıt Ol
+        google_login: Google ile Giriş
+        using_google: Google Hesabı ile Giriş Yapıldı
+        google_info: Bu hesap Google kimlik doğrulaması kullanıyor. E-posta ve şifre Google tarafından yönetiliyor.
+        email_readonly: Google hesabı e-postası değiştirilemez
+        password_readonly: Google hesabı şifresi değiştirilemez
+      links:
+        have_account: Zaten hesabınız var mı?
+        no_account: Hesabınız yok mu?
+        forgot_password: Şifrenizi mi unuttunuz?
+      sections:
+        basic_info: Temel Bilgiler
+        change_password: Şifre Değiştir
+        password_change_note: Şifre değiştirmiyorsan boş bırak.
+        posts: Gönderiler
+        stages_tab: Aşamalar
+        multiplay_tab: Çok Oyunculu
+        no_stages: Henüz aşama gönderisi yok.
+        no_multiplay: Henüz işe alım gönderisi yok.
+    password_resets:
+      new_title: Şifre Sıfırla
+      edit_title: Yeni Şifre Belirle
+      form:
+        email_label: E-posta Adresi
+        email_placeholder: Kayıtlı e-postayı girin
+        submit: Sıfırlama E-postası Gönder
+        new_password_label: Yeni Şifre
+        new_password_placeholder: 6+ karakter
+        new_password_confirmation_label: Yeni Şifre Onayı
+        update: Şifreyi Güncelle
+      links:
+        back_to_login: Girişe Geri Dön
+  stages:
+    create:
+      success: Aşama yayınlandı.
+    update:
+      success: Aşama güncellendi.
+    destroy:
+      success: Aşama silindi.
+    errors:
+      not_authorized_to_edit: Diğer kullanıcıların gönderilerini düzenleyemezsiniz.
+      not_authorized_to_delete: Diğer kullanıcıların gönderilerini silemezsiniz.
+  multiplay_recruitments:
+    create:
+      success: İşe alım yayınlandı.
+    update:
+      success: İşe alım güncellendi.
+    destroy:
+      success: İşe alım silindi.
+    errors:
+      not_authorized_to_edit: Diğer kullanıcıların gönderilerini düzenleyemezsiniz.
+      not_authorized_to_delete: Diğer kullanıcıların gönderilerini silemezsiniz.
+  comments:
+    create:
+      success: Yorum yayınlandı.
+      failure: "Yorum yayınlama başarısız: %{errors}"
+    destroy:
+      success: Yorum silindi.
+    errors:
+      not_authorized_to_delete: Diğer kullanıcıların yorumlarını silemezsiniz.
+  sessions:
+    create:
+      success: Giriş başarılı.
+      failure: Kullanıcı adı/e-posta veya şifre yanlış.
+    destroy:
+      success: Çıkış başarılı.
+  omniauth:
+    google:
+      login_success: Google hesabı ile giriş yapıldı.
+      signup_success: Google hesabı ile hesap oluşturuldu.
+      failure: "Giriş başarısız: %{errors}"
+    errors:
+      unknown: Bilinmeyen hata
+      authentication_failed: "Kimlik doğrulama başarısız: %{message}"
+  password_resets:
+    create:
+      success: Şifre sıfırlama e-postası gönderildi. Lütfen e-postanızı kontrol edin.
+      email_not_found: E-posta adresi kayıtlı değil.
+    update:
+      success: Şifre değiştirildi. Lütfen giriş yapın.
+      password_blank: Lütfen bir şifre girin.
+    errors:
+      invalid_token: Geçersiz bağlantı.
+      token_expired: Şifre sıfırlama bağlantısı süresi doldu. Lütfen yeni bir tane isteyin.
+  users:
+    create:
+      success: Hesap oluşturuldu.
+    update:
+      success: Profil güncellendi.
+    errors:
+      oauth_email_readonly: Google hesabı e-postası değiştirilemez
+      oauth_password_readonly: Google hesabı şifresi değiştirilemez
+      current_password_incorrect: yanlış
+      new_password_required: gerekli
+

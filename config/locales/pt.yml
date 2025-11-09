@@ -1,0 +1,293 @@
+pt:
+  activerecord:
+    models:
+      stage: Estágio
+      user: Usuário
+      multiplay_recruitment: Recrutamento Multiplayer
+    attributes:
+      stage:
+        title: Título
+        description: Descrição
+        stage_guid: GUID do Estágio
+        difficulty: Dificuldade
+        tips: Dicas
+        created_at: Publicado em
+        updated_at: Atualizado em
+        user: Autor
+      multiplay_recruitment:
+        title: Título
+        description: Conteúdo do Recrutamento
+        stage_guid: GUID do Estágio
+        difficulty: Dificuldade
+        max_players: Jogadores Máximos
+        start_time: Hora de Início
+        status: Status
+        created_at: Publicado em
+        updated_at: Atualizado em
+        user: Autor
+      multiplay_recruitment_comment:
+        content: Conteúdo do Comentário
+        created_at: Publicado em
+        user: Autor
+      user:
+        username: Nome de Usuário
+        nickname: Apelido
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de Senha
+        current_password: Senha Atual
+        locale: Idioma
+    errors:
+      messages:
+        blank: não pode ficar em branco
+        too_short: é muito curto (mínimo %{count} caracteres)
+        too_long: é muito longo (máximo %{count} caracteres)
+        taken: já está em uso
+        invalid: é inválido
+        confirmation: não corresponde
+        login_required: Login necessário
+        inclusion: não é um valor válido
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d de %B de %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d de %B de %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: Login necessário
+  languages:
+    ja: Japonês
+    zh-CN: Chinês (Simplificado)
+    zh-TW: Chinês (Tradicional)
+    en: Inglês
+    ko: Coreano
+    es: Espanhol
+    fr: Francês
+    ru: Russo
+    th: Tailandês
+    vi: Vietnamita
+    de: Alemão
+    id: Indonésio
+    pt: Português
+    tr: Turco
+    it: Italiano
+  app:
+    title: Fórum Miliastra Wonderland
+    menu:
+      stages: Estágios
+      multiplay: Multijogador
+      my_page: Minha Página
+      account_settings: Configurações da Conta
+      logout: Sair
+      login: Entrar
+      signup: Registrar
+    common:
+      required: "*"
+      optional: "(opcional)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: ou
+      cancel: Cancelar
+      update: Atualizar
+      create: Criar
+      edit: Editar
+      delete: Excluir
+      back: Voltar
+      confirm_delete: Tem certeza de que deseja excluir?
+      posted_by: Publicado por
+      posted_at: Publicado em
+      comments_count: "%{count} comentários"
+      guid: "GUID"
+      difficulty_label: Dificuldade
+      max_players: Jogadores Máx.
+      people: " jogadores"
+      start_time: Hora de Início
+      status: Status
+    stages:
+      title: Fórum de Estágios
+      new_post: Publicar Novo Estágio
+      login_required: É necessário %{login_link} para publicar.
+      no_posts: Ainda não há publicações de estágios.
+      show_title: Detalhes do Estágio
+      edit_title: Editar Estágio
+      new_title: Novo Estágio
+      form:
+        title_label: Título
+        title_placeholder: "ex. Guia do Capítulo 1"
+        guid_label: GUID do Estágio
+        guid_placeholder: "ex. 20615303240"
+        difficulty_label: Dificuldade
+        difficulty_placeholder: Selecionar
+        difficulty_easy: Fácil
+        difficulty_normal: Normal
+        difficulty_hard: Difícil
+        difficulty_very_hard: Muito Difícil
+        description_label: Descrição
+        description_placeholder: Descreva as características do estágio, mecânicas, posição dos inimigos, etc.
+        tips_label: Dicas & Sugestões
+        tips_placeholder: Compartilhe dicas, observações e equipamentos recomendados
+      errors:
+        count: "%{count} erros"
+        has_errors: " encontrados"
+    multiplay:
+      title: Fórum de Recrutamento Multijogador
+      new_post: Publicar Novo Recrutamento
+      login_required: É necessário %{login_link} para publicar.
+      no_active_posts: Não há recrutamentos ativos.
+      no_past_posts: Não há recrutamentos anteriores.
+      show_title: Detalhes do Recrutamento
+      edit_title: Editar Recrutamento
+      new_title: Novo Recrutamento
+      tab_active: Ativo
+      tab_past: Anterior
+      form:
+        title_label: Título
+        title_placeholder: "ex. Raid do Chefe do Capítulo 1!"
+        guid_label: GUID do Estágio
+        guid_placeholder: "ex. 20615303240"
+        difficulty_label: Dificuldade
+        difficulty_placeholder: Selecionar
+        max_players_label: Jogadores Máx.
+        start_time_label: Hora de Início
+        status_label: Status
+        status_recruiting: Recrutando
+        status_closed: Fechado
+        description_label: Descrição
+        description_placeholder: Descreva o que você está procurando
+      comments:
+        title: Comentários
+        new_comment: Publicar Comentário
+        placeholder: Digite seu comentário
+        login_required: É necessário %{login_link} para comentar.
+    users:
+      signup_title: Registrar
+      login_title: Entrar
+      edit_title: Configurações da Conta
+      show_title: "Página de %{name}"
+      form:
+        username_label: Nome de Usuário
+        username_placeholder: 3-20 caracteres
+        username_hint: O nome de usuário não pode ser alterado
+        nickname_label: Apelido
+        nickname_placeholder: Nome de exibição
+        nickname_hint: O nome de usuário será exibido se estiver vazio
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Senha
+        password_placeholder: 6+ caracteres
+        password_confirmation_label: Confirmação de Senha
+        password_confirmation_placeholder: Digite a senha novamente
+        current_password_label: Senha Atual
+        current_password_placeholder: Digite se estiver alterando a senha
+        new_password_label: Nova Senha
+        new_password_placeholder: 6+ caracteres
+        new_password_confirmation_label: Confirmação da Nova Senha
+        locale_label: Idioma
+        login_field_label: Usuário ou Email
+        login_field_placeholder: Digite o usuário ou email
+      oauth:
+        google_signup: Registrar com Google
+        google_login: Entrar com Google
+        using_google: Conectado com Conta do Google
+        google_info: Esta conta usa autenticação do Google. O email e a senha são gerenciados pelo Google.
+        email_readonly: O email da conta do Google não pode ser alterado
+        password_readonly: A senha da conta do Google não pode ser alterada
+      links:
+        have_account: Já tem uma conta?
+        no_account: Não tem uma conta?
+        forgot_password: Esqueceu a senha?
+      sections:
+        basic_info: Informações Básicas
+        change_password: Alterar Senha
+        password_change_note: Deixe em branco se não estiver alterando a senha.
+        posts: Publicações
+        stages_tab: Estágios
+        multiplay_tab: Multijogador
+        no_stages: Ainda não há publicações de estágios.
+        no_multiplay: Ainda não há publicações de recrutamento.
+    password_resets:
+      new_title: Redefinir Senha
+      edit_title: Definir Nova Senha
+      form:
+        email_label: Endereço de Email
+        email_placeholder: Digite o email registrado
+        submit: Enviar Email de Redefinição
+        new_password_label: Nova Senha
+        new_password_placeholder: 6+ caracteres
+        new_password_confirmation_label: Confirmação da Nova Senha
+        update: Atualizar Senha
+      links:
+        back_to_login: Voltar ao Login
+  stages:
+    create:
+      success: O estágio foi publicado.
+    update:
+      success: O estágio foi atualizado.
+    destroy:
+      success: O estágio foi excluído.
+    errors:
+      not_authorized_to_edit: Você não pode editar publicações de outros usuários.
+      not_authorized_to_delete: Você não pode excluir publicações de outros usuários.
+  multiplay_recruitments:
+    create:
+      success: O recrutamento foi publicado.
+    update:
+      success: O recrutamento foi atualizado.
+    destroy:
+      success: O recrutamento foi excluído.
+    errors:
+      not_authorized_to_edit: Você não pode editar publicações de outros usuários.
+      not_authorized_to_delete: Você não pode excluir publicações de outros usuários.
+  comments:
+    create:
+      success: O comentário foi publicado.
+      failure: "Falha ao publicar comentário: %{errors}"
+    destroy:
+      success: O comentário foi excluído.
+    errors:
+      not_authorized_to_delete: Você não pode excluir comentários de outros usuários.
+  sessions:
+    create:
+      success: Login realizado com sucesso.
+      failure: Nome de usuário/email ou senha incorretos.
+    destroy:
+      success: Logout realizado com sucesso.
+  omniauth:
+    google:
+      login_success: Conectado com conta do Google.
+      signup_success: Conta criada com conta do Google.
+      failure: "Falha no login: %{errors}"
+    errors:
+      unknown: Erro desconhecido
+      authentication_failed: "Falha na autenticação: %{message}"
+  password_resets:
+    create:
+      success: Email de redefinição de senha foi enviado. Por favor, verifique seu email.
+      email_not_found: O endereço de email não está registrado.
+    update:
+      success: A senha foi alterada. Por favor, faça login.
+      password_blank: Por favor, digite uma senha.
+    errors:
+      invalid_token: Link inválido.
+      token_expired: O link de redefinição de senha expirou. Por favor, solicite um novo.
+  users:
+    create:
+      success: A conta foi criada.
+    update:
+      success: O perfil foi atualizado.
+    errors:
+      oauth_email_readonly: O email da conta do Google não pode ser alterado
+      oauth_password_readonly: A senha da conta do Google não pode ser alterada
+      current_password_incorrect: está incorreta
+      new_password_required: é obrigatória
+

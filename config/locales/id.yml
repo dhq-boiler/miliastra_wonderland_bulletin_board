@@ -1,0 +1,293 @@
+id:
+  activerecord:
+    models:
+      stage: Tahap
+      user: Pengguna
+      multiplay_recruitment: Rekrutmen Multiplayer
+    attributes:
+      stage:
+        title: Judul
+        description: Deskripsi
+        stage_guid: GUID Tahap
+        difficulty: Kesulitan
+        tips: Tips
+        created_at: Diposting pada
+        updated_at: Diperbarui pada
+        user: Penulis
+      multiplay_recruitment:
+        title: Judul
+        description: Konten Rekrutmen
+        stage_guid: GUID Tahap
+        difficulty: Kesulitan
+        max_players: Pemain Maksimal
+        start_time: Waktu Mulai
+        status: Status
+        created_at: Diposting pada
+        updated_at: Diperbarui pada
+        user: Penulis
+      multiplay_recruitment_comment:
+        content: Konten Komentar
+        created_at: Diposting pada
+        user: Penulis
+      user:
+        username: Nama Pengguna
+        nickname: Nama Panggilan
+        email: Email
+        password: Kata Sandi
+        password_confirmation: Konfirmasi Kata Sandi
+        current_password: Kata Sandi Saat Ini
+        locale: Bahasa
+    errors:
+      messages:
+        blank: tidak boleh kosong
+        too_short: terlalu pendek (minimum %{count} karakter)
+        too_long: terlalu panjang (maksimum %{count} karakter)
+        taken: sudah digunakan
+        invalid: tidak valid
+        confirmation: tidak cocok
+        login_required: Login diperlukan
+        inclusion: bukan nilai yang valid
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: Login diperlukan
+  languages:
+    ja: Bahasa Jepang
+    zh-CN: Bahasa Tionghoa (Sederhana)
+    zh-TW: Bahasa Tionghoa (Tradisional)
+    en: Bahasa Inggris
+    ko: Bahasa Korea
+    es: Bahasa Spanyol
+    fr: Bahasa Prancis
+    ru: Bahasa Rusia
+    th: Bahasa Thailand
+    vi: Bahasa Vietnam
+    de: Bahasa Jerman
+    id: Bahasa Indonesia
+    pt: Bahasa Portugis
+    tr: Bahasa Turki
+    it: Bahasa Italia
+  app:
+    title: Forum Miliastra Wonderland
+    menu:
+      stages: Tahap
+      multiplay: Multiplayer
+      my_page: Halaman Saya
+      account_settings: Pengaturan Akun
+      logout: Keluar
+      login: Masuk
+      signup: Daftar
+    common:
+      required: "*"
+      optional: "(opsional)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: atau
+      cancel: Batal
+      update: Perbarui
+      create: Buat
+      edit: Edit
+      delete: Hapus
+      back: Kembali
+      confirm_delete: Apakah Anda yakin ingin menghapus?
+      posted_by: Diposting oleh
+      posted_at: Diposting pada
+      comments_count: "%{count} komentar"
+      guid: "GUID"
+      difficulty_label: Kesulitan
+      max_players: Pemain Maks.
+      people: " pemain"
+      start_time: Waktu Mulai
+      status: Status
+    stages:
+      title: Forum Tahap
+      new_post: Posting Tahap Baru
+      login_required: Perlu %{login_link} untuk posting.
+      no_posts: Belum ada postingan tahap.
+      show_title: Detail Tahap
+      edit_title: Edit Tahap
+      new_title: Tahap Baru
+      form:
+        title_label: Judul
+        title_placeholder: "mis. Panduan Bab 1"
+        guid_label: GUID Tahap
+        guid_placeholder: "mis. 20615303240"
+        difficulty_label: Kesulitan
+        difficulty_placeholder: Pilih
+        difficulty_easy: Mudah
+        difficulty_normal: Normal
+        difficulty_hard: Sulit
+        difficulty_very_hard: Sangat Sulit
+        description_label: Deskripsi
+        description_placeholder: Jelaskan fitur tahap, mekanik, posisi musuh, dll.
+        tips_label: Tips & Petunjuk
+        tips_placeholder: Bagikan tips, catatan, dan peralatan yang direkomendasikan
+      errors:
+        count: "%{count} kesalahan"
+        has_errors: " ditemukan"
+    multiplay:
+      title: Forum Rekrutmen Multiplayer
+      new_post: Posting Rekrutmen Baru
+      login_required: Perlu %{login_link} untuk posting.
+      no_active_posts: Tidak ada rekrutmen aktif.
+      no_past_posts: Tidak ada rekrutmen sebelumnya.
+      show_title: Detail Rekrutmen
+      edit_title: Edit Rekrutmen
+      new_title: Rekrutmen Baru
+      tab_active: Aktif
+      tab_past: Sebelumnya
+      form:
+        title_label: Judul
+        title_placeholder: "mis. Raid Boss Bab 1!"
+        guid_label: GUID Tahap
+        guid_placeholder: "mis. 20615303240"
+        difficulty_label: Kesulitan
+        difficulty_placeholder: Pilih
+        max_players_label: Pemain Maks.
+        start_time_label: Waktu Mulai
+        status_label: Status
+        status_recruiting: Merekrut
+        status_closed: Ditutup
+        description_label: Deskripsi
+        description_placeholder: Jelaskan apa yang Anda cari
+      comments:
+        title: Komentar
+        new_comment: Posting Komentar
+        placeholder: Masukkan komentar Anda
+        login_required: Perlu %{login_link} untuk berkomentar.
+    users:
+      signup_title: Daftar
+      login_title: Masuk
+      edit_title: Pengaturan Akun
+      show_title: "Halaman %{name}"
+      form:
+        username_label: Nama Pengguna
+        username_placeholder: 3-20 karakter
+        username_hint: Nama pengguna tidak dapat diubah
+        nickname_label: Nama Panggilan
+        nickname_placeholder: Nama tampilan
+        nickname_hint: Akan menampilkan nama pengguna jika kosong
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Kata Sandi
+        password_placeholder: 6+ karakter
+        password_confirmation_label: Konfirmasi Kata Sandi
+        password_confirmation_placeholder: Masukkan kembali kata sandi
+        current_password_label: Kata Sandi Saat Ini
+        current_password_placeholder: Masukkan jika mengubah kata sandi
+        new_password_label: Kata Sandi Baru
+        new_password_placeholder: 6+ karakter
+        new_password_confirmation_label: Konfirmasi Kata Sandi Baru
+        locale_label: Bahasa
+        login_field_label: Pengguna atau Email
+        login_field_placeholder: Masukkan pengguna atau email
+      oauth:
+        google_signup: Daftar dengan Google
+        google_login: Masuk dengan Google
+        using_google: Masuk dengan Akun Google
+        google_info: Akun ini menggunakan autentikasi Google. Email dan kata sandi dikelola oleh Google.
+        email_readonly: Email akun Google tidak dapat diubah
+        password_readonly: Kata sandi akun Google tidak dapat diubah
+      links:
+        have_account: Sudah punya akun?
+        no_account: Belum punya akun?
+        forgot_password: Lupa kata sandi?
+      sections:
+        basic_info: Informasi Dasar
+        change_password: Ubah Kata Sandi
+        password_change_note: Biarkan kosong jika tidak mengubah kata sandi.
+        posts: Postingan
+        stages_tab: Tahap
+        multiplay_tab: Multiplayer
+        no_stages: Belum ada postingan tahap.
+        no_multiplay: Belum ada postingan rekrutmen.
+    password_resets:
+      new_title: Reset Kata Sandi
+      edit_title: Atur Kata Sandi Baru
+      form:
+        email_label: Alamat Email
+        email_placeholder: Masukkan email terdaftar
+        submit: Kirim Email Reset
+        new_password_label: Kata Sandi Baru
+        new_password_placeholder: 6+ karakter
+        new_password_confirmation_label: Konfirmasi Kata Sandi Baru
+        update: Perbarui Kata Sandi
+      links:
+        back_to_login: Kembali ke Masuk
+  stages:
+    create:
+      success: Tahap telah diposting.
+    update:
+      success: Tahap telah diperbarui.
+    destroy:
+      success: Tahap telah dihapus.
+    errors:
+      not_authorized_to_edit: Anda tidak dapat mengedit postingan pengguna lain.
+      not_authorized_to_delete: Anda tidak dapat menghapus postingan pengguna lain.
+  multiplay_recruitments:
+    create:
+      success: Rekrutmen telah diposting.
+    update:
+      success: Rekrutmen telah diperbarui.
+    destroy:
+      success: Rekrutmen telah dihapus.
+    errors:
+      not_authorized_to_edit: Anda tidak dapat mengedit postingan pengguna lain.
+      not_authorized_to_delete: Anda tidak dapat menghapus postingan pengguna lain.
+  comments:
+    create:
+      success: Komentar telah diposting.
+      failure: "Gagal memposting komentar: %{errors}"
+    destroy:
+      success: Komentar telah dihapus.
+    errors:
+      not_authorized_to_delete: Anda tidak dapat menghapus komentar pengguna lain.
+  sessions:
+    create:
+      success: Login berhasil.
+      failure: Username/email atau password salah.
+    destroy:
+      success: Logout berhasil.
+  omniauth:
+    google:
+      login_success: Login dengan akun Google.
+      signup_success: Akun dibuat dengan akun Google.
+      failure: "Login gagal: %{errors}"
+    errors:
+      unknown: Kesalahan tidak diketahui
+      authentication_failed: "Autentikasi gagal: %{message}"
+  password_resets:
+    create:
+      success: Email reset password telah dikirim. Silakan periksa email Anda.
+      email_not_found: Alamat email tidak terdaftar.
+    update:
+      success: Password telah diubah. Silakan login.
+      password_blank: Silakan masukkan password.
+    errors:
+      invalid_token: Link tidak valid.
+      token_expired: Link reset password telah kadaluarsa. Silakan minta yang baru.
+  users:
+    create:
+      success: Akun telah dibuat.
+    update:
+      success: Profil telah diperbarui.
+    errors:
+      oauth_email_readonly: Email akun Google tidak dapat diubah
+      oauth_password_readonly: Password akun Google tidak dapat diubah
+      current_password_incorrect: salah
+      new_password_required: diperlukan
+

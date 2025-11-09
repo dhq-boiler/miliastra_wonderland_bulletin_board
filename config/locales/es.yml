@@ -1,0 +1,293 @@
+es:
+  activerecord:
+    models:
+      stage: Etapa
+      user: Usuario
+      multiplay_recruitment: Reclutamiento Multijugador
+    attributes:
+      stage:
+        title: Título
+        description: Descripción
+        stage_guid: GUID de Etapa
+        difficulty: Dificultad
+        tips: Consejos
+        created_at: Publicado el
+        updated_at: Actualizado el
+        user: Autor
+      multiplay_recruitment:
+        title: Título
+        description: Contenido de Reclutamiento
+        stage_guid: GUID de Etapa
+        difficulty: Dificultad
+        max_players: Jugadores Máximos
+        start_time: Hora de Inicio
+        status: Estado
+        created_at: Publicado el
+        updated_at: Actualizado el
+        user: Autor
+      multiplay_recruitment_comment:
+        content: Contenido del Comentario
+        created_at: Publicado el
+        user: Autor
+      user:
+        username: Nombre de Usuario
+        nickname: Apodo
+        email: Correo Electrónico
+        password: Contraseña
+        password_confirmation: Confirmación de Contraseña
+        current_password: Contraseña Actual
+        locale: Idioma
+    errors:
+      messages:
+        blank: no puede estar vacío
+        too_short: es demasiado corto (mínimo %{count} caracteres)
+        too_long: es demasiado largo (máximo %{count} caracteres)
+        taken: ya está en uso
+        invalid: es inválido
+        confirmation: no coincide
+        login_required: Se requiere inicio de sesión
+        inclusion: no es un valor válido
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d de %B de %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d de %B de %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d de %B de %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: Se requiere inicio de sesión
+  languages:
+    ja: Japonés
+    zh-CN: Chino (Simplificado)
+    zh-TW: Chino (Tradicional)
+    en: Inglés
+    ko: Coreano
+    es: Español
+    fr: Francés
+    ru: Ruso
+    th: Tailandés
+    vi: Vietnamita
+    de: Alemán
+    id: Indonesio
+    pt: Portugués
+    tr: Turco
+    it: Italiano
+  app:
+    title: Foro Miliastra Wonderland
+    menu:
+      stages: Etapas
+      multiplay: Multijugador
+      my_page: Mi Página
+      account_settings: Configuración de Cuenta
+      logout: Cerrar Sesión
+      login: Iniciar Sesión
+      signup: Registrarse
+    common:
+      required: "*"
+      optional: "(opcional)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: o
+      cancel: Cancelar
+      update: Actualizar
+      create: Crear
+      edit: Editar
+      delete: Eliminar
+      back: Volver
+      confirm_delete: ¿Está seguro de que desea eliminar?
+      posted_by: Publicado por
+      posted_at: Publicado el
+      comments_count: "%{count} comentarios"
+      guid: "GUID"
+      difficulty_label: Dificultad
+      max_players: Jugadores Máx.
+      people: " jugadores"
+      start_time: Hora de Inicio
+      status: Estado
+    stages:
+      title: Foro de Etapas
+      new_post: Publicar Nueva Etapa
+      login_required: "Se requiere %{login_link} para publicar."
+      no_posts: Aún no hay publicaciones de etapas.
+      show_title: Detalles de la Etapa
+      edit_title: Editar Etapa
+      new_title: Nueva Etapa
+      form:
+        title_label: Título
+        title_placeholder: "ej. Guía del Capítulo 1"
+        guid_label: GUID de Etapa
+        guid_placeholder: "ej. 20615303240"
+        difficulty_label: Dificultad
+        difficulty_placeholder: Seleccionar
+        difficulty_easy: Fácil
+        difficulty_normal: Normal
+        difficulty_hard: Difícil
+        difficulty_very_hard: Muy Difícil
+        description_label: Descripción
+        description_placeholder: Describe las características de la etapa, mecánicas, posición de enemigos, etc.
+        tips_label: Consejos y Pistas
+        tips_placeholder: Comparte consejos, notas y equipo recomendado
+      errors:
+        count: "%{count} errores"
+        has_errors: " encontrados"
+    multiplay:
+      title: Foro de Reclutamiento Multijugador
+      new_post: Publicar Nuevo Reclutamiento
+      login_required: "Se requiere %{login_link} para publicar."
+      no_active_posts: No hay reclutamientos activos.
+      no_past_posts: No hay reclutamientos pasados.
+      show_title: Detalles del Reclutamiento
+      edit_title: Editar Reclutamiento
+      new_title: Nuevo Reclutamiento
+      tab_active: Activo
+      tab_past: Pasado
+      form:
+        title_label: Título
+        title_placeholder: "ej. ¡Raid del Jefe del Capítulo 1!"
+        guid_label: GUID de Etapa
+        guid_placeholder: "ej. 20615303240"
+        difficulty_label: Dificultad
+        difficulty_placeholder: Seleccionar
+        max_players_label: Jugadores Máx.
+        start_time_label: Hora de Inicio
+        status_label: Estado
+        status_recruiting: Reclutando
+        status_closed: Cerrado
+        description_label: Descripción
+        description_placeholder: Describe lo que estás buscando
+      comments:
+        title: Comentarios
+        new_comment: Publicar Comentario
+        placeholder: Ingresa tu comentario
+        login_required: Se requiere %{login_link} para comentar.
+    users:
+      signup_title: Registrarse
+      login_title: Iniciar Sesión
+      edit_title: Configuración de Cuenta
+      show_title: "Página de %{name}"
+      form:
+        username_label: Nombre de Usuario
+        username_placeholder: 3-20 caracteres
+        username_hint: El nombre de usuario no se puede cambiar
+        nickname_label: Apodo
+        nickname_placeholder: Nombre para mostrar
+        nickname_hint: Se mostrará el nombre de usuario si está vacío
+        email_label: Correo Electrónico
+        email_placeholder: email@example.com
+        password_label: Contraseña
+        password_placeholder: 6+ caracteres
+        password_confirmation_label: Confirmación de Contraseña
+        password_confirmation_placeholder: Vuelve a ingresar la contraseña
+        current_password_label: Contraseña Actual
+        current_password_placeholder: Ingresa si cambias la contraseña
+        new_password_label: Nueva Contraseña
+        new_password_placeholder: 6+ caracteres
+        new_password_confirmation_label: Confirmación de Nueva Contraseña
+        locale_label: Idioma
+        login_field_label: Usuario o Correo
+        login_field_placeholder: Ingresa usuario o correo
+      oauth:
+        google_signup: Registrarse con Google
+        google_login: Iniciar sesión con Google
+        using_google: Conectado con Cuenta de Google
+        google_info: Esta cuenta usa autenticación de Google. El correo y la contraseña son administrados por Google.
+        email_readonly: El correo de la cuenta de Google no se puede cambiar
+        password_readonly: La contraseña de la cuenta de Google no se puede cambiar
+      links:
+        have_account: ¿Ya tienes una cuenta?
+        no_account: ¿No tienes una cuenta?
+        forgot_password: ¿Olvidaste tu contraseña?
+      sections:
+        basic_info: Información Básica
+        change_password: Cambiar Contraseña
+        password_change_note: Deja en blanco si no cambias la contraseña.
+        posts: Publicaciones
+        stages_tab: Etapas
+        multiplay_tab: Multijugador
+        no_stages: Aún no hay publicaciones de etapas.
+        no_multiplay: Aún no hay publicaciones de reclutamiento.
+    password_resets:
+      new_title: Restablecer Contraseña
+      edit_title: Establecer Nueva Contraseña
+      form:
+        email_label: Dirección de Correo
+        email_placeholder: Ingresa el correo registrado
+        submit: Enviar Correo de Restablecimiento
+        new_password_label: Nueva Contraseña
+        new_password_placeholder: 6+ caracteres
+        new_password_confirmation_label: Confirmación de Nueva Contraseña
+        update: Actualizar Contraseña
+      links:
+        back_to_login: Volver al Inicio de Sesión
+  stages:
+    create:
+      success: La etapa ha sido publicada.
+    update:
+      success: La etapa ha sido actualizada.
+    destroy:
+      success: La etapa ha sido eliminada.
+    errors:
+      not_authorized_to_edit: No puedes editar publicaciones de otros usuarios.
+      not_authorized_to_delete: No puedes eliminar publicaciones de otros usuarios.
+  multiplay_recruitments:
+    create:
+      success: El reclutamiento ha sido publicado.
+    update:
+      success: El reclutamiento ha sido actualizado.
+    destroy:
+      success: El reclutamiento ha sido eliminado.
+    errors:
+      not_authorized_to_edit: No puedes editar publicaciones de otros usuarios.
+      not_authorized_to_delete: No puedes eliminar publicaciones de otros usuarios.
+  comments:
+    create:
+      success: El comentario ha sido publicado.
+      failure: "Error al publicar el comentario: %{errors}"
+    destroy:
+      success: El comentario ha sido eliminado.
+    errors:
+      not_authorized_to_delete: No puedes eliminar comentarios de otros usuarios.
+  sessions:
+    create:
+      success: Sesión iniciada correctamente.
+      failure: Usuario/correo o contraseña incorrectos.
+    destroy:
+      success: Sesión cerrada correctamente.
+  omniauth:
+    google:
+      login_success: Sesión iniciada con cuenta de Google.
+      signup_success: Cuenta creada con cuenta de Google.
+      failure: "Error al iniciar sesión: %{errors}"
+    errors:
+      unknown: Error desconocido
+      authentication_failed: "Error de autenticación: %{message}"
+  password_resets:
+    create:
+      success: Se ha enviado el correo de restablecimiento de contraseña. Por favor revisa tu correo.
+      email_not_found: El correo electrónico no está registrado.
+    update:
+      success: La contraseña ha sido cambiada. Por favor inicia sesión.
+      password_blank: Por favor ingresa una contraseña.
+    errors:
+      invalid_token: Enlace inválido.
+      token_expired: El enlace de restablecimiento de contraseña ha expirado. Por favor solicita uno nuevo.
+  users:
+    create:
+      success: La cuenta ha sido creada.
+    update:
+      success: El perfil ha sido actualizado.
+    errors:
+      oauth_email_readonly: El correo de la cuenta de Google no se puede cambiar
+      oauth_password_readonly: La contraseña de la cuenta de Google no se puede cambiar
+      current_password_incorrect: es incorrecta
+      new_password_required: es requerida
+

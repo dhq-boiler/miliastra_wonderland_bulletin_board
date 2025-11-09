@@ -1,12 +1,12 @@
 <div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
-  <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold">幻境 紹介掲示板</h1>
+  <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold"><%= t('app.stages.title') %></h1>
 
 
   <div class="actions">
     <% if logged_in? %>
-      <%= link_to "新しい幻境紹介を投稿", new_stage_path, class: "btn btn-primary" %>
+      <%= link_to t('app.stages.new_post'), new_stage_path, class: "btn btn-primary" %>
     <% else %>
-      <p class="login-prompt">投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
+      <p class="login-prompt"><%= t('app.stages.login_required', login_link: link_to(t('app.menu.login'), login_path)).html_safe %></p>
     <% end %>
   </div>
 
@@ -16,26 +16,26 @@
         <div class="stage-card">
           <h2><%= link_to stage.title, stage_path(stage) %></h2>
           <div class="stage-info">
-            <span class="stage-guid">GUID: <%= clipboard_copy(stage.stage_guid) %></span>
+            <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(stage.stage_guid) %></span>
             <% if stage.difficulty.present? %>
-              <span class="difficulty">難易度: <%= stage.difficulty %></span>
+              <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= stage.difficulty %></span>
             <% end %>
           </div>
           <p class="description"><%= truncate(stage.description, length: 200) %></p>
           <div class="meta">
             <span class="author">
-              投稿者: <%= link_to stage.user.display_name, user_path(stage.user), class: "text-blue-600 hover:text-blue-800 underline" %>
+              <%= t('app.common.posted_by') %>: <%= link_to stage.user.display_name, user_path(stage.user), class: "text-blue-600 hover:text-blue-800 underline" %>
               <% if stage.user.admin? %>
-                <span class="admin-badge">管理者</span>
+                <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
               <% end %>
             </span>
-            <span class="date">投稿日: <%= l(stage.created_at, format: :short) %></span>
+            <span class="date"><%= t('app.common.posted_at') %>: <%= l(stage.created_at, format: :short) %></span>
             <%= diff_time(stage.created_at, "span", { class: "diff-time" }, auto_update: true) %>
           </div>
         </div>
       <% end %>
     <% else %>
-      <p class="no-stages">まだ幻境紹介の投稿がありません。</p>
+      <p class="no-stages"><%= t('app.stages.no_posts') %></p>
     <% end %>
   </div>
 </div>

@@ -28,4 +28,294 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  activerecord:
+    models:
+      stage: Stage
+      user: User
+      multiplay_recruitment: Multiplayer Recruitment
+    attributes:
+      stage:
+        title: Title
+        description: Description
+        stage_guid: Stage GUID
+        difficulty: Difficulty
+        tips: Tips
+        created_at: Posted at
+        updated_at: Updated at
+        user: Author
+      multiplay_recruitment:
+        title: Title
+        description: Description
+        stage_guid: Stage GUID
+        difficulty: Difficulty
+        max_players: Max Players
+        start_time: Start Time
+        status: Status
+        created_at: Posted at
+        updated_at: Updated at
+        user: Author
+      multiplay_recruitment_comment:
+        content: Comment
+        created_at: Posted at
+        user: Author
+      user:
+        username: Username
+        nickname: Nickname
+        email: Email
+        password: Password
+        password_confirmation: Password Confirmation
+        current_password: Current Password
+        locale: Language
+    errors:
+      messages:
+        blank: can't be blank
+        too_short: is too short (minimum is %{count} characters)
+        too_long: is too long (maximum is %{count} characters)
+        taken: has already been taken
+        invalid: is invalid
+        confirmation: doesn't match
+        login_required: Login required
+        inclusion: is not included in the list
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%B %d, %Y"
+      short: "%m/%d"
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      long: "%B %d, %Y %H:%M:%S %Z"
+      short: "%m/%d %H:%M"
+  datetime:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      long: "%B %d, %Y %H:%M"
+      short: "%m/%d %H:%M"
+  errors:
+    messages:
+      login_required: Login required
+  languages:
+    ja: Japanese
+    zh-CN: Chinese (Simplified)
+    zh-TW: Chinese (Traditional)
+    en: English
+    ko: Korean
+    es: Spanish
+    fr: French
+    ru: Russian
+    th: Thai
+    vi: Vietnamese
+    de: German
+    id: Indonesian
+    pt: Portuguese
+    tr: Turkish
+    it: Italian
+  app:
+    title: Miliastra Wonderland Forum
+    menu:
+      stages: Stages
+      multiplay: Multiplayer
+      my_page: My Page
+      account_settings: Account Settings
+      logout: Logout
+      login: Login
+      signup: Sign Up
+    common:
+      required: "*"
+      optional: "(optional)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: or
+      cancel: Cancel
+      update: Update
+      create: Create
+      edit: Edit
+      delete: Delete
+      back: Back
+      confirm_delete: Are you sure you want to delete?
+      posted_by: Posted by
+      posted_at: Posted at
+      comments_count: "%{count} comments"
+      guid: "GUID"
+      difficulty_label: Difficulty
+      max_players: Max Players
+      people: " players"
+      start_time: Start Time
+      status: Status
+    stages:
+      title: Stages Forum
+      new_post: Post New Stage
+      login_required: "%{login_link} required to post."
+      no_posts: No stage posts yet.
+      show_title: Stage Details
+      edit_title: Edit Stage
+      new_title: New Stage
+      form:
+        title_label: Title
+        title_placeholder: "e.g., Chapter 1 Forest Guide"
+        guid_label: Stage GUID
+        guid_placeholder: "e.g., 20615303240"
+        difficulty_label: Difficulty
+        difficulty_placeholder: Select
+        difficulty_easy: Easy
+        difficulty_normal: Normal
+        difficulty_hard: Hard
+        difficulty_very_hard: Very Hard
+        description_label: Description
+        description_placeholder: Describe stage features, gimmicks, enemy placement, etc.
+        tips_label: Tips & Hints
+        tips_placeholder: Share tips, notes, and recommended equipment
+      errors:
+        count: "%{count} errors"
+        has_errors: " found"
+    multiplay:
+      title: Multiplayer Recruitment Forum
+      new_post: Post New Recruitment
+      login_required: "%{login_link} required to post."
+      no_active_posts: No active recruitments.
+      no_past_posts: No past recruitments.
+      show_title: Recruitment Details
+      edit_title: Edit Recruitment
+      new_title: New Recruitment
+      tab_active: Active
+      tab_past: Past
+      form:
+        title_label: Title
+        title_placeholder: "e.g., Chapter 1 Boss Raid!"
+        guid_label: Stage GUID
+        guid_placeholder: "e.g., 20615303240"
+        difficulty_label: Difficulty
+        difficulty_placeholder: Select
+        max_players_label: Max Players
+        start_time_label: Start Time
+        status_label: Status
+        status_recruiting: Recruiting
+        status_closed: Closed
+        description_label: Description
+        description_placeholder: Describe what you're looking for
+      comments:
+        title: Comments
+        new_comment: Post Comment
+        placeholder: Enter your comment
+        login_required: "%{login_link} required to comment."
+    users:
+      signup_title: Sign Up
+      login_title: Login
+      edit_title: Account Settings
+      show_title: "%{name}'s Page"
+      form:
+        username_label: Username
+        username_placeholder: 3-20 characters
+        username_hint: Username cannot be changed
+        nickname_label: Nickname
+        nickname_placeholder: Display name
+        nickname_hint: Username will be shown if empty
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Password
+        password_placeholder: 6+ characters
+        password_confirmation_label: Password Confirmation
+        password_confirmation_placeholder: Re-enter password
+        current_password_label: Current Password
+        current_password_placeholder: Enter if changing password
+        new_password_label: New Password
+        new_password_placeholder: 6+ characters
+        new_password_confirmation_label: New Password Confirmation
+        locale_label: Language
+        login_field_label: Username or Email
+        login_field_placeholder: Enter username or email
+      oauth:
+        google_signup: Sign up with Google
+        google_login: Login with Google
+        using_google: Logged in with Google Account
+        google_info: This account uses Google authentication. Email and password are managed by Google.
+        email_readonly: Google account email cannot be changed
+        password_readonly: Google account password cannot be changed
+      links:
+        have_account: Already have an account?
+        no_account: Don't have an account?
+        forgot_password: Forgot password?
+      sections:
+        basic_info: Basic Information
+        change_password: Change Password
+        password_change_note: Leave blank if not changing password.
+        posts: Posts
+        stages_tab: Stages
+        multiplay_tab: Multiplayer
+        no_stages: No stage posts yet.
+        no_multiplay: No recruitment posts yet.
+    password_resets:
+      new_title: Password Reset
+      edit_title: Set New Password
+      form:
+        email_label: Email Address
+        email_placeholder: Enter registered email
+        submit: Send Reset Email
+        new_password_label: New Password
+        new_password_placeholder: 6+ characters
+        new_password_confirmation_label: New Password Confirmation
+        update: Update Password
+      links:
+        back_to_login: Back to Login
+  stages:
+    create:
+      success: Stage has been posted.
+    update:
+      success: Stage has been updated.
+    destroy:
+      success: Stage has been deleted.
+    errors:
+      not_authorized_to_edit: You cannot edit other users' posts.
+      not_authorized_to_delete: You cannot delete other users' posts.
+  multiplay_recruitments:
+    create:
+      success: Recruitment has been posted.
+    update:
+      success: Recruitment has been updated.
+    destroy:
+      success: Recruitment has been deleted.
+    errors:
+      not_authorized_to_edit: You cannot edit other users' posts.
+      not_authorized_to_delete: You cannot delete other users' posts.
+  comments:
+    create:
+      success: Comment has been posted.
+      failure: "Failed to post comment: %{errors}"
+    destroy:
+      success: Comment has been deleted.
+    errors:
+      not_authorized_to_delete: You cannot delete other users' comments.
+  sessions:
+    create:
+      success: Logged in successfully.
+      failure: Username/email or password is incorrect.
+    destroy:
+      success: Logged out successfully.
+  omniauth:
+    google:
+      login_success: Logged in with Google account.
+      signup_success: Account created with Google account.
+      failure: "Login failed: %{errors}"
+    errors:
+      unknown: Unknown error
+      authentication_failed: "Authentication failed: %{message}"
+  password_resets:
+    create:
+      success: Password reset email has been sent. Please check your email.
+      email_not_found: Email address is not registered.
+    update:
+      success: Password has been changed. Please log in.
+      password_blank: Please enter a password.
+    errors:
+      invalid_token: Invalid link.
+      token_expired: Password reset link has expired. Please request a new one.
+  users:
+    create:
+      success: Account has been created.
+    update:
+      success: Profile has been updated.
+    errors:
+      oauth_email_readonly: Google account email cannot be changed
+      oauth_password_readonly: Google account password cannot be changed
+      current_password_incorrect: is incorrect
+      new_password_required: is required

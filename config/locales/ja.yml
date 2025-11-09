@@ -36,6 +36,7 @@ ja:
         password: パスワード
         password_confirmation: パスワード（確認）
         current_password: 現在のパスワード
+        locale: 言語
     errors:
       messages:
         blank: を入力してください
@@ -44,6 +45,8 @@ ja:
         taken: はすでに使用されています
         invalid: は無効です
         confirmation: が一致しません
+        login_required: ログインが必要です
+        inclusion: は有効な値ではありません
   date:
     formats:
       default: "%Y/%m/%d"
@@ -59,4 +62,232 @@ ja:
       default: "%Y/%m/%d %H:%M"
       long: "%Y年%m月%d日 %H時%M分"
       short: "%m/%d %H:%M"
+  errors:
+    messages:
+      login_required: ログインが必要です
+  languages:
+    ja: 日本語
+    zh-CN: 中国語（簡体字）
+    zh-TW: 中国語（繁体字）
+    en: 英語
+    ko: 韓国語
+    es: スペイン語
+    fr: フランス語
+    ru: ロシア語
+    th: タイ語
+    vi: ベトナム語
+    de: ドイツ語
+    id: インドネシア語
+    pt: ポルトガル語
+    tr: トルコ語
+    it: イタリア語
+  app:
+    title: Miliastra Wonderland 掲示板
+    menu:
+      stages: 幻境紹介
+      multiplay: マルチプレイ募集
+      my_page: マイページ
+      account_settings: アカウント設定
+      logout: ログアウト
+      login: ログイン
+      signup: 新規登録
+    common:
+      required: "*"
+      optional: "（任意）"
+      admin_badge: 管理者
+      suffix_san: さん
+      or: または
+      cancel: キャンセル
+      update: 更新
+      create: 作成
+      edit: 編集
+      delete: 削除
+      back: 戻る
+      confirm_delete: 本当に削除しますか？
+      posted_by: 投稿者
+      posted_at: 投稿日
+      comments_count: "%{count}件"
+      guid: "GUID"
+      difficulty_label: 難易度
+      max_players: 募集人数
+      people: 人
+      start_time: 開始予定
+      status: ステータス
+    stages:
+      title: 幻境 紹介掲示板
+      new_post: 新しい幻境紹介を投稿
+      login_required: 投稿するには%{login_link}が必要です。
+      no_posts: まだ幻境紹介の投稿がありません。
+      show_title: 幻境紹介詳細
+      edit_title: 幻境紹介を編集
+      new_title: 新しい幻境紹介
+      form:
+        title_label: タイトル
+        title_placeholder: "例: 第1章 幻想の森を攻略"
+        guid_label: 幻境GUID
+        guid_placeholder: "例: 20615303240"
+        difficulty_label: 難易度
+        difficulty_placeholder: 選択してください
+        difficulty_easy: 簡単
+        difficulty_normal: 普通
+        difficulty_hard: 難しい
+        difficulty_very_hard: とても難しい
+        description_label: 幻境の説明
+        description_placeholder: ステージの特徴、ギミック、敵の配置などを説明してください
+        tips_label: 攻略のコツ・ヒント
+        tips_placeholder: クリアのコツ、注意点、おすすめの装備などを記入してください
+      errors:
+        count: "%{count}個のエラー"
+        has_errors: があります
+    multiplay:
+      title: マルチプレイ募集掲示板
+      new_post: 新しいマルチプレイ募集を投稿
+      login_required: 投稿するには%{login_link}が必要です。
+      no_active_posts: 現在募集中の投稿はありません。
+      no_past_posts: 過去の募集はありません。
+      show_title: マルチプレイ募集詳細
+      edit_title: マルチプレイ募集を編集
+      new_title: 新しいマルチプレイ募集
+      tab_active: 現在募集中
+      tab_past: 過去の募集
+      form:
+        title_label: タイトル
+        title_placeholder: "例: 第1章ボス討伐募集！"
+        guid_label: ステージGUID
+        guid_placeholder: "例: 20615303240"
+        difficulty_label: 難易度
+        difficulty_placeholder: 選択してください
+        max_players_label: 募集人数
+        start_time_label: 開始予定時刻
+        status_label: 募集状態
+        status_recruiting: 募集中
+        status_closed: 募集終了
+        description_label: 募集内容
+        description_placeholder: どのような目的で、どんな方を募集しているかを説明してください
+      comments:
+        title: コメント
+        new_comment: コメントを投稿
+        placeholder: コメントを入力してください
+        login_required: コメントするには%{login_link}が必要です。
+    users:
+      signup_title: 新規登録
+      login_title: ログイン
+      edit_title: アカウント設定
+      show_title: "%{name}さんのページ"
+      form:
+        username_label: ユーザー名
+        username_placeholder: 3〜20文字で入力
+        username_hint: ユーザー名は変更できません
+        nickname_label: ニックネーム
+        nickname_placeholder: 表示名として使用されます
+        nickname_hint: 未入力の場合はユーザー名が表示されます
+        email_label: メールアドレス
+        email_placeholder: email@example.com
+        password_label: パスワード
+        password_placeholder: 6文字以上で入力
+        password_confirmation_label: パスワード（確認）
+        password_confirmation_placeholder: パスワードを再入力
+        current_password_label: 現在のパスワード
+        current_password_placeholder: パスワードを変更する場合は入力
+        new_password_label: 新しいパスワード
+        new_password_placeholder: 6文字以上で入力
+        new_password_confirmation_label: 新しいパスワード（確認）
+        locale_label: 言語
+        login_field_label: ユーザー名またはメールアドレス
+        login_field_placeholder: ユーザー名またはメールアドレスを入力
+      oauth:
+        google_signup: Googleで登録
+        google_login: Googleでログイン
+        using_google: Google アカウントでログイン中
+        google_info: このアカウントは Google 認証を使用しています。メールアドレスとパスワードは Google で管理されます。
+        email_readonly: Google アカウントのメールアドレスは変更できません
+        password_readonly: Google アカウントのパスワードは変更できません
+      links:
+        have_account: すでにアカウントをお持ちですか？
+        no_account: アカウントをお持ちでないですか？
+        forgot_password: パスワードをお忘れですか？
+      sections:
+        basic_info: 基本情報
+        change_password: パスワード変更
+        password_change_note: パスワードを変更しない場合は、以下の項目を空欄のままにしてください。
+        posts: 投稿一覧
+        stages_tab: 幻境紹介
+        multiplay_tab: マルチプレイ募集
+        no_stages: まだ幻境紹介の投稿がありません。
+        no_multiplay: まだマルチプレイ募集の投稿がありません。
+    password_resets:
+      new_title: パスワードリセット
+      edit_title: 新しいパスワードの設定
+      form:
+        email_label: メールアドレス
+        email_placeholder: 登録したメールアドレスを入力
+        submit: リセットメールを送信
+        new_password_label: 新しいパスワード
+        new_password_placeholder: 6文字以上で入力
+        new_password_confirmation_label: 新しいパスワード（確認）
+        update: パスワードを更新
+      links:
+        back_to_login: ログインページに戻る
+  stages:
+    create:
+      success: 幻境紹介が投稿されました。
+    update:
+      success: ステージ紹介が更新されました。
+    destroy:
+      success: 幻境紹介が削除されました。
+    errors:
+      not_authorized_to_edit: 他のユーザーの投稿は編集できません。
+      not_authorized_to_delete: 他のユーザーの投稿は削除できません。
+  multiplay_recruitments:
+    create:
+      success: マルチプレイ募集が投稿されました。
+    update:
+      success: マルチプレイ募集が更新されました。
+    destroy:
+      success: マルチプレイ募集が削除されました。
+    errors:
+      not_authorized_to_edit: 他のユーザーの投稿は編集できません。
+      not_authorized_to_delete: 他のユーザーの投稿は削除できません。
+  comments:
+    create:
+      success: コメントを投稿しました。
+      failure: "コメントの投稿に失敗しました: %{errors}"
+    destroy:
+      success: コメントを削除しました。
+    errors:
+      not_authorized_to_delete: 他のユーザーのコメントは削除できません。
+  sessions:
+    create:
+      success: ログインしました。
+      failure: ユーザー名/メールアドレスまたはパスワードが正しくありません。
+    destroy:
+      success: ログアウトしました。
+  omniauth:
+    google:
+      login_success: Googleアカウントでログインしました。
+      signup_success: Googleアカウントでアカウントを作成しました。
+      failure: "ログインに失敗しました: %{errors}"
+    errors:
+      unknown: 不明なエラー
+      authentication_failed: "認証に失敗しました: %{message}"
+  password_resets:
+    create:
+      success: パスワードリセットのメールを送信しました。メールをご確認ください。
+      email_not_found: メールアドレスが登録されていません。
+    update:
+      success: パスワードが変更されました。ログインしてください。
+      password_blank: パスワードを入力してください。
+    errors:
+      invalid_token: 無効なリンクです。
+      token_expired: パスワードリセットの有効期限が切れています。再度申請してください。
+  users:
+    create:
+      success: アカウントが作成されました。
+    update:
+      success: プロファイルを更新しました。
+    errors:
+      oauth_email_readonly: Google アカウントのメールアドレスは変更できません
+      oauth_password_readonly: Google アカウントのパスワードは変更できません
+      current_password_incorrect: が正しくありません
+      new_password_required: を入力してください
 

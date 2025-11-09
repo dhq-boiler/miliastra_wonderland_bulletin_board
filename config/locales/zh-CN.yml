@@ -1,0 +1,293 @@
+zh-CN:
+  activerecord:
+    models:
+      stage: 关卡
+      user: 用户
+      multiplay_recruitment: 多人游戏招募
+    attributes:
+      stage:
+        title: 标题
+        description: 描述
+        stage_guid: 关卡GUID
+        difficulty: 难度
+        tips: 攻略提示
+        created_at: 发布时间
+        updated_at: 更新时间
+        user: 发布者
+      multiplay_recruitment:
+        title: 标题
+        description: 招募内容
+        stage_guid: 关卡GUID
+        difficulty: 难度
+        max_players: 招募人数
+        start_time: 开始时间
+        status: 招募状态
+        created_at: 发布时间
+        updated_at: 更新时间
+        user: 发布者
+      multiplay_recruitment_comment:
+        content: 评论内容
+        created_at: 发布时间
+        user: 发布者
+      user:
+        username: 用户名
+        nickname: 昵称
+        email: 电子邮箱
+        password: 密码
+        password_confirmation: 确认密码
+        current_password: 当前密码
+        locale: 语言
+    errors:
+      messages:
+        blank: 不能为空
+        too_short: 太短（最少%{count}个字符）
+        too_long: 太长（最多%{count}个字符）
+        taken: 已被使用
+        invalid: 无效
+        confirmation: 不匹配
+        login_required: 需要登录
+        inclusion: 不是有效值
+  date:
+    formats:
+      default: "%Y/%m/%d"
+      long: "%Y年%m月%d日"
+      short: "%m/%d"
+  time:
+    formats:
+      default: "%Y年%m月%d日 %H:%M"
+      long: "%Y年%m月%d日 %H时%M分%S秒 %Z"
+      short: "%m/%d %H:%M"
+  datetime:
+    formats:
+      default: "%Y/%m/%d %H:%M"
+      long: "%Y年%m月%d日 %H时%M分"
+      short: "%m/%d %H:%M"
+  errors:
+    messages:
+      login_required: 需要登录
+  languages:
+    ja: 日语
+    zh-CN: 中文（简体）
+    zh-TW: 中文（繁体）
+    en: 英语
+    ko: 韩语
+    es: 西班牙语
+    fr: 法语
+    ru: 俄语
+    th: 泰语
+    vi: 越南语
+    de: 德语
+    id: 印尼语
+    pt: 葡萄牙语
+    tr: 土耳其语
+    it: 意大利语
+  app:
+    title: Miliastra Wonderland 论坛
+    menu:
+      stages: 关卡
+      multiplay: 多人游戏
+      my_page: 我的页面
+      account_settings: 账户设置
+      logout: 登出
+      login: 登录
+      signup: 注册
+    common:
+      required: "*"
+      optional: "（可选）"
+      admin_badge: 管理员
+      suffix_san: ""
+      or: 或
+      cancel: 取消
+      update: 更新
+      create: 创建
+      edit: 编辑
+      delete: 删除
+      back: 返回
+      confirm_delete: 确定要删除吗？
+      posted_by: 发布者
+      posted_at: 发布时间
+      comments_count: "%{count}条评论"
+      guid: "GUID"
+      difficulty_label: 难度
+      max_players: 最大人数
+      people: "人"
+      start_time: 开始时间
+      status: 状态
+    stages:
+      title: 关卡论坛
+      new_post: 发布新关卡
+      login_required: 发布需要%{login_link}。
+      no_posts: 暂无关卡帖子。
+      show_title: 关卡详情
+      edit_title: 编辑关卡
+      new_title: 新关卡
+      form:
+        title_label: 标题
+        title_placeholder: "例如：第1章森林攻略"
+        guid_label: 关卡GUID
+        guid_placeholder: "例如：20615303240"
+        difficulty_label: 难度
+        difficulty_placeholder: 请选择
+        difficulty_easy: 简单
+        difficulty_normal: 普通
+        difficulty_hard: 困难
+        difficulty_very_hard: 非常困难
+        description_label: 描述
+        description_placeholder: 描述关卡特征、机关、敌人位置等
+        tips_label: 提示与技巧
+        tips_placeholder: 分享提示、注意事项和推荐装备
+      errors:
+        count: "%{count}个错误"
+        has_errors: ""
+    multiplay:
+      title: 多人游戏招募论坛
+      new_post: 发布新招募
+      login_required: 发布需要%{login_link}。
+      no_active_posts: 暂无活跃招募。
+      no_past_posts: 暂无历史招募。
+      show_title: 招募详情
+      edit_title: 编辑招募
+      new_title: 新招募
+      tab_active: 进行中
+      tab_past: 已结束
+      form:
+        title_label: 标题
+        title_placeholder: "例如：第1章Boss讨伐！"
+        guid_label: 关卡GUID
+        guid_placeholder: "例如：20615303240"
+        difficulty_label: 难度
+        difficulty_placeholder: 请选择
+        max_players_label: 最大人数
+        start_time_label: 开始时间
+        status_label: 状态
+        status_recruiting: 招募中
+        status_closed: 已关闭
+        description_label: 描述
+        description_placeholder: 描述您的需求
+      comments:
+        title: 评论
+        new_comment: 发表评论
+        placeholder: 输入评论
+        login_required: 评论需要%{login_link}。
+    users:
+      signup_title: 注册
+      login_title: 登录
+      edit_title: 账户设置
+      show_title: "%{name}的页面"
+      form:
+        username_label: 用户名
+        username_placeholder: 3-20个字符
+        username_hint: 用户名不能更改
+        nickname_label: 昵称
+        nickname_placeholder: 显示名称
+        nickname_hint: 未填写时显示用户名
+        email_label: 电子邮箱
+        email_placeholder: email@example.com
+        password_label: 密码
+        password_placeholder: 6个字符以上
+        password_confirmation_label: 确认密码
+        password_confirmation_placeholder: 再次输入密码
+        current_password_label: 当前密码
+        current_password_placeholder: 修改密码时输入
+        new_password_label: 新密码
+        new_password_placeholder: 6个字符以上
+        new_password_confirmation_label: 确认新密码
+        locale_label: 语言
+        login_field_label: 用户名或邮箱
+        login_field_placeholder: 输入用户名或邮箱
+      oauth:
+        google_signup: 使用Google注册
+        google_login: 使用Google登录
+        using_google: 已使用Google账户登录
+        google_info: 此账户使用Google认证。电子邮箱和密码由Google管理。
+        email_readonly: Google账户邮箱不能更改
+        password_readonly: Google账户密码不能更改
+      links:
+        have_account: 已有账户？
+        no_account: 还没有账户？
+        forgot_password: 忘记密码？
+      sections:
+        basic_info: 基本信息
+        change_password: 修改密码
+        password_change_note: 不修改密码时请留空。
+        posts: 帖子
+        stages_tab: 关卡
+        multiplay_tab: 多人游戏
+        no_stages: 暂无关卡帖子。
+        no_multiplay: 暂无招募帖子。
+    password_resets:
+      new_title: 重置密码
+      edit_title: 设置新密码
+      form:
+        email_label: 电子邮箱
+        email_placeholder: 输入注册邮箱
+        submit: 发送重置邮件
+        new_password_label: 新密码
+        new_password_placeholder: 6个字符以上
+        new_password_confirmation_label: 确认新密码
+        update: 更新密码
+      links:
+        back_to_login: 返回登录
+  stages:
+    create:
+      success: 关卡介绍已发布。
+    update:
+      success: 关卡介绍已更新。
+    destroy:
+      success: 关卡介绍已删除。
+    errors:
+      not_authorized_to_edit: 无法编辑其他用户的帖子。
+      not_authorized_to_delete: 无法删除其他用户的帖子。
+  multiplay_recruitments:
+    create:
+      success: 多人游戏招募已发布。
+    update:
+      success: 多人游戏招募已更新。
+    destroy:
+      success: 多人游戏招募已删除。
+    errors:
+      not_authorized_to_edit: 无法编辑其他用户的帖子。
+      not_authorized_to_delete: 无法删除其他用户的帖子。
+  comments:
+    create:
+      success: 评论已发表。
+      failure: "评论发表失败: %{errors}"
+    destroy:
+      success: 评论已删除。
+    errors:
+      not_authorized_to_delete: 无法删除其他用户的评论。
+  sessions:
+    create:
+      success: 登录成功。
+      failure: 用户名/邮箱或密码不正确。
+    destroy:
+      success: 已登出。
+  omniauth:
+    google:
+      login_success: 已使用Google账户登录。
+      signup_success: 已使用Google账户创建账户。
+      failure: "登录失败: %{errors}"
+    errors:
+      unknown: 未知错误
+      authentication_failed: "认证失败: %{message}"
+  password_resets:
+    create:
+      success: 密码重置邮件已发送。请检查您的邮箱。
+      email_not_found: 邮箱地址未注册。
+    update:
+      success: ���码已更改。请登录。
+      password_blank: 请输入密码。
+    errors:
+      invalid_token: 无效的链接。
+      token_expired: 密码重置链接已过期。请重新申请。
+  users:
+    create:
+      success: 账户已创建。
+    update:
+      success: 个人资料已更新。
+    errors:
+      oauth_email_readonly: Google账户邮箱不能更改
+      oauth_password_readonly: Google账户密码不能更改
+      current_password_incorrect: 不正确
+      new_password_required: 必填
+

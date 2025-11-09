@@ -1,0 +1,293 @@
+th:
+  activerecord:
+    models:
+      stage: ด่าน
+      user: ผู้ใช้
+      multiplay_recruitment: การรับสมัครผู้เล่นหลายคน
+    attributes:
+      stage:
+        title: ชื่อเรื่อง
+        description: คำอธิบาย
+        stage_guid: GUID ของด่าน
+        difficulty: ความยาก
+        tips: เคล็ดลับ
+        created_at: โพสต์เมื่อ
+        updated_at: อัปเดตเมื่อ
+        user: ผู้เขียน
+      multiplay_recruitment:
+        title: ชื่อเรื่อง
+        description: เนื้อหาการรับสมัคร
+        stage_guid: GUID ของด่าน
+        difficulty: ความยาก
+        max_players: จำนวนผู้เล่นสูงสุด
+        start_time: เวลาเริ่มต้น
+        status: สถานะ
+        created_at: โพสต์เมื่อ
+        updated_at: อัปเดตเมื่อ
+        user: ผู้เขียน
+      multiplay_recruitment_comment:
+        content: เนื้อหาความคิดเห็น
+        created_at: โพสต์เมื่อ
+        user: ผู้เขียน
+      user:
+        username: ชื่อผู้ใช้
+        nickname: ชื่อเล่น
+        email: อีเมล
+        password: รหัสผ่าน
+        password_confirmation: ยืนยันรหัสผ่าน
+        current_password: รหัสผ่านปัจจุบัน
+        locale: ภาษา
+    errors:
+      messages:
+        blank: ไม่สามารถเว้นว่างได้
+        too_short: สั้นเกินไป (ขั้นต่ำ %{count} ตัวอักษร)
+        too_long: ยาวเกินไป (สูงสุด %{count} ตัวอักษร)
+        taken: ถูกใช้ไปแล้ว
+        invalid: ไม่ถูกต้อง
+        confirmation: ไม่ตรงกัน
+        login_required: ต้องเข้าสู่ระบบ
+        inclusion: ไม่ใช่ค่าที่ถูกต้อง
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: ต้องเข้าสู่ระบบ
+  languages:
+    ja: ภาษาญี่ปุ่น
+    zh-CN: ภาษาจีน (ตัวย่อ)
+    zh-TW: ภาษาจีน (ตัวเต็ม)
+    en: ภาษาอังกฤษ
+    ko: ภาษาเกาหลี
+    es: ภาษาสเปน
+    fr: ภาษาฝรั่งเศส
+    ru: ภาษารัสเซีย
+    th: ภาษาไทย
+    vi: ภาษาเวียดนาม
+    de: ภาษาเยอรมัน
+    id: ภาษาอินโดนีเซีย
+    pt: ภาษาโปรตุเกส
+    tr: ภาษาตุรกี
+    it: ภาษาอิตาลี
+  app:
+    title: ฟอรั่ม Miliastra Wonderland
+    menu:
+      stages: ด่าน
+      multiplay: ผู้เล่นหลายคน
+      my_page: หน้าของฉัน
+      account_settings: การตั้งค่าบัญชี
+      logout: ออกจากระบบ
+      login: เข้าสู่ระบบ
+      signup: ลงทะเบียน
+    common:
+      required: "*"
+      optional: "(ไม่บังคับ)"
+      admin_badge: ผู้ดูแล
+      suffix_san: ""
+      or: หรือ
+      cancel: ยกเลิก
+      update: อัปเดต
+      create: สร้าง
+      edit: แก้ไข
+      delete: ลบ
+      back: ย้อนกลับ
+      confirm_delete: คุณแน่ใจหรือว่าต้องการลบ?
+      posted_by: โพสต์โดย
+      posted_at: โพสต์เมื่อ
+      comments_count: "%{count} ความคิดเห็น"
+      guid: "GUID"
+      difficulty_label: ความยาก
+      max_players: ผู้เล่นสูงสุด
+      people: " คน"
+      start_time: เวลาเริ่ม
+      status: สถานะ
+    stages:
+      title: ฟอรั่มด่าน
+      new_post: โพสต์ด่านใหม่
+      login_required: ต้อง%{login_link}เพื่อโพสต์
+      no_posts: ยังไม่มีโพสต์ด่าน
+      show_title: รายละเอียดด่าน
+      edit_title: แก้ไขด่าน
+      new_title: ด่านใหม่
+      form:
+        title_label: ชื่อเรื่อง
+        title_placeholder: "เช่น คู่มือบทที่ 1"
+        guid_label: GUID ด่าน
+        guid_placeholder: "เช่น 20615303240"
+        difficulty_label: ความยาก
+        difficulty_placeholder: เลือก
+        difficulty_easy: ง่าย
+        difficulty_normal: ปานกลาง
+        difficulty_hard: ยาก
+        difficulty_very_hard: ยากมาก
+        description_label: คำอธิบาย
+        description_placeholder: อธิบายลักษณะของด่าน กลไก ตำแหน่งศัตรู ฯลฯ
+        tips_label: เคล็ดลับและคำแนะนำ
+        tips_placeholder: แบ่งปันเคล็ดลับ หมายเหตุ และอุปกรณ์ที่แนะนำ
+      errors:
+        count: "%{count} ข้อผิดพลาด"
+        has_errors: " พบ"
+    multiplay:
+      title: ฟอรั่มการรับสมัครผู้เล่นหลายคน
+      new_post: โพสต์การรับสมัครใหม่
+      login_required: ต้อง%{login_link}เพื่อโพสต์
+      no_active_posts: ไม่มีการรับสมัครที่ใช้งานอยู่
+      no_past_posts: ไม่มีการรับสมัครในอดีต
+      show_title: รายละเอียดการรับสมัคร
+      edit_title: แก้ไขการรับสมัคร
+      new_title: การรับสมัครใหม่
+      tab_active: ใช้งานอยู่
+      tab_past: ที่ผ่านมา
+      form:
+        title_label: ชื่อเรื่อง
+        title_placeholder: "เช่น การเอาชนะบอสบทที่ 1!"
+        guid_label: GUID ด่าน
+        guid_placeholder: "เช่น 20615303240"
+        difficulty_label: ความยาก
+        difficulty_placeholder: เลือก
+        max_players_label: ผู้เล่นสูงสุด
+        start_time_label: เวลาเริ่ม
+        status_label: สถานะ
+        status_recruiting: กำลังรับสมัคร
+        status_closed: ปิดแล้ว
+        description_label: คำอธิบาย
+        description_placeholder: อธิบายสิ่งที่คุณกำลังมองหา
+      comments:
+        title: ความคิดเห็น
+        new_comment: โพสต์ความคิดเห็น
+        placeholder: ใส่ความคิดเห็นของคุณ
+        login_required: ต้อง%{login_link}เพื่อแสดงความคิดเห็น
+    users:
+      signup_title: ลงทะเบียน
+      login_title: เข้าสู่ระบบ
+      edit_title: การตั้งค่าบัญชี
+      show_title: "หน้าของ %{name}"
+      form:
+        username_label: ชื่อผู้ใช้
+        username_placeholder: 3-20 ตัวอักษร
+        username_hint: ไม่สามารถเปลี่ยนชื่อผู้ใช้ได้
+        nickname_label: ชื่อเล่น
+        nickname_placeholder: ชื่อที่แสดง
+        nickname_hint: จะแสดงชื่อผู้ใช้หากว่างเปล่า
+        email_label: อีเมล
+        email_placeholder: email@example.com
+        password_label: รหัสผ่าน
+        password_placeholder: 6+ ตัวอักษร
+        password_confirmation_label: ยืนยันรหัสผ่าน
+        password_confirmation_placeholder: ใส่รหัสผ่านอีกครั้ง
+        current_password_label: รหัสผ่านปัจจุบัน
+        current_password_placeholder: ใส่หากเปลี่ยนรหัสผ่าน
+        new_password_label: รหัสผ่านใหม่
+        new_password_placeholder: 6+ ตัวอักษร
+        new_password_confirmation_label: ยืนยันรหัสผ่านใหม่
+        locale_label: ภาษา
+        login_field_label: ผู้ใช้หรืออีเมล
+        login_field_placeholder: ใส่ผู้ใช้หรืออีเมล
+      oauth:
+        google_signup: ลงทะเบียนด้วย Google
+        google_login: เข้าสู่ระบบด้วย Google
+        using_google: เข้าสู่ระบบด้วยบัญชี Google
+        google_info: บัญชีนี้ใช้การยืนยันตัวตน Google อีเมลและรหัสผ่านจัดการโดย Google
+        email_readonly: ไม่สามารถเปลี่ยนอีเมลบัญชี Google ได้
+        password_readonly: ไม่สามารถเปลี่ยนรหัสผ่านบัญชี Google ได้
+      links:
+        have_account: มีบัญชีอยู่แล้ว?
+        no_account: ไม่มีบัญชี?
+        forgot_password: ลืมรหัสผ่าน?
+      sections:
+        basic_info: ข้อมูลพื้นฐาน
+        change_password: เปลี่ยนรหัสผ่าน
+        password_change_note: เว้นว่างไว้หากไม่เปลี่ยนรหัสผ่าน
+        posts: โพสต์
+        stages_tab: ด่าน
+        multiplay_tab: ผู้เล่นหลายคน
+        no_stages: ยังไม่มีโพสต์ด่าน
+        no_multiplay: ยังไม่มีโพสต์การรับสมัคร
+    password_resets:
+      new_title: รีเซ็ตรหัสผ่าน
+      edit_title: ตั้งรหัสผ่านใหม่
+      form:
+        email_label: ที่อยู่อีเมล
+        email_placeholder: ใส่อีเมลที่ลงทะเบียน
+        submit: ส่งอีเมลรีเซ็ต
+        new_password_label: รหัสผ่านใหม่
+        new_password_placeholder: 6+ ตัวอักษร
+        new_password_confirmation_label: ยืนยันรหัสผ่านใหม่
+        update: อัปเดตรหัสผ่าน
+      links:
+        back_to_login: กลับไปที่เข้าสู่ระบบ
+  stages:
+    create:
+      success: ด่านได้รับการโพสต์แล้ว
+    update:
+      success: ด่านได้รับการอัปเดตแล้ว
+    destroy:
+      success: ด่านได้ถูกลบแล้ว
+    errors:
+      not_authorized_to_edit: คุณไม่สามารถแก้ไขโพสต์ของผู้ใช้อื่นได้
+      not_authorized_to_delete: คุณไม่สามารถลบโพสต์ของผู้ใช้อื่นได้
+  multiplay_recruitments:
+    create:
+      success: การรับสมัครได้รับการโพสต์แล้ว
+    update:
+      success: การรับสมัครได้รับการอัปเดตแล้ว
+    destroy:
+      success: การรับสมัครได้ถูกลบแล้ว
+    errors:
+      not_authorized_to_edit: คุณไม่สามารถแก้ไขโพสต์ของผู้ใช้อื่นได้
+      not_authorized_to_delete: คุณไม่สามารถลบโพสต์ของผู้ใช้อื่นได้
+  comments:
+    create:
+      success: ความคิดเห็นได้รับการโพสต์แล้ว
+      failure: "การโพสต์ความคิดเห็นล้มเหลว: %{errors}"
+    destroy:
+      success: ความคิดเห็นได้ถูกลบแล้ว
+    errors:
+      not_authorized_to_delete: คุณไม่สามารถลบความคิดเห็นของผู้ใช้อื่นได้
+  sessions:
+    create:
+      success: เข้าสู่ระบบสำเร็จ
+      failure: ชื่อผู้ใช้/อีเมลหรือรหัสผ่านไม่ถูกต้อง
+    destroy:
+      success: ออกจากระบบสำเร็จ
+  omniauth:
+    google:
+      login_success: เข้าสู่ระบบด้วยบัญชี Google
+      signup_success: สร้างบัญชีด้วยบัญชี Google
+      failure: "การเข้าสู่ระบบล้มเหลว: %{errors}"
+    errors:
+      unknown: ข้อผิดพลาดที่ไม่รู้จัก
+      authentication_failed: "การยืนยันตัวตนล้มเหลว: %{message}"
+  password_resets:
+    create:
+      success: ส่งอีเมลรีเซ็ตรหัสผ่านแล้ว โปรดตรวจสอบอีเมลของคุณ
+      email_not_found: ที่อยู่อีเมลไม่ได้ลงทะเบียน
+    update:
+      success: รหัสผ่านได้รับการเปลี่ยนแล้ว โปรดเข้าสู่ระบบ
+      password_blank: โปรดใส่รหัสผ่าน
+    errors:
+      invalid_token: ลิงก์ไม่ถูกต้อง
+      token_expired: ลิงก์รีเซ็ตรหัสผ่านหมดอายุแล้ว โปรดขอใหม่
+  users:
+    create:
+      success: สร้างบัญชีแล้ว
+    update:
+      success: อัปเดตโปรไฟล์แล้ว
+    errors:
+      oauth_email_readonly: ไม่สามารถเปลี่ยนอีเมลบัญชี Google ได้
+      oauth_password_readonly: ไม่สามารถเปลี่ยนรหัสผ่านบัญชี Google ได้
+      current_password_incorrect: ไม่ถูกต้อง
+      new_password_required: จำเป็น
+

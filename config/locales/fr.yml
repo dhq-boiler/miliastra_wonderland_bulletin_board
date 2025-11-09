@@ -1,0 +1,293 @@
+fr:
+  activerecord:
+    models:
+      stage: Étape
+      user: Utilisateur
+      multiplay_recruitment: Recrutement Multijoueur
+    attributes:
+      stage:
+        title: Titre
+        description: Description
+        stage_guid: GUID d'Étape
+        difficulty: Difficulté
+        tips: Conseils
+        created_at: Publié le
+        updated_at: Mis à jour le
+        user: Auteur
+      multiplay_recruitment:
+        title: Titre
+        description: Contenu du Recrutement
+        stage_guid: GUID d'Étape
+        difficulty: Difficulté
+        max_players: Joueurs Maximum
+        start_time: Heure de Début
+        status: Statut
+        created_at: Publié le
+        updated_at: Mis à jour le
+        user: Auteur
+      multiplay_recruitment_comment:
+        content: Contenu du Commentaire
+        created_at: Publié le
+        user: Auteur
+      user:
+        username: Nom d'Utilisateur
+        nickname: Surnom
+        email: Email
+        password: Mot de Passe
+        password_confirmation: Confirmation du Mot de Passe
+        current_password: Mot de Passe Actuel
+        locale: Langue
+    errors:
+      messages:
+        blank: ne peut pas être vide
+        too_short: est trop court (minimum %{count} caractères)
+        too_long: est trop long (maximum %{count} caractères)
+        taken: est déjà utilisé
+        invalid: est invalide
+        confirmation: ne correspond pas
+        login_required: Connexion requise
+        inclusion: n'est pas une valeur valide
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      long: "%d %B %Y"
+      short: "%d/%m"
+  time:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d/%m %H:%M"
+  datetime:
+    formats:
+      default: "%d/%m/%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d/%m %H:%M"
+  errors:
+    messages:
+      login_required: Connexion requise
+  languages:
+    ja: Japonais
+    zh-CN: Chinois (Simplifié)
+    zh-TW: Chinois (Traditionnel)
+    en: Anglais
+    ko: Coréen
+    es: Espagnol
+    fr: Français
+    ru: Russe
+    th: Thaï
+    vi: Vietnamien
+    de: Allemand
+    id: Indonésien
+    pt: Portugais
+    tr: Turc
+    it: Italien
+  app:
+    title: Forum Miliastra Wonderland
+    menu:
+      stages: Étapes
+      multiplay: Multijoueur
+      my_page: Ma Page
+      account_settings: Paramètres du Compte
+      logout: Déconnexion
+      login: Connexion
+      signup: S'inscrire
+    common:
+      required: "*"
+      optional: "(optionnel)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: ou
+      cancel: Annuler
+      update: Mettre à jour
+      create: Créer
+      edit: Modifier
+      delete: Supprimer
+      back: Retour
+      confirm_delete: Voulez-vous vraiment supprimer?
+      posted_by: Publié par
+      posted_at: Publié le
+      comments_count: "%{count} commentaires"
+      guid: "GUID"
+      difficulty_label: Difficulté
+      max_players: Joueurs Max.
+      people: " joueurs"
+      start_time: Heure de Début
+      status: Statut
+    stages:
+      title: Forum des Étapes
+      new_post: Publier Nouvelle Étape
+      login_required: "%{login_link} requise pour publier."
+      no_posts: Aucune publication d'étape pour le moment.
+      show_title: Détails de l'Étape
+      edit_title: Modifier l'Étape
+      new_title: Nouvelle Étape
+      form:
+        title_label: Titre
+        title_placeholder: "ex. Guide du Chapitre 1"
+        guid_label: GUID d'Étape
+        guid_placeholder: "ex. 20615303240"
+        difficulty_label: Difficulté
+        difficulty_placeholder: Sélectionner
+        difficulty_easy: Facile
+        difficulty_normal: Normal
+        difficulty_hard: Difficile
+        difficulty_very_hard: Très Difficile
+        description_label: Description
+        description_placeholder: Décrivez les caractéristiques de l'étape, les mécaniques, la position des ennemis, etc.
+        tips_label: Conseils et Astuces
+        tips_placeholder: Partagez des conseils, des notes et l'équipement recommandé
+      errors:
+        count: "%{count} erreurs"
+        has_errors: " trouvées"
+    multiplay:
+      title: Forum de Recrutement Multijoueur
+      new_post: Publier Nouveau Recrutement
+      login_required: "%{login_link} requise pour publier."
+      no_active_posts: Aucun recrutement actif.
+      no_past_posts: Aucun recrutement passé.
+      show_title: Détails du Recrutement
+      edit_title: Modifier le Recrutement
+      new_title: Nouveau Recrutement
+      tab_active: Actif
+      tab_past: Passé
+      form:
+        title_label: Titre
+        title_placeholder: "ex. Raid du Boss du Chapitre 1!"
+        guid_label: GUID d'Étape
+        guid_placeholder: "ex. 20615303240"
+        difficulty_label: Difficulté
+        difficulty_placeholder: Sélectionner
+        max_players_label: Joueurs Max.
+        start_time_label: Heure de Début
+        status_label: Statut
+        status_recruiting: Recrutement
+        status_closed: Fermé
+        description_label: Description
+        description_placeholder: Décrivez ce que vous recherchez
+      comments:
+        title: Commentaires
+        new_comment: Publier un Commentaire
+        placeholder: Entrez votre commentaire
+        login_required: "%{login_link} requise pour commenter."
+    users:
+      signup_title: S'inscrire
+      login_title: Connexion
+      edit_title: Paramètres du Compte
+      show_title: "Page de %{name}"
+      form:
+        username_label: Nom d'Utilisateur
+        username_placeholder: 3-20 caractères
+        username_hint: Le nom d'utilisateur ne peut pas être modifié
+        nickname_label: Surnom
+        nickname_placeholder: Nom d'affichage
+        nickname_hint: Le nom d'utilisateur sera affiché si vide
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Mot de Passe
+        password_placeholder: 6+ caractères
+        password_confirmation_label: Confirmation du Mot de Passe
+        password_confirmation_placeholder: Saisissez à nouveau le mot de passe
+        current_password_label: Mot de Passe Actuel
+        current_password_placeholder: Entrez si vous changez le mot de passe
+        new_password_label: Nouveau Mot de Passe
+        new_password_placeholder: 6+ caractères
+        new_password_confirmation_label: Confirmation du Nouveau Mot de Passe
+        locale_label: Langue
+        login_field_label: Utilisateur ou Email
+        login_field_placeholder: Entrez l'utilisateur ou l'email
+      oauth:
+        google_signup: S'inscrire avec Google
+        google_login: Se connecter avec Google
+        using_google: Connecté avec Compte Google
+        google_info: Ce compte utilise l'authentification Google. L'email et le mot de passe sont gérés par Google.
+        email_readonly: L'email du compte Google ne peut pas être modifié
+        password_readonly: Le mot de passe du compte Google ne peut pas être modifié
+      links:
+        have_account: Vous avez déjà un compte?
+        no_account: Vous n'avez pas de compte?
+        forgot_password: Mot de passe oublié?
+      sections:
+        basic_info: Informations de Base
+        change_password: Changer le Mot de Passe
+        password_change_note: Laissez vide si vous ne changez pas le mot de passe.
+        posts: Publications
+        stages_tab: Étapes
+        multiplay_tab: Multijoueur
+        no_stages: Aucune publication d'étape pour le moment.
+        no_multiplay: Aucune publication de recrutement pour le moment.
+    password_resets:
+      new_title: Réinitialiser le Mot de Passe
+      edit_title: Définir un Nouveau Mot de Passe
+      form:
+        email_label: Adresse Email
+        email_placeholder: Entrez l'email enregistré
+        submit: Envoyer l'Email de Réinitialisation
+        new_password_label: Nouveau Mot de Passe
+        new_password_placeholder: 6+ caractères
+        new_password_confirmation_label: Confirmation du Nouveau Mot de Passe
+        update: Mettre à Jour le Mot de Passe
+      links:
+        back_to_login: Retour à la Connexion
+  stages:
+    create:
+      success: L'étape a été publiée.
+    update:
+      success: L'étape a été mise à jour.
+    destroy:
+      success: L'étape a été supprimée.
+    errors:
+      not_authorized_to_edit: Vous ne pouvez pas modifier les publications d'autres utilisateurs.
+      not_authorized_to_delete: Vous ne pouvez pas supprimer les publications d'autres utilisateurs.
+  multiplay_recruitments:
+    create:
+      success: Le recrutement a été publié.
+    update:
+      success: Le recrutement a été mis à jour.
+    destroy:
+      success: Le recrutement a été supprimé.
+    errors:
+      not_authorized_to_edit: Vous ne pouvez pas modifier les publications d'autres utilisateurs.
+      not_authorized_to_delete: Vous ne pouvez pas supprimer les publications d'autres utilisateurs.
+  comments:
+    create:
+      success: Le commentaire a été publié.
+      failure: "Échec de la publication du commentaire: %{errors}"
+    destroy:
+      success: Le commentaire a été supprimé.
+    errors:
+      not_authorized_to_delete: Vous ne pouvez pas supprimer les commentaires d'autres utilisateurs.
+  sessions:
+    create:
+      success: Connexion réussie.
+      failure: Nom d'utilisateur/email ou mot de passe incorrect.
+    destroy:
+      success: Déconnexion réussie.
+  omniauth:
+    google:
+      login_success: Connecté avec le compte Google.
+      signup_success: Compte créé avec le compte Google.
+      failure: "Échec de la connexion: %{errors}"
+    errors:
+      unknown: Erreur inconnue
+      authentication_failed: "Échec de l'authentification: %{message}"
+  password_resets:
+    create:
+      success: L'email de réinitialisation du mot de passe a été envoyé. Veuillez vérifier votre email.
+      email_not_found: L'adresse email n'est pas enregistrée.
+    update:
+      success: Le mot de passe a été changé. Veuillez vous connecter.
+      password_blank: Veuillez entrer un mot de passe.
+    errors:
+      invalid_token: Lien invalide.
+      token_expired: Le lien de réinitialisation du mot de passe a expiré. Veuillez en demander un nouveau.
+  users:
+    create:
+      success: Le compte a été créé.
+    update:
+      success: Le profil a été mis à jour.
+    errors:
+      oauth_email_readonly: L'email du compte Google ne peut pas être modifié
+      oauth_password_readonly: Le mot de passe du compte Google ne peut pas être modifié
+      current_password_incorrect: est incorrect
+      new_password_required: est requis
+

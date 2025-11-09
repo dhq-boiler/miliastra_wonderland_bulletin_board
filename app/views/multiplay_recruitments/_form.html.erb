@@ -1,7 +1,7 @@
 <%= form_with(model: multiplay_recruitment) do |form| %>
   <% if multiplay_recruitment.errors.any? %>
     <div class="error-messages">
-      <h3><%= pluralize(multiplay_recruitment.errors.count, "個のエラー") %>があります:</h3>
+      <h3><%= t('app.stages.errors.count', count: multiplay_recruitment.errors.count) %><%= t('app.stages.errors.has_errors') %>:</h3>
       <ul>
         <% multiplay_recruitment.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -12,51 +12,45 @@
 
   <div class="form-group">
     <%= form.label :title do %>
-      タイトル<span class="required">*</span>
+      <%= t('app.multiplay.form.title_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
-    <%= form.text_field :title, class: "form-control", placeholder: "例: 初心者歓迎！一緒に幻境を攻略しませんか？" %>
+    <%= form.text_field :title, class: "form-control", placeholder: t('app.multiplay.form.title_placeholder') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :stage_guid, "幻境GUID（任意）" %>
-    <%= form.text_field :stage_guid, class: "form-control", placeholder: "例: 20615303240" %>
+    <%= form.label :stage_guid, "#{t('app.multiplay.form.guid_label')}#{t('app.common.optional')}" %>
+    <%= form.text_field :stage_guid, class: "form-control", placeholder: t('app.multiplay.form.guid_placeholder') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :difficulty, "難易度（任意）" %>
-    <%= form.select :difficulty,
-        [["選択してください", ""], ["簡単", "簡単"], ["普通", "普通"], ["難しい", "難しい"], ["とても難しい", "とても難しい"]],
-        {},
-        { class: "form-control" } %>
+    <%= form.label :difficulty, "#{t('app.multiplay.form.difficulty_label')}#{t('app.common.optional')}" %>
+    <%= form.select :difficulty, difficulty_options, {}, { class: "form-control" } %>
   </div>
 
   <div class="form-group">
     <%= form.label :max_players do %>
-      募集人数<span class="required">*</span>
+      <%= t('app.multiplay.form.max_players_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
     <%= form.number_field :max_players, class: "form-control", min: 1, max: 10, value: multiplay_recruitment.max_players || 4 %>
   </div>
 
   <div class="form-group">
-    <%= form.label :start_time, "開始予定時刻（任意）" %>
+    <%= form.label :start_time, "#{t('app.multiplay.form.start_time_label')}#{t('app.common.optional')}" %>
     <%= form.datetime_local_field :start_time, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= form.label :status do %>
-      募集状態<span class="required">*</span>
+      <%= t('app.multiplay.form.status_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
-    <%= form.select :status,
-        [["募集中", "募集中"], ["募集終了", "募集終了"], ["開催中", "開催中"], ["終了", "終了"]],
-        {},
-        { class: "form-control" } %>
+    <%= form.select :status, status_options, {}, { class: "form-control" } %>
   </div>
 
   <div class="form-group">
     <%= form.label :description do %>
-      募集内容<span class="required">*</span>
+      <%= t('app.multiplay.form.description_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
-    <%= form.text_area :description, rows: 8, class: "form-control", placeholder: "どんな人と一緒にプレイしたいか、目的、参加条件などを書いてください" %>
+    <%= form.text_area :description, rows: 8, class: "form-control", placeholder: t('app.multiplay.form.description_placeholder') %>
   </div>
 
   <div class="form-actions">

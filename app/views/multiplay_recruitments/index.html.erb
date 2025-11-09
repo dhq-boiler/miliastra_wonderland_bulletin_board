@@ -1,11 +1,11 @@
 <div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
-  <h1 class="text-gray-800 border-b-4 border-purple-500 pb-2.5 mb-8 text-3xl font-bold">マルチプレイ募集掲示板</h1>
+  <h1 class="text-gray-800 border-b-4 border-purple-500 pb-2.5 mb-8 text-3xl font-bold"><%= t('app.multiplay.title') %></h1>
 
   <div class="actions">
     <% if logged_in? %>
-      <%= link_to "新しいマルチプレイ募集を投稿", new_multiplay_recruitment_path, class: "btn btn-primary" %>
+      <%= link_to t('app.multiplay.new_post'), new_multiplay_recruitment_path, class: "btn btn-primary" %>
     <% else %>
-      <p class="login-prompt">投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
+      <p class="login-prompt"><%= t('app.multiplay.login_required', login_link: link_to(t('app.menu.login'), login_path)).html_safe %></p>
     <% end %>
   </div>
 
@@ -17,7 +17,7 @@
           <svg class="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          <span class="text-base font-bold">現在募集中</span>
+          <span class="text-base font-bold"><%= t('app.multiplay.tab_active') %></span>
           <span class="tab-badge inline-flex items-center justify-center min-w-[2rem] h-8 px-2.5 text-sm font-bold rounded-lg transition-all duration-300">
             <%= @active_recruitments.size %>
           </span>
@@ -29,7 +29,7 @@
           <svg class="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span class="text-base font-bold">過去の募集</span>
+          <span class="text-base font-bold"><%= t('app.multiplay.tab_past') %></span>
           <span class="tab-badge inline-flex items-center justify-center min-w-[2rem] h-8 px-2.5 text-sm font-bold rounded-lg transition-all duration-300">
             <%= @past_recruitments.size %>
           </span>
@@ -48,32 +48,32 @@
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
             <% if recruitment.stage_guid.present? %>
-              <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
+              <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>
             <% if recruitment.difficulty.present? %>
-              <span class="difficulty">難易度: <%= recruitment.difficulty %></span>
+              <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= recruitment.difficulty %></span>
             <% end %>
-            <span class="max-players">募集人数: <%= recruitment.max_players %>人</span>
+            <span class="max-players"><%= t('app.common.max_players') %>: <%= recruitment.max_players %><%= t('app.common.people') %></span>
             <% if recruitment.start_time.present? %>
-              <span class="start-time">開始予定: <%= l(recruitment.start_time, format: :short) %></span>
+              <span class="start-time"><%= t('app.common.start_time') %>: <%= l(recruitment.start_time, format: :short) %></span>
             <% end %>
           </div>
           <p class="description"><%= truncate(recruitment.description, length: 200) %></p>
           <div class="meta">
             <span class="author">
-              投稿者: <%= link_to recruitment.user.display_name, user_path(recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
+              <%= t('app.common.posted_by') %>: <%= link_to recruitment.user.display_name, user_path(recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
               <% if recruitment.user.admin? %>
-                <span class="admin-badge">管理者</span>
+                <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
               <% end %>
             </span>
-            <span class="date">投稿日: <%= l(recruitment.created_at, format: :short) %></span>
-            <span class="comments-count">💬 <%= recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count %>件</span>
+            <span class="date"><%= t('app.common.posted_at') %>: <%= l(recruitment.created_at, format: :short) %></span>
+            <span class="comments-count">💬 <%= t('app.common.comments_count', count: (recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count)) %></span>
             <%= diff_time(recruitment.created_at, "span", { class: "diff-time" }, auto_update: true) %>
           </div>
         </div>
       <% end %>
     <% else %>
-      <p class="no-stages">現在募集中の投稿はありません。</p>
+      <p class="no-stages"><%= t('app.multiplay.no_active_posts') %></p>
     <% end %>
   </div>
 
@@ -86,32 +86,32 @@
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
             <% if recruitment.stage_guid.present? %>
-              <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
+              <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>
             <% if recruitment.difficulty.present? %>
-              <span class="difficulty">難易度: <%= recruitment.difficulty %></span>
+              <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= recruitment.difficulty %></span>
             <% end %>
-            <span class="max-players">募集人数: <%= recruitment.max_players %>人</span>
+            <span class="max-players"><%= t('app.common.max_players') %>: <%= recruitment.max_players %><%= t('app.common.people') %></span>
             <% if recruitment.start_time.present? %>
-              <span class="start-time">開始予定: <%= l(recruitment.start_time, format: :short) %></span>
+              <span class="start-time"><%= t('app.common.start_time') %>: <%= l(recruitment.start_time, format: :short) %></span>
             <% end %>
           </div>
           <p class="description"><%= truncate(recruitment.description, length: 200) %></p>
           <div class="meta">
             <span class="author">
-              投稿者: <%= link_to recruitment.user.display_name, user_path(recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
+              <%= t('app.common.posted_by') %>: <%= link_to recruitment.user.display_name, user_path(recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
               <% if recruitment.user.admin? %>
-                <span class="admin-badge">管理者</span>
+                <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
               <% end %>
             </span>
-            <span class="date">投稿日: <%= l(recruitment.created_at, format: :short) %></span>
-            <span class="comments-count">💬 <%= recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count %>件</span>
+            <span class="date"><%= t('app.common.posted_at') %>: <%= l(recruitment.created_at, format: :short) %></span>
+            <span class="comments-count">💬 <%= t('app.common.comments_count', count: (recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count)) %></span>
             <%= diff_time(recruitment.created_at, "span", { class: "diff-time" }, auto_update: true) %>
           </div>
         </div>
       <% end %>
     <% else %>
-      <p class="no-stages">過去の募集はありません。</p>
+      <p class="no-stages"><%= t('app.multiplay.no_past_posts') %></p>
     <% end %>
   </div>
 </div>

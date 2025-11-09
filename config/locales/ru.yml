@@ -1,0 +1,293 @@
+ru:
+  activerecord:
+    models:
+      stage: Этап
+      user: Пользователь
+      multiplay_recruitment: Набор для Мультиплеера
+    attributes:
+      stage:
+        title: Название
+        description: Описание
+        stage_guid: GUID этапа
+        difficulty: Сложность
+        tips: Советы
+        created_at: Опубликовано
+        updated_at: Обновлено
+        user: Автор
+      multiplay_recruitment:
+        title: Название
+        description: Содержание набора
+        stage_guid: GUID этапа
+        difficulty: Сложность
+        max_players: Максимум игроков
+        start_time: Время начала
+        status: Статус
+        created_at: Опубликовано
+        updated_at: Обновлено
+        user: Автор
+      multiplay_recruitment_comment:
+        content: Содержание комментария
+        created_at: Опубликовано
+        user: Автор
+      user:
+        username: Имя пользователя
+        nickname: Ник
+        email: Email
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        current_password: Текущий пароль
+        locale: Язык
+    errors:
+      messages:
+        blank: не может быть пустым
+        too_short: слишком короткий (минимум %{count} символов)
+        too_long: слишком длинный (максимум %{count} символов)
+        taken: уже занято
+        invalid: недействительный
+        confirmation: не совпадает
+        login_required: Требуется вход
+        inclusion: не является допустимым значением
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d %B %Y"
+      short: "%d.%m"
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d %B %Y %H:%M:%S %Z"
+      short: "%d.%m %H:%M"
+  datetime:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d %B %Y %H:%M"
+      short: "%d.%m %H:%M"
+  errors:
+    messages:
+      login_required: Требуется вход
+  languages:
+    ja: Японский
+    zh-CN: Китайский (Упрощенный)
+    zh-TW: Китайский (Традиционный)
+    en: Английский
+    ko: Корейский
+    es: Испанский
+    fr: Французский
+    ru: Русский
+    th: Тайский
+    vi: Вьетнамский
+    de: Немецкий
+    id: Индонезийский
+    pt: Португальский
+    tr: Турецкий
+    it: Итальянский
+  app:
+    title: Форум Miliastra Wonderland
+    menu:
+      stages: Этапы
+      multiplay: Мультиплеер
+      my_page: Моя Страница
+      account_settings: Настройки Аккаунта
+      logout: Выйти
+      login: Войти
+      signup: Регистрация
+    common:
+      required: "*"
+      optional: "(необязательно)"
+      admin_badge: Админ
+      suffix_san: ""
+      or: или
+      cancel: Отмена
+      update: Обновить
+      create: Создать
+      edit: Редактировать
+      delete: Удалить
+      back: Назад
+      confirm_delete: Вы уверены, что хотите удалить?
+      posted_by: Опубликовано
+      posted_at: Дата публикации
+      comments_count: "%{count} комментариев"
+      guid: "GUID"
+      difficulty_label: Сложность
+      max_players: Макс. игроков
+      people: " игроков"
+      start_time: Время Начала
+      status: Статус
+    stages:
+      title: Форум Этапов
+      new_post: Опубликовать Новый Этап
+      login_required: Требуется %{login_link} для публикации.
+      no_posts: Пока нет публикаций этапов.
+      show_title: Детали Этапа
+      edit_title: Редактировать Этап
+      new_title: Новый Этап
+      form:
+        title_label: Название
+        title_placeholder: "напр. Руководство Главы 1"
+        guid_label: GUID Этапа
+        guid_placeholder: "напр. 20615303240"
+        difficulty_label: Сложность
+        difficulty_placeholder: Выбрать
+        difficulty_easy: Легко
+        difficulty_normal: Нормально
+        difficulty_hard: Сложно
+        difficulty_very_hard: Очень Сложно
+        description_label: Описание
+        description_placeholder: Опишите особенности этапа, механики, расположение врагов и т.д.
+        tips_label: Советы и Подсказки
+        tips_placeholder: Поделитесь советами, заметками и рекомендуемым снаряжением
+      errors:
+        count: "%{count} ошибок"
+        has_errors: " найдено"
+    multiplay:
+      title: Форум Набора в Мультиплеер
+      new_post: Опубликовать Новый Набор
+      login_required: Требуется %{login_link} для публикации.
+      no_active_posts: Нет активных наборов.
+      no_past_posts: Нет прошлых наборов.
+      show_title: Детали Набора
+      edit_title: Редактировать Набор
+      new_title: Новый Набор
+      tab_active: Активные
+      tab_past: Прошлые
+      form:
+        title_label: Название
+        title_placeholder: "напр. Рейд на Босса Главы 1!"
+        guid_label: GUID Этапа
+        guid_placeholder: "напр. 20615303240"
+        difficulty_label: Сложность
+        difficulty_placeholder: Выбрать
+        max_players_label: Макс. Игроков
+        start_time_label: Время Начала
+        status_label: Статус
+        status_recruiting: Набор
+        status_closed: Закрыто
+        description_label: Описание
+        description_placeholder: Опишите, что вы ищете
+      comments:
+        title: Комментарии
+        new_comment: Опубликовать Комментарий
+        placeholder: Введите ваш комментарий
+        login_required: Требуется %{login_link} для комментирования.
+    users:
+      signup_title: Регистрация
+      login_title: Вход
+      edit_title: Настройки Аккаунта
+      show_title: "Страница %{name}"
+      form:
+        username_label: Имя Пользователя
+        username_placeholder: 3-20 символов
+        username_hint: Имя пользователя нельзя изменить
+        nickname_label: Никнейм
+        nickname_placeholder: Отображаемое имя
+        nickname_hint: Будет показано имя пользователя, если пусто
+        email_label: Email
+        email_placeholder: email@example.com
+        password_label: Пароль
+        password_placeholder: 6+ символов
+        password_confirmation_label: Подтверждение Пароля
+        password_confirmation_placeholder: Введите пароль снова
+        current_password_label: Текущий Пароль
+        current_password_placeholder: Введите при смене пароля
+        new_password_label: Новый Пароль
+        new_password_placeholder: 6+ символов
+        new_password_confirmation_label: Подтверждение Нового Пароля
+        locale_label: Язык
+        login_field_label: Пользователь или Email
+        login_field_placeholder: Введите пользователя или email
+      oauth:
+        google_signup: Зарегистрироваться через Google
+        google_login: Войти через Google
+        using_google: Вход через Аккаунт Google
+        google_info: Этот аккаунт использует аутентификацию Google. Email и пароль управляются Google.
+        email_readonly: Email аккаунта Google нельзя изменить
+        password_readonly: Пароль аккаунта Google нельзя изменить
+      links:
+        have_account: Уже есть аккаунт?
+        no_account: Нет аккаунта?
+        forgot_password: Забыли пароль?
+      sections:
+        basic_info: Основная Информация
+        change_password: Сменить Пароль
+        password_change_note: Оставьте пустым, если не меняете пароль.
+        posts: Публикации
+        stages_tab: Этапы
+        multiplay_tab: Мультиплеер
+        no_stages: Пока нет публикаций этапов.
+        no_multiplay: Пока нет публикаций набора.
+    password_resets:
+      new_title: Сброс Пароля
+      edit_title: Установить Новый Пароль
+      form:
+        email_label: Адрес Email
+        email_placeholder: Введите зарегистрированный email
+        submit: Отправить Email для Сброса
+        new_password_label: Новый Пароль
+        new_password_placeholder: 6+ символов
+        new_password_confirmation_label: Подтверждение Нового Пароля
+        update: Обновить Пароль
+      links:
+        back_to_login: Вернуться к Входу
+  stages:
+    create:
+      success: Этап опубликован.
+    update:
+      success: Этап обновлен.
+    destroy:
+      success: Этап удален.
+    errors:
+      not_authorized_to_edit: Вы не можете редактировать публикации других пользователей.
+      not_authorized_to_delete: Вы не можете удалять публикации других пользователей.
+  multiplay_recruitments:
+    create:
+      success: Набор опубликован.
+    update:
+      success: Набор обновлен.
+    destroy:
+      success: Набор удален.
+    errors:
+      not_authorized_to_edit: Вы не можете редактировать публикации других пользователей.
+      not_authorized_to_delete: Вы не можете удалять публикации других пользователей.
+  comments:
+    create:
+      success: Комментарий опубликован.
+      failure: "Не удалось опубликовать комментарий: %{errors}"
+    destroy:
+      success: Комментарий удален.
+    errors:
+      not_authorized_to_delete: Вы не можете удалять комментарии других пользователей.
+  sessions:
+    create:
+      success: Вход выполнен успешно.
+      failure: Неверное имя пользователя/email или пароль.
+    destroy:
+      success: Выход выполнен успешно.
+  omniauth:
+    google:
+      login_success: Вход выполнен через аккаунт Google.
+      signup_success: Аккаунт создан через аккаунт Google.
+      failure: "Ошибка входа: %{errors}"
+    errors:
+      unknown: Неизвестная ошибка
+      authentication_failed: "Ошибка аутентификации: %{message}"
+  password_resets:
+    create:
+      success: Письмо для сброса пароля отправлено. Пожалуйста, проверьте вашу почту.
+      email_not_found: Email-адрес не зарегистрирован.
+    update:
+      success: Пароль изменен. Пожалуйста, войдите.
+      password_blank: Пожалуйста, введите пароль.
+    errors:
+      invalid_token: Неверная ссылка.
+      token_expired: Ссылка для сброса пароля истекла. Пожалуйста, запросите новую.
+  users:
+    create:
+      success: Аккаунт создан.
+    update:
+      success: Профиль обновлен.
+    errors:
+      oauth_email_readonly: Email аккаунта Google нельзя изменить
+      oauth_password_readonly: Пароль аккаунта Google нельзя изменить
+      current_password_incorrect: неверен
+      new_password_required: обязателен
+

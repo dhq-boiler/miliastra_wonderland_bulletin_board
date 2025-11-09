@@ -1,0 +1,293 @@
+de:
+  activerecord:
+    models:
+      stage: Stufe
+      user: Benutzer
+      multiplay_recruitment: Mehrspieler-Rekrutierung
+    attributes:
+      stage:
+        title: Titel
+        description: Beschreibung
+        stage_guid: Stufen-GUID
+        difficulty: Schwierigkeit
+        tips: Tipps
+        created_at: Veröffentlicht am
+        updated_at: Aktualisiert am
+        user: Autor
+      multiplay_recruitment:
+        title: Titel
+        description: Rekrutierungsinhalt
+        stage_guid: Stufen-GUID
+        difficulty: Schwierigkeit
+        max_players: Maximale Spieler
+        start_time: Startzeit
+        status: Status
+        created_at: Veröffentlicht am
+        updated_at: Aktualisiert am
+        user: Autor
+      multiplay_recruitment_comment:
+        content: Kommentarinhalt
+        created_at: Veröffentlicht am
+        user: Autor
+      user:
+        username: Benutzername
+        nickname: Spitzname
+        email: E-Mail
+        password: Passwort
+        password_confirmation: Passwortbestätigung
+        current_password: Aktuelles Passwort
+        locale: Sprache
+    errors:
+      messages:
+        blank: darf nicht leer sein
+        too_short: ist zu kurz (mindestens %{count} Zeichen)
+        too_long: ist zu lang (maximal %{count} Zeichen)
+        taken: ist bereits vergeben
+        invalid: ist ungültig
+        confirmation: stimmt nicht überein
+        login_required: Anmeldung erforderlich
+        inclusion: ist kein gültiger Wert
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      long: "%d. %B %Y"
+      short: "%d.%m"
+  time:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d. %B %Y %H:%M:%S %Z"
+      short: "%d.%m %H:%M"
+  datetime:
+    formats:
+      default: "%d.%m.%Y %H:%M"
+      long: "%d. %B %Y %H:%M"
+      short: "%d.%m %H:%M"
+  errors:
+    messages:
+      login_required: Anmeldung erforderlich
+  languages:
+    ja: Japanisch
+    zh-CN: Chinesisch (Vereinfacht)
+    zh-TW: Chinesisch (Traditionell)
+    en: Englisch
+    ko: Koreanisch
+    es: Spanisch
+    fr: Französisch
+    ru: Russisch
+    th: Thailändisch
+    vi: Vietnamesisch
+    de: Deutsch
+    id: Indonesisch
+    pt: Portugiesisch
+    tr: Türkisch
+    it: Italienisch
+  app:
+    title: Miliastra Wonderland Forum
+    menu:
+      stages: Stufen
+      multiplay: Mehrspieler
+      my_page: Meine Seite
+      account_settings: Kontoeinstellungen
+      logout: Abmelden
+      login: Anmelden
+      signup: Registrieren
+    common:
+      required: "*"
+      optional: "(optional)"
+      admin_badge: Admin
+      suffix_san: ""
+      or: oder
+      cancel: Abbrechen
+      update: Aktualisieren
+      create: Erstellen
+      edit: Bearbeiten
+      delete: Löschen
+      back: Zurück
+      confirm_delete: Möchten Sie wirklich löschen?
+      posted_by: Gepostet von
+      posted_at: Gepostet am
+      comments_count: "%{count} Kommentare"
+      guid: "GUID"
+      difficulty_label: Schwierigkeit
+      max_players: Max. Spieler
+      people: " Spieler"
+      start_time: Startzeit
+      status: Status
+    stages:
+      title: Stufen-Forum
+      new_post: Neue Stufe posten
+      login_required: "%{login_link} erforderlich zum Posten."
+      no_posts: Noch keine Stufenbeiträge.
+      show_title: Stufendetails
+      edit_title: Stufe bearbeiten
+      new_title: Neue Stufe
+      form:
+        title_label: Titel
+        title_placeholder: "z.B. Kapitel 1 Wald-Guide"
+        guid_label: Stufen-GUID
+        guid_placeholder: "z.B. 20615303240"
+        difficulty_label: Schwierigkeit
+        difficulty_placeholder: Auswählen
+        difficulty_easy: Einfach
+        difficulty_normal: Normal
+        difficulty_hard: Schwer
+        difficulty_very_hard: Sehr schwer
+        description_label: Beschreibung
+        description_placeholder: Beschreiben Sie Stufenmerkmale, Mechaniken, Gegnerpositionen usw.
+        tips_label: Tipps & Hinweise
+        tips_placeholder: Teilen Sie Tipps, Notizen und empfohlene Ausrüstung
+      errors:
+        count: "%{count} Fehler"
+        has_errors: " gefunden"
+    multiplay:
+      title: Mehrspieler-Rekrutierungsforum
+      new_post: Neue Rekrutierung posten
+      login_required: "%{login_link} erforderlich zum Posten."
+      no_active_posts: Keine aktiven Rekrutierungen.
+      no_past_posts: Keine vergangenen Rekrutierungen.
+      show_title: Rekrutierungsdetails
+      edit_title: Rekrutierung bearbeiten
+      new_title: Neue Rekrutierung
+      tab_active: Aktiv
+      tab_past: Vergangen
+      form:
+        title_label: Titel
+        title_placeholder: "z.B. Kapitel 1 Boss-Raid!"
+        guid_label: Stufen-GUID
+        guid_placeholder: "z.B. 20615303240"
+        difficulty_label: Schwierigkeit
+        difficulty_placeholder: Auswählen
+        max_players_label: Max. Spieler
+        start_time_label: Startzeit
+        status_label: Status
+        status_recruiting: Rekrutierung
+        status_closed: Geschlossen
+        description_label: Beschreibung
+        description_placeholder: Beschreiben Sie, wonach Sie suchen
+      comments:
+        title: Kommentare
+        new_comment: Kommentar posten
+        placeholder: Geben Sie Ihren Kommentar ein
+        login_required: "%{login_link} erforderlich zum Kommentieren."
+    users:
+      signup_title: Registrieren
+      login_title: Anmelden
+      edit_title: Kontoeinstellungen
+      show_title: "%{name}s Seite"
+      form:
+        username_label: Benutzername
+        username_placeholder: 3-20 Zeichen
+        username_hint: Benutzername kann nicht geändert werden
+        nickname_label: Spitzname
+        nickname_placeholder: Anzeigename
+        nickname_hint: Benutzername wird angezeigt, wenn leer
+        email_label: E-Mail
+        email_placeholder: email@example.com
+        password_label: Passwort
+        password_placeholder: 6+ Zeichen
+        password_confirmation_label: Passwortbestätigung
+        password_confirmation_placeholder: Passwort erneut eingeben
+        current_password_label: Aktuelles Passwort
+        current_password_placeholder: Eingeben bei Passwortänderung
+        new_password_label: Neues Passwort
+        new_password_placeholder: 6+ Zeichen
+        new_password_confirmation_label: Neues Passwort bestätigen
+        locale_label: Sprache
+        login_field_label: Benutzername oder E-Mail
+        login_field_placeholder: Benutzername oder E-Mail eingeben
+      oauth:
+        google_signup: Mit Google registrieren
+        google_login: Mit Google anmelden
+        using_google: Mit Google-Konto angemeldet
+        google_info: Dieses Konto verwendet Google-Authentifizierung. E-Mail und Passwort werden von Google verwaltet.
+        email_readonly: Google-Konto-E-Mail kann nicht geändert werden
+        password_readonly: Google-Konto-Passwort kann nicht geändert werden
+      links:
+        have_account: Bereits ein Konto?
+        no_account: Noch kein Konto?
+        forgot_password: Passwort vergessen?
+      sections:
+        basic_info: Grundinformationen
+        change_password: Passwort ändern
+        password_change_note: Leer lassen, wenn Passwort nicht geändert wird.
+        posts: Beiträge
+        stages_tab: Stufen
+        multiplay_tab: Mehrspieler
+        no_stages: Noch keine Stufenbeiträge.
+        no_multiplay: Noch keine Rekrutierungsbeiträge.
+    password_resets:
+      new_title: Passwort zurücksetzen
+      edit_title: Neues Passwort festlegen
+      form:
+        email_label: E-Mail-Adresse
+        email_placeholder: Registrierte E-Mail eingeben
+        submit: Zurücksetzungs-E-Mail senden
+        new_password_label: Neues Passwort
+        new_password_placeholder: 6+ Zeichen
+        new_password_confirmation_label: Neues Passwort bestätigen
+        update: Passwort aktualisieren
+      links:
+        back_to_login: Zurück zur Anmeldung
+  stages:
+    create:
+      success: Stufe wurde veröffentlicht.
+    update:
+      success: Stufe wurde aktualisiert.
+    destroy:
+      success: Stufe wurde gelöscht.
+    errors:
+      not_authorized_to_edit: Sie können Beiträge anderer Benutzer nicht bearbeiten.
+      not_authorized_to_delete: Sie können Beiträge anderer Benutzer nicht löschen.
+  multiplay_recruitments:
+    create:
+      success: Rekrutierung wurde veröffentlicht.
+    update:
+      success: Rekrutierung wurde aktualisiert.
+    destroy:
+      success: Rekrutierung wurde gelöscht.
+    errors:
+      not_authorized_to_edit: Sie können Beiträge anderer Benutzer nicht bearbeiten.
+      not_authorized_to_delete: Sie können Beiträge anderer Benutzer nicht löschen.
+  comments:
+    create:
+      success: Kommentar wurde veröffentlicht.
+      failure: "Kommentar konnte nicht veröffentlicht werden: %{errors}"
+    destroy:
+      success: Kommentar wurde gelöscht.
+    errors:
+      not_authorized_to_delete: Sie können Kommentare anderer Benutzer nicht löschen.
+  sessions:
+    create:
+      success: Erfolgreich angemeldet.
+      failure: Benutzername/E-Mail oder Passwort ist falsch.
+    destroy:
+      success: Erfolgreich abgemeldet.
+  omniauth:
+    google:
+      login_success: Mit Google-Konto angemeldet.
+      signup_success: Konto mit Google-Konto erstellt.
+      failure: "Anmeldung fehlgeschlagen: %{errors}"
+    errors:
+      unknown: Unbekannter Fehler
+      authentication_failed: "Authentifizierung fehlgeschlagen: %{message}"
+  password_resets:
+    create:
+      success: Passwort-Zurücksetzungs-E-Mail wurde gesendet. Bitte überprüfen Sie Ihre E-Mails.
+      email_not_found: E-Mail-Adresse ist nicht registriert.
+    update:
+      success: Passwort wurde geändert. Bitte melden Sie sich an.
+      password_blank: Bitte geben Sie ein Passwort ein.
+    errors:
+      invalid_token: Ungültiger Link.
+      token_expired: Passwort-Zurücksetzungs-Link ist abgelaufen. Bitte fordern Sie einen neuen an.
+  users:
+    create:
+      success: Konto wurde erstellt.
+    update:
+      success: Profil wurde aktualisiert.
+    errors:
+      oauth_email_readonly: Google-Konto-E-Mail kann nicht geändert werden
+      oauth_password_readonly: Google-Konto-Passwort kann nicht geändert werden
+      current_password_incorrect: ist falsch
+      new_password_required: ist erforderlich
+

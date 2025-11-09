@@ -1,7 +1,7 @@
 <%= form_with(model: stage) do |form| %>
   <% if stage.errors.any? %>
     <div class="error-messages">
-      <h3><%= pluralize(stage.errors.count, "個のエラー") %>があります:</h3>
+      <h3><%= t('app.stages.errors.count', count: stage.errors.count) %><%= t('app.stages.errors.has_errors') %>:</h3>
       <ul>
         <% stage.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -12,37 +12,43 @@
 
   <div class="form-group">
     <%= form.label :title do %>
-      タイトル<span class="required">*</span>
+      <%= t('app.stages.form.title_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
-    <%= form.text_field :title, class: "form-control", placeholder: "例: 第1章 幻想の森を攻略" %>
+    <%= form.text_field :title, class: "form-control", placeholder: t('app.stages.form.title_placeholder') %>
   </div>
 
 
   <div class="form-group">
     <%= form.label :stage_guid do %>
-      幻境GUID<span class="required">*</span>
+      <%= t('app.stages.form.guid_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
-    <%= form.text_field :stage_guid, class: "form-control", placeholder: "例: 20615303240" %>
+    <%= form.text_field :stage_guid, class: "form-control", placeholder: t('app.stages.form.guid_placeholder') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :difficulty, "難易度（任意）" %>
+    <%= form.label :difficulty, "#{t('app.stages.form.difficulty_label')}#{t('app.common.optional')}" %>
     <%= form.select :difficulty,
-        [["選択してください", ""], ["簡単", "簡単"], ["普通", "普通"], ["難しい", "難しい"], ["とても難しい", "とても難しい"]],
+        [
+          [t('app.stages.form.difficulty_placeholder'), ""],
+          [t('app.stages.form.difficulty_easy'), t('app.stages.form.difficulty_easy')],
+          [t('app.stages.form.difficulty_normal'), t('app.stages.form.difficulty_normal')],
+          [t('app.stages.form.difficulty_hard'), t('app.stages.form.difficulty_hard')],
+          [t('app.stages.form.difficulty_very_hard'), t('app.stages.form.difficulty_very_hard')]
+        ],
         {},
         { class: "form-control" } %>
   </div>
 
   <div class="form-group">
     <%= form.label :description do %>
-      幻境の説明<span class="required">*</span>
+      <%= t('app.stages.form.description_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>
-    <%= form.text_area :description, rows: 8, class: "form-control", placeholder: "ステージの特徴、ギミック、敵の配置などを説明してください" %>
+    <%= form.text_area :description, rows: 8, class: "form-control", placeholder: t('app.stages.form.description_placeholder') %>
   </div>
 
   <div class="form-group">
-    <%= form.label :tips, "攻略のコツ・ヒント（任意）" %>
-    <%= form.text_area :tips, rows: 6, class: "form-control", placeholder: "クリアのコツ、注意点、おすすめの装備などを記入してください" %>
+    <%= form.label :tips, "#{t('app.stages.form.tips_label')}#{t('app.common.optional')}" %>
+    <%= form.text_area :tips, rows: 6, class: "form-control", placeholder: t('app.stages.form.tips_placeholder') %>
   </div>
 
   <div class="form-actions">

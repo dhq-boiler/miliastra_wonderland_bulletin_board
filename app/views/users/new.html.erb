@@ -1,11 +1,11 @@
 <div class="min-h-screen">
   <div class="auth-form">
-    <h1>新規登録</h1>
+    <h1><%= t('app.users.signup_title') %></h1>
 
     <%= form_with(model: @user, url: signup_path, data: { turbo: false }) do |form| %>
       <% if @user.errors.any? %>
         <div class="error-messages">
-          <h3><%= pluralize(@user.errors.count, "個のエラー") %>があります:</h3>
+          <h3><%= t('app.stages.errors.count', count: @user.errors.count) %><%= t('app.stages.errors.has_errors') %>:</h3>
           <ul>
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -16,51 +16,63 @@
 
       <div class="form-group">
         <%= form.label :username do %>
-          ユーザー名<span class="required">*</span>
+          <%= t('activerecord.attributes.user.username') %><span class="required"><%= t('app.common.required') %></span>
         <% end %>
-        <%= form.text_field :username, class: "form-control", placeholder: "3〜20文字で入力" %>
+        <%= form.text_field :username, class: "form-control", placeholder: t('app.users.form.username_placeholder') %>
       </div>
 
       <div class="form-group">
-        <%= form.label :nickname, "ニックネーム（任意）" %>
-        <%= form.text_field :nickname, class: "form-control", placeholder: "表示名として使用されます" %>
-        <small class="form-text text-muted">未入力の場合はユーザー名が表示されます</small>
+        <%= form.label :nickname, "#{t('activerecord.attributes.user.nickname')}#{t('app.common.optional')}" %>
+        <%= form.text_field :nickname, class: "form-control", placeholder: t('app.users.form.nickname_placeholder') %>
+        <small class="form-text text-muted"><%= t('app.users.form.nickname_hint') %></small>
       </div>
 
       <div class="form-group">
-        <%= form.label :email, "メールアドレス（任意）" %>
-        <%= form.email_field :email, class: "form-control", placeholder: "email@example.com" %>
+        <%= form.label :email, "#{t('activerecord.attributes.user.email')}#{t('app.common.optional')}" %>
+        <%= form.email_field :email, class: "form-control", placeholder: t('app.users.form.email_placeholder') %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :locale, t('activerecord.attributes.user.locale') %>
+        <%= form.select :locale,
+          options_for_select(
+            I18n.available_locales.map { |locale| [t("languages.#{locale}"), locale] },
+            @user.locale || I18n.default_locale
+          ),
+          {},
+          class: "form-control"
+        %>
       </div>
 
       <div class="form-group">
         <%= form.label :password do %>
-          パスワード<span class="required">*</span>
+          <%= t('activerecord.attributes.user.password') %><span class="required"><%= t('app.common.required') %></span>
         <% end %>
-        <%= form.password_field :password, class: "form-control", placeholder: "6文字以上で入力" %>
+        <%= form.password_field :password, class: "form-control", placeholder: t('app.users.form.password_placeholder') %>
       </div>
 
       <div class="form-group">
         <%= form.label :password_confirmation do %>
-          パスワード（確認）<span class="required">*</span>
+          <%= t('activerecord.attributes.user.password_confirmation') %><span class="required"><%= t('app.common.required') %></span>
         <% end %>
-        <%= form.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再入力" %>
+        <%= form.password_field :password_confirmation, class: "form-control", placeholder: t('app.users.form.password_confirmation_placeholder') %>
       </div>
 
       <div class="form-actions">
-        <%= form.submit "登録", class: "btn btn-primary" %>
+        <%= form.submit t('app.menu.signup'), class: "btn btn-primary" %>
       </div>
     <% end %>
 
     <div class="oauth-divider">
-      <span>または</span>
+      <span><%= t('app.common.or') %></span>
     </div>
 
     <div class="oauth-buttons">
-      <%= button_to "Googleで登録", "/auth/google_oauth2", method: :post, class: "btn btn-google", data: { turbo: false } %>
+      <%= button_to t('app.users.oauth.google_signup'), "/auth/google_oauth2", method: :post, class: "btn btn-google", data: { turbo: false } %>
     </div>
 
     <div class="auth-links">
-      <p>すでにアカウントをお持ちですか？ <%= link_to "ログイン", login_path %></p>
+      <p><%= t('app.users.links.have_account') %> <%= link_to t('app.menu.login'), login_path %></p>
     </div>
   </div>
 </div>

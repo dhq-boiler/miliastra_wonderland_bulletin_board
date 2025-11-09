@@ -26,6 +26,23 @@ module MiliastraWonderlandBulletinBoard
 
     # 日本語ロケール設定
     config.i18n.default_locale = :ja
+    config.i18n.available_locales = [
+      :ja,      # 日本語
+      :'zh-CN', # 中国語簡体字
+      :'zh-TW', # 中国語繁体字
+      :en,      # 英語
+      :ko,      # 韓国語
+      :es,      # スペイン語
+      :fr,      # フランス語
+      :ru,      # ロシア語
+      :th,      # タイ語
+      :vi,      # ベトナム語
+      :de,      # ドイツ語
+      :id,      # インドネシア語
+      :pt,      # ポルトガル語
+      :tr,      # トルコ語
+      :it       # イタリア語
+    ]
     config.time_zone = "Tokyo"
   end
 end
