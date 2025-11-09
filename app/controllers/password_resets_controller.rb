@@ -15,7 +15,7 @@ class PasswordResetsController < ApplicationController
       UserMailer.password_reset(@user).deliver_now
       redirect_to login_path, notice: t('password_resets.create.success')
     else
-      flash.now[:alert] = t('password_resets.create.email_not_found')
+      flash.now[:alert] = t('password_resets.create.success')
       render :new, status: :unprocessable_entity
     end
   end
