@@ -121,6 +121,13 @@ es:
       show_title: Detalles de la Etapa
       edit_title: Editar Etapa
       new_title: Nueva Etapa
+      show:
+        official_page: Página Oficial de la Etapa
+        description_title: Descripción
+        tips_title: Consejos y Pistas
+        updated_at: Actualizado
+        confirm_delete: ¿Está seguro de que desea eliminar?
+        confirm_delete_admin: Eliminar como administrador. ¿Está seguro?
       form:
         title_label: Título
         title_placeholder: "ej. Guía del Capítulo 1"
@@ -143,6 +150,15 @@ es:
       title: Foro de Reclutamiento Multijugador
       new_post: Publicar Nuevo Reclutamiento
       login_required: "Se requiere %{login_link} para publicar."
+      show:
+        details_title: Detalles
+        updated_at: Actualizado
+        confirm_delete: ¿Está seguro de que desea eliminar?
+        confirm_delete_admin: Eliminar como administrador. ¿Está seguro?
+        comments_title: "Comentarios (%{count})"
+        login_required_html: Se requiere %{login_link} para comentar.
+        no_comments: Aún no hay comentarios.
+        confirm_delete_comment: ¿Eliminar este comentario?
       no_active_posts: No hay reclutamientos activos.
       no_past_posts: No hay reclutamientos pasados.
       show_title: Detalles del Reclutamiento

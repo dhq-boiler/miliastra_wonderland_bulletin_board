@@ -3,7 +3,7 @@
     <span class="comment-author">
       <%= link_to comment.user.display_name, user_path(comment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
       <% if comment.user.admin? %>
-        <span class="admin-badge">管理者</span>
+        <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
       <% end %>
     </span>
     <div class="comment-date-group">
@@ -18,9 +18,9 @@
   </div>
   <% if can_delete_comment?(comment) %>
     <div class="comment-actions">
-      <%= button_to "削除", multiplay_recruitment_comment_path(multiplay_recruitment, comment),
+      <%= button_to t('app.common.delete'), multiplay_recruitment_comment_path(multiplay_recruitment, comment),
                     method: :delete,
-                    data: { turbo_confirm: "このコメントを削除しますか？" },
+                    data: { turbo_confirm: t('app.multiplay.show.confirm_delete_comment') },
                     class: "btn-comment-delete" %>
     </div>
   <% end %>

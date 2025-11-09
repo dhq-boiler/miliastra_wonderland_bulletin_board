@@ -4,49 +4,49 @@
 
     <div class="stage-info flex justify-between items-start">
       <div>
-        <span class="stage-guid">GUID: <%= clipboard_copy(@stage.stage_guid) %></span>
+        <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(@stage.stage_guid) %></span>
         <% if @stage.difficulty.present? %>
-          <span class="difficulty">難易度: <%= @stage.difficulty %></span>
+          <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= @stage.difficulty %></span>
         <% end %>
       </div>
       <div>
-        <%= link_to "公式幻境紹介ページ", "https://act.hoyolab.com/ys/ugc_community/mx/?lang=ja-jp&bbs_theme=dark&bbs_theme_device=1#/pages/level-detail/index?id=#{@stage.stage_guid}&region=os_asia", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
+        <%= link_to t('app.stages.show.official_page'), "https://act.hoyolab.com/ys/ugc_community/mx/?lang=ja-jp&bbs_theme=dark&bbs_theme_device=1#/pages/level-detail/index?id=#{@stage.stage_guid}&region=os_asia", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
       </div>
     </div>
 
     <div class="stage-content">
-      <h3>説明</h3>
+      <h3><%= t('app.stages.show.description_title') %></h3>
       <div class="description"><%= simple_format(@stage.description) %></div>
 
       <% if @stage.tips.present? %>
-        <h3>攻略のコツ・ヒント</h3>
+        <h3><%= t('app.stages.show.tips_title') %></h3>
         <div class="tips"><%= simple_format(@stage.tips) %></div>
       <% end %>
     </div>
 
     <div class="meta">
       <p>
-        投稿者: <%= link_to @stage.user.display_name, user_path(@stage.user), class: "text-blue-600 hover:text-blue-800 underline" %>
+        <%= t('app.common.posted_by') %>: <%= link_to @stage.user.display_name, user_path(@stage.user), class: "text-blue-600 hover:text-blue-800 underline" %>
         <% if @stage.user.admin? %>
-          <span class="admin-badge">管理者</span>
+          <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
         <% end %>
       </p>
-      <p>投稿日: <%= l(@stage.created_at, format: :long) %></p>
+      <p><%= t('app.common.posted_at') %>: <%= l(@stage.created_at, format: :long) %></p>
       <% if @stage.updated_at != @stage.created_at %>
-        <p>更新日: <%= l(@stage.updated_at, format: :long) %></p>
+        <p><%= t('app.stages.show.updated_at') %>: <%= l(@stage.updated_at, format: :long) %></p>
       <% end %>
     </div>
 
     <div class="actions">
       <% if logged_in? %>
         <% if @stage.user == current_user %>
-          <%= link_to "編集", edit_stage_path(@stage), class: "btn btn-secondary" %>
-          <%= button_to "削除", stage_path(@stage), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+          <%= link_to t('app.common.edit'), edit_stage_path(@stage), class: "btn btn-secondary" %>
+          <%= button_to t('app.common.delete'), stage_path(@stage), method: :delete, data: { turbo_confirm: t('app.stages.show.confirm_delete') }, class: "btn btn-danger" %>
         <% elsif current_user.admin? %>
-          <%= button_to "削除", stage_path(@stage), method: :delete, data: { turbo_confirm: "管理者権限で削除します。本当に削除しますか？" }, class: "btn btn-danger" %>
+          <%= button_to t('app.common.delete'), stage_path(@stage), method: :delete, data: { turbo_confirm: t('app.stages.show.confirm_delete_admin') }, class: "btn btn-danger" %>
         <% end %>
       <% end %>
-      <%= link_to "一覧に戻る", stages_path, class: "btn btn-default" %>
+      <%= link_to t('app.common.back'), stages_path, class: "btn btn-default" %>
     </div>
   </div>
 </div>

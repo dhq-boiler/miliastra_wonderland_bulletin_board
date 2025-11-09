@@ -121,6 +121,13 @@ ko:
       show_title: 스테이지 상세
       edit_title: 스테이지 편집
       new_title: 새 스테이지
+      show:
+        official_page: 공식 스테이지 페이지
+        description_title: 설명
+        tips_title: 팁 & 힌트
+        updated_at: 업데이트됨
+        confirm_delete: 정말 삭제하시겠습니까?
+        confirm_delete_admin: 관리자 권한으로 삭제합니다. 확실합니까?
       form:
         title_label: 제목
         title_placeholder: "예: 챕터 1 숲 가이드"
@@ -143,6 +150,15 @@ ko:
       title: 멀티플레이 모집 포럼
       new_post: 새 모집 게시
       login_required: 게시하려면 %{login_link}이(가) 필요합니다.
+      show:
+        details_title: 상세정보
+        updated_at: 업데이트됨
+        confirm_delete: 정말 삭제하시겠습니까?
+        confirm_delete_admin: 관리자 권한으로 삭제합니다. 확실합니까?
+        comments_title: "댓글 (%{count})"
+        login_required_html: 댓글을 달려면 %{login_link}이(가) 필요합니다.
+        no_comments: 아직 댓글이 없습니다.
+        confirm_delete_comment: 이 댓글을 삭제하시겠습니까?
       no_active_posts: 활성 모집이 없습니다.
       no_past_posts: 과거 모집이 없습니다.
       show_title: 모집 상세

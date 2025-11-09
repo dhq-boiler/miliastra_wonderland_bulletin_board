@@ -121,6 +121,13 @@ tr:
       show_title: Aşama Detayları
       edit_title: Aşamayı Düzenle
       new_title: Yeni Aşama
+      show:
+        official_page: Resmi Aşama Sayfası
+        description_title: Açıklama
+        tips_title: İpuçları & Öneriler
+        updated_at: Güncellendi
+        confirm_delete: Silmek istediğinizden emin misiniz?
+        confirm_delete_admin: Admin olarak sil. Emin misiniz?
       form:
         title_label: Başlık
         title_placeholder: "örn. Bölüm 1 Rehberi"
@@ -143,6 +150,15 @@ tr:
       title: Çok Oyunculu İşe Alım Forumu
       new_post: Yeni İşe Alım Gönder
       login_required: Göndermek için %{login_link} gerekli.
+      show:
+        details_title: Detaylar
+        updated_at: Güncellendi
+        confirm_delete: Silmek istediğinizden emin misiniz?
+        confirm_delete_admin: Admin olarak sil. Emin misiniz?
+        comments_title: "Yorumlar (%{count})"
+        login_required_html: Yorum yapmak için %{login_link} gerekli.
+        no_comments: Henüz yorum yok.
+        confirm_delete_comment: Bu yorumu sil?
       no_active_posts: Aktif işe alım yok.
       no_past_posts: Geçmiş işe alım yok.
       show_title: İşe Alım Detayları

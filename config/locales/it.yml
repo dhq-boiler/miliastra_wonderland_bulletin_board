@@ -121,6 +121,13 @@ it:
       show_title: Dettagli della Fase
       edit_title: Modifica Fase
       new_title: Nuova Fase
+      show:
+        official_page: Pagina Ufficiale della Fase
+        description_title: Descrizione
+        tips_title: Suggerimenti & Consigli
+        updated_at: Aggiornato
+        confirm_delete: Sei sicuro di voler eliminare?
+        confirm_delete_admin: Elimina come admin. Sei sicuro?
       form:
         title_label: Titolo
         title_placeholder: "es. Guida Capitolo 1"
@@ -143,6 +150,15 @@ it:
       title: Forum di Reclutamento Multigiocatore
       new_post: Pubblica Nuovo Reclutamento
       login_required: È richiesto %{login_link} per pubblicare.
+      show:
+        details_title: Dettagli
+        updated_at: Aggiornato
+        confirm_delete: Sei sicuro di voler eliminare?
+        confirm_delete_admin: Elimina come admin. Sei sicuro?
+        comments_title: "Commenti (%{count})"
+        login_required_html: È richiesto %{login_link} per commentare.
+        no_comments: Ancora nessun commento.
+        confirm_delete_comment: Eliminare questo commento?
       no_active_posts: Nessun reclutamento attivo.
       no_past_posts: Nessun reclutamento passato.
       show_title: Dettagli del Reclutamento

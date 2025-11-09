@@ -121,6 +121,13 @@ ru:
       show_title: Детали Этапа
       edit_title: Редактировать Этап
       new_title: Новый Этап
+      show:
+        official_page: Официальная Страница Этапа
+        description_title: Описание
+        tips_title: Советы и Подсказки
+        updated_at: Обновлено
+        confirm_delete: Вы уверены, что хотите удалить?
+        confirm_delete_admin: Удалить как админ. Вы уверены?
       form:
         title_label: Название
         title_placeholder: "напр. Руководство Главы 1"
@@ -143,6 +150,15 @@ ru:
       title: Форум Набора в Мультиплеер
       new_post: Опубликовать Новый Набор
       login_required: Требуется %{login_link} для публикации.
+      show:
+        details_title: Детали
+        updated_at: Обновлено
+        confirm_delete: Вы уверены, что хотите удалить?
+        confirm_delete_admin: Удалить как админ. Вы уверены?
+        comments_title: "Комментарии (%{count})"
+        login_required_html: Требуется %{login_link} для комментирования.
+        no_comments: Пока нет комментариев.
+        confirm_delete_comment: Удалить этот комментарий?
       no_active_posts: Нет активных наборов.
       no_past_posts: Нет прошлых наборов.
       show_title: Детали Набора

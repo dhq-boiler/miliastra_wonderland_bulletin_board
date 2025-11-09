@@ -121,6 +121,13 @@ id:
       show_title: Detail Tahap
       edit_title: Edit Tahap
       new_title: Tahap Baru
+      show:
+        official_page: Halaman Tahap Resmi
+        description_title: Deskripsi
+        tips_title: Tips & Petunjuk
+        updated_at: Diperbarui
+        confirm_delete: Apakah Anda yakin ingin menghapus?
+        confirm_delete_admin: Hapus sebagai admin. Apakah Anda yakin?
       form:
         title_label: Judul
         title_placeholder: "mis. Panduan Bab 1"
@@ -143,6 +150,15 @@ id:
       title: Forum Rekrutmen Multiplayer
       new_post: Posting Rekrutmen Baru
       login_required: Perlu %{login_link} untuk posting.
+      show:
+        details_title: Detail
+        updated_at: Diperbarui
+        confirm_delete: Apakah Anda yakin ingin menghapus?
+        confirm_delete_admin: Hapus sebagai admin. Apakah Anda yakin?
+        comments_title: "Komentar (%{count})"
+        login_required_html: Perlu %{login_link} untuk berkomentar.
+        no_comments: Belum ada komentar.
+        confirm_delete_comment: Hapus komentar ini?
       no_active_posts: Tidak ada rekrutmen aktif.
       no_past_posts: Tidak ada rekrutmen sebelumnya.
       show_title: Detail Rekrutmen

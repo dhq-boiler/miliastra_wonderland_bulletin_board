@@ -121,6 +121,13 @@ de:
       show_title: Stufendetails
       edit_title: Stufe bearbeiten
       new_title: Neue Stufe
+      show:
+        official_page: Offizielle Stufenseite
+        description_title: Beschreibung
+        tips_title: Tipps & Hinweise
+        updated_at: Aktualisiert
+        confirm_delete: Möchten Sie wirklich löschen?
+        confirm_delete_admin: Als Admin löschen. Sind Sie sicher?
       form:
         title_label: Titel
         title_placeholder: "z.B. Kapitel 1 Wald-Guide"
@@ -150,6 +157,15 @@ de:
       new_title: Neue Rekrutierung
       tab_active: Aktiv
       tab_past: Vergangen
+      show:
+        details_title: Details
+        updated_at: Aktualisiert
+        confirm_delete: Möchten Sie wirklich löschen?
+        confirm_delete_admin: Als Admin löschen. Sind Sie sicher?
+        comments_title: "Kommentare (%{count})"
+        login_required_html: "%{login_link} erforderlich zum Kommentieren."
+        no_comments: Noch keine Kommentare.
+        confirm_delete_comment: Diesen Kommentar löschen?
       form:
         title_label: Titel
         title_placeholder: "z.B. Kapitel 1 Boss-Raid!"

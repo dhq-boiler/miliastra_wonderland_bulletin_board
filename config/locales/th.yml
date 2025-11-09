@@ -121,6 +121,13 @@ th:
       show_title: รายละเอียดด่าน
       edit_title: แก้ไขด่าน
       new_title: ด่านใหม่
+      show:
+        official_page: หน้าด่านอย่างเป็นทางการ
+        description_title: คำอธิบาย
+        tips_title: เคล็ดลับและคำแนะนำ
+        updated_at: อัปเดตแล้ว
+        confirm_delete: คุณแน่ใจหรือว่าต้องการลบ?
+        confirm_delete_admin: ลบในฐานะผู้ดูแล คุณแน่ใจหรือไม่?
       form:
         title_label: ชื่อเรื่อง
         title_placeholder: "เช่น คู่มือบทที่ 1"
@@ -143,6 +150,15 @@ th:
       title: ฟอรั่มการรับสมัครผู้เล่นหลายคน
       new_post: โพสต์การรับสมัครใหม่
       login_required: ต้อง%{login_link}เพื่อโพสต์
+      show:
+        details_title: รายละเอียด
+        updated_at: อัปเดตแล้ว
+        confirm_delete: คุณแน่ใจหรือว่าต้องการลบ?
+        confirm_delete_admin: ลบในฐานะผู้ดูแล คุณแน่ใจหรือไม่?
+        comments_title: "ความคิดเห็น (%{count})"
+        login_required_html: ต้อง%{login_link}เพื่อแสดงความคิดเห็น
+        no_comments: ยังไม่มีความคิดเห็น
+        confirm_delete_comment: ลบความคิดเห็นนี้?
       no_active_posts: ไม่มีการรับสมัครที่ใช้งานอยู่
       no_past_posts: ไม่มีการรับสมัครในอดีต
       show_title: รายละเอียดการรับสมัคร

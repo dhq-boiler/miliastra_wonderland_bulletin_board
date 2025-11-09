@@ -121,6 +121,13 @@ vi:
       show_title: Chi tiết Giai đoạn
       edit_title: Chỉnh sửa Giai đoạn
       new_title: Giai đoạn Mới
+      show:
+        official_page: Trang Giai đoạn Chính thức
+        description_title: Mô tả
+        tips_title: Mẹo & Gợi ý
+        updated_at: Đã cập nhật
+        confirm_delete: Bạn có chắc chắn muốn xóa?
+        confirm_delete_admin: Xóa với quyền admin. Bạn có chắc?
       form:
         title_label: Tiêu đề
         title_placeholder: "vd. Hướng dẫn Chương 1"
@@ -143,6 +150,15 @@ vi:
       title: Diễn đàn Tuyển dụng Nhiều người chơi
       new_post: Đăng Tuyển dụng Mới
       login_required: Cần %{login_link} để đăng.
+      show:
+        details_title: Chi tiết
+        updated_at: Đã cập nhật
+        confirm_delete: Bạn có chắc chắn muốn xóa?
+        confirm_delete_admin: Xóa với quyền admin. Bạn có chắc?
+        comments_title: "Bình luận (%{count})"
+        login_required_html: Cần %{login_link} để bình luận.
+        no_comments: Chưa có bình luận.
+        confirm_delete_comment: Xóa bình luận này?
       no_active_posts: Không có tuyển dụng đang hoạt động.
       no_past_posts: Không có tuyển dụng trong quá khứ.
       show_title: Chi tiết Tuyển dụng

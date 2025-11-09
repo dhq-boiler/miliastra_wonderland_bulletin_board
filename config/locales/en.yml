@@ -150,6 +150,13 @@ en:
       show_title: Stage Details
       edit_title: Edit Stage
       new_title: New Stage
+      show:
+        official_page: Official Stage Page
+        description_title: Description
+        tips_title: Tips & Hints
+        updated_at: Updated
+        confirm_delete: Are you sure you want to delete?
+        confirm_delete_admin: Delete as admin. Are you sure?
       form:
         title_label: Title
         title_placeholder: "e.g., Chapter 1 Forest Guide"
@@ -172,6 +179,15 @@ en:
       title: Multiplayer Recruitment Forum
       new_post: Post New Recruitment
       login_required: "%{login_link} required to post."
+      show:
+        details_title: Details
+        updated_at: Updated
+        confirm_delete: Are you sure you want to delete?
+        confirm_delete_admin: Delete as admin. Are you sure?
+        comments_title: "Comments (%{count})"
+        login_required_html: "%{login_link} required to comment."
+        no_comments: No comments yet.
+        confirm_delete_comment: Delete this comment?
       no_active_posts: No active recruitments.
       no_past_posts: No past recruitments.
       show_title: Recruitment Details

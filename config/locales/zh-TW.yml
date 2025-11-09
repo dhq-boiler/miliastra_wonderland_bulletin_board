@@ -121,6 +121,13 @@ zh-TW:
       show_title: 關卡詳情
       edit_title: 編輯關卡
       new_title: 新關卡
+      show:
+        official_page: 官方關卡頁面
+        description_title: 描述
+        tips_title: 提示與技巧
+        updated_at: 更新時間
+        confirm_delete: 確定要刪除嗎？
+        confirm_delete_admin: 以管理員權限刪除。確定嗎？
       form:
         title_label: 標題
         title_placeholder: "例如：第1章森林攻略"
@@ -143,6 +150,15 @@ zh-TW:
       title: 多人遊戲招募論壇
       new_post: 發佈新招募
       login_required: 發佈需要%{login_link}。
+      show:
+        details_title: 詳情
+        updated_at: 更新時間
+        confirm_delete: 確定要刪除嗎？
+        confirm_delete_admin: 以管理員權限刪除。確定嗎？
+        comments_title: "評論 (%{count})"
+        login_required_html: 評論需要%{login_link}。
+        no_comments: 暫無評論。
+        confirm_delete_comment: 刪除此評論？
       no_active_posts: 暫無活躍招募。
       no_past_posts: 暫無歷史招募。
       show_title: 招募詳情

@@ -121,6 +121,13 @@ pt:
       show_title: Detalhes do Estágio
       edit_title: Editar Estágio
       new_title: Novo Estágio
+      show:
+        official_page: Página Oficial do Estágio
+        description_title: Descrição
+        tips_title: Dicas & Sugestões
+        updated_at: Atualizado
+        confirm_delete: Tem certeza de que deseja excluir?
+        confirm_delete_admin: Excluir como administrador. Tem certeza?
       form:
         title_label: Título
         title_placeholder: "ex. Guia do Capítulo 1"
@@ -143,6 +150,15 @@ pt:
       title: Fórum de Recrutamento Multijogador
       new_post: Publicar Novo Recrutamento
       login_required: É necessário %{login_link} para publicar.
+      show:
+        details_title: Detalhes
+        updated_at: Atualizado
+        confirm_delete: Tem certeza de que deseja excluir?
+        confirm_delete_admin: Excluir como administrador. Tem certeza?
+        comments_title: "Comentários (%{count})"
+        login_required_html: É necessário %{login_link} para comentar.
+        no_comments: Ainda não há comentários.
+        confirm_delete_comment: Excluir este comentário?
       no_active_posts: Não há recrutamentos ativos.
       no_past_posts: Não há recrutamentos anteriores.
       show_title: Detalhes do Recrutamento

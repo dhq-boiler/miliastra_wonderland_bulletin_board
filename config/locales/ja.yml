@@ -142,14 +142,23 @@ ja:
     multiplay:
       title: マルチプレイ募集掲示板
       new_post: 新しいマルチプレイ募集を投稿
-      login_required: 投稿するには%{login_link}が必要です。
-      no_active_posts: 現在募集中の投稿はありません。
-      no_past_posts: 過去の募集はありません。
+      login_required: 投稿には%{login_link}が必要です。
+      no_active_posts: 現在募集中のマルチプレイはありません。
+      no_past_posts: 過去のマルチプレイ募集はありません。
       show_title: マルチプレイ募集詳細
       edit_title: マルチプレイ募集を編集
       new_title: 新しいマルチプレイ募集
-      tab_active: 現在募集中
+      tab_active: 募集中
       tab_past: 過去の募集
+      show:
+        details_title: 詳細
+        updated_at: 更新日
+        confirm_delete: 本当に削除しますか？
+        confirm_delete_admin: 管理者権限で削除します。本当に削除しますか？
+        comments_title: "コメント (%{count})"
+        login_required_html: コメントを投稿するには%{login_link}が必要です。
+        no_comments: まだコメントがありません。
+        confirm_delete_comment: このコメントを削除しますか？
       form:
         title_label: タイトル
         title_placeholder: "例: 第1章ボス討伐募集！"

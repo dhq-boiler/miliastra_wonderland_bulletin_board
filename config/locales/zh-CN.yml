@@ -121,6 +121,13 @@ zh-CN:
       show_title: 关卡详情
       edit_title: 编辑关卡
       new_title: 新关卡
+      show:
+        official_page: 官方关卡页面
+        description_title: 描述
+        tips_title: 提示与技巧
+        updated_at: 更新时间
+        confirm_delete: 确定要删除吗？
+        confirm_delete_admin: 以管理员权限删除。确定吗？
       form:
         title_label: 标题
         title_placeholder: "例如：第1章森林攻略"
@@ -143,6 +150,15 @@ zh-CN:
       title: 多人游戏招募论坛
       new_post: 发布新招募
       login_required: 发布需要%{login_link}。
+      show:
+        details_title: 详情
+        updated_at: 更新时间
+        confirm_delete: 确定要删除吗？
+        confirm_delete_admin: 以管理员权限删除。确定吗？
+        comments_title: "评论 (%{count})"
+        login_required_html: 评论需要%{login_link}。
+        no_comments: 暂无评论。
+        confirm_delete_comment: 删除此评论？
       no_active_posts: 暂无活跃招募。
       no_past_posts: 暂无历史招募。
       show_title: 招募详情

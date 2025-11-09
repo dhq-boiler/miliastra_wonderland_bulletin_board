@@ -121,6 +121,13 @@ fr:
       show_title: Détails de l'Étape
       edit_title: Modifier l'Étape
       new_title: Nouvelle Étape
+      show:
+        official_page: Page Officielle de l'Étape
+        description_title: Description
+        tips_title: Conseils et Astuces
+        updated_at: Mis à jour
+        confirm_delete: Voulez-vous vraiment supprimer?
+        confirm_delete_admin: Supprimer en tant qu'admin. Êtes-vous sûr?
       form:
         title_label: Titre
         title_placeholder: "ex. Guide du Chapitre 1"
@@ -143,6 +150,15 @@ fr:
       title: Forum de Recrutement Multijoueur
       new_post: Publier Nouveau Recrutement
       login_required: "%{login_link} requise pour publier."
+      show:
+        details_title: Détails
+        updated_at: Mis à jour
+        confirm_delete: Voulez-vous vraiment supprimer?
+        confirm_delete_admin: Supprimer en tant qu'admin. Êtes-vous sûr?
+        comments_title: "Commentaires (%{count})"
+        login_required_html: "%{login_link} requise pour commenter."
+        no_comments: Aucun commentaire pour le moment.
+        confirm_delete_comment: Supprimer ce commentaire?
       no_active_posts: Aucun recrutement actif.
       no_past_posts: Aucun recrutement passé.
       show_title: Détails du Recrutement
