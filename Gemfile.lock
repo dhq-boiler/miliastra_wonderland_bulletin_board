@@ -363,6 +363,9 @@ GEM
       activesupport (= 8.1.1)
       bundler (>= 1.15.0)
       railties (= 8.1.1)
+    rails-clipboard-helper (0.1.1)
+      actionview (>= 6.0, < 9.0)
+      railties (>= 6.0, < 9.0)
     rails-diff-time (0.2.0)
     rails-dom-testing (2.3.0)
       activesupport (>= 5.0.0)
@@ -539,6 +542,7 @@ DEPENDENCIES
   propshaft
   puma (>= 5.0)
   rails (~> 8.1.1)
+  rails-clipboard-helper (~> 0.1.0)
   rails-diff-time (~> 0.2.0)
   rubocop-rails-omakase
   selenium-webdriver
