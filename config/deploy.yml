@@ -22,7 +22,7 @@ service: miliastra_wonderland_bulletin_board
 image: miliastra_wonderland_bulletin_board
 
 # Deployment timeout (in seconds)
-deploy_timeout: 300
+deploy_timeout: 60
 
 # Deploy to these servers.
 # SERVER_IP_ADDRESS is loaded from .env file
