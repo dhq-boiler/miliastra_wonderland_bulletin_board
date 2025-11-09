@@ -512,6 +512,9 @@
   color: #4b5563;
   margin: 1rem 0;
   line-height: 1.625;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .meta {
@@ -554,11 +557,45 @@
   margin: 2rem 0;
 }
 
+.stage-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.stage-content h3::before {
+  content: "■";
+  color: #3b82f6;
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
 .tips {
-  background-color: #fffbeb;
-  border-left: 4px solid #eab308;
+  background: linear-gradient(135deg, #f5e6d3 0%, #e8d5b7 100%);
+  border: 2px solid #b8956a;
+  border-radius: 2px;
   padding: 1rem;
   margin: 0.625rem 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.15),
+    inset 0 0 20px rgba(139, 115, 85, 0.05);
+  position: relative;
+  font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+}
+
+.tips::before {
+  content: "📌";
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  font-size: 1.5rem;
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
 }
 
 /* Form Styles */

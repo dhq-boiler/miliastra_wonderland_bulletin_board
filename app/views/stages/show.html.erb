@@ -16,11 +16,11 @@
 
     <div class="stage-content">
       <h3>説明</h3>
-      <p class="description"><%= simple_format(@stage.description) %></p>
+      <div class="description"><%= simple_format(@stage.description) %></div>
 
       <% if @stage.tips.present? %>
         <h3>攻略のコツ・ヒント</h3>
-        <p class="tips"><%= simple_format(@stage.tips) %></p>
+        <div class="tips"><%= simple_format(@stage.tips) %></div>
       <% end %>
     </div>
 
