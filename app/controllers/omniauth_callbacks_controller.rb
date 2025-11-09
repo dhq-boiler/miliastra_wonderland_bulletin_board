@@ -20,7 +20,13 @@ class OmniauthCallbacksController < ApplicationController
   end
 
   def failure
-    redirect_to login_path, alert: "認証に失敗しました: #{params[:message]}"
+    error_type = params[:error_reason] || params[:error] || "unknown"
+    error_message = params[:error_description] || params[:message] || "不明なエラー"
+
+    Rails.logger.error "OAuth認証失敗: #{error_type} - #{error_message}"
+    Rails.logger.error "リクエストパラメータ: #{params.inspect}"
+
+    redirect_to login_path, alert: "認証に失敗しました: #{error_message}"
   end
 end
 
