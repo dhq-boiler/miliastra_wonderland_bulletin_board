@@ -52,6 +52,9 @@ gem "tailwindcss-rails"
 # Load environment variables from .env file (all environments)
 gem "dotenv-rails"
 
+# Display differences between two Time objects in a human-friendly format
+gem "rails-diff-time", "~> 0.2.0"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
