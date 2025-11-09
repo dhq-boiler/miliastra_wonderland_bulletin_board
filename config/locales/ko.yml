@@ -109,6 +109,7 @@ ko:
       comments_count: "%{count}개의 댓글"
       guid: "GUID"
       difficulty_label: 난이도
+      language_label: 언어
       max_players: 최대 인원
       people: "명"
       start_time: 시작 시간

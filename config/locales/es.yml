@@ -109,6 +109,7 @@ es:
       comments_count: "%{count} comentarios"
       guid: "GUID"
       difficulty_label: Dificultad
+      language_label: Idioma
       max_players: Jugadores Máx.
       people: " jugadores"
       start_time: Hora de Inicio

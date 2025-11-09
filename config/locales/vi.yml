@@ -109,6 +109,7 @@ vi:
       comments_count: "%{count} bình luận"
       guid: "GUID"
       difficulty_label: Độ khó
+      language_label: Ngôn ngữ
       max_players: Người chơi tối đa
       people: " người"
       start_time: Thời gian bắt đầu

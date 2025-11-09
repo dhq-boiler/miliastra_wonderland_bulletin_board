@@ -109,6 +109,7 @@ th:
       comments_count: "%{count} ความคิดเห็น"
       guid: "GUID"
       difficulty_label: ความยาก
+      language_label: ภาษา
       max_players: ผู้เล่นสูงสุด
       people: " คน"
       start_time: เวลาเริ่ม

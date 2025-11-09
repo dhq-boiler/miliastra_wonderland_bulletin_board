@@ -109,6 +109,7 @@ id:
       comments_count: "%{count} komentar"
       guid: "GUID"
       difficulty_label: Kesulitan
+      language_label: Bahasa
       max_players: Pemain Maks.
       people: " pemain"
       start_time: Waktu Mulai

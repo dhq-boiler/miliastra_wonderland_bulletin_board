@@ -109,6 +109,7 @@ ru:
       comments_count: "%{count} комментариев"
       guid: "GUID"
       difficulty_label: Сложность
+      language_label: Язык
       max_players: Макс. игроков
       people: " игроков"
       start_time: Время Начала

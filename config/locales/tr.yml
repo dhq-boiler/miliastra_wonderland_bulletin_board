@@ -109,6 +109,7 @@ tr:
       comments_count: "%{count} yorum"
       guid: "GUID"
       difficulty_label: Zorluk
+      language_label: Dil
       max_players: Maks. Oyuncu
       people: " oyuncu"
       start_time: Başlangıç Zamanı

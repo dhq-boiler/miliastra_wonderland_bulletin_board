@@ -109,6 +109,7 @@ zh-TW:
       comments_count: "%{count}條評論"
       guid: "GUID"
       difficulty_label: 難度
+      language_label: 語言
       max_players: 最大人數
       people: "人"
       start_time: 開始時間
