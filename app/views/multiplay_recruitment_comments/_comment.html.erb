@@ -9,7 +9,7 @@
     <span class="comment-date">
       <%= l(comment.created_at, format: :long) %>
     </span>
-    <% diff_time(comment.created_at, "span", { class: "diff-date" }, auto_update: true) %>
+    <%= diff_time(comment.created_at, "span", { class: "diff-date" }, auto_update: true) %>
   </div>
   <div class="comment-content">
     <%= simple_format(comment.content) %>
