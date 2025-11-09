@@ -70,9 +70,12 @@ COPY --chown=rails:rails --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
 COPY --chown=rails:rails --from=build /rails /rails
 
 # Ensure log directory exists with proper permissions
+# Set directory as writable so volume mounts can work correctly
 RUN mkdir -p /rails/log && \
+    touch /rails/log/production.log && \
     chown -R rails:rails /rails/log && \
-    chmod 755 /rails/log
+    chmod -R 775 /rails/log && \
+    chmod 664 /rails/log/production.log
 
 USER 1000:1000
 
