@@ -9,11 +9,42 @@
     <% end %>
   </div>
 
-  <div class="stages-list">
-    <% if @multiplay_recruitments.any? %>
-      <% @multiplay_recruitments.each do |recruitment| %>
+  <!-- タブナビゲーション -->
+  <div class="mt-8 mb-0">
+    <nav class="flex justify-evenly gap-3 bg-gradient-to-b from-gray-50 to-white p-2 rounded-t-xl border-b-0">
+      <button id="active-tab" class="tab-button group relative px-12 py-4 font-semibold transition-all duration-300 ease-out rounded-lg flex-1 max-w-xs" onclick="switchTab('active')">
+        <span class="flex items-center justify-center gap-3">
+          <svg class="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span class="text-base font-bold">現在募集中</span>
+          <span class="tab-badge inline-flex items-center justify-center min-w-[2rem] h-8 px-2.5 text-sm font-bold rounded-lg transition-all duration-300">
+            <%= @active_recruitments.size %>
+          </span>
+        </span>
+        <div class="tab-indicator absolute bottom-0 left-0 right-0 h-1 rounded-t-full transition-all duration-300"></div>
+      </button>
+      <button id="past-tab" class="tab-button group relative px-12 py-4 font-semibold transition-all duration-300 ease-out rounded-lg flex-1 max-w-xs" onclick="switchTab('past')">
+        <span class="flex items-center justify-center gap-3">
+          <svg class="w-6 h-6 transition-transform group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span class="text-base font-bold">過去の募集</span>
+          <span class="tab-badge inline-flex items-center justify-center min-w-[2rem] h-8 px-2.5 text-sm font-bold rounded-lg transition-all duration-300">
+            <%= @past_recruitments.size %>
+          </span>
+        </span>
+        <div class="tab-indicator absolute bottom-0 left-0 right-0 h-1 rounded-t-full transition-all duration-300"></div>
+      </button>
+    </nav>
+  </div>
+
+  <!-- 現在募集中のセクション -->
+  <div id="active-content" class="stages-list tab-content">
+    <% if @active_recruitments.any? %>
+      <% @active_recruitments.each do |recruitment| %>
         <div class="stage-card">
-          <h2><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h2>
+          <h3><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h3>
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
             <% if recruitment.stage_guid.present? %>
@@ -42,8 +73,180 @@
         </div>
       <% end %>
     <% else %>
-      <p class="no-stages">まだマルチプレイ募集の投稿がありません。</p>
+      <p class="no-stages">現在募集中の投稿はありません。</p>
+    <% end %>
+  </div>
+
+  <!-- 過去の募集のセクション -->
+  <div id="past-content" class="stages-list tab-content hidden">
+    <% if @past_recruitments.any? %>
+      <% @past_recruitments.each do |recruitment| %>
+        <div class="stage-card">
+          <h3><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h3>
+          <div class="stage-info">
+            <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
+            <% if recruitment.stage_guid.present? %>
+              <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
+            <% end %>
+            <% if recruitment.difficulty.present? %>
+              <span class="difficulty">難易度: <%= recruitment.difficulty %></span>
+            <% end %>
+            <span class="max-players">募集人数: <%= recruitment.max_players %>人</span>
+            <% if recruitment.start_time.present? %>
+              <span class="start-time">開始予定: <%= l(recruitment.start_time, format: :short) %></span>
+            <% end %>
+          </div>
+          <p class="description"><%= truncate(recruitment.description, length: 200) %></p>
+          <div class="meta">
+            <span class="author">
+              投稿者: <%= link_to recruitment.user.display_name, user_path(recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
+              <% if recruitment.user.admin? %>
+                <span class="admin-badge">管理者</span>
+              <% end %>
+            </span>
+            <span class="date">投稿日: <%= l(recruitment.created_at, format: :short) %></span>
+            <span class="comments-count">💬 <%= recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count %>件</span>
+            <%= diff_time(recruitment.created_at, "span", { class: "diff-time" }, auto_update: true) %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-stages">過去の募集はありません。</p>
     <% end %>
   </div>
 </div>
+
+<style>
+/* タブコンテンツのアニメーション */
+.tab-content {
+  display: block;
+  animation: slideIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.tab-content.hidden {
+  display: none !important;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* タブボタンのデフォルトスタイル */
+.tab-button {
+  position: relative;
+  background: transparent;
+  color: #6b7280;
+  backdrop-filter: blur(8px);
+}
+
+.tab-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  color: #374151;
+}
+
+/* アクティブなタブ */
+.tab-button.active {
+  background: white;
+  color: #047857;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06),
+              inset 0 -2px 0 0 #10b981;
+}
+
+.tab-button.active.past-active {
+  color: #1f2937;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+              0 2px 4px -1px rgba(0, 0, 0, 0.06),
+              inset 0 -2px 0 0 #6b7280;
+}
+
+/* バッジのスタイル */
+.tab-button .tab-badge {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+
+.tab-button.active .tab-badge {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.tab-button.active.past-active .tab-badge {
+  background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(107, 114, 128, 0.3);
+}
+
+/* インジケーターライン */
+.tab-indicator {
+  background: transparent;
+}
+
+.tab-button.active .tab-indicator {
+  background: linear-gradient(90deg, transparent, #10b981, transparent);
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
+}
+
+.tab-button.active.past-active .tab-indicator {
+  background: linear-gradient(90deg, transparent, #6b7280, transparent);
+  box-shadow: 0 0 8px rgba(107, 114, 128, 0.5);
+}
+
+/* SVGアイコンのカラー */
+.tab-button svg {
+  color: inherit;
+  opacity: 0.7;
+}
+
+.tab-button.active svg {
+  opacity: 1;
+}
+</style>
+
+<script>
+function switchTab(tabName) {
+  // すべてのタブコンテンツを非表示
+  const allContents = document.querySelectorAll('.tab-content');
+  allContents.forEach(content => {
+    content.classList.add('hidden');
+    content.style.display = 'none';
+  });
+
+  // すべてのタブボタンを非アクティブ化
+  const allButtons = document.querySelectorAll('.tab-button');
+  allButtons.forEach(button => {
+    button.classList.remove('active', 'past-active');
+  });
+
+  // 選択されたタブをアクティブ化
+  if (tabName === 'active') {
+    const activeContent = document.getElementById('active-content');
+    const activeTab = document.getElementById('active-tab');
+
+    activeContent.classList.remove('hidden');
+    activeContent.style.display = 'block';
+    activeTab.classList.add('active');
+  } else if (tabName === 'past') {
+    const pastContent = document.getElementById('past-content');
+    const pastTab = document.getElementById('past-tab');
+
+    pastContent.classList.remove('hidden');
+    pastContent.style.display = 'block';
+    pastTab.classList.add('active', 'past-active');
+  }
+}
+
+// 初期化：ページ読み込み時にアクティブタブを設定
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('active-tab').classList.add('active');
+});
+</script>
 

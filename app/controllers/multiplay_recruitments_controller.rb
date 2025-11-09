@@ -5,7 +5,10 @@ class MultiplayRecruitmentsController < ApplicationController
   before_action :authorize_user_or_admin, only: [ :destroy ]
 
   def index
-    @multiplay_recruitments = MultiplayRecruitment.includes(:user).left_joins(:comments).group(:id).select("multiplay_recruitments.*, COUNT(multiplay_recruitment_comments.id) as comments_count").recent
+    base_query = MultiplayRecruitment.includes(:user).left_joins(:comments).group(:id).select("multiplay_recruitments.*, COUNT(multiplay_recruitment_comments.id) as comments_count")
+
+    @active_recruitments = base_query.where(status: [ "募集中", "開催中" ]).recent.to_a
+    @past_recruitments = base_query.where(status: [ "募集終了", "終了" ]).recent.to_a
   end
 
   def show
