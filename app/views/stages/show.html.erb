@@ -2,11 +2,16 @@
   <div class="stage-detail">
     <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold"><%= @stage.title %></h1>
 
-    <div class="stage-info">
-      <span class="stage-guid">GUID: <%= clipboard_copy(@stage.stage_guid) %></span>
-      <% if @stage.difficulty.present? %>
-        <span class="difficulty">難易度: <%= @stage.difficulty %></span>
-      <% end %>
+    <div class="stage-info flex justify-between items-start">
+      <div>
+        <span class="stage-guid">GUID: <%= clipboard_copy(@stage.stage_guid) %></span>
+        <% if @stage.difficulty.present? %>
+          <span class="difficulty">難易度: <%= @stage.difficulty %></span>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to "公式幻境紹介ページ", "https://act.hoyolab.com/ys/ugc_community/mx/?lang=ja-jp&bbs_theme=dark&bbs_theme_device=1#/pages/level-detail/index?id=#{@stage.stage_guid}&region=os_asia", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
+      </div>
     </div>
 
     <div class="stage-content">
