@@ -15,7 +15,7 @@
   </div>
   <% if can_delete_comment?(comment) %>
     <div class="comment-actions">
-      <%= button_to "削除", multiplay_recruitment_comment_path(@multiplay_recruitment, comment),
+      <%= button_to "削除", multiplay_recruitment_comment_path(multiplay_recruitment, comment),
                     method: :delete,
                     data: { turbo_confirm: "このコメントを削除しますか？" },
                     class: "btn-comment-delete" %>

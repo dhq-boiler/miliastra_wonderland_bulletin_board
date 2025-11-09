@@ -59,7 +59,7 @@
       <div class="comments-list">
         <% if @comments.any? %>
           <% @comments.each do |comment| %>
-            <%= render "multiplay_recruitment_comments/comment", comment: comment %>
+            <%= render "multiplay_recruitment_comments/comment", comment: comment, multiplay_recruitment: @multiplay_recruitment %>
           <% end %>
         <% else %>
           <p class="no-comments">まだコメントがありません。</p>

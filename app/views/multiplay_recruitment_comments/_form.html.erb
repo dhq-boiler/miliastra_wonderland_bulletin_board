@@ -1,6 +1,6 @@
 <div class="comment-form-container">
   <h3>コメントを投稿</h3>
-  <%= form_with(model: [ multiplay_recruitment, comment ], local: true) do |form| %>
+  <%= form_with(model: comment, url: multiplay_recruitment_comments_path(multiplay_recruitment), local: true) do |form| %>
     <% if comment.errors.any? %>
       <div class="error-messages">
         <h4><%= pluralize(comment.errors.count, "個のエラー") %>があります:</h4>
