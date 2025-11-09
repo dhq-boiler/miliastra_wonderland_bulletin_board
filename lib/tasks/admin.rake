@@ -1,10 +1,10 @@
 namespace :admin do
-  desc "Create an admin user (for production use)"
+  desc "Create an admin user"
   task create: :environment do
     puts "\n=========================================="
     puts "   管理者ユーザー作成ツール"
     puts "=========================================="
-    puts "このツールは本番環境での管理者作成に使用できます。"
+    puts "このツールは開発環境・本番環境で管理者を作成できます。"
     puts "※ 入力した情報はログに記録されません。"
     puts "※ 管理者は全ての投稿を削除できる権限を持ちます。\n\n"
 
