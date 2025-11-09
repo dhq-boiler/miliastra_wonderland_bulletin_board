@@ -68,15 +68,14 @@ env:
     - RAILS_MASTER_KEY
     - DB_PASSWORD
   clear:
-    # Run the Solid Queue Supervisor inside the web server's Puma process to do jobs.
-    # When you start using multiple servers, you should split out job processing to a dedicated machine.
-    SOLID_QUEUE_IN_PUMA: true
+    # Optional: Enable Solid Queue, Cache, Cable (requires database tables)
+    # ENABLE_SOLID_QUEUE: true
+    # ENABLE_SOLID_CACHE: true
+    # ENABLE_SOLID_CABLE: true
 
-    # Set number of processes dedicated to Solid Queue (default: 1)
-    # JOB_CONCURRENCY: 3
+    # Optional: Run database migrations automatically on container start
+    # AUTO_MIGRATE: true
 
-    # Set number of cores available to the application on each server (default: 1).
-    # WEB_CONCURRENCY: 2
 
     # PostgreSQL database configuration
     DB_HOST: miliastra_wonderland_bulletin_board-db

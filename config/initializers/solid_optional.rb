@@ -34,15 +34,12 @@ Rails.application.configure do
     config.cache_store = :memory_store
   end
 
-  # Solid Cable configuration
+  # Solid Cable configuration is handled separately in cable.yml
+  # Action Cable doesn't support dynamic adapter configuration in initializers
   if ENV['ENABLE_SOLID_CABLE'] == 'true'
-    Rails.logger.info "Solid Cable enabled"
-    config.action_cable.adapter = :solid_cable
-    config.solid_cable.connects_to = { database: { writing: :cable } }
+    Rails.logger.info "Solid Cable enabled (configure in config/cable.yml)"
   else
-    Rails.logger.info "Solid Cable disabled, using default adapter"
-    # Use default adapter (async or redis)
-    config.action_cable.adapter = :async
+    Rails.logger.info "Solid Cable disabled, using default adapter from cable.yml"
   end
 end
 
