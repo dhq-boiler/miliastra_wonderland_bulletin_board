@@ -10,20 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_103302) do
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
+    t.datetime "deleted_at"
     t.integer "multiplay_recruitment_id", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.index ["created_at"], name: "index_multiplay_recruitment_comments_on_created_at"
+    t.index ["deleted_at"], name: "index_multiplay_recruitment_comments_on_deleted_at"
     t.index ["multiplay_recruitment_id"], name: "idx_on_multiplay_recruitment_id_fedf63e60f"
     t.index ["user_id"], name: "index_multiplay_recruitment_comments_on_user_id"
   end
 
   create_table "multiplay_recruitments", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "deleted_at"
     t.text "description", null: false
     t.string "difficulty"
     t.integer "max_players", default: 4
@@ -33,6 +36,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
     t.string "title", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
+    t.index ["deleted_at"], name: "index_multiplay_recruitments_on_deleted_at"
     t.index ["user_id"], name: "index_multiplay_recruitments_on_user_id"
   end
 
@@ -180,6 +184,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
 
   create_table "stages", force: :cascade do |t|
     t.datetime "created_at", null: false
+    t.datetime "deleted_at"
     t.text "description"
     t.string "difficulty"
     t.string "stage_guid"
@@ -188,6 +193,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
     t.string "title"
     t.datetime "updated_at", null: false
     t.integer "user_id"
+    t.index ["deleted_at"], name: "index_stages_on_deleted_at"
     t.index ["stage_guid"], name: "index_stages_on_stage_guid"
     t.index ["user_id"], name: "index_stages_on_user_id"
   end
@@ -195,6 +201,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
+    t.datetime "deleted_at"
     t.string "email"
     t.string "nickname"
     t.string "password_digest"
@@ -204,6 +211,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
     t.string "uid"
     t.datetime "updated_at", null: false
     t.string "username"
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true, where: "email IS NOT NULL AND email != ''"
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

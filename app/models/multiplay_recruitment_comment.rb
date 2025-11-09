@@ -1,4 +1,6 @@
 class MultiplayRecruitmentComment < ApplicationRecord
+  include SoftDeletable
+
   belongs_to :multiplay_recruitment
   belongs_to :user
 

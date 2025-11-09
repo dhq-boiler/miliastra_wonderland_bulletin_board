@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include SoftDeletable
+
   has_secure_password validations: false
 
   has_many :stages, dependent: :destroy

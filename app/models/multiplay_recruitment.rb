@@ -1,4 +1,6 @@
 class MultiplayRecruitment < ApplicationRecord
+  include SoftDeletable
+
   belongs_to :user
   has_many :comments, class_name: "MultiplayRecruitmentComment", dependent: :destroy
 

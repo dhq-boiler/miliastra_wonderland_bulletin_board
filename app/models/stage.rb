@@ -1,4 +1,6 @@
 class Stage < ApplicationRecord
+  include SoftDeletable
+
   belongs_to :user
 
   validates :title, presence: true
