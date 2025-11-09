@@ -11,11 +11,14 @@ chmod 664 /rails/log/production.log
 echo "Log directory setup complete!"
 
 # Optional: Run database migrations if AUTO_MIGRATE is set
-if [ "${AUTO_MIGRATE}" = "true" ] && [ "${1}" = "./bin/rails" ] && [ "${2}" = "server" ]; then
-  echo "Running database migrations (AUTO_MIGRATE=true)..."
-  gosu rails ./bin/rails db:create 2>&1 || true
-  gosu rails ./bin/rails db:migrate 2>&1 || true
-  echo "Database migrations complete!"
+# Check for both thrust and direct rails server commands
+if [ "${AUTO_MIGRATE}" = "true" ]; then
+  if [ "${1}" = "./bin/thrust" ] || [ "${1}" = "./bin/rails" ]; then
+    echo "Running database migrations (AUTO_MIGRATE=true)..."
+    gosu rails ./bin/rails db:create 2>&1 || true
+    gosu rails ./bin/rails db:migrate 2>&1 || true
+    echo "Database migrations complete!"
+  fi
 fi
 
 # Execute the main command as rails user

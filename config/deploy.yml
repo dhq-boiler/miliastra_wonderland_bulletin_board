@@ -76,8 +76,7 @@ env:
     # ENABLE_SOLID_CABLE: true
 
     # Optional: Run database migrations automatically on container start
-    # AUTO_MIGRATE: true
-
+    AUTO_MIGRATE: true
 
     # PostgreSQL database configuration
     DB_HOST: miliastra_wonderland_bulletin_board-db
