@@ -3,7 +3,6 @@
 ゲーム「Miliastra Wonderland」のための掲示板アプリケーションです。
 幻境（ステージ）の攻略情報を共有したり、マルチプレイの同行者を募集できます。
 
-**公式サイト**: https://miliastra-wonderland-bulletin-board.com
 
 ## 機能
 
@@ -18,7 +17,7 @@
   - ハイブリッドログイン（ユーザー名またはメールアドレスでログイン可能）
   - ログアウト
   - セッション管理
-  - パスワードリセット（メールアドレス登録済みユーザー向け、AWS SES使用）
+  - パスワードリセット（メールアドレス登録済みユーザー向け）
 
 - **管理者機能**
   - 管理者専用作成（`admin:create`タスク）
@@ -33,8 +32,7 @@
 ### 必要な環境
 - Ruby 3.4.7
 - Rails 8.1.1
-- SQLite3（開発・テスト環境）
-- PostgreSQL 16（本番環境 - Dockerコンテナで自動セットアップ）
+- SQLite3
 
 ### インストール手順
 
@@ -160,215 +158,16 @@ bin/rails admin:delete
 
 ## サンプルアカウント
 
-`bin/rails db:seed` を実行すると、以下のサンプルアカウントが作成されます：
-
-- ユーザー名: `admin` / パスワード: `password`
-- ユーザー名: `player1` / パスワード: `password`
+`bin/rails db:seed` を実行すると、開発環境用のサンプルアカウントが作成されます。
+詳細は `db/seeds.rb` を参照してください。
 
 ## 技術スタック
 
 - **フレームワーク**: Ruby on Rails 8.1.1
-- **データベース**: 
-  - 開発・テスト: SQLite3
-  - 本番: PostgreSQL 16
+- **データベース**: SQLite3
 - **認証**: bcrypt (has_secure_password)
 - **フロントエンド**: Turbo, Stimulus
 - **スタイル**: カスタムCSS
-- **デプロイ**: Kamal
-- **コンテナ**: Docker
-- **SSL**: Let's Encrypt
-
-## 本番環境デプロイ
-
-### 前提条件
-- サーバー: AWS EC2インスタンス
-- ドメイン: miliastra-wonderland-bulletin-board.com
-- データベース: PostgreSQL 16（Dockerコンテナ）
-
-### 初回デプロイ手順
-
-#### オプション: 簡単セットアップ
-```bash
-# セットアップスクリプトを実行（対話的にガイドします）
-bin/setup-production
-```
-
-または、以下の手順で手動セットアップ:
-
-#### 1. 環境変数の設定
-```bash
-# 本番環境用の.envファイルを作成
-cp .env.production .env
-
-# 必要な値を設定
-# 1. RAILS_MASTER_KEYを取得
-cat config/master.key
-
-# 2. 強力なパスワードを生成
-openssl rand -base64 32  # PostgreSQL用
-openssl rand -base64 32  # DB接続用
-
-# 3. .envファイルを編集して実際の値を設定
-vim .env
-# - SERVER_IP_ADDRESS: サーバーのIPアドレス（例: 54.123.45.67）
-# - RAILS_MASTER_KEY: 上記のmaster.keyの値
-# - DB_HOST: サーバーのIPアドレス
-# - POSTGRES_PASSWORD: 生成したパスワード1
-# - DB_PASSWORD: 生成したパスワード2（または同じ値）
-
-# 重要: SERVER_IP_ADDRESSには実際のサーバーのIPアドレスを設定してください
-# AWS EC2の場合: EC2コンソール → インスタンス → パブリックIPv4アドレス
-```
-
-#### 2. SSHキーの設定
-```bash
-# config/deploy.ymlのSSHキーのパスを実際のファイル名に変更
-# 例: ~/.ssh/YOUR_SSH_KEY.pem → ~/.ssh/my-ec2-key.pem
-
-# キーのパーミッションを設定
-chmod 400 ~/.ssh/my-ec2-key.pem
-```
-
-**注意**: `SERVER_IP_ADDRESS` は `.env` ファイルで設定すると、`config/deploy.yml` が自動的に読み込みます。手動で `config/deploy.yml` を編集する必要はありません。
-
-#### 3. DNS設定
-ドメインのDNS設定でAレコードを追加してください。
-
-#### 4. シークレットファイルの作成
-```bash
-# .kamal/secretsファイルを作成（.envから自動読み込み）
-cp .kamal/secrets.example .kamal/secrets
-chmod 600 .kamal/secrets
-
-# 確認: .kamal/secretsは.envファイルから環境変数を自動的に読み込みます
-```
-
-#### 5. デプロイ実行
-```bash
-# PostgreSQLとアプリケーションをセットアップ
-bin/kamal setup
-
-# データベースの作成とマイグレーション
-bin/kamal app exec 'bin/rails db:create db:migrate'
-
-# サンプルデータの投入（任意）
-bin/kamal app exec 'bin/rails db:seed'
-```
-
-#### 6. AWS SESの設定（パスワードリセット機能用）
-
-パスワードリセット機能を使用する場合、AWS SESを設定する必要があります。
-
-**1. AWS SESでメールアドレスを検証**
-```bash
-# AWS SESコンソール (https://console.aws.amazon.com/ses/)
-# 1. 左メニューから「Verified identities」を選択
-# 2. 「Create identity」をクリック
-# 3. Email addressを選択し、noreply@miliastra-wonderland-bulletin-board.com を入力
-# 4. 検証メールを確認して認証完了
-```
-
-**2. IAMユーザーを作成してSES権限を付与**
-```bash
-# AWS IAMコンソール (https://console.aws.amazon.com/iam/)
-# 1. 新しいIAMユーザーを作成
-# 2. ポリシー「AmazonSESFullAccess」をアタッチ
-# 3. アクセスキーとシークレットキーを取得
-```
-
-**3. 環境変数を設定**
-```bash
-# .envファイルに以下を追加
-AWS_REGION=ap-northeast-1
-AWS_ACCESS_KEY_ID=your_access_key_here
-AWS_SECRET_ACCESS_KEY=your_secret_key_here
-MAILER_FROM_ADDRESS=noreply@miliastra-wonderland-bulletin-board.com
-
-# 環境変数を本番環境に反映
-bin/kamal env push
-bin/kamal app boot
-```
-
-**4. テストメール送信**
-```bash
-# Railsコンソールでテスト
-bin/kamal app exec -i 'bin/rails console'
-> user = User.find_by(email: 'test@example.com')
-> UserMailer.password_reset(user).deliver_now
-```
-
-**注意**: AWS SESは最初サンドボックス環境です。本番運用する場合は、AWS Supportに申請して制限を解除してください。
-
-#### 7. 動作確認
-```bash
-curl https://miliastra-wonderland-bulletin-board.com/up
-```
-
-### 通常のデプロイ（コード更新時）
-```bash
-bin/kamal deploy
-```
-
-### よく使うコマンド
-
-```bash
-# ログ確認
-bin/kamal logs
-bin/kamal logs -f  # リアルタイム監視
-
-# Railsコンソール
-bin/kamal console
-
-# データベースバックアップ
-bin/kamal accessory exec db 'pg_dump -U postgres miliastra_wonderland_bulletin_board_production' > backup.sql
-
-# マイグレーション実行
-bin/kamal app exec 'bin/rails db:migrate'
-
-# 環境変数の更新
-bin/kamal env push
-bin/kamal app boot
-```
-
-## ドメイン
-
-- **本番環境**: https://miliastra-wonderland-bulletin-board.com
-- **開発環境**: http://localhost:3000
-
-## 環境変数管理
-
-このプロジェクトは `dotenv-rails` gemを使用して環境変数を管理しています。
-
-### 開発環境
-```bash
-# .env.exampleをコピー
-cp .env.example .env
-
-# .envファイルを編集（必要に応じて）
-# 開発環境では通常は設定不要です
-```
-
-### 本番環境
-`.env`ファイルに以下の環境変数を設定してください：
-
-- `RAILS_MASTER_KEY`: Rails credentialsの暗号化キー
-- `POSTGRES_PASSWORD`: PostgreSQLデータベースのパスワード
-- `DB_HOST`: データベースサーバーのIPアドレス
-- `DB_PASSWORD`: アプリケーションからのデータベース接続パスワード
-
-`.kamal/secrets`ファイルは`.env`から自動的に環境変数を読み込みます。
-
-## セキュリティ注意事項
-
-⚠️ **重要**: 以下のファイルは絶対にGitにコミットしないでください：
-
-- `.env` - 環境変数（.gitignoreに含まれています）
-- `.kamal/secrets` - デプロイ用シークレット（.gitignoreに含まれています）
-- `config/master.key` - Rails暗号化キー（.gitignoreに含まれています）
-
-✅ **コミットして良いファイル**:
-- `.env.example` - 環境変数のテンプレート
-- `.kamal/secrets.example` - シークレットのテンプレート
 
 ## ライセンス
 
