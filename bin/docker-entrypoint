@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-# Setup log directory
-echo "Setting up log directory..."
-mkdir -p /rails/log
-chmod 755 /rails/log
-echo "Log directory setup complete!"
 
 # Optional: Run database migrations if AUTO_MIGRATE is set
 if [ "${AUTO_MIGRATE}" = "true" ] && [ "${1}" = "./bin/rails" ] && [ "${2}" = "server" ]; then
