@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_08_192640) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_030000) do
   create_table "solid_cable_messages", force: :cascade do |t|
     t.binary "channel", limit: 1024, null: false
     t.integer "channel_hash", limit: 8, null: false
@@ -171,6 +171,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_08_192640) do
     t.boolean "admin", default: false, null: false
     t.datetime "created_at", null: false
     t.string "email"
+    t.string "nickname"
     t.string "password_digest"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
