@@ -285,6 +285,72 @@
   display: inline-block;
 }
 
+/* マルチプレイ募集のステータスバッジ */
+.max-players {
+  background-color: #10b981;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+}
+
+.start-time {
+  background-color: #6366f1;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+}
+
+.status-recruiting {
+  background-color: #10b981;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.status-closed {
+  background-color: #6b7280;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+}
+
+.status-ongoing {
+  background-color: #f59e0b;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.status-finished {
+  background-color: #374151;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+}
+
+.status-default {
+  background-color: #d1d5db;
+  color: #1f2937;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+}
+
 .description {
   color: #4b5563;
   margin: 1rem 0;

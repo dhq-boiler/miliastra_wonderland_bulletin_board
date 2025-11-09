@@ -72,4 +72,43 @@ Stage.find_or_create_by!(stage_guid: 2001, user: user1) do |s|
 end
 
 puts "Stages created: #{Stage.count}"
+
+# サンプルマルチプレイ募集の作成
+puts "Creating sample multiplay recruitments..."
+
+MultiplayRecruitment.find_or_create_by!(title: "初心者歓迎！一緒に幻境を攻略しませんか？", user: user1) do |m|
+  m.description = "初心者の方大歓迎です！\n一緒に楽しくプレイしましょう。\n\n特に条件はありませんが、マナーを守って楽しくプレイできる方を募集しています。"
+  m.stage_guid = "1001"
+  m.difficulty = "簡単"
+  m.max_players = 4
+  m.start_time = Time.current + 2.hours
+  m.status = "募集中"
+end
+
+MultiplayRecruitment.find_or_create_by!(title: "氷の洞窟協力プレイメンバー募集", user: user2) do |m|
+  m.description = "氷の洞窟を協力プレイで攻略したいです。\n\n滑る床の操作に慣れている方歓迎。\n初見の方でも大丈夫です！"
+  m.stage_guid = "1002"
+  m.difficulty = "普通"
+  m.max_players = 3
+  m.start_time = Time.current + 1.day
+  m.status = "募集中"
+end
+
+MultiplayRecruitment.find_or_create_by!(title: "ボス討伐メンバー募集【経験者優遇】", user: user1) do |m|
+  m.description = "炎の守護者を協力プレイで倒したいです。\n\n攻撃パターンを理解している方を優先的に募集しています。\n初見の方は事前に動画などで予習をお願いします。"
+  m.stage_guid = "2001"
+  m.difficulty = "難しい"
+  m.max_players = 4
+  m.start_time = Time.current + 3.hours
+  m.status = "募集中"
+end
+
+MultiplayRecruitment.find_or_create_by!(title: "週末マルチプレイ会のお知らせ", user: user2) do |m|
+  m.description = "毎週末に開催しているマルチプレイ会です。\n\n様々なステージを協力プレイで楽しみます。\n初心者から上級者まで、どなたでも参加OKです！\n\nDiscordでボイスチャットしながらプレイします。"
+  m.max_players = 8
+  m.start_time = Time.current + 2.days
+  m.status = "募集中"
+end
+
+puts "Multiplay Recruitments created: #{MultiplayRecruitment.count}"
 puts "Seed data creation completed!"

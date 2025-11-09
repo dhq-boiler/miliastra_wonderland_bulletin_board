@@ -3,6 +3,7 @@ ja:
     models:
       stage: 幻境
       user: ユーザー
+      multiplay_recruitment: マルチプレイ募集
     attributes:
       stage:
         title: タイトル
@@ -10,6 +11,17 @@ ja:
         stage_guid: ステージGUID
         difficulty: 難易度
         tips: 攻略のコツ
+        created_at: 投稿日時
+        updated_at: 更新日時
+        user: 投稿者
+      multiplay_recruitment:
+        title: タイトル
+        description: 募集内容
+        stage_guid: ステージGUID
+        difficulty: 難易度
+        max_players: 募集人数
+        start_time: 開始予定時刻
+        status: 募集状態
         created_at: 投稿日時
         updated_at: 更新日時
         user: 投稿者

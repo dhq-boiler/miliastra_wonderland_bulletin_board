@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :stages
+  resources :multiplay_recruitments
 
   # 認証関連
   get "signup", to: "users#new", as: "signup"

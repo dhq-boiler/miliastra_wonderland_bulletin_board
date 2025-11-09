@@ -1,0 +1,50 @@
+<div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
+  <div class="stage-detail">
+    <h1 class="text-gray-800 border-b-4 border-purple-500 pb-2.5 mb-8 text-3xl font-bold"><%= @multiplay_recruitment.title %></h1>
+
+    <div class="stage-info">
+      <span class="<%= status_badge_class(@multiplay_recruitment.status) %>"><%= @multiplay_recruitment.status %></span>
+      <% if @multiplay_recruitment.stage_guid.present? %>
+        <span class="stage-guid">GUID: <%= @multiplay_recruitment.stage_guid %></span>
+      <% end %>
+      <% if @multiplay_recruitment.difficulty.present? %>
+        <span class="difficulty">難易度: <%= @multiplay_recruitment.difficulty %></span>
+      <% end %>
+      <span class="max-players">募集人数: <%= @multiplay_recruitment.max_players %>人</span>
+      <% if @multiplay_recruitment.start_time.present? %>
+        <span class="start-time">開始予定: <%= l(@multiplay_recruitment.start_time, format: :long) %></span>
+      <% end %>
+    </div>
+
+    <div class="stage-content">
+      <h3>詳細</h3>
+      <p class="description"><%= simple_format(@multiplay_recruitment.description) %></p>
+    </div>
+
+    <div class="meta">
+      <p>
+        投稿者: <%= @multiplay_recruitment.user.display_name %>
+        <% if @multiplay_recruitment.user.admin? %>
+          <span class="admin-badge">管理者</span>
+        <% end %>
+      </p>
+      <p>投稿日: <%= l(@multiplay_recruitment.created_at, format: :long) %></p>
+      <% if @multiplay_recruitment.updated_at != @multiplay_recruitment.created_at %>
+        <p>更新日: <%= l(@multiplay_recruitment.updated_at, format: :long) %></p>
+      <% end %>
+    </div>
+
+    <div class="actions">
+      <% if logged_in? %>
+        <% if @multiplay_recruitment.user == current_user %>
+          <%= link_to "編集", edit_multiplay_recruitment_path(@multiplay_recruitment), class: "btn btn-secondary" %>
+          <%= button_to "削除", multiplay_recruitment_path(@multiplay_recruitment), method: :delete, data: { turbo_confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% elsif current_user.admin? %>
+          <%= button_to "削除", multiplay_recruitment_path(@multiplay_recruitment), method: :delete, data: { turbo_confirm: "管理者権限で削除します。本当に削除しますか？" }, class: "btn btn-danger" %>
+        <% end %>
+      <% end %>
+      <%= link_to "一覧に戻る", multiplay_recruitments_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
+

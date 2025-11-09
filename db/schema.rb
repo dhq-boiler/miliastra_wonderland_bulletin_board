@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_032223) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_044514) do
+  create_table "multiplay_recruitments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.text "description", null: false
+    t.string "difficulty"
+    t.integer "max_players", default: 4
+    t.string "stage_guid"
+    t.datetime "start_time"
+    t.string "status", default: "募集中"
+    t.string "title", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_multiplay_recruitments_on_user_id"
+  end
+
   create_table "solid_cable_messages", force: :cascade do |t|
     t.binary "channel", limit: 1024, null: false
     t.integer "channel_hash", limit: 8, null: false
@@ -182,6 +196,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_032223) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "multiplay_recruitments", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_failed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

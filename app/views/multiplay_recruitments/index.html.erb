@@ -1,0 +1,48 @@
+<div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
+  <h1 class="text-gray-800 border-b-4 border-purple-500 pb-2.5 mb-8 text-3xl font-bold">マルチプレイ募集掲示板</h1>
+
+  <div class="actions">
+    <% if logged_in? %>
+      <%= link_to "新しいマルチプレイ募集を投稿", new_multiplay_recruitment_path, class: "btn btn-primary" %>
+    <% else %>
+      <p class="login-prompt">投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
+    <% end %>
+  </div>
+
+  <div class="stages-list">
+    <% if @multiplay_recruitments.any? %>
+      <% @multiplay_recruitments.each do |recruitment| %>
+        <div class="stage-card">
+          <h2><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h2>
+          <div class="stage-info">
+            <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
+            <% if recruitment.stage_guid.present? %>
+              <span class="stage-guid">GUID: <%= recruitment.stage_guid %></span>
+            <% end %>
+            <% if recruitment.difficulty.present? %>
+              <span class="difficulty">難易度: <%= recruitment.difficulty %></span>
+            <% end %>
+            <span class="max-players">募集人数: <%= recruitment.max_players %>人</span>
+            <% if recruitment.start_time.present? %>
+              <span class="start-time">開始予定: <%= l(recruitment.start_time, format: :short) %></span>
+            <% end %>
+          </div>
+          <p class="description"><%= truncate(recruitment.description, length: 200) %></p>
+          <div class="meta">
+            <span class="author">
+              投稿者: <%= recruitment.user.display_name %>
+              <% if recruitment.user.admin? %>
+                <span class="admin-badge">管理者</span>
+              <% end %>
+            </span>
+            <span class="date">投稿日: <%= l(recruitment.created_at, format: :short) %></span>
+            <%= diff_time(recruitment.created_at, "span", { class: "diff-time" }, auto_update: true) %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-stages">まだマルチプレイ募集の投稿がありません。</p>
+    <% end %>
+  </div>
+</div>
+
