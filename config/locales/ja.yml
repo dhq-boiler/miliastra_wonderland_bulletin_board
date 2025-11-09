@@ -121,6 +121,8 @@ ja:
       show_title: 幻境紹介詳細
       edit_title: 幻境紹介を編集
       new_title: 新しい幻境紹介
+      show:
+        official_page: 公式幻境紹介ページ
       form:
         title_label: タイトル
         title_placeholder: "例: 第1章 幻想の森を攻略"
