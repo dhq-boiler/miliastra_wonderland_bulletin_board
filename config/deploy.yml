@@ -47,7 +47,7 @@ proxy:
   host: miliastra-wonderland-bulletin-board.com
   healthcheck:
     path: /up
-    interval: 10
+    interval: 5
     timeout: 30
 
 # Where you keep your container images.
