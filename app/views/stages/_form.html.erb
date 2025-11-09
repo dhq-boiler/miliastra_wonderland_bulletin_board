@@ -20,7 +20,7 @@
 
   <div class="form-group">
     <%= form.label :stage_guid do %>
-      ステージGUID<span class="required">*</span>
+      幻境GUID<span class="required">*</span>
     <% end %>
     <%= form.number_field :stage_guid, class: "form-control", placeholder: "例: 1001" %>
   </div>
@@ -35,7 +35,7 @@
 
   <div class="form-group">
     <%= form.label :description do %>
-      ステージの説明<span class="required">*</span>
+      幻境の説明<span class="required">*</span>
     <% end %>
     <%= form.text_area :description, rows: 8, class: "form-control", placeholder: "ステージの特徴、ギミック、敵の配置などを説明してください" %>
   </div>

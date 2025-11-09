@@ -19,7 +19,7 @@ class StagesController < ApplicationController
     @stage = current_user.stages.build(stage_params)
 
     if @stage.save
-      redirect_to @stage, notice: 'ステージ紹介が投稿されました。'
+      redirect_to @stage, notice: '幻境紹介が投稿されました。'
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class StagesController < ApplicationController
 
   def destroy
     @stage.destroy
-    redirect_to stages_url, notice: 'ステージ紹介が削除されました。'
+    redirect_to stages_url, notice: '幻境紹介が削除されました。'
   end
 
   private

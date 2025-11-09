@@ -1,10 +1,10 @@
 <div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
-  <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold">幻境（ステージ）紹介掲示板</h1>
+  <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold">幻境 紹介掲示板</h1>
 
 
   <div class="actions">
     <% if logged_in? %>
-      <%= link_to "新しいステージ紹介を投稿", new_stage_path, class: "btn btn-primary" %>
+      <%= link_to "新しい幻境紹介を投稿", new_stage_path, class: "btn btn-primary" %>
     <% else %>
       <p class="login-prompt">投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
     <% end %>
@@ -34,7 +34,7 @@
         </div>
       <% end %>
     <% else %>
-      <p class="no-stages">まだステージ紹介の投稿がありません。</p>
+      <p class="no-stages">まだ幻境紹介の投稿がありません。</p>
     <% end %>
   </div>
 </div>

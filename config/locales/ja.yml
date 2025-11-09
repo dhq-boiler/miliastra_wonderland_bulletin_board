@@ -1,13 +1,12 @@
 ja:
   activerecord:
     models:
-      stage: ステージ
+      stage: 幻境
       user: ユーザー
     attributes:
       stage:
         title: タイトル
         description: 説明
-        stage_number: ステージ番号
         stage_guid: ステージGUID
         difficulty: 難易度
         tips: 攻略のコツ
