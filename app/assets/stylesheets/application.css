@@ -583,6 +583,16 @@
   display: inline-block;
 }
 
+.language {
+  background-color: #06b6d4;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+  font-weight: 500;
+}
+
 /* マルチプレイ募集のステータスバッジ */
 .max-players {
   background-color: #10b981;
