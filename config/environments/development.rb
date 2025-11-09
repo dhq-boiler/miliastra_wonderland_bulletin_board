@@ -25,10 +25,8 @@ Rails.application.configure do
     config.action_controller.perform_caching = false
   end
 
-  config.cache_store = :solid_cache_store
-  config.solid_cable.connects_to = { database: { writing: :primary } }
-  config.solid_cache.connects_to = { database: { writing: :primary } }
-  config.solid_queue.connects_to = { database: { writing: :primary } }
+  # Solid Queue, Cache, Cable are configured in config/initializers/solid_optional.rb
+  # Set ENABLE_SOLID_* environment variables to enable them in development
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
