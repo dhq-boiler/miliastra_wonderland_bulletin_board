@@ -17,6 +17,13 @@
       <div class="profile-section">
         <h2>基本情報</h2>
 
+        <% if @user.oauth_user? %>
+          <div class="oauth-info-box">
+            <p><strong>📱 Google アカウントでログイン中</strong></p>
+            <p class="form-text text-muted">このアカウントは Google 認証を使用しています。メールアドレスとパスワードは Google で管理されます。</p>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= form.label :username, "ユーザー名" %>
           <%= form.text_field :username, class: "form-control", disabled: true %>
@@ -29,31 +36,41 @@
           <small class="form-text text-muted">未入力の場合はユーザー名が表示されます</small>
         </div>
 
-        <div class="form-group">
-          <%= form.label :email, "メールアドレス（任意）" %>
-          <%= form.email_field :email, class: "form-control", placeholder: "email@example.com" %>
-        </div>
+        <% unless @user.oauth_user? %>
+          <div class="form-group">
+            <%= form.label :email, "メールアドレス（任意）" %>
+            <%= form.email_field :email, class: "form-control", placeholder: "email@example.com" %>
+          </div>
+        <% else %>
+          <div class="form-group">
+            <%= form.label :email, "メールアドレス" %>
+            <%= form.email_field :email, class: "form-control", disabled: true %>
+            <small class="form-text text-muted">Google アカウントのメールアドレスは変更できません</small>
+          </div>
+        <% end %>
       </div>
 
-      <div class="profile-section">
-        <h2>パスワード変更</h2>
-        <p class="form-text text-muted">パスワードを変更しない場合は、以下の項目を空欄のままにしてください。</p>
+      <% unless @user.oauth_user? %>
+        <div class="profile-section">
+          <h2>パスワード変更</h2>
+          <p class="form-text text-muted">パスワードを変更しない場合は、以下の項目を空欄のままにしてください。</p>
 
-        <div class="form-group">
-          <%= form.label :current_password, "現在のパスワード" %>
-          <%= form.password_field :current_password, class: "form-control", placeholder: "パスワードを変更する場合は入力" %>
-        </div>
+          <div class="form-group">
+            <%= form.label :current_password, "現在のパスワード" %>
+            <%= form.password_field :current_password, class: "form-control", placeholder: "パスワードを変更する場合は入力" %>
+          </div>
 
-        <div class="form-group">
-          <%= form.label :password, "新しいパスワード" %>
-          <%= form.password_field :password, class: "form-control", placeholder: "6文字以上で入力" %>
-        </div>
+          <div class="form-group">
+            <%= form.label :password, "新しいパスワード" %>
+            <%= form.password_field :password, class: "form-control", placeholder: "6文字以上で入力" %>
+          </div>
 
-        <div class="form-group">
-          <%= form.label :password_confirmation, "新しいパスワード（確認）" %>
-          <%= form.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再入力" %>
+          <div class="form-group">
+            <%= form.label :password_confirmation, "新しいパスワード（確認）" %>
+            <%= form.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再入力" %>
+          </div>
         </div>
-      </div>
+      <% end %>
 
       <div class="form-actions">
         <%= form.submit "更新", class: "btn btn-primary" %>
@@ -64,6 +81,22 @@
 </div>
 
 <style>
+  .oauth-info-box {
+    background-color: #e8f4fd;
+    border: 1px solid #b3d9f2;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .oauth-info-box p {
+    margin: 0.5rem 0;
+  }
+
+  .oauth-info-box strong {
+    color: #1a73e8;
+  }
+
   .profile-section {
     margin-bottom: 2rem;
     padding-bottom: 2rem;

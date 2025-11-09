@@ -23,35 +23,57 @@ class UsersController < ApplicationController
   def update
     @user = current_user
 
-    # パスワード変更の処理
-    if params[:user][:current_password].present?
-      # 現在のパスワードを確認
-      unless @user.authenticate(params[:user][:current_password])
-        @user.errors.add(:current_password, "が正しくありません")
+    # OAuthユーザーの場合、メールアドレスとパスワードの変更を禁止
+    if @user.oauth_user?
+      if params[:user][:email].present? && params[:user][:email] != @user.email
+        @user.errors.add(:base, "Google アカウントのメールアドレスは変更できません")
         render :edit, status: :unprocessable_entity
         return
       end
 
-      # 新しいパスワードが入力されている場合
-      if params[:user][:password].present?
-        @user.password = params[:user][:password]
-        @user.password_confirmation = params[:user][:password_confirmation]
+      if params[:user][:password].present? || params[:user][:current_password].present?
+        @user.errors.add(:base, "Google アカウントのパスワードは変更できません")
+        render :edit, status: :unprocessable_entity
+        return
+      end
+
+      # OAuthユーザーはニックネームのみ更新可能
+      if @user.update(oauth_profile_params)
+        redirect_to profile_path, notice: "プロファイルを更新しました。"
       else
-        @user.errors.add(:password, "を入力してください")
         render :edit, status: :unprocessable_entity
-        return
       end
     else
-      # パスワード変更しない場合は、パスワードのバリデーションをスキップ
-      params[:user].delete(:password)
-      params[:user].delete(:password_confirmation)
-      params[:user].delete(:current_password)
-    end
+      # 通常ユーザーのパスワード変更処理
+      if params[:user][:current_password].present?
+        # 現在のパスワードを確認
+        unless @user.authenticate(params[:user][:current_password])
+          @user.errors.add(:current_password, "が正しくありません")
+          render :edit, status: :unprocessable_entity
+          return
+        end
 
-    if @user.update(profile_params)
-      redirect_to profile_path, notice: "プロファイルを更新しました。"
-    else
-      render :edit, status: :unprocessable_entity
+        # 新しいパスワードが入力されている場合
+        if params[:user][:password].present?
+          @user.password = params[:user][:password]
+          @user.password_confirmation = params[:user][:password_confirmation]
+        else
+          @user.errors.add(:password, "を入力してください")
+          render :edit, status: :unprocessable_entity
+          return
+        end
+      else
+        # パスワード変更しない場合は、パスワードのバリデーションをスキップ
+        params[:user].delete(:password)
+        params[:user].delete(:password_confirmation)
+        params[:user].delete(:current_password)
+      end
+
+      if @user.update(profile_params)
+        redirect_to profile_path, notice: "プロファイルを更新しました。"
+      else
+        render :edit, status: :unprocessable_entity
+      end
     end
   end
 
@@ -62,5 +84,9 @@ class UsersController < ApplicationController
 
     def profile_params
       params.require(:user).permit(:nickname, :email, :password, :password_confirmation)
+    end
+
+    def oauth_profile_params
+      params.require(:user).permit(:nickname)
     end
 end
