@@ -1,0 +1,48 @@
+# frozen_string_literal: true
+
+# Optional Solid libraries configuration
+# Set environment variables to enable/disable Solid Queue, Cache, and Cable
+#
+# ENABLE_SOLID_QUEUE=true  - Enable Solid Queue (requires solid_queue tables)
+# ENABLE_SOLID_CACHE=true  - Enable Solid Cache (requires solid_cache tables)
+# ENABLE_SOLID_CABLE=true  - Enable Solid Cable (requires solid_cable tables)
+#
+# If not enabled, Rails will use default adapters:
+# - Active Job: :async (in-memory)
+# - Cache: :memory_store
+# - Action Cable: default (redis or async)
+
+Rails.application.configure do
+  # Solid Queue configuration
+  if ENV['ENABLE_SOLID_QUEUE'] == 'true'
+    Rails.logger.info "Solid Queue enabled"
+    config.active_job.queue_adapter = :solid_queue
+    config.solid_queue.connects_to = { database: { writing: :queue } }
+  else
+    Rails.logger.info "Solid Queue disabled, using :async adapter"
+    # Use async adapter (in-memory, non-persistent)
+    config.active_job.queue_adapter = :async
+  end
+
+  # Solid Cache configuration
+  if ENV['ENABLE_SOLID_CACHE'] == 'true'
+    Rails.logger.info "Solid Cache enabled"
+    config.cache_store = :solid_cache_store
+  else
+    Rails.logger.info "Solid Cache disabled, using :memory_store"
+    # Use memory store (in-memory, non-persistent)
+    config.cache_store = :memory_store
+  end
+
+  # Solid Cable configuration
+  if ENV['ENABLE_SOLID_CABLE'] == 'true'
+    Rails.logger.info "Solid Cable enabled"
+    config.action_cable.adapter = :solid_cable
+    config.solid_cable.connects_to = { database: { writing: :cable } }
+  else
+    Rails.logger.info "Solid Cable disabled, using default adapter"
+    # Use default adapter (async or redis)
+    config.action_cable.adapter = :async
+  end
+end
+

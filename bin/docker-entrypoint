@@ -1,11 +1,11 @@
 #!/bin/bash -e
-# If running the rails server then create or migrate existing database
-if [ "${1}" = "./bin/rails" ] && [ "${2}" = "server" ]; then
-  echo "Running database migrations..."
-  # Create database if it doesn't exist
+
+# Optional: Run database migrations if AUTO_MIGRATE is set
+if [ "${AUTO_MIGRATE}" = "true" ] && [ "${1}" = "./bin/rails" ] && [ "${2}" = "server" ]; then
+  echo "Running database migrations (AUTO_MIGRATE=true)..."
   ./bin/rails db:create 2>&1 || true
-  # Run migrations (includes all Solid Queue/Cache/Cable tables)
-  ./bin/rails db:migrate
-  echo "Database setup complete!"
+  ./bin/rails db:migrate 2>&1 || true
+  echo "Database migrations complete!"
 fi
+
 exec "${@}"

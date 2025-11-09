@@ -46,10 +46,8 @@ Rails.application.configure do
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
-  # Solid Cache の設定を修正
-  config.cache_store = :solid_cache_store
-  # Solid Queue の設定を修正
-  config.active_job.queue_adapter = :solid_queue
+  # Solid Queue, Cache, Cable are configured in config/initializers/solid_optional.rb
+  # Set ENABLE_SOLID_QUEUE=true, ENABLE_SOLID_CACHE=true, ENABLE_SOLID_CABLE=true to enable them
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
