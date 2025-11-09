@@ -17,7 +17,7 @@
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
             <% if recruitment.stage_guid.present? %>
-              <span class="stage-guid">GUID: <%= recruitment.stage_guid %></span>
+              <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>
             <% if recruitment.difficulty.present? %>
               <span class="difficulty">難易度: <%= recruitment.difficulty %></span>

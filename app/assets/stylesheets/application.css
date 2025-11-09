@@ -274,7 +274,17 @@
   padding: 0.25rem 0.625rem;
   border-radius: 0.25rem;
   margin-right: 0.625rem;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.clipboard-container {
+    display: inline-flex;
+    align-items: center;
+}
+
+.clipboard-content {
 }
 
 .clipboard-button {

@@ -3,7 +3,7 @@
     <h1 class="text-gray-800 border-b-4 border-blue-500 pb-2.5 mb-8 text-3xl font-bold"><%= @stage.title %></h1>
 
     <div class="stage-info">
-      <span class="stage-guid">GUID: <%= @stage.stage_guid %></span>
+      <span class="stage-guid">GUID: <%= clipboard_copy(@stage.stage_guid) %></span>
       <% if @stage.difficulty.present? %>
         <span class="difficulty">難易度: <%= @stage.difficulty %></span>
       <% end %>

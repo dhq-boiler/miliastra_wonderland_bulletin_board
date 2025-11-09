@@ -5,7 +5,7 @@
     <div class="stage-info">
       <span class="<%= status_badge_class(@multiplay_recruitment.status) %>"><%= @multiplay_recruitment.status %></span>
       <% if @multiplay_recruitment.stage_guid.present? %>
-        <span class="stage-guid">GUID: <%= @multiplay_recruitment.stage_guid %></span>
+        <span class="stage-guid">GUID: <%= clipboard_copy(@multiplay_recruitment.stage_guid) %></span>
       <% end %>
       <% if @multiplay_recruitment.difficulty.present? %>
         <span class="difficulty">難易度: <%= @multiplay_recruitment.difficulty %></span>
