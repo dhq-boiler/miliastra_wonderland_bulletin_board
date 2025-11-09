@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
 
+  # ユーザープロファイル
+  get 'profile', to: 'users#edit', as: 'profile'
+  patch 'profile', to: 'users#update'
+  put 'profile', to: 'users#update'
+
   # パスワードリセット
   resources :password_resets, only: [:new, :create, :edit, :update]
 

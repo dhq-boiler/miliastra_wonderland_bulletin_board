@@ -1,11 +1,23 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# password_digest is generated from 'password' for all users
 
 one:
-  username: MyString
-  email: MyString
-  password_digest: MyString
+  username: testuser1
+  nickname: Test User 1
+  email: testuser1@example.com
+  password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
+  admin: false
 
 two:
-  username: MyString
-  email: MyString
-  password_digest: MyString
+  username: testuser2
+  nickname: Test User 2
+  email: testuser2@example.com
+  password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
+  admin: false
+
+admin:
+  username: admin
+  nickname: Admin User
+  email: admin@example.com
+  password_digest: <%= BCrypt::Password.create('password', cost: 4) %>
+  admin: true

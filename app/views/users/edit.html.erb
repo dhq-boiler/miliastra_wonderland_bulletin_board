@@ -1,0 +1,102 @@
+<div class="min-h-screen">
+  <div class="auth-form">
+    <h1>プロファイル編集</h1>
+
+    <%= form_with(model: @user, url: profile_path, method: :patch, data: { turbo: false }) do |form| %>
+      <% if @user.errors.any? %>
+        <div class="error-messages">
+          <h3><%= pluralize(@user.errors.count, "個のエラー") %>があります:</h3>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="profile-section">
+        <h2>基本情報</h2>
+
+        <div class="form-group">
+          <%= form.label :username, "ユーザー名" %>
+          <%= form.text_field :username, class: "form-control", disabled: true %>
+          <small class="form-text text-muted">ユーザー名は変更できません</small>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :nickname, "ニックネーム（任意）" %>
+          <%= form.text_field :nickname, class: "form-control", placeholder: "表示名として使用されます" %>
+          <small class="form-text text-muted">未入力の場合はユーザー名が表示されます</small>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :email, "メールアドレス（任意）" %>
+          <%= form.email_field :email, class: "form-control", placeholder: "email@example.com" %>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <h2>パスワード変更</h2>
+        <p class="form-text text-muted">パスワードを変更しない場合は、以下の項目を空欄のままにしてください。</p>
+
+        <div class="form-group">
+          <%= form.label :current_password, "現在のパスワード" %>
+          <%= form.password_field :current_password, class: "form-control", placeholder: "パスワードを変更する場合は入力" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password, "新しいパスワード" %>
+          <%= form.password_field :password, class: "form-control", placeholder: "6文字以上で入力" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password_confirmation, "新しいパスワード（確認）" %>
+          <%= form.password_field :password_confirmation, class: "form-control", placeholder: "パスワードを再入力" %>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <%= form.submit "更新", class: "btn btn-primary" %>
+        <%= link_to "キャンセル", stages_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<style>
+  .profile-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .profile-section:last-of-type {
+    border-bottom: none;
+  }
+
+  .profile-section h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .btn-secondary {
+    background-color: #6c757d;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s;
+    margin-left: 0.5rem;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5a6268;
+  }
+</style>
+

@@ -10,6 +10,7 @@
             <span class="admin-badge">管理者</span>
           <% end %>
         </span>
+        <%= link_to "プロファイル", profile_path, class: "btn btn-secondary" %>
         <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-secondary" %>
       <% else %>
         <%= link_to "ログイン", login_path, class: "btn btn-secondary" %>

@@ -16,9 +16,11 @@ ja:
         user: 投稿者
       user:
         username: ユーザー名
+        nickname: ニックネーム
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
+        current_password: 現在のパスワード
     errors:
       messages:
         blank: を入力してください
