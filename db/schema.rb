@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_045851) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_052303) do
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -198,11 +198,14 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_045851) do
     t.string "email"
     t.string "nickname"
     t.string "password_digest"
+    t.string "provider"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
+    t.string "uid"
     t.datetime "updated_at", null: false
     t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true, where: "email IS NOT NULL AND email != ''"
+    t.index ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end

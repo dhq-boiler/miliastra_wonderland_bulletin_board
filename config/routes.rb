@@ -11,6 +11,11 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy", as: "logout"
 
+  # OmniAuth
+  get "/auth/:provider/callback", to: "omniauth_callbacks#google_oauth2"
+  post "/auth/:provider/callback", to: "omniauth_callbacks#google_oauth2"
+  get "/auth/failure", to: "omniauth_callbacks#failure"
+
   # ユーザープロファイル
   get "profile", to: "users#edit", as: "profile"
   patch "profile", to: "users#update"

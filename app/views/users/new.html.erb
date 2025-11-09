@@ -51,6 +51,14 @@
       </div>
     <% end %>
 
+    <div class="oauth-divider">
+      <span>または</span>
+    </div>
+
+    <div class="oauth-buttons">
+      <%= button_to "Googleで登録", "/auth/google_oauth2", method: :post, class: "btn btn-google", data: { turbo: false } %>
+    </div>
+
     <div class="auth-links">
       <p>すでにアカウントをお持ちですか？ <%= link_to "ログイン", login_path %></p>
     </div>
