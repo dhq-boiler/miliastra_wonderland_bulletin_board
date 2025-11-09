@@ -7,9 +7,6 @@
         <span class="admin-badge">管理者</span>
       <% end %>
     </h1>
-    <p class="text-gray-600">
-      <span class="text-sm">ユーザー名: @<%= @user.username %></span>
-    </p>
     <div class="mt-4 text-gray-700">
       <p class="text-lg">投稿した幻境数: <strong><%= @stages.count %></strong></p>
       <p class="text-lg">投稿したマルチプレイ募集数: <strong><%= @multiplay_recruitments.count %></strong></p>
@@ -82,12 +79,6 @@
     <% else %>
       <p class="no-stages text-gray-600">まだマルチプレイ募集の投稿がありません。</p>
     <% end %>
-  </div>
-
-  <!-- 戻るリンク -->
-  <div class="mt-8">
-    <%= link_to "← 幻境紹介掲示板に戻る", stages_path, class: "text-blue-600 hover:text-blue-800 underline mr-4" %>
-    <%= link_to "← マルチプレイ募集掲示板に戻る", multiplay_recruitments_path, class: "text-purple-600 hover:text-purple-800 underline" %>
   </div>
 </div>
 
