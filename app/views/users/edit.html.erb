@@ -1,6 +1,6 @@
 <div class="min-h-screen">
   <div class="auth-form">
-    <h1>プロファイル編集</h1>
+    <h1>アカウント設定</h1>
 
     <%= form_with(model: @user, url: profile_path, method: :patch, data: { turbo: false }) do |form| %>
       <% if @user.errors.any? %>
