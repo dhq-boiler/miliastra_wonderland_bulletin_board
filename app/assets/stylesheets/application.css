@@ -243,15 +243,22 @@
 
 .stage-card h2 {
   margin-top: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
 }
 
 .stage-card h2 a {
-  color: #1f2937;
+  color: #1e40af;
   text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
 }
 
 .stage-card h2 a:hover {
   color: #3b82f6;
+  transform: translateX(4px);
+  text-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
 }
 
 .stage-info {
