@@ -1,0 +1,32 @@
+<header class="global-header">
+  <div class="header-container">
+    <div class="header-logo">
+      <%= link_to root_path, class: "logo-link" do %>
+        <span class="logo-text">Miliastra Wonderland 掲示板</span>
+      <% end %>
+    </div>
+
+    <nav class="header-nav">
+      <% if logged_in? %>
+        <div class="user-info">
+          <span class="welcome-text">
+            ようこそ、<span class="user-name"><%= current_user.display_name %></span>さん！
+            <% if current_user.admin? %>
+              <span class="admin-badge">管理者</span>
+            <% end %>
+          </span>
+        </div>
+        <div class="header-actions">
+          <%= link_to "プロファイル", profile_path, class: "btn btn-nav" %>
+          <%= button_to "ログアウト", logout_path, method: :delete, class: "btn btn-nav btn-logout" %>
+        </div>
+      <% else %>
+        <div class="header-actions">
+          <%= link_to "ログイン", login_path, class: "btn btn-nav" %>
+          <%= link_to "新規登録", signup_path, class: "btn btn-nav btn-primary" %>
+        </div>
+      <% end %>
+    </nav>
+  </div>
+</header>
+

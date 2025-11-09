@@ -3,6 +3,102 @@
  * Most styling should be done with Tailwind utility classes directly in the HTML.
  */
 
+/* Global Header */
+.global-header {
+  background-color: #ffffff;
+  border-bottom: 2px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.header-logo .logo-link {
+  text-decoration: none;
+  color: #1f2937;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #3b82f6;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.welcome-text {
+  color: #4b5563;
+  font-size: 0.875rem;
+}
+
+.user-name {
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-nav {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.btn-logout {
+  background-color: #6b7280;
+}
+
+.btn-logout:hover {
+  background-color: #4b5563;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-nav {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .user-info {
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-actions {
+    justify-content: center;
+  }
+}
+
 /* Buttons */
 .btn {
   display: inline-block;
@@ -281,7 +377,10 @@ textarea.form-control {
   color: #065f46;
   padding: 0.75rem 1.25rem;
   border-radius: 0.25rem;
-  margin-bottom: 1.25rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+  text-align: center;
+  font-weight: 500;
 }
 
 .alert {
@@ -290,7 +389,10 @@ textarea.form-control {
   color: #991b1b;
   padding: 0.75rem 1.25rem;
   border-radius: 0.25rem;
-  margin-bottom: 1.25rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+  text-align: center;
+  font-weight: 500;
 }
 
 /* Authentication Forms */
