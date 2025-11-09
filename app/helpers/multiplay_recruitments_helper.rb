@@ -14,4 +14,3 @@ module MultiplayRecruitmentsHelper
     end
   end
 end
-

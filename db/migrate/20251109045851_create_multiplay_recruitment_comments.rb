@@ -10,4 +10,3 @@ class CreateMultiplayRecruitmentComments < ActiveRecord::Migration[8.1]
     add_index :multiplay_recruitment_comments, :created_at
   end
 end
-

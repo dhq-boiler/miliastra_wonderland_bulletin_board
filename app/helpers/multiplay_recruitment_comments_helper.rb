@@ -7,4 +7,3 @@ module MultiplayRecruitmentCommentsHelper
     logged_in? && (current_user == comment.user || current_user.admin?)
   end
 end
-

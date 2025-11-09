@@ -11,6 +11,5 @@ class MultiplayRecruitment < ApplicationRecord
   # 最新の投稿順に並べる
   scope :recent, -> { order(created_at: :desc) }
   scope :recruiting, -> { where(status: "募集中") }
-  scope :active, -> { where(status: ["募集中", "開催中"]) }
+  scope :active, -> { where(status: [ "募集中", "開催中" ]) }
 end
-

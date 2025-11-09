@@ -29,4 +29,3 @@ class OmniauthCallbacksController < ApplicationController
     redirect_to login_path, alert: "認証に失敗しました: #{error_message}"
   end
 end
-

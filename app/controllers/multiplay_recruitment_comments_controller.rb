@@ -39,4 +39,3 @@ class MultiplayRecruitmentCommentsController < ApplicationController
       params.require(:multiplay_recruitment_comment).permit(:content)
     end
 end
-
