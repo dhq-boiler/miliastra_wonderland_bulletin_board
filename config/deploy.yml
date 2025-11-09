@@ -67,6 +67,8 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - DB_PASSWORD
+    - GOOGLE_CLIENT_ID
+    - GOOGLE_CLIENT_SECRET
   clear:
     # Optional: Enable Solid Queue, Cache, Cable (requires database tables)
     # ENABLE_SOLID_QUEUE: true
