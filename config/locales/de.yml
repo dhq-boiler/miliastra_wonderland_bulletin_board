@@ -140,6 +140,7 @@ de:
         difficulty_normal: Normal
         difficulty_hard: Schwer
         difficulty_very_hard: Sehr schwer
+        locale_label: Sprache
         description_label: Beschreibung
         description_placeholder: Beschreiben Sie Stufenmerkmale, Mechaniken, Gegnerpositionen usw.
         tips_label: Tipps & Hinweise

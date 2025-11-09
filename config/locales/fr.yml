@@ -140,6 +140,7 @@ fr:
         difficulty_normal: Normal
         difficulty_hard: Difficile
         difficulty_very_hard: Très Difficile
+        locale_label: Langue
         description_label: Description
         description_placeholder: Décrivez les caractéristiques de l'étape, les mécaniques, la position des ennemis, etc.
         tips_label: Conseils et Astuces

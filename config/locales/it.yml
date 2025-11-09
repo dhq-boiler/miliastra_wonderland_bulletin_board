@@ -140,6 +140,7 @@ it:
         difficulty_normal: Normale
         difficulty_hard: Difficile
         difficulty_very_hard: Molto Difficile
+        locale_label: Lingua
         description_label: Descrizione
         description_placeholder: Descrivi le caratteristiche della fase, meccaniche, posizione nemici, ecc.
         tips_label: Suggerimenti & Consigli

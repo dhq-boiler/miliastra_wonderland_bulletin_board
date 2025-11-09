@@ -140,6 +140,7 @@ vi:
         difficulty_normal: Bình thường
         difficulty_hard: Khó
         difficulty_very_hard: Rất khó
+        locale_label: Ngôn ngữ
         description_label: Mô tả
         description_placeholder: Mô tả đặc điểm giai đoạn, cơ chế, vị trí kẻ địch, v.v.
         tips_label: Mẹo & Gợi ý

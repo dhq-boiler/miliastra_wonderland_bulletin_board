@@ -140,6 +140,7 @@ id:
         difficulty_normal: Normal
         difficulty_hard: Sulit
         difficulty_very_hard: Sangat Sulit
+        locale_label: Bahasa
         description_label: Deskripsi
         description_placeholder: Jelaskan fitur tahap, mekanik, posisi musuh, dll.
         tips_label: Tips & Petunjuk

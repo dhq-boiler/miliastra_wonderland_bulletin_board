@@ -140,6 +140,7 @@ ko:
         difficulty_normal: 보통
         difficulty_hard: 어려움
         difficulty_very_hard: 매우 어려움
+        locale_label: 언어
         description_label: 설명
         description_placeholder: 스테이지 특징, 기믹, 적 배치 등을 설명하세요
         tips_label: 팁 & 힌트

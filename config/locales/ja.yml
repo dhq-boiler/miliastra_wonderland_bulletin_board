@@ -140,6 +140,7 @@ ja:
         difficulty_normal: 普通
         difficulty_hard: 難しい
         difficulty_very_hard: とても難しい
+        locale_label: 言語
         description_label: 幻境の説明
         description_placeholder: ステージの特徴、ギミック、敵の配置などを説明してください
         tips_label: 攻略のコツ・ヒント

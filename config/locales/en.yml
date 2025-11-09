@@ -169,6 +169,7 @@ en:
         difficulty_normal: Normal
         difficulty_hard: Hard
         difficulty_very_hard: Very Hard
+        locale_label: Language
         description_label: Description
         description_placeholder: Describe stage features, gimmicks, enemy placement, etc.
         tips_label: Tips & Hints

@@ -140,6 +140,7 @@ zh-CN:
         difficulty_normal: 普通
         difficulty_hard: 困难
         difficulty_very_hard: 非常困难
+        locale_label: 语言
         description_label: 描述
         description_placeholder: 描述关卡特征、机关、敌人位置等
         tips_label: 提示与技巧

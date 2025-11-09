@@ -140,6 +140,7 @@ th:
         difficulty_normal: ปานกลาง
         difficulty_hard: ยาก
         difficulty_very_hard: ยากมาก
+        locale_label: ภาษา
         description_label: คำอธิบาย
         description_placeholder: อธิบายลักษณะของด่าน กลไก ตำแหน่งศัตรู ฯลฯ
         tips_label: เคล็ดลับและคำแนะนำ

@@ -140,6 +140,7 @@ ru:
         difficulty_normal: Нормально
         difficulty_hard: Сложно
         difficulty_very_hard: Очень Сложно
+        locale_label: Язык
         description_label: Описание
         description_placeholder: Опишите особенности этапа, механики, расположение врагов и т.д.
         tips_label: Советы и Подсказки

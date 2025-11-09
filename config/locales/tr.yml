@@ -140,6 +140,7 @@ tr:
         difficulty_normal: Normal
         difficulty_hard: Zor
         difficulty_very_hard: Çok Zor
+        locale_label: Dil
         description_label: Açıklama
         description_placeholder: Aşama özelliklerini, mekaniklerini, düşman konumlarını vb. açıklayın
         tips_label: İpuçları & Öneriler
