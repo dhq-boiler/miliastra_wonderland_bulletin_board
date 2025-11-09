@@ -26,7 +26,7 @@
 
     <div class="meta">
       <p>
-        投稿者: <%= @stage.user.display_name %>
+        投稿者: <%= link_to @stage.user.display_name, user_path(@stage.user), class: "text-blue-600 hover:text-blue-800 underline" %>
         <% if @stage.user.admin? %>
           <span class="admin-badge">管理者</span>
         <% end %>

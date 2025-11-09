@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   patch "profile", to: "users#update"
   put "profile", to: "users#update"
 
+  # ユーザーの公開プロフィール（クリエイターページ）
+  resources :users, only: [ :show ]
+
   # パスワードリセット
   resources :password_resets, only: [ :new, :create, :edit, :update ]
 

@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
   before_action :require_login, only: [ :edit, :update ]
 
+  def show
+    @user = User.find(params[:id])
+    @stages = @user.stages.recent
+    @multiplay_recruitments = @user.multiplay_recruitments.order(created_at: :desc)
+  end
+
   def new
     @user = User.new
   end

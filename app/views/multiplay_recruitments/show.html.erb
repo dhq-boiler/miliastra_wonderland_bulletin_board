@@ -23,7 +23,7 @@
 
     <div class="meta">
       <p>
-        投稿者: <%= @multiplay_recruitment.user.display_name %>
+        投稿者: <%= link_to @multiplay_recruitment.user.display_name, user_path(@multiplay_recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
         <% if @multiplay_recruitment.user.admin? %>
           <span class="admin-badge">管理者</span>
         <% end %>

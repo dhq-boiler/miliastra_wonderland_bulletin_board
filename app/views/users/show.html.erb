@@ -1,0 +1,93 @@
+<div class="max-w-4xl mx-auto p-5 bg-white min-h-screen">
+  <!-- クリエイター情報 -->
+  <div class="creator-header mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow">
+    <h1 class="text-3xl font-bold text-gray-800 mb-2">
+      <%= @user.display_name %>
+      <% if @user.admin? %>
+        <span class="admin-badge">管理者</span>
+      <% end %>
+    </h1>
+    <p class="text-gray-600">
+      <span class="text-sm">ユーザー名: @<%= @user.username %></span>
+    </p>
+    <div class="mt-4 text-gray-700">
+      <p class="text-lg">投稿した幻境数: <strong><%= @stages.count %></strong></p>
+      <p class="text-lg">投稿したマルチプレイ募集数: <strong><%= @multiplay_recruitments.count %></strong></p>
+    </div>
+  </div>
+
+  <!-- 幻境紹介一覧 -->
+  <div class="mb-6">
+    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-blue-500 pb-2 mb-4">
+      <%= @user.display_name %>さんの幻境紹介
+    </h2>
+  </div>
+
+  <div class="stages-list">
+    <% if @stages.any? %>
+      <% @stages.each do |stage| %>
+        <div class="stage-card">
+          <h2><%= link_to stage.title, stage_path(stage) %></h2>
+          <div class="stage-info">
+            <span class="stage-guid">GUID: <%= clipboard_copy(stage.stage_guid) %></span>
+            <% if stage.difficulty.present? %>
+              <span class="difficulty">難易度: <%= stage.difficulty %></span>
+            <% end %>
+          </div>
+          <p class="description"><%= truncate(stage.description, length: 200) %></p>
+          <div class="meta">
+            <span class="date">投稿日: <%= l(stage.created_at, format: :short) %></span>
+            <%= diff_time(stage.created_at, "span", { class: "diff-time" }, auto_update: true) %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-stages text-gray-600">まだ幻境紹介の投稿がありません。</p>
+    <% end %>
+  </div>
+
+  <!-- マルチプレイ募集一覧 -->
+  <div class="mb-6 mt-12">
+    <h2 class="text-2xl font-bold text-gray-800 border-b-2 border-purple-500 pb-2 mb-4">
+      <%= @user.display_name %>さんのマルチプレイ募集
+    </h2>
+  </div>
+
+  <div class="stages-list">
+    <% if @multiplay_recruitments.any? %>
+      <% @multiplay_recruitments.each do |recruitment| %>
+        <div class="stage-card">
+          <h2><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h2>
+          <div class="stage-info">
+            <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
+            <% if recruitment.stage_guid.present? %>
+              <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
+            <% end %>
+            <% if recruitment.difficulty.present? %>
+              <span class="difficulty">難易度: <%= recruitment.difficulty %></span>
+            <% end %>
+            <span class="max-players">募集人数: <%= recruitment.max_players %>人</span>
+            <% if recruitment.start_time.present? %>
+              <span class="start-time">開始予定: <%= l(recruitment.start_time, format: :short) %></span>
+            <% end %>
+          </div>
+          <p class="description"><%= truncate(recruitment.description, length: 200) %></p>
+          <div class="meta">
+            <span class="date">投稿日: <%= l(recruitment.created_at, format: :short) %></span>
+            <span class="comments-count">💬 <%= recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count %>件</span>
+            <%= diff_time(recruitment.created_at, "span", { class: "diff-time" }, auto_update: true) %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="no-stages text-gray-600">まだマルチプレイ募集の投稿がありません。</p>
+    <% end %>
+  </div>
+
+  <!-- 戻るリンク -->
+  <div class="mt-8">
+    <%= link_to "← 幻境紹介掲示板に戻る", stages_path, class: "text-blue-600 hover:text-blue-800 underline mr-4" %>
+    <%= link_to "← マルチプレイ募集掲示板に戻る", multiplay_recruitments_path, class: "text-purple-600 hover:text-purple-800 underline" %>
+  </div>
+</div>
+

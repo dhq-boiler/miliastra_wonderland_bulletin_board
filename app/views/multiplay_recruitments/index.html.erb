@@ -30,7 +30,7 @@
           <p class="description"><%= truncate(recruitment.description, length: 200) %></p>
           <div class="meta">
             <span class="author">
-              投稿者: <%= recruitment.user.display_name %>
+              投稿者: <%= link_to recruitment.user.display_name, user_path(recruitment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
               <% if recruitment.user.admin? %>
                 <span class="admin-badge">管理者</span>
               <% end %>

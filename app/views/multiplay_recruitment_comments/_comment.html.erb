@@ -1,7 +1,7 @@
 <div class="comment-item">
   <div class="comment-header">
     <span class="comment-author">
-      <%= comment.user.display_name %>
+      <%= link_to comment.user.display_name, user_path(comment.user), class: "text-blue-600 hover:text-blue-800 underline" %>
       <% if comment.user.admin? %>
         <span class="admin-badge">管理者</span>
       <% end %>
