@@ -277,6 +277,30 @@
   display: inline-block;
 }
 
+.clipboard-button {
+  color: white;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.25rem;
+  font-size: 0.875rem;
+  transition: opacity 0.2s;
+}
+
+.clipboard-button:hover {
+  opacity: 0.8;
+}
+
+.clipboard-button .bi.bi-copy {
+  fill: white;
+}
+
+.clipboard-button:hover .bi.bi-copy {
+  fill: white;
+  opacity: 0.8;
+}
+
 .difficulty {
   background-color: #f97316;
   color: white;

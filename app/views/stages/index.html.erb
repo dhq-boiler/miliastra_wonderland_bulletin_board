@@ -16,7 +16,7 @@
         <div class="stage-card">
           <h2><%= link_to stage.title, stage_path(stage) %></h2>
           <div class="stage-info">
-            <span class="stage-guid">GUID: <%= stage.stage_guid %></span>
+            <span class="stage-guid">GUID: <%= clipboard_copy(stage.stage_guid) %></span>
             <% if stage.difficulty.present? %>
               <span class="difficulty">難易度: <%= stage.difficulty %></span>
             <% end %>
