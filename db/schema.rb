@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_030000) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_032223) do
   create_table "solid_cable_messages", force: :cascade do |t|
     t.binary "channel", limit: 1024, null: false
     t.integer "channel_hash", limit: 8, null: false
@@ -157,7 +157,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_030000) do
     t.datetime "created_at", null: false
     t.text "description"
     t.string "difficulty"
-    t.integer "stage_guid"
+    t.string "stage_guid"
     t.string "stage_number"
     t.text "tips"
     t.string "title"
