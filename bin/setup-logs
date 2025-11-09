@@ -1,6 +1,6 @@
 #!/bin/bash
-# Setup log directory on production server
-# Run this script after the first deployment or when setting up log access
+# Setup log directory on production server host
+# Run this script before the first deployment to prepare host directory for log volume mounting
 
 set -e
 
@@ -16,29 +16,36 @@ if [ -z "$SERVER_IP_ADDRESS" ]; then
   fi
 fi
 
-echo "Setting up log directory on server: $SERVER_IP_ADDRESS"
+echo "Setting up log directory on host server: $SERVER_IP_ADDRESS"
 echo "=========================================="
 
-# Create log directory
+# Create log directory on host (EC2 server)
+# This directory will be mounted to the Docker container
 ssh ec2-user@$SERVER_IP_ADDRESS << 'ENDSSH'
-  echo "Creating log directory..."
+  echo "Creating host log directory for volume mounting..."
   sudo mkdir -p /var/log/miliastra_wonderland_bulletin_board
 
   echo "Setting permissions..."
-  sudo chown ec2-user:ec2-user /var/log/miliastra_wonderland_bulletin_board
+  # Set ownership to user 1000 (rails user in container)
+  sudo chown 1000:1000 /var/log/miliastra_wonderland_bulletin_board
   sudo chmod 755 /var/log/miliastra_wonderland_bulletin_board
 
   echo "Verifying setup..."
   ls -la /var/log/miliastra_wonderland_bulletin_board
 
   echo ""
-  echo "Log directory setup complete!"
-  echo "Logs will be accessible at: /var/log/miliastra_wonderland_bulletin_board/production.log"
+  echo "Host log directory setup complete!"
+  echo "After deployment, logs will be accessible at: /var/log/miliastra_wonderland_bulletin_board/production.log"
 ENDSSH
 
 echo ""
 echo "=========================================="
-echo "Setup completed successfully!"
+echo "Host setup completed successfully!"
+echo ""
+echo "Next steps:"
+echo "  1. Deploy your application: bin/kamal deploy"
+echo "  2. The docker-entrypoint will automatically setup the log directory in the container"
+echo "  3. Logs will be written to both locations (host and container)"
 echo ""
 echo "To view logs, run one of the following commands:"
 echo ""
