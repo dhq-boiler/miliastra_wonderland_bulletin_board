@@ -30,6 +30,7 @@
               <% end %>
             </span>
             <span class="date">投稿日: <%= l(stage.created_at, format: :short) %></span>
+            <%= diff_time(stage.created_at, "span", { class: "diff-time" }, auto_update: true) %>
           </div>
         </div>
       <% end %>
