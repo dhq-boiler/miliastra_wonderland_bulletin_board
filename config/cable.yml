@@ -9,9 +9,13 @@ test:
   adapter: test
 
 production:
-  adapter: solid_cable
+  # Use async adapter by default (no database required)
+  # Set ENABLE_SOLID_CABLE=true to use solid_cable adapter
+  adapter: <%= ENV['ENABLE_SOLID_CABLE'] == 'true' ? 'solid_cable' : 'async' %>
+  <% if ENV['ENABLE_SOLID_CABLE'] == 'true' %>
   connects_to:
     database:
       writing: primary
   polling_interval: 0.1.seconds
   message_retention: 1.day
+  <% end %>
