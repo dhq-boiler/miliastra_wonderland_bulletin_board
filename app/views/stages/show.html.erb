@@ -21,7 +21,7 @@
 
     <div class="meta">
       <p>
-        投稿者: <%= @stage.user.username %>
+        投稿者: <%= @stage.user.display_name %>
         <% if @stage.user.admin? %>
           <span class="admin-badge">管理者</span>
         <% end %>

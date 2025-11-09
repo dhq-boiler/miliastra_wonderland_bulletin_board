@@ -6,6 +6,12 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 20 }
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true
   validates :password, length: { minimum: 6 }, if: -> { new_record? || !password.nil? }
+  validates :nickname, length: { maximum: 50 }, allow_blank: true
+
+  # 表示名を取得（ニックネームがあればニックネーム、なければユーザー名）
+  def display_name
+    nickname.presence || username
+  end
 
   # 管理者かどうかを判定
   def admin?
