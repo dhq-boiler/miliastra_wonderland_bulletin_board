@@ -124,6 +124,11 @@ ja:
       new_title: 新しい幻境紹介
       show:
         official_page: 公式幻境紹介ページ
+        description_title: 説明
+        tips_title: ヒント・攻略情報
+        updated_at: 更新日時
+        confirm_delete: 本当に削除しますか？
+        confirm_delete_admin: 管理者権限で削除します。本当によろしいですか？
       form:
         title_label: タイトル
         title_placeholder: "例: 第1章 幻想の森を攻略"
