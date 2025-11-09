@@ -1,12 +1,22 @@
 #!/bin/bash -e
 
+# Setup log directory with proper permissions
+# This handles both fresh installs and volume-mounted directories
+echo "Setting up log directory permissions..."
+mkdir -p /rails/log
+touch /rails/log/production.log
+chown -R rails:rails /rails/log
+chmod -R 775 /rails/log
+chmod 664 /rails/log/production.log
+echo "Log directory setup complete!"
 
 # Optional: Run database migrations if AUTO_MIGRATE is set
 if [ "${AUTO_MIGRATE}" = "true" ] && [ "${1}" = "./bin/rails" ] && [ "${2}" = "server" ]; then
   echo "Running database migrations (AUTO_MIGRATE=true)..."
-  ./bin/rails db:create 2>&1 || true
-  ./bin/rails db:migrate 2>&1 || true
+  gosu rails ./bin/rails db:create 2>&1 || true
+  gosu rails ./bin/rails db:migrate 2>&1 || true
   echo "Database migrations complete!"
 fi
 
-exec "${@}"
+# Execute the main command as rails user
+exec gosu rails "${@}"
