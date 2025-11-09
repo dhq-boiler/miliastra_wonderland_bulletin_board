@@ -48,7 +48,7 @@ proxy:
   healthcheck:
     path: /up
     interval: 10
-    timeout: 120
+    timeout: 30
 
 # Where you keep your container images.
 registry:
