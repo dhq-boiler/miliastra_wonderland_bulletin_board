@@ -1,0 +1,24 @@
+<div class="comment-form-container">
+  <h3>コメントを投稿</h3>
+  <%= form_with(model: [ multiplay_recruitment, comment ], local: true) do |form| %>
+    <% if comment.errors.any? %>
+      <div class="error-messages">
+        <h4><%= pluralize(comment.errors.count, "個のエラー") %>があります:</h4>
+        <ul>
+          <% comment.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.text_area :content, rows: 4, class: "form-control", placeholder: "コメントを入力してください（1000文字以内）" %>
+    </div>
+
+    <div class="form-actions">
+      <%= form.submit "コメントを投稿", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+

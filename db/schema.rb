@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_044514) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_045851) do
+  create_table "multiplay_recruitment_comments", force: :cascade do |t|
+    t.text "content", null: false
+    t.datetime "created_at", null: false
+    t.integer "multiplay_recruitment_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["created_at"], name: "index_multiplay_recruitment_comments_on_created_at"
+    t.index ["multiplay_recruitment_id"], name: "idx_on_multiplay_recruitment_id_fedf63e60f"
+    t.index ["user_id"], name: "index_multiplay_recruitment_comments_on_user_id"
+  end
+
   create_table "multiplay_recruitments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.text "description", null: false
@@ -196,6 +207,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_044514) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "multiplay_recruitment_comments", "multiplay_recruitments"
+  add_foreign_key "multiplay_recruitment_comments", "users"
   add_foreign_key "multiplay_recruitments", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

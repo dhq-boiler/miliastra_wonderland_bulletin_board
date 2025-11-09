@@ -25,6 +25,10 @@ ja:
         created_at: 投稿日時
         updated_at: 更新日時
         user: 投稿者
+      multiplay_recruitment_comment:
+        content: コメント内容
+        created_at: 投稿日時
+        user: 投稿者
       user:
         username: ユーザー名
         nickname: ニックネーム

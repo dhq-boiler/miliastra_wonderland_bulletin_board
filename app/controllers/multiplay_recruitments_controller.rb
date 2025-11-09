@@ -5,10 +5,12 @@ class MultiplayRecruitmentsController < ApplicationController
   before_action :authorize_user_or_admin, only: [ :destroy ]
 
   def index
-    @multiplay_recruitments = MultiplayRecruitment.includes(:user).recent
+    @multiplay_recruitments = MultiplayRecruitment.includes(:user).left_joins(:comments).group(:id).select("multiplay_recruitments.*, COUNT(multiplay_recruitment_comments.id) as comments_count").recent
   end
 
   def show
+    @comments = @multiplay_recruitment.comments.includes(:user).oldest_first
+    @comment = MultiplayRecruitmentComment.new if logged_in?
   end
 
   def new

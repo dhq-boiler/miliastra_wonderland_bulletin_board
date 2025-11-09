@@ -45,6 +45,27 @@
       <% end %>
       <%= link_to "一覧に戻る", multiplay_recruitments_path, class: "btn btn-default" %>
     </div>
+
+    <!-- コメントセクション -->
+    <div class="comments-section">
+      <h2 class="comments-title">コメント (<%= @comments.count %>)</h2>
+
+      <% if logged_in? %>
+        <%= render "multiplay_recruitment_comments/form", multiplay_recruitment: @multiplay_recruitment, comment: @comment %>
+      <% else %>
+        <p class="login-prompt">コメントを投稿するには<%= link_to "ログイン", login_path %>が必要です。</p>
+      <% end %>
+
+      <div class="comments-list">
+        <% if @comments.any? %>
+          <% @comments.each do |comment| %>
+            <%= render "multiplay_recruitment_comments/comment", comment: comment %>
+          <% end %>
+        <% else %>
+          <p class="no-comments">まだコメントがありません。</p>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
 

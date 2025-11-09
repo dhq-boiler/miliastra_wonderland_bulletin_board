@@ -36,6 +36,7 @@
               <% end %>
             </span>
             <span class="date">投稿日: <%= l(recruitment.created_at, format: :short) %></span>
+            <span class="comments-count">💬 <%= recruitment.respond_to?(:comments_count) ? recruitment.comments_count : recruitment.comments.count %>件</span>
             <%= diff_time(recruitment.created_at, "span", { class: "diff-time" }, auto_update: true) %>
           </div>
         </div>

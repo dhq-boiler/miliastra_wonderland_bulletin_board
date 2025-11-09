@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_many :stages, dependent: :destroy
   has_many :multiplay_recruitments, dependent: :destroy
+  has_many :multiplay_recruitment_comments, dependent: :destroy
 
   validates :username, presence: true, uniqueness: true, length: { minimum: 3, maximum: 20 }
   validates :email, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, allow_blank: true

@@ -111,4 +111,38 @@ MultiplayRecruitment.find_or_create_by!(title: "週末マルチプレイ会の�
 end
 
 puts "Multiplay Recruitments created: #{MultiplayRecruitment.count}"
+
+# サンプルコメントの作成
+puts "Creating sample comments..."
+
+recruitment1 = MultiplayRecruitment.find_by(title: "初心者歓迎！一緒に幻境を攻略しませんか？")
+recruitment2 = MultiplayRecruitment.find_by(title: "氷の洞窟協力プレイメンバー募集")
+recruitment3 = MultiplayRecruitment.find_by(title: "ボス討伐メンバー募集【経験者優遇】")
+
+if recruitment1
+  MultiplayRecruitmentComment.find_or_create_by!(multiplay_recruitment: recruitment1, user: user2) do |c|
+    c.content = "初心者ですが参加させていただきたいです！よろしくお願いします。"
+  end
+
+  MultiplayRecruitmentComment.find_or_create_by!(multiplay_recruitment: recruitment1, user: user1, content: "ありがとうございます！ぜひ一緒にプレイしましょう！") do |c|
+  end
+end
+
+if recruitment2
+  MultiplayRecruitmentComment.find_or_create_by!(multiplay_recruitment: recruitment2, user: user1) do |c|
+    c.content = "氷の洞窟は何度かクリアしたことがあります。参加できますか？"
+  end
+end
+
+if recruitment3
+  MultiplayRecruitmentComment.find_or_create_by!(multiplay_recruitment: recruitment3, user: user2) do |c|
+    c.content = "攻撃パターンは一通り把握しています。参加希望です！"
+  end
+
+  MultiplayRecruitmentComment.find_or_create_by!(multiplay_recruitment: recruitment3, user: user1) do |c|
+    c.content = "ありがとうございます！それでは一緒に頑張りましょう！"
+  end
+end
+
+puts "Comments created: #{MultiplayRecruitmentComment.count}"
 puts "Seed data creation completed!"

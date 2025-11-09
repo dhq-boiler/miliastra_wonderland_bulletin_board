@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :stages
-  resources :multiplay_recruitments
+  resources :multiplay_recruitments do
+    resources :comments, only: [ :create, :destroy ], controller: "multiplay_recruitment_comments"
+  end
 
   # 認証関連
   get "signup", to: "users#new", as: "signup"
