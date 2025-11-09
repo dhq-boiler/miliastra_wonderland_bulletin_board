@@ -24,6 +24,12 @@
   flex-wrap: wrap;
 }
 
+.header-logo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .header-logo .logo-link {
   text-decoration: none;
   color: #1f2937;
@@ -33,6 +39,19 @@
   font-size: 1.25rem;
   font-weight: bold;
   color: #3b82f6;
+}
+
+.stages-link {
+  color: #3b82f6;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.stages-link:hover {
+  color: #2563eb;
+  text-decoration: none;
 }
 
 .header-nav {
