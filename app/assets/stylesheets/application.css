@@ -574,7 +574,15 @@ textarea.form-control {
   font-size: 0.875rem;
 }
 
-.comment-date {
+.comment-date-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.comment-date,
+.diff-date {
   color: #9ca3af;
   font-size: 0.75rem;
 }

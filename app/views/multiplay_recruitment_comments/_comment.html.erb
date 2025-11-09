@@ -6,10 +6,12 @@
         <span class="admin-badge">管理者</span>
       <% end %>
     </span>
-    <span class="comment-date">
-      <%= l(comment.created_at, format: :long) %>
-    </span>
-    <%= diff_time(comment.created_at, "span", { class: "diff-date" }, auto_update: true) %>
+    <div class="comment-date-group">
+      <span class="comment-date">
+        <%= l(comment.created_at, format: :long) %>
+      </span>
+      <%= diff_time(comment.created_at, "span", { class: "diff-date" }, auto_update: true) %>
+    </div>
   </div>
   <div class="comment-content">
     <%= simple_format(comment.content) %>
