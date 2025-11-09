@@ -18,7 +18,7 @@
           <div class="stage-info">
             <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(stage.stage_guid) %></span>
             <% if stage.difficulty.present? %>
-              <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= stage.difficulty %></span>
+              <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= stage.difficulty_text %></span>
             <% end %>
             <% if stage.locale.present? %>
               <span class="language"><%= t('app.common.language_label') %>: <%= t("languages.#{stage.locale}") %></span>

@@ -30,10 +30,10 @@
     <%= form.select :difficulty,
         [
           [t('app.stages.form.difficulty_placeholder'), ""],
-          [t('app.stages.form.difficulty_easy'), t('app.stages.form.difficulty_easy')],
-          [t('app.stages.form.difficulty_normal'), t('app.stages.form.difficulty_normal')],
-          [t('app.stages.form.difficulty_hard'), t('app.stages.form.difficulty_hard')],
-          [t('app.stages.form.difficulty_very_hard'), t('app.stages.form.difficulty_very_hard')]
+          [t('app.stages.form.difficulty_easy'), "easy"],
+          [t('app.stages.form.difficulty_normal'), "normal"],
+          [t('app.stages.form.difficulty_hard'), "hard"],
+          [t('app.stages.form.difficulty_very_hard'), "very_hard"]
         ],
         {},
         { class: "form-control" } %>

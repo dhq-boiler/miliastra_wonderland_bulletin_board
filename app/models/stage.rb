@@ -15,6 +15,12 @@ class Stage < ApplicationRecord
   # 最新の投稿順に並べる
   scope :recent, -> { order(created_at: :desc) }
 
+  # 難易度の翻訳を取得
+  def difficulty_text
+    return nil if difficulty.blank?
+    I18n.t("app.stages.form.difficulty_#{difficulty}")
+  end
+
   private
 
   # ユーザーのlocaleをstageに設定
