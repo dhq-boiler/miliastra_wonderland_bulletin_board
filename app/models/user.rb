@@ -42,6 +42,11 @@ class User < ApplicationRecord
 
   # OmniAuth認証情報からユーザーを検索または作成
   def self.from_omniauth(auth)
+    # カラムが存在するか確認（マイグレーション前のエラー防止）
+    unless column_names.include?("provider") && column_names.include?("uid")
+      raise "OAuth columns (provider, uid) are not yet migrated. Please run db:migrate."
+    end
+
     where(provider: auth.provider, uid: auth.uid).first_or_initialize do |user|
       user.email = auth.info.email
       user.username = generate_username_from_email(auth.info.email)
@@ -52,6 +57,7 @@ class User < ApplicationRecord
 
   # OAuthユーザーかどうかを判定
   def oauth_user?
+    return false unless self.class.column_names.include?("provider") && self.class.column_names.include?("uid")
     provider.present? && uid.present?
   end
 
