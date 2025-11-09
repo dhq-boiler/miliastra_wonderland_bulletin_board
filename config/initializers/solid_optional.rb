@@ -14,7 +14,7 @@
 
 Rails.application.configure do
   # Solid Queue configuration
-  if ENV['ENABLE_SOLID_QUEUE'] == 'true'
+  if ENV["ENABLE_SOLID_QUEUE"] == "true"
     Rails.logger.info "Solid Queue enabled"
     config.active_job.queue_adapter = :solid_queue
     # Configure database connection for Solid Queue
@@ -30,7 +30,7 @@ Rails.application.configure do
   end
 
   # Solid Cache configuration
-  if ENV['ENABLE_SOLID_CACHE'] == 'true'
+  if ENV["ENABLE_SOLID_CACHE"] == "true"
     Rails.logger.info "Solid Cache enabled"
     config.cache_store = :solid_cache_store
     # Configure database connection for Solid Cache
@@ -47,7 +47,7 @@ Rails.application.configure do
 
   # Solid Cable configuration is handled separately in cable.yml
   # Configure database connection for Solid Cable
-  if ENV['ENABLE_SOLID_CABLE'] == 'true'
+  if ENV["ENABLE_SOLID_CABLE"] == "true"
     Rails.logger.info "Solid Cable enabled (configure in config/cable.yml)"
     # Configure database connection for Solid Cable
     if Rails.env.production?
@@ -59,4 +59,3 @@ Rails.application.configure do
     Rails.logger.info "Solid Cable disabled, using default adapter from cable.yml"
   end
 end
-

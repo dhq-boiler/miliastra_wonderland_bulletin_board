@@ -2,19 +2,19 @@ Rails.application.routes.draw do
   resources :stages
 
   # 認証関連
-  get 'signup', to: 'users#new', as: 'signup'
-  post 'signup', to: 'users#create'
-  get 'login', to: 'sessions#new', as: 'login'
-  post 'login', to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy', as: 'logout'
+  get "signup", to: "users#new", as: "signup"
+  post "signup", to: "users#create"
+  get "login", to: "sessions#new", as: "login"
+  post "login", to: "sessions#create"
+  delete "logout", to: "sessions#destroy", as: "logout"
 
   # ユーザープロファイル
-  get 'profile', to: 'users#edit', as: 'profile'
-  patch 'profile', to: 'users#update'
-  put 'profile', to: 'users#update'
+  get "profile", to: "users#edit", as: "profile"
+  patch "profile", to: "users#update"
+  put "profile", to: "users#update"
 
   # パスワードリセット
-  resources :password_resets, only: [:new, :create, :edit, :update]
+  resources :password_resets, only: [ :new, :create, :edit, :update ]
 
   get "welcome/index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:edit, :update]
+  before_action :require_login, only: [ :edit, :update ]
 
   def new
     @user = User.new
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to stages_path, notice: 'アカウントが作成されました。'
+      redirect_to stages_path, notice: "アカウントが作成されました。"
     else
       render :new, status: :unprocessable_entity
     end
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
     end
 
     if @user.update(profile_params)
-      redirect_to profile_path, notice: 'プロファイルを更新しました。'
+      redirect_to profile_path, notice: "プロファイルを更新しました。"
     else
       render :edit, status: :unprocessable_entity
     end

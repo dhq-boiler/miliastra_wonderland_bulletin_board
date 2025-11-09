@@ -43,8 +43,8 @@ Rails.application.configure do
   # メール配信方法（開発環境ではログに出力、本番環境ではAWS SESを使用）
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: ENV.fetch('SMTP_ADDRESS', 'localhost'),
-    port: ENV.fetch('SMTP_PORT', 1025).to_i,
+    address: ENV.fetch("SMTP_ADDRESS", "localhost"),
+    port: ENV.fetch("SMTP_PORT", 1025).to_i,
     enable_starttls_auto: false
   }
 

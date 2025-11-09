@@ -5,4 +5,3 @@ class AddPasswordResetToUsers < ActiveRecord::Migration[8.1]
     add_index :users, :reset_password_token, unique: true
   end
 end
-

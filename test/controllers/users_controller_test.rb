@@ -11,8 +11,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create user" do
-    assert_difference('User.count', 1) do
-      post signup_path, params: { user: { username: 'newuser', password: 'password123', password_confirmation: 'password123' } }
+    assert_difference("User.count", 1) do
+      post signup_path, params: { user: { username: "newuser", password: "password123", password_confirmation: "password123" } }
     end
     assert_redirected_to stages_path
   end
@@ -30,34 +30,34 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should update profile without password change" do
     log_in_as(@user)
-    patch profile_path, params: { user: { nickname: 'Updated Nickname', email: 'updated@example.com' } }
+    patch profile_path, params: { user: { nickname: "Updated Nickname", email: "updated@example.com" } }
     assert_redirected_to profile_path
     @user.reload
-    assert_equal 'Updated Nickname', @user.nickname
-    assert_equal 'updated@example.com', @user.email
+    assert_equal "Updated Nickname", @user.nickname
+    assert_equal "updated@example.com", @user.email
   end
 
   test "should update password with correct current password" do
     log_in_as(@user)
     patch profile_path, params: {
       user: {
-        current_password: 'password',
-        password: 'newpassword123',
-        password_confirmation: 'newpassword123'
+        current_password: "password",
+        password: "newpassword123",
+        password_confirmation: "newpassword123"
       }
     }
     assert_redirected_to profile_path
     @user.reload
-    assert @user.authenticate('newpassword123')
+    assert @user.authenticate("newpassword123")
   end
 
   test "should not update password with incorrect current password" do
     log_in_as(@user)
     patch profile_path, params: {
       user: {
-        current_password: 'wrongpassword',
-        password: 'newpassword123',
-        password_confirmation: 'newpassword123'
+        current_password: "wrongpassword",
+        password: "newpassword123",
+        password_confirmation: "newpassword123"
       }
     }
     assert_response :unprocessable_entity
@@ -65,6 +65,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   private
     def log_in_as(user)
-      post login_path, params: { session: { username: user.username, password: 'password' } }
+      post login_path, params: { session: { username: user.username, password: "password" } }
     end
 end

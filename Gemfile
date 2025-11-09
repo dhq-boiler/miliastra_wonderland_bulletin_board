@@ -7,7 +7,7 @@ gem "propshaft"
 # Use PostgreSQL as the database for Active Record in production
 gem "pg", "~> 1.5"
 # Use sqlite3 as the database for Active Record in development/test
-gem "sqlite3", ">= 2.1", groups: [:development, :test]
+gem "sqlite3", ">= 2.1", groups: [ :development, :test ]
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", ">= 5.0"
 # Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]

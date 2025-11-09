@@ -37,11 +37,11 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Log to both STDOUT and file
-  if ENV['RAILS_LOG_TO_STDOUT'].present?
+  if ENV["RAILS_LOG_TO_STDOUT"].present?
     config.logger = ActiveSupport::TaggedLogging.logger(STDOUT)
   else
     # Log to both file and STDOUT for better debugging
-    file_logger = ActiveSupport::Logger.new(Rails.root.join('log', 'production.log'), 1, 100.megabytes)
+    file_logger = ActiveSupport::Logger.new(Rails.root.join("log", "production.log"), 1, 100.megabytes)
     stdout_logger = ActiveSupport::Logger.new(STDOUT)
     config.logger = ActiveSupport::BroadcastLogger.new(file_logger, stdout_logger)
     config.logger = ActiveSupport::TaggedLogging.new(config.logger)
@@ -65,19 +65,19 @@ Rails.application.configure do
 
   # Set host to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = {
-    host: ENV.fetch('APP_HOST', 'miliastra-wonderland-bulletin-board.com'),
-    protocol: 'https'
+    host: ENV.fetch("APP_HOST", "miliastra-wonderland-bulletin-board.com"),
+    protocol: "https"
   }
 
   # AWS SESを使用してメール送信
   # AWS SDK credentials should be set via ENV or IAM role
-  if ENV['AWS_ACCESS_KEY_ID'].present?
+  if ENV["AWS_ACCESS_KEY_ID"].present?
     config.action_mailer.delivery_method = :aws_sdk
   else
     # Fallback to SMTP if AWS credentials are not set
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'localhost',
+      address: "localhost",
       port: 25,
       enable_starttls_auto: false
     }
@@ -97,7 +97,7 @@ Rails.application.configure do
   config.hosts = [
     "miliastra-wonderland-bulletin-board.com",     # Allow requests from main domain
     "www.miliastra-wonderland-bulletin-board.com", # Allow requests from www subdomain
-    "52.197.165.60",                                # Allow direct IP access
+    "52.197.165.60"                                # Allow direct IP access
   ]
 
   # Skip DNS rebinding protection for the default health check endpoint.

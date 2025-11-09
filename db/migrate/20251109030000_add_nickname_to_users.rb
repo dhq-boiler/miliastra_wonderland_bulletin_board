@@ -3,4 +3,3 @@ class AddNicknameToUsers < ActiveRecord::Migration[8.1]
     add_column :users, :nickname, :string
   end
 end
-

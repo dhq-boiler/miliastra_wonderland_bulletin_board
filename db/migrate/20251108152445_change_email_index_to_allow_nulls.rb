@@ -7,4 +7,3 @@ class ChangeEmailIndexToAllowNulls < ActiveRecord::Migration[8.1]
     add_index :users, :email, unique: true, where: "email IS NOT NULL AND email != ''"
   end
 end
-
