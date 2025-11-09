@@ -1,0 +1,52 @@
+#!/bin/bash
+# Setup log directory on production server
+# Run this script after the first deployment or when setting up log access
+
+set -e
+
+# Check if SERVER_IP_ADDRESS is set
+if [ -z "$SERVER_IP_ADDRESS" ]; then
+  # Try to load from .env file
+  if [ -f .env ]; then
+    export $(cat .env | grep -v '^#' | xargs)
+  else
+    echo "Error: SERVER_IP_ADDRESS not set and .env file not found"
+    echo "Please set SERVER_IP_ADDRESS environment variable or create .env file"
+    exit 1
+  fi
+fi
+
+echo "Setting up log directory on server: $SERVER_IP_ADDRESS"
+echo "=========================================="
+
+# Create log directory
+ssh ec2-user@$SERVER_IP_ADDRESS << 'ENDSSH'
+  echo "Creating log directory..."
+  sudo mkdir -p /var/log/miliastra_wonderland_bulletin_board
+
+  echo "Setting permissions..."
+  sudo chown ec2-user:ec2-user /var/log/miliastra_wonderland_bulletin_board
+  sudo chmod 755 /var/log/miliastra_wonderland_bulletin_board
+
+  echo "Verifying setup..."
+  ls -la /var/log/miliastra_wonderland_bulletin_board
+
+  echo ""
+  echo "Log directory setup complete!"
+  echo "Logs will be accessible at: /var/log/miliastra_wonderland_bulletin_board/production.log"
+ENDSSH
+
+echo ""
+echo "=========================================="
+echo "Setup completed successfully!"
+echo ""
+echo "To view logs, run one of the following commands:"
+echo ""
+echo "  # From local machine using Kamal:"
+echo "  bin/kamal logs"
+echo ""
+echo "  # From server:"
+echo "  ssh ec2-user@$SERVER_IP_ADDRESS 'tail -f /var/log/miliastra_wonderland_bulletin_board/production.log'"
+echo ""
+echo "See docs/LOG_ACCESS.md for more options."
+
