@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_09_132229) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_09_164356) do
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -187,6 +187,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_132229) do
     t.datetime "deleted_at"
     t.text "description"
     t.string "difficulty"
+    t.string "locale"
     t.string "stage_guid"
     t.string "stage_number"
     t.text "tips"
@@ -194,6 +195,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_09_132229) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["deleted_at"], name: "index_stages_on_deleted_at"
+    t.index ["locale"], name: "index_stages_on_locale"
     t.index ["stage_guid"], name: "index_stages_on_stage_guid"
     t.index ["user_id"], name: "index_stages_on_user_id"
   end

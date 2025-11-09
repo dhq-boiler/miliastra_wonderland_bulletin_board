@@ -7,7 +7,18 @@ class Stage < ApplicationRecord
   validates :description, presence: true
   validates :stage_guid, presence: true, format: { with: /\A[1-9]\d*\z/, message: "は自然数（正の整数）で入力してください" }
   validates :user_id, presence: true
+  validates :locale, presence: true, inclusion: { in: User::AVAILABLE_LOCALES }
+
+  # 作成時にユーザーのlocaleを設定
+  before_validation :set_locale_from_user, on: :create
 
   # 最新の投稿順に並べる
   scope :recent, -> { order(created_at: :desc) }
+
+  private
+
+  # ユーザーのlocaleをstageに設定
+  def set_locale_from_user
+    self.locale ||= user&.locale
+  end
 end
