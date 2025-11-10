@@ -32,6 +32,7 @@ id:
       user:
         username: Nama Pengguna
         nickname: Nama Panggilan
+        ingame_uid: UID dalam Game
         email: Email
         password: Kata Sandi
         password_confirmation: Konfirmasi Kata Sandi
@@ -199,6 +200,8 @@ id:
         nickname_label: Nama Panggilan
         nickname_placeholder: Nama tampilan
         nickname_hint: Akan menampilkan nama pengguna jika kosong
+        ingame_uid_placeholder: Masukkan ID unik Anda dalam game
+        ingame_uid_hint: Masukkan UID dalam game Anda (opsional)
         email_label: Email
         email_placeholder: email@example.com
         password_label: Kata Sandi

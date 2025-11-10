@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true, if: -> { password_required? }
   validates :nickname, length: { maximum: 50 }, allow_blank: true
   validates :locale, presence: true, inclusion: { in: AVAILABLE_LOCALES }
+  validates :ingame_uid, numericality: { only_integer: true, greater_than: 0 }, allow_blank: true
 
   # 表示名を取得（ニックネームがあればニックネーム、なければユーザー名）
   def display_name

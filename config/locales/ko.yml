@@ -32,6 +32,7 @@ ko:
       user:
         username: 사용자명
         nickname: 닉네임
+        ingame_uid: 게임 내 UID
         email: 이메일
         password: 비밀번호
         password_confirmation: 비밀번호 확인
@@ -199,6 +200,8 @@ ko:
         nickname_label: 닉네임
         nickname_placeholder: 표시 이름
         nickname_hint: 비어있으면 사용자명이 표시됩니다
+        ingame_uid_placeholder: 게임 내 고유 ID를 입력하세요
+        ingame_uid_hint: 게임 내 UID를 입력하세요 (선택사항)
         email_label: 이메일
         email_placeholder: email@example.com
         password_label: 비밀번호

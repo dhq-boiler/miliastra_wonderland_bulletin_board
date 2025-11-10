@@ -32,6 +32,7 @@ th:
       user:
         username: ชื่อผู้ใช้
         nickname: ชื่อเล่น
+        ingame_uid: UID ในเกม
         email: อีเมล
         password: รหัสผ่าน
         password_confirmation: ยืนยันรหัสผ่าน
@@ -199,6 +200,8 @@ th:
         nickname_label: ชื่อเล่น
         nickname_placeholder: ชื่อที่แสดง
         nickname_hint: จะแสดงชื่อผู้ใช้หากว่างเปล่า
+        ingame_uid_placeholder: ใส่ ID เฉพาะในเกมของคุณ
+        ingame_uid_hint: ใส่ UID ในเกมของคุณ (ไม่บังคับ)
         email_label: อีเมล
         email_placeholder: email@example.com
         password_label: รหัสผ่าน

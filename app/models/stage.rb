@@ -1,3 +1,4 @@
+
 class Stage < ApplicationRecord
   include SoftDeletable
 

@@ -32,6 +32,7 @@ zh-CN:
       user:
         username: 用户名
         nickname: 昵称
+        ingame_uid: 游戏内UID
         email: 电子邮箱
         password: 密码
         password_confirmation: 确认密码
@@ -199,6 +200,8 @@ zh-CN:
         nickname_label: 昵称
         nickname_placeholder: 显示名称
         nickname_hint: 未填写时显示用户名
+        ingame_uid_placeholder: 输入游戏内唯一ID
+        ingame_uid_hint: 输入您的游戏内UID（可选）
         email_label: 电子邮箱
         email_placeholder: email@example.com
         password_label: 密码

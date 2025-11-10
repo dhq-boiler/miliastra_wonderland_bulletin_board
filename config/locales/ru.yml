@@ -32,6 +32,7 @@ ru:
       user:
         username: Имя пользователя
         nickname: Ник
+        ingame_uid: UID в игре
         email: Email
         password: Пароль
         password_confirmation: Подтверждение пароля
@@ -199,6 +200,8 @@ ru:
         nickname_label: Никнейм
         nickname_placeholder: Отображаемое имя
         nickname_hint: Будет показано имя пользователя, если пусто
+        ingame_uid_placeholder: Введите ваш уникальный игровой ID
+        ingame_uid_hint: Введите ваш игровой UID (необязательно)
         email_label: Email
         email_placeholder: email@example.com
         password_label: Пароль

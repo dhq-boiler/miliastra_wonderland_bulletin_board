@@ -32,6 +32,7 @@ fr:
       user:
         username: Nom d'Utilisateur
         nickname: Surnom
+        ingame_uid: UID en Jeu
         email: Email
         password: Mot de Passe
         password_confirmation: Confirmation du Mot de Passe
@@ -199,6 +200,8 @@ fr:
         nickname_label: Surnom
         nickname_placeholder: Nom d'affichage
         nickname_hint: Le nom d'utilisateur sera affiché si vide
+        ingame_uid_placeholder: Entrez votre ID unique en jeu
+        ingame_uid_hint: Entrez votre UID en jeu (optionnel)
         email_label: Email
         email_placeholder: email@example.com
         password_label: Mot de Passe

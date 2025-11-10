@@ -32,6 +32,7 @@ de:
       user:
         username: Benutzername
         nickname: Spitzname
+        ingame_uid: In-Game-UID
         email: E-Mail
         password: Passwort
         password_confirmation: Passwortbestätigung
@@ -199,6 +200,8 @@ de:
         nickname_label: Spitzname
         nickname_placeholder: Anzeigename
         nickname_hint: Benutzername wird angezeigt, wenn leer
+        ingame_uid_placeholder: Geben Sie Ihre eindeutige In-Game-ID ein
+        ingame_uid_hint: Geben Sie Ihre In-Game-UID ein (optional)
         email_label: E-Mail
         email_placeholder: email@example.com
         password_label: Passwort

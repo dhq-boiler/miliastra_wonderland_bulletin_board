@@ -32,6 +32,7 @@ tr:
       user:
         username: Kullanıcı Adı
         nickname: Takma Ad
+        ingame_uid: Oyun İçi UID
         email: E-posta
         password: Şifre
         password_confirmation: Şifre Onayı
@@ -199,6 +200,8 @@ tr:
         nickname_label: Takma Ad
         nickname_placeholder: Görünen ad
         nickname_hint: Boşsa kullanıcı adı görüntülenecek
+        ingame_uid_placeholder: Oyun içi benzersiz kimliğinizi girin
+        ingame_uid_hint: Oyun içi UID'nizi girin (isteğe bağlı)
         email_label: E-posta
         email_placeholder: email@example.com
         password_label: Şifre

@@ -61,6 +61,7 @@ en:
       user:
         username: Username
         nickname: Nickname
+        ingame_uid: In-Game UID
         email: Email
         password: Password
         password_confirmation: Password Confirmation
@@ -228,6 +229,8 @@ en:
         nickname_label: Nickname
         nickname_placeholder: Display name
         nickname_hint: Username will be shown if empty
+        ingame_uid_placeholder: Enter your in-game unique ID
+        ingame_uid_hint: Enter your in-game UID (optional)
         email_label: Email
         email_placeholder: email@example.com
         password_label: Password

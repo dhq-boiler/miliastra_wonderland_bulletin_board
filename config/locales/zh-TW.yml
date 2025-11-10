@@ -32,6 +32,7 @@ zh-TW:
       user:
         username: 用戶名
         nickname: 暱稱
+        ingame_uid: 遊戲內UID
         email: 電子郵箱
         password: 密碼
         password_confirmation: 確認密碼
@@ -199,6 +200,8 @@ zh-TW:
         nickname_label: 暱稱
         nickname_placeholder: 顯示名稱
         nickname_hint: 未填寫時顯示用戶名
+        ingame_uid_placeholder: 輸入遊戲內唯一ID
+        ingame_uid_hint: 輸入您的遊戲內UID（可選）
         email_label: 電子郵箱
         email_placeholder: email@example.com
         password_label: 密碼

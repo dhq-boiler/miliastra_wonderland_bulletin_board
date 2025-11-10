@@ -32,6 +32,7 @@ vi:
       user:
         username: Tên người dùng
         nickname: Biệt danh
+        ingame_uid: UID trong Game
         email: Email
         password: Mật khẩu
         password_confirmation: Xác nhận mật khẩu
@@ -199,6 +200,8 @@ vi:
         nickname_label: Biệt danh
         nickname_placeholder: Tên hiển thị
         nickname_hint: Sẽ hiển thị tên người dùng nếu để trống
+        ingame_uid_placeholder: Nhập ID duy nhất trong game của bạn
+        ingame_uid_hint: Nhập UID trong game của bạn (tùy chọn)
         email_label: Email
         email_placeholder: email@example.com
         password_label: Mật khẩu

@@ -85,14 +85,14 @@ class UsersController < ApplicationController
 
   private
     def user_params
-      params.require(:user).permit(:username, :nickname, :email, :password, :password_confirmation, :locale)
+      params.require(:user).permit(:username, :nickname, :email, :password, :password_confirmation, :locale, :ingame_uid)
     end
 
     def profile_params
-      params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :locale)
+      params.require(:user).permit(:nickname, :email, :password, :password_confirmation, :locale, :ingame_uid)
     end
 
     def oauth_profile_params
-      params.require(:user).permit(:nickname, :locale)
+      params.require(:user).permit(:nickname, :locale, :ingame_uid)
     end
 end

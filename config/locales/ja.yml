@@ -32,6 +32,7 @@ ja:
       user:
         username: ユーザー名
         nickname: ニックネーム
+        ingame_uid: ゲーム内UID
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
@@ -199,6 +200,8 @@ ja:
         nickname_label: ニックネーム
         nickname_placeholder: 表示名として使用されます
         nickname_hint: 未入力の場合はユーザー名が表示されます
+        ingame_uid_placeholder: ゲーム内の固有IDを入力
+        ingame_uid_hint: ゲーム内で使用しているUIDを入力してください（任意）
         email_label: メールアドレス
         email_placeholder: email@example.com
         password_label: パスワード
