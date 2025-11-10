@@ -16,7 +16,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 gosu && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 gosu cron && \
     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
@@ -55,6 +55,9 @@ RUN bundle exec bootsnap precompile -j 1 app/ lib/
 # Note: Tailwind CSS file is already included in app/assets/builds/tailwind.css
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
+# Generate crontab for scheduled tasks
+RUN bundle exec whenever --update-crontab --set environment=production
+
 
 
 
@@ -72,10 +75,10 @@ COPY --chown=rails:rails --from=build /rails /rails
 # Ensure log directory exists with proper permissions
 # Set directory as writable so volume mounts can work correctly
 RUN mkdir -p /rails/log && \
-    touch /rails/log/production.log && \
+    touch /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log && \
     chown -R rails:rails /rails/log && \
     chmod -R 775 /rails/log && \
-    chmod 664 /rails/log/production.log
+    chmod 664 /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log
 
 # Entrypoint will run as root to setup permissions, then switch to rails user
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
