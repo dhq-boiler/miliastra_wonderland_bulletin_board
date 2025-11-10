@@ -10,10 +10,10 @@ chmod -R 775 /rails/log
 chmod 664 /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log
 echo "Log directory setup complete!"
 
-# Start cron daemon for scheduled tasks
-echo "Starting cron daemon..."
-service cron start
-echo "Cron daemon started!"
+# cronをバックグラウンドで起動
+echo "Starting cron daemon in background..."
+cron -f &
+echo "Cron daemon started in background!"
 
 # Optional: Run database migrations if AUTO_MIGRATE is set
 # Check for both thrust and direct rails server commands
