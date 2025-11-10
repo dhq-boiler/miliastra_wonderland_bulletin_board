@@ -22,8 +22,11 @@
 # 環境変数の設定
 set :environment, ENV.fetch("RAILS_ENV", "development")
 
-# ログの出力先
-set :output, { error: "log/cron_error.log", standard: "log/cron.log" }
+# アプリケーションのルートパスを設定
+set :path, "/rails"
+
+# ログの出力先（絶対パス）
+set :output, { error: "/rails/log/cron_error.log", standard: "/rails/log/cron.log" }
 
 # 1分おきにマルチプレイ募集の自動終了タスクを実行
 every 1.minute do
