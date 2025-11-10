@@ -29,7 +29,7 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 # AWS SDK for SES (Simple Email Service)
 gem "aws-sdk-ses", "~> 1"
-gem "aws-sdk-rails", "~> 4"
+gem "aws-sdk-rails", "~> 5"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
