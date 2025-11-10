@@ -21,6 +21,7 @@ es:
         difficulty: Dificultad
         max_players: Jugadores Máximos
         start_time: Hora de Inicio
+        end_time: Hora de Finalización
         status: Estado
         created_at: Publicado el
         updated_at: Actualizado el
@@ -114,6 +115,7 @@ es:
       max_players: Jugadores Máx.
       people: " jugadores"
       start_time: Hora de Inicio
+      end_time: Hora de Finalización
       status: Estado
     stages:
       title: Foro de Etapas
@@ -178,6 +180,7 @@ es:
         difficulty_placeholder: Seleccionar
         max_players_label: Jugadores Máx.
         start_time_label: Hora de Inicio
+        end_time_label: Hora de Finalización
         status_label: Estado
         status_recruiting: Reclutando
         status_closed: Cerrado

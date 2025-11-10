@@ -21,6 +21,7 @@ ko:
         difficulty: 난이도
         max_players: 모집 인원
         start_time: 시작 시간
+        end_time: 종료 시간
         status: 모집 상태
         created_at: 게시일
         updated_at: 수정일
@@ -114,6 +115,7 @@ ko:
       max_players: 최대 인원
       people: "명"
       start_time: 시작 시간
+      end_time: 종료 시간
       status: 상태
     stages:
       title: 스테이지 포럼
@@ -178,6 +180,7 @@ ko:
         difficulty_placeholder: 선택
         max_players_label: 최대 인원
         start_time_label: 시작 시간
+        end_time_label: 종료 시간
         status_label: 상태
         status_recruiting: 모집중
         status_closed: 종료

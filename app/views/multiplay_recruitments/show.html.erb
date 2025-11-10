@@ -14,6 +14,9 @@
       <% if @multiplay_recruitment.start_time.present? %>
         <span class="start-time"><%= t('app.common.start_time') %>: <%= l(@multiplay_recruitment.start_time, format: :long) %></span>
       <% end %>
+      <% if @multiplay_recruitment.end_time.present? %>
+        <span class="end-time"><%= t('app.common.end_time') %>: <%= l(@multiplay_recruitment.end_time, format: :long) %></span>
+      <% end %>
     </div>
 
     <div class="stage-content">

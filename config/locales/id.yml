@@ -21,6 +21,7 @@ id:
         difficulty: Kesulitan
         max_players: Pemain Maksimal
         start_time: Waktu Mulai
+        end_time: Waktu Selesai
         status: Status
         created_at: Diposting pada
         updated_at: Diperbarui pada
@@ -114,6 +115,7 @@ id:
       max_players: Pemain Maks.
       people: " pemain"
       start_time: Waktu Mulai
+      end_time: Waktu Selesai
       status: Status
     stages:
       title: Forum Tahap
@@ -178,6 +180,7 @@ id:
         difficulty_placeholder: Pilih
         max_players_label: Pemain Maks.
         start_time_label: Waktu Mulai
+        end_time_label: Waktu Selesai
         status_label: Status
         status_recruiting: Merekrut
         status_closed: Ditutup

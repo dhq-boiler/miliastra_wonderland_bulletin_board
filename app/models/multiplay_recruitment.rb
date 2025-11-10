@@ -10,8 +10,17 @@ class MultiplayRecruitment < ApplicationRecord
   validates :status, presence: true, inclusion: { in: %w[募集中 募集終了 開催中 終了] }
   validates :stage_guid, format: { with: /\A[1-9]\d*\z/, message: "は自然数（正の整数）で入力してください" }, allow_blank: true
 
+  # end_timeのデフォルト値を当日の24時（翌日0時）に設定
+  before_validation :set_default_end_time, on: :create
+
   # 最新の投稿順に並べる
   scope :recent, -> { order(created_at: :desc) }
   scope :recruiting, -> { where(status: "募集中") }
   scope :active, -> { where(status: [ "募集中", "開催中" ]) }
+
+  private
+
+  def set_default_end_time
+    self.end_time ||= Time.current.end_of_day
+  end
 end

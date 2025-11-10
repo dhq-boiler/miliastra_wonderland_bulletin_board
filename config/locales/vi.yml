@@ -21,6 +21,7 @@ vi:
         difficulty: Độ khó
         max_players: Số người chơi tối đa
         start_time: Thời gian bắt đầu
+        end_time: Thời gian kết thúc
         status: Trạng thái
         created_at: Đã đăng
         updated_at: Đã cập nhật
@@ -114,6 +115,7 @@ vi:
       max_players: Người chơi tối đa
       people: " người"
       start_time: Thời gian bắt đầu
+      end_time: Thời gian kết thúc
       status: Trạng thái
     stages:
       title: Diễn đàn Giai đoạn
@@ -178,6 +180,7 @@ vi:
         difficulty_placeholder: Chọn
         max_players_label: Người chơi Tối đa
         start_time_label: Thời gian Bắt đầu
+        end_time_label: Thời gian Kết thúc
         status_label: Trạng thái
         status_recruiting: Đang tuyển
         status_closed: Đã đóng

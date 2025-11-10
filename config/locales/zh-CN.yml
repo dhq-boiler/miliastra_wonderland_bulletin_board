@@ -21,6 +21,7 @@ zh-CN:
         difficulty: 难度
         max_players: 招募人数
         start_time: 开始时间
+        end_time: 结束时间
         status: 招募状态
         created_at: 发布时间
         updated_at: 更新时间
@@ -114,6 +115,7 @@ zh-CN:
       max_players: 最大人数
       people: "人"
       start_time: 开始时间
+      end_time: 结束时间
       status: 状态
     stages:
       title: 关卡论坛
@@ -178,6 +180,7 @@ zh-CN:
         difficulty_placeholder: 请选择
         max_players_label: 最大人数
         start_time_label: 开始时间
+        end_time_label: 结束时间
         status_label: 状态
         status_recruiting: 招募中
         status_closed: 已关闭

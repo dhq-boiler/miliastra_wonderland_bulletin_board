@@ -21,6 +21,7 @@ ja:
         difficulty: 難易度
         max_players: 募集人数
         start_time: 開始予定時刻
+        end_time: 終了予定時刻
         status: 募集状態
         created_at: 投稿日時
         updated_at: 更新日時
@@ -114,6 +115,7 @@ ja:
       max_players: 募集人数
       people: 人
       start_time: 開始予定
+      end_time: 終了予定
       status: ステータス
     stages:
       title: 幻境 紹介掲示板
@@ -178,6 +180,7 @@ ja:
         difficulty_placeholder: 選択してください
         max_players_label: 募集人数
         start_time_label: 開始予定時刻
+        end_time_label: 終了予定時刻
         status_label: 募集状態
         status_recruiting: 募集中
         status_closed: 募集終了

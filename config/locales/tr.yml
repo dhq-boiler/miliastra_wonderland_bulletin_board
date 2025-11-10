@@ -21,6 +21,7 @@ tr:
         difficulty: Zorluk
         max_players: Maksimum Oyuncu
         start_time: Başlama Saati
+        end_time: Bitiş Saati
         status: Durum
         created_at: Yayınlanma
         updated_at: Güncellenme
@@ -114,6 +115,7 @@ tr:
       max_players: Maks. Oyuncu
       people: " oyuncu"
       start_time: Başlangıç Zamanı
+      end_time: Bitiş Zamanı
       status: Durum
     stages:
       title: Aşama Forumu
@@ -178,6 +180,7 @@ tr:
         difficulty_placeholder: Seç
         max_players_label: Maks. Oyuncu
         start_time_label: Başlangıç Zamanı
+        end_time_label: Bitiş Zamanı
         status_label: Durum
         status_recruiting: İşe Alım
         status_closed: Kapalı

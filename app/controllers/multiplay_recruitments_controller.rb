@@ -64,6 +64,6 @@ class MultiplayRecruitmentsController < ApplicationController
     end
 
     def multiplay_recruitment_params
-      params.require(:multiplay_recruitment).permit(:title, :description, :stage_guid, :difficulty, :max_players, :start_time, :status)
+      params.require(:multiplay_recruitment).permit(:title, :description, :stage_guid, :difficulty, :max_players, :start_time, :end_time, :status)
     end
 end

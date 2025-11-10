@@ -21,6 +21,7 @@ fr:
         difficulty: Difficulté
         max_players: Joueurs Maximum
         start_time: Heure de Début
+        end_time: Heure de Fin
         status: Statut
         created_at: Publié le
         updated_at: Mis à jour le
@@ -114,6 +115,7 @@ fr:
       max_players: Joueurs Max.
       people: " joueurs"
       start_time: Heure de Début
+      end_time: Heure de Fin
       status: Statut
     stages:
       title: Forum des Étapes
@@ -178,6 +180,7 @@ fr:
         difficulty_placeholder: Sélectionner
         max_players_label: Joueurs Max.
         start_time_label: Heure de Début
+        end_time_label: Heure de Fin
         status_label: Statut
         status_recruiting: Recrutement
         status_closed: Fermé

@@ -21,6 +21,7 @@ pt:
         difficulty: Dificuldade
         max_players: Jogadores Máximos
         start_time: Hora de Início
+        end_time: Hora de Término
         status: Status
         created_at: Publicado em
         updated_at: Atualizado em
@@ -114,6 +115,7 @@ pt:
       max_players: Jogadores Máx.
       people: " jogadores"
       start_time: Hora de Início
+      end_time: Hora de Término
       status: Status
     stages:
       title: Fórum de Estágios
@@ -178,6 +180,7 @@ pt:
         difficulty_placeholder: Selecionar
         max_players_label: Jogadores Máx.
         start_time_label: Hora de Início
+        end_time_label: Hora de Término
         status_label: Status
         status_recruiting: Recrutando
         status_closed: Fechado

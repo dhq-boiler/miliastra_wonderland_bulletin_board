@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_10_032827) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_10_035903) do
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_032827) do
     t.datetime "deleted_at"
     t.text "description", null: false
     t.string "difficulty"
+    t.datetime "end_time"
     t.integer "max_players", default: 4
     t.string "stage_guid"
     t.datetime "start_time"

@@ -21,6 +21,7 @@ th:
         difficulty: ความยาก
         max_players: จำนวนผู้เล่นสูงสุด
         start_time: เวลาเริ่มต้น
+        end_time: เวลาสิ้นสุด
         status: สถานะ
         created_at: โพสต์เมื่อ
         updated_at: อัปเดตเมื่อ
@@ -114,6 +115,7 @@ th:
       max_players: ผู้เล่นสูงสุด
       people: " คน"
       start_time: เวลาเริ่ม
+      end_time: เวลาสิ้นสุด
       status: สถานะ
     stages:
       title: ฟอรั่มด่าน
@@ -178,6 +180,7 @@ th:
         difficulty_placeholder: เลือก
         max_players_label: ผู้เล่นสูงสุด
         start_time_label: เวลาเริ่ม
+        end_time_label: เวลาสิ้นสุด
         status_label: สถานะ
         status_recruiting: กำลังรับสมัคร
         status_closed: ปิดแล้ว

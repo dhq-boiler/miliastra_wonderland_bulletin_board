@@ -40,6 +40,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :end_time, "#{t('app.multiplay.form.end_time_label')}#{t('app.common.optional')}" %>
+    <%= form.datetime_local_field :end_time, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :status do %>
       <%= t('app.multiplay.form.status_label') %><span class="required"><%= t('app.common.required') %></span>
     <% end %>

@@ -21,6 +21,7 @@ ru:
         difficulty: Сложность
         max_players: Максимум игроков
         start_time: Время начала
+        end_time: Время окончания
         status: Статус
         created_at: Опубликовано
         updated_at: Обновлено
@@ -114,6 +115,7 @@ ru:
       max_players: Макс. игроков
       people: " игроков"
       start_time: Время Начала
+      end_time: Время Окончания
       status: Статус
     stages:
       title: Форум Этапов
@@ -178,6 +180,7 @@ ru:
         difficulty_placeholder: Выбрать
         max_players_label: Макс. Игроков
         start_time_label: Время Начала
+        end_time_label: Время Окончания
         status_label: Статус
         status_recruiting: Набор
         status_closed: Закрыто

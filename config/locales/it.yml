@@ -21,6 +21,7 @@ it:
         difficulty: Difficoltà
         max_players: Giocatori Massimi
         start_time: Ora di Inizio
+        end_time: Ora di Fine
         status: Stato
         created_at: Pubblicato il
         updated_at: Aggiornato il
@@ -114,6 +115,7 @@ it:
       max_players: Giocatori Mass.
       people: " giocatori"
       start_time: Ora di Inizio
+      end_time: Ora di Fine
       status: Stato
     stages:
       title: Forum delle Fasi
@@ -178,6 +180,7 @@ it:
         difficulty_placeholder: Seleziona
         max_players_label: Giocatori Mass.
         start_time_label: Ora di Inizio
+        end_time_label: Ora di Fine
         status_label: Stato
         status_recruiting: Reclutamento
         status_closed: Chiuso

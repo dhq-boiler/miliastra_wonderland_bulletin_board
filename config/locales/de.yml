@@ -21,6 +21,7 @@ de:
         difficulty: Schwierigkeit
         max_players: Maximale Spieler
         start_time: Startzeit
+        end_time: Endzeit
         status: Status
         created_at: Veröffentlicht am
         updated_at: Aktualisiert am
@@ -114,6 +115,7 @@ de:
       max_players: Max. Spieler
       people: " Spieler"
       start_time: Startzeit
+      end_time: Endzeit
       status: Status
     stages:
       title: Stufen-Forum
@@ -178,6 +180,7 @@ de:
         difficulty_placeholder: Auswählen
         max_players_label: Max. Spieler
         start_time_label: Startzeit
+        end_time_label: Endzeit
         status_label: Status
         status_recruiting: Rekrutierung
         status_closed: Geschlossen

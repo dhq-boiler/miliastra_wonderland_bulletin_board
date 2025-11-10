@@ -50,6 +50,7 @@ en:
         difficulty: Difficulty
         max_players: Max Players
         start_time: Start Time
+        end_time: End Time
         status: Status
         created_at: Posted at
         updated_at: Updated at
@@ -143,6 +144,7 @@ en:
       max_players: Max Players
       people: " players"
       start_time: Start Time
+      end_time: End Time
       status: Status
     stages:
       title: Stages Forum
@@ -207,6 +209,7 @@ en:
         difficulty_placeholder: Select
         max_players_label: Max Players
         start_time_label: Start Time
+        end_time_label: End Time
         status_label: Status
         status_recruiting: Recruiting
         status_closed: Closed

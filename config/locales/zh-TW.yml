@@ -21,6 +21,7 @@ zh-TW:
         difficulty: 難度
         max_players: 招募人數
         start_time: 開始時間
+        end_time: 結束時間
         status: 招募狀態
         created_at: 發布時間
         updated_at: 更新時間
@@ -114,6 +115,7 @@ zh-TW:
       max_players: 最大人數
       people: "人"
       start_time: 開始時間
+      end_time: 結束時間
       status: 狀態
     stages:
       title: 關卡論壇
@@ -178,6 +180,7 @@ zh-TW:
         difficulty_placeholder: 請選擇
         max_players_label: 最大人數
         start_time_label: 開始時間
+        end_time_label: 結束時間
         status_label: 狀態
         status_recruiting: 招募中
         status_closed: 已關閉
