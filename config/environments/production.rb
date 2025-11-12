@@ -70,9 +70,10 @@ Rails.application.configure do
   }
 
   # AWS SESを使用してメール送信
+  # Custom AWS SES delivery method registered in config/initializers/aws_ses.rb
   # AWS SDK credentials should be set via ENV or IAM role
   if ENV["AWS_ACCESS_KEY_ID"].present?
-    config.action_mailer.delivery_method = :aws_sdk
+    config.action_mailer.delivery_method = :aws_ses
   else
     # Fallback to SMTP if AWS credentials are not set
     config.action_mailer.delivery_method = :smtp

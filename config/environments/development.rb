@@ -45,12 +45,8 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   # 開発中にメールを実際に送信したい場合は、以下のコメントを外してAWS SESの設定を使用
-  # config.action_mailer.delivery_method = :aws_sdk
-  # config.action_mailer.aws_sdk_settings = {
-  #   region: ENV.fetch('AWS_REGION', 'ap-northeast-1'),
-  #   access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-  #   secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-  # }
+  # config.action_mailer.delivery_method = :aws_ses
+  # AWS credentials will be loaded from ENV variables
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
