@@ -40,13 +40,9 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
-  # メール配信方法（開発環境ではログに出力、本番環境ではAWS SESを使用）
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address: ENV.fetch("SMTP_ADDRESS", "localhost"),
-    port: ENV.fetch("SMTP_PORT", 1025).to_i,
-    enable_starttls_auto: false
-  }
+  # メール配信方法（開発環境ではletter_openerでブラウザに表示）
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.perform_deliveries = true
 
   # 開発中にメールを実際に送信したい場合は、以下のコメントを外してAWS SESの設定を使用
   # config.action_mailer.delivery_method = :aws_sdk

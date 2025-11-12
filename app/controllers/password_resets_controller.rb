@@ -11,6 +11,13 @@ class PasswordResetsController < ApplicationController
     @user = User.find_by(email: params[:email])
 
     if @user&.email.present?
+      # クールタイムチェック
+      if @user.password_reset_cooldown_active?
+        flash.now[:alert] = t('password_resets.create.cooldown')
+        render :new, status: :unprocessable_entity
+        return
+      end
+
       @user.generate_password_reset_token
       UserMailer.password_reset(@user).deliver_now
       redirect_to login_path, notice: t('password_resets.create.success')

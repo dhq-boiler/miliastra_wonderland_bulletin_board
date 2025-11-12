@@ -298,6 +298,7 @@ tr:
     create:
       success: Şifre sıfırlama e-postası gönderildi. Lütfen e-postanızı kontrol edin.
       email_not_found: E-posta adresi kayıtlı değil.
+      cooldown: Lütfen son gönderimden 30 saniye bekledikten sonra tekrar deneyin.
     update:
       success: Şifre değiştirildi. Lütfen giriş yapın.
       password_blank: Lütfen bir şifre girin.

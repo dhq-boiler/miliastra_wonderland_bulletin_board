@@ -298,6 +298,7 @@ zh-TW:
     create:
       success: 密碼重置郵件已發送。請檢查您的郵箱。
       email_not_found: 郵箱地址未註冊。
+      cooldown: 請在上次發送郵件後等待30秒再試。
     update:
       success: 密碼已更改。請登錄。
       password_blank: 請輸入密碼。

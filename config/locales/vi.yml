@@ -298,6 +298,7 @@ vi:
     create:
       success: Email đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra email của bạn.
       email_not_found: Địa chỉ email không được đăng ký.
+      cooldown: Vui lòng chờ 30 giây sau lần gửi cuối cùng trước khi thử lại.
     update:
       success: Mật khẩu đã được thay đổi. Vui lòng đăng nhập.
       password_blank: Vui lòng nhập mật khẩu.

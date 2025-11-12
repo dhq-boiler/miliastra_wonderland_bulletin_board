@@ -298,6 +298,7 @@ id:
     create:
       success: Email reset password telah dikirim. Silakan periksa email Anda.
       email_not_found: Alamat email tidak terdaftar.
+      cooldown: Silakan tunggu 30 detik setelah pengiriman terakhir sebelum mencoba lagi.
     update:
       success: Password telah diubah. Silakan login.
       password_blank: Silakan masukkan password.

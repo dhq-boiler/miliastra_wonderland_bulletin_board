@@ -298,6 +298,7 @@ pt:
     create:
       success: Email de redefinição de senha foi enviado. Por favor, verifique seu email.
       email_not_found: O endereço de email não está registrado.
+      cooldown: Por favor, aguarde 30 segundos após o último envio antes de tentar novamente.
     update:
       success: A senha foi alterada. Por favor, faça login.
       password_blank: Por favor, digite uma senha.

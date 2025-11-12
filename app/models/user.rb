@@ -40,6 +40,11 @@ class User < ApplicationRecord
     reset_password_sent_at.present? && reset_password_sent_at > 2.hours.ago
   end
 
+  # パスワードリセットメール送信のクールタイムチェック（30秒）
+  def password_reset_cooldown_active?
+    reset_password_sent_at.present? && reset_password_sent_at > 30.seconds.ago
+  end
+
   # パスワードリセットトークンをクリア
   def clear_password_reset_token
     self.reset_password_token = nil

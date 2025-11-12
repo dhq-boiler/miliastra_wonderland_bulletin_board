@@ -298,6 +298,7 @@ de:
     create:
       success: Passwort-Zurücksetzungs-E-Mail wurde gesendet. Bitte überprüfen Sie Ihre E-Mails.
       email_not_found: E-Mail-Adresse ist nicht registriert.
+      cooldown: Bitte warten Sie 30 Sekunden nach der letzten E-Mail, bevor Sie es erneut versuchen.
     update:
       success: Passwort wurde geändert. Bitte melden Sie sich an.
       password_blank: Bitte geben Sie ein Passwort ein.

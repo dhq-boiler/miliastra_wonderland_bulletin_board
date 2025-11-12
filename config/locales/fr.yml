@@ -298,6 +298,7 @@ fr:
     create:
       success: L'email de réinitialisation du mot de passe a été envoyé. Veuillez vérifier votre email.
       email_not_found: L'adresse email n'est pas enregistrée.
+      cooldown: Veuillez attendre 30 secondes après le dernier envoi avant de réessayer.
     update:
       success: Le mot de passe a été changé. Veuillez vous connecter.
       password_blank: Veuillez entrer un mot de passe.

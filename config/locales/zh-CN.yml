@@ -298,6 +298,7 @@ zh-CN:
     create:
       success: 密码重置邮件已发送。请检查您的邮箱。
       email_not_found: 邮箱地址未注册。
+      cooldown: 请在上次发送邮件后等待30秒再试。
     update:
       success: ���码已更改。请登录。
       password_blank: 请输入密码。

@@ -298,6 +298,7 @@ it:
     create:
       success: Email di reimpostazione password inviata. Controlla la tua email.
       email_not_found: L'indirizzo email non è registrato.
+      cooldown: Attendi 30 secondi dall'ultimo invio prima di riprovare.
     update:
       success: La password è stata cambiata. Effettua il login.
       password_blank: Inserisci una password.

@@ -298,6 +298,7 @@ ko:
     create:
       success: 비밀번호 재설정 이메일이 전송되었습니다. 이메일을 확인하세요.
       email_not_found: 이메일 주소가 등록되어 있지 않습니다.
+      cooldown: 마지막 이메일 전송 후 30초가 지난 후 다시 시도해 주세요.
     update:
       success: 비밀번호가 변경되었습니다. 로그인하세요.
       password_blank: 비밀번호를 입력하세요.

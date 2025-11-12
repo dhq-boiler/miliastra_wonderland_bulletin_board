@@ -69,6 +69,8 @@ env:
     - DB_PASSWORD
     - GOOGLE_CLIENT_ID
     - GOOGLE_CLIENT_SECRET
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
   clear:
     # Optional: Enable Solid Queue, Cache, Cable (requires database tables)
     # ENABLE_SOLID_QUEUE: true
@@ -83,6 +85,13 @@ env:
     DB_NAME: miliastra_wonderland_bulletin_board_production
     DB_USERNAME: postgres
     DB_PORT: 5432
+
+    # AWS SES configuration
+    AWS_REGION: ap-northeast-1
+
+    # Mailer configuration
+    APP_HOST: miliastra-wonderland-bulletin-board.com
+    MAILER_FROM_ADDRESS: noreply@miliastra-wonderland-bulletin-board.com
 
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug

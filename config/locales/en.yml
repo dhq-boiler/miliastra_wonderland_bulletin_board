@@ -327,6 +327,7 @@ en:
     create:
       success: Password reset email has been sent. Please check your email.
       email_not_found: Email address is not registered.
+      cooldown: Please wait 30 seconds from the last email before trying again.
     update:
       success: Password has been changed. Please log in.
       password_blank: Please enter a password.

@@ -298,6 +298,7 @@ es:
     create:
       success: Se ha enviado el correo de restablecimiento de contraseña. Por favor revisa tu correo.
       email_not_found: El correo electrónico no está registrado.
+      cooldown: Por favor espera 30 segundos desde el último envío antes de intentar nuevamente.
     update:
       success: La contraseña ha sido cambiada. Por favor inicia sesión.
       password_blank: Por favor ingresa una contraseña.
