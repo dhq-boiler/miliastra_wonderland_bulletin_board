@@ -1,0 +1,32 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  title: Test Recruitment 1
+  description: This is a test recruitment for multiplayer
+  stage_guid: "12345678901"
+  difficulty: Normal
+  max_players: 4
+  start_time: <%= 1.day.from_now %>
+  end_time: <%= 2.days.from_now %>
+  status: recruiting
+
+two:
+  user: two
+  title: Test Recruitment 2
+  description: Another test recruitment
+  stage_guid: "98765432109"
+  difficulty: Hard
+  max_players: 6
+  start_time: <%= 1.week.from_now %>
+  end_time: <%= 1.week.from_now + 1.day %>
+  status: recruiting
+
+finished:
+  user: one
+  title: Finished Recruitment
+  description: This recruitment has ended
+  max_players: 4
+  start_time: <%= 1.week.ago %>
+  end_time: <%= 1.day.ago %>
+  status: finished

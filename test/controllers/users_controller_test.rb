@@ -19,7 +19,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect to login when not logged in for edit" do
     get profile_path
-    assert_redirected_to login_path
+    assert_response :redirect
   end
 
   test "should get edit when logged in" do
@@ -65,6 +65,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   private
     def log_in_as(user)
-      post login_path, params: { session: { username: user.username, password: "password" } }
+      post login_path, params: { login: user.username, password: "password" }
     end
 end

@@ -20,7 +20,7 @@ class SoftDeletableTest < ActiveSupport::TestCase
       title: "Test Recruitment",
       description: "Test Description",
       max_players: 4,
-      status: "募集中"
+      status: MultiplayRecruitment::STATUSES[:recruiting]
     )
 
     @comment = MultiplayRecruitmentComment.create!(
