@@ -89,6 +89,9 @@
                 <% if participant.user.admin? %>
                   <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
                 <% end %>
+                <% if current_user == @multiplay_recruitment.user && participant.user.ingame_uid.present? %>
+                  <span class="stage-guid">UID: <%= clipboard_copy(participant.user.ingame_uid) %></span>
+                <% end %>
                 <%= diff_time(participant.created_at, "span", { class: "text-sm text-gray-500" }, auto_update: true) %>
               </li>
             <% end %>
