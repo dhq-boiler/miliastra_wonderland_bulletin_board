@@ -196,6 +196,26 @@ zh-TW:
         new_comment: 發表評論
         placeholder: 輸入評論
         login_required: 評論需要%{login_link}。
+      participants:
+        title: 參與者
+        join: 參加
+        cancel: 取消參加
+        confirm_cancel: 確定要取消參加嗎？
+        list: 參與者列表
+        no_participants: 還沒有參與者。
+        login_required_html: 需要%{login_link}才能參加。
+        joined_at: "%{time}前參加"
+      search:
+        title: 搜尋條件
+        active: 搜尋中
+        keyword: 關鍵詞
+        keyword_placeholder: 按標題或描述搜尋
+        stage_guid: 關卡GUID
+        stage_guid_placeholder: "例如: 12345678901"
+        difficulty: 難度
+        status: 狀態
+        submit: 搜尋
+        reset: 重置
     users:
       signup_title: 註冊
       login_title: 登錄

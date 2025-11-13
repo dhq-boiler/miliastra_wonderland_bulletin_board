@@ -196,6 +196,26 @@ zh-CN:
         new_comment: 发表评论
         placeholder: 输入评论
         login_required: 评论需要%{login_link}。
+      participants:
+        title: 参与者
+        join: 参加
+        cancel: 取消参加
+        confirm_cancel: 确定要取消参加吗？
+        list: 参与者列表
+        no_participants: 还没有参与者。
+        login_required_html: 需要%{login_link}才能参加。
+        joined_at: "%{time}前参加"
+      search:
+        title: 搜索条件
+        active: 搜索中
+        keyword: 关键词
+        keyword_placeholder: 按标题或描述搜索
+        stage_guid: 关卡GUID
+        stage_guid_placeholder: "例如: 12345678901"
+        difficulty: 难度
+        status: 状态
+        submit: 搜索
+        reset: 重置
     users:
       signup_title: 注册
       login_title: 登录

@@ -196,6 +196,26 @@ id:
         new_comment: Posting Komentar
         placeholder: Masukkan komentar Anda
         login_required: Perlu %{login_link} untuk berkomentar.
+      participants:
+        title: Peserta
+        join: Bergabung
+        cancel: Batalkan Partisipasi
+        confirm_cancel: Apakah Anda yakin ingin membatalkan partisipasi Anda?
+        list: Daftar Peserta
+        no_participants: Belum ada peserta.
+        login_required_html: Perlu %{login_link} untuk bergabung.
+        joined_at: "Bergabung %{time} yang lalu"
+      search:
+        title: Filter Pencarian
+        active: Aktif
+        keyword: Kata Kunci
+        keyword_placeholder: Cari berdasarkan judul atau deskripsi
+        stage_guid: GUID Tahap
+        stage_guid_placeholder: "misal 12345678901"
+        difficulty: Kesulitan
+        status: Status
+        submit: Cari
+        reset: Setel Ulang
     users:
       signup_title: Daftar
       login_title: Masuk

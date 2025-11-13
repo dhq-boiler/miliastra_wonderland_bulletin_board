@@ -196,6 +196,26 @@ vi:
         new_comment: Đăng Bình luận
         placeholder: Nhập bình luận của bạn
         login_required: Cần %{login_link} để bình luận.
+      participants:
+        title: Người tham gia
+        join: Tham gia
+        cancel: Hủy Tham gia
+        confirm_cancel: Bạn có chắc chắn muốn hủy bỏ sự tham gia của mình không?
+        list: Danh sách Người tham gia
+        no_participants: Chưa có người tham gia.
+        login_required_html: Cần %{login_link} để tham gia.
+        joined_at: "Đã tham gia %{time} trước"
+      search:
+        title: Bộ lọc Tìm kiếm
+        active: Đang hoạt động
+        keyword: Từ khóa
+        keyword_placeholder: Tìm kiếm theo tiêu đề hoặc mô tả
+        stage_guid: GUID của Bản đồ
+        stage_guid_placeholder: "ví dụ 12345678901"
+        difficulty: Độ khó
+        status: Trạng thái
+        submit: Tìm kiếm
+        reset: Đặt lại
     users:
       signup_title: Đăng ký
       login_title: Đăng nhập

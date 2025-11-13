@@ -225,6 +225,26 @@ en:
         new_comment: Post Comment
         placeholder: Enter your comment
         login_required: "%{login_link} required to comment."
+      participants:
+        title: Participants
+        join: Join
+        cancel: Cancel Participation
+        confirm_cancel: Are you sure you want to cancel your participation?
+        list: Participant List
+        no_participants: No participants yet.
+        login_required_html: "%{login_link} required to join."
+        joined_at: "Joined %{time} ago"
+      search:
+        title: Search Filters
+        active: Active
+        keyword: Keyword
+        keyword_placeholder: Search by title or description
+        stage_guid: Stage GUID
+        stage_guid_placeholder: "e.g. 12345678901"
+        difficulty: Difficulty
+        status: Status
+        submit: Search
+        reset: Reset
     users:
       signup_title: Sign Up
       login_title: Login

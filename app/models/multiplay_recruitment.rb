@@ -28,6 +28,27 @@ class MultiplayRecruitment < ApplicationRecord
   scope :recruiting, -> { where(status: STATUSES[:recruiting]) }
   scope :active, -> { where(status: [ STATUSES[:recruiting], STATUSES[:in_progress] ]) }
 
+  # 検索用スコープ
+  scope :search_by_keyword, ->(keyword) {
+    return all if keyword.blank?
+    where("title LIKE ? OR description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
+  }
+
+  scope :search_by_stage_guid, ->(stage_guid) {
+    return all if stage_guid.blank?
+    where(stage_guid: stage_guid)
+  }
+
+  scope :search_by_difficulty, ->(difficulty) {
+    return all if difficulty.blank?
+    where(difficulty: difficulty)
+  }
+
+  scope :search_by_status, ->(status) {
+    return all if status.blank?
+    where(status: status)
+  }
+
   private
 
   def set_default_end_time

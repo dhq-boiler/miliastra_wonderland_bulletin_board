@@ -5,10 +5,29 @@ class MultiplayRecruitmentsController < ApplicationController
   before_action :authorize_user_or_admin, only: [ :destroy ]
 
   def index
-    base_query = MultiplayRecruitment.includes(:user).left_joins(:comments).group(:id).select("multiplay_recruitments.*, COUNT(multiplay_recruitment_comments.id) as comments_count")
+    # 検索パラメータを取得
+    @search_keyword = params[:keyword]
+    @search_stage_guid = params[:stage_guid]
+    @search_difficulty = params[:difficulty]
+    @search_status = params[:status]
 
-    @active_recruitments = base_query.where(status: [ MultiplayRecruitment::STATUSES[:recruiting], MultiplayRecruitment::STATUSES[:in_progress] ]).recent.to_a
-    @past_recruitments = base_query.where(status: [ MultiplayRecruitment::STATUSES[:closed], MultiplayRecruitment::STATUSES[:finished] ]).recent.to_a
+    # 基本クエリに検索条件を適用
+    base_query = MultiplayRecruitment.includes(:user)
+                                     .left_joins(:comments)
+                                     .group(:id)
+                                     .select("multiplay_recruitments.*, COUNT(multiplay_recruitment_comments.id) as comments_count")
+                                     .search_by_keyword(@search_keyword)
+                                     .search_by_stage_guid(@search_stage_guid)
+                                     .search_by_difficulty(@search_difficulty)
+
+    # ステータスで検索条件がある場合はそれを使用、なければデフォルトの分類
+    if @search_status.present?
+      @active_recruitments = base_query.search_by_status(@search_status).recent.to_a
+      @past_recruitments = []
+    else
+      @active_recruitments = base_query.where(status: [ MultiplayRecruitment::STATUSES[:recruiting], MultiplayRecruitment::STATUSES[:in_progress] ]).recent.to_a
+      @past_recruitments = base_query.where(status: [ MultiplayRecruitment::STATUSES[:closed], MultiplayRecruitment::STATUSES[:finished] ]).recent.to_a
+    end
   end
 
   def show

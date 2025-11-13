@@ -196,6 +196,26 @@ fr:
         new_comment: Publier un Commentaire
         placeholder: Entrez votre commentaire
         login_required: "%{login_link} requise pour commenter."
+      participants:
+        title: Participants
+        join: Rejoindre
+        cancel: Annuler la Participation
+        confirm_cancel: Êtes-vous sûr de vouloir annuler votre participation ?
+        list: Liste des Participants
+        no_participants: Aucun participant pour le moment.
+        login_required_html: "%{login_link} requise pour rejoindre."
+        joined_at: "A rejoint il y a %{time}"
+      search:
+        title: Filtres de Recherche
+        active: Actif
+        keyword: Mot-clé
+        keyword_placeholder: Rechercher par titre ou description
+        stage_guid: GUID de l'Étape
+        stage_guid_placeholder: "ex. 12345678901"
+        difficulty: Difficulté
+        status: Statut
+        submit: Rechercher
+        reset: Réinitialiser
     users:
       signup_title: S'inscrire
       login_title: Connexion

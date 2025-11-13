@@ -196,6 +196,26 @@ tr:
         new_comment: Yorum Gönder
         placeholder: Yorumunuzu girin
         login_required: Yorum yapmak için %{login_link} gerekli.
+      participants:
+        title: Katılımcılar
+        join: Katıl
+        cancel: Katılımı İptal Et
+        confirm_cancel: Katılımınızı iptal etmek istediğinizden emin misiniz?
+        list: Katılımcı Listesi
+        no_participants: Henüz katılımcı yok.
+        login_required_html: Katılmak için %{login_link} gerekli.
+        joined_at: "%{time} önce katıldı"
+      search:
+        title: Arama Filtreleri
+        active: Aktif
+        keyword: Anahtar Kelime
+        keyword_placeholder: Başlık veya açıklamaya göre ara
+        stage_guid: Stage GUID
+        stage_guid_placeholder: "örn. 12345678901"
+        difficulty: Zorluk
+        status: Durum
+        submit: Ara
+        reset: Sıfırla
     users:
       signup_title: Kayıt Ol
       login_title: Giriş

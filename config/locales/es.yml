@@ -196,6 +196,26 @@ es:
         new_comment: Publicar Comentario
         placeholder: Ingresa tu comentario
         login_required: Se requiere %{login_link} para comentar.
+      participants:
+        title: Participantes
+        join: Unirse
+        cancel: Cancelar Participación
+        confirm_cancel: ¿Estás seguro de que deseas cancelar tu participación?
+        list: Lista de Participantes
+        no_participants: Aún no hay participantes.
+        login_required_html: Se requiere %{login_link} para unirse.
+        joined_at: "Se unió hace %{time}"
+      search:
+        title: Filtros de Búsqueda
+        active: Activo
+        keyword: Palabra Clave
+        keyword_placeholder: Buscar por título o descripción
+        stage_guid: GUID del Stage
+        stage_guid_placeholder: "ej. 12345678901"
+        difficulty: Dificultad
+        status: Estado
+        submit: Buscar
+        reset: Reiniciar
     users:
       signup_title: Registrarse
       login_title: Iniciar Sesión

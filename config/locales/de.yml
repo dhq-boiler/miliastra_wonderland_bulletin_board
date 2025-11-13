@@ -196,6 +196,26 @@ de:
         new_comment: Kommentar posten
         placeholder: Geben Sie Ihren Kommentar ein
         login_required: "%{login_link} erforderlich zum Kommentieren."
+      participants:
+        title: Teilnehmer
+        join: Beitreten
+        cancel: Teilnahme Abbrechen
+        confirm_cancel: Möchten Sie Ihre Teilnahme wirklich abbrechen?
+        list: Teilnehmerliste
+        no_participants: Noch keine Teilnehmer.
+        login_required_html: "%{login_link} erforderlich zum Beitreten."
+        joined_at: "Vor %{time} beigetreten"
+      search:
+        title: Suchfilter
+        active: Aktiv
+        keyword: Schlüsselwort
+        keyword_placeholder: Nach Titel oder Beschreibung suchen
+        stage_guid: Stage GUID
+        stage_guid_placeholder: "z.B. 12345678901"
+        difficulty: Schwierigkeit
+        status: Status
+        submit: Suchen
+        reset: Zurücksetzen
     users:
       signup_title: Registrieren
       login_title: Anmelden

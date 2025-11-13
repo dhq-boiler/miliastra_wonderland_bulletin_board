@@ -207,6 +207,17 @@ ja:
         no_participants: まだ参加者がいません。
         login_required_html: 参加するには%{login_link}が必要です。
         joined_at: "%{time}前に参加"
+      search:
+        title: 検索条件
+        active: 検索中
+        keyword: キーワード
+        keyword_placeholder: タイトルまたは説明文で検索
+        stage_guid: ステージGUID
+        stage_guid_placeholder: "例: 12345678901"
+        difficulty: 難易度
+        status: ステータス
+        submit: 検索
+        reset: リセット
     users:
       signup_title: 新規登録
       login_title: ログイン

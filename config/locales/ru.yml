@@ -196,6 +196,26 @@ ru:
         new_comment: Опубликовать Комментарий
         placeholder: Введите ваш комментарий
         login_required: Требуется %{login_link} для комментирования.
+      participants:
+        title: Участники
+        join: Присоединиться
+        cancel: Отменить Участие
+        confirm_cancel: Вы уверены, что хотите отменить свое участие?
+        list: Список Участников
+        no_participants: Участников пока нет.
+        login_required_html: Требуется %{login_link} для присоединения.
+        joined_at: "Присоединился %{time} назад"
+      search:
+        title: Фильтры Поиска
+        active: Активно
+        keyword: Ключевое слово
+        keyword_placeholder: Поиск по названию или описанию
+        stage_guid: GUID этапа
+        stage_guid_placeholder: "например 12345678901"
+        difficulty: Сложность
+        status: Статус
+        submit: Поиск
+        reset: Сброс
     users:
       signup_title: Регистрация
       login_title: Вход

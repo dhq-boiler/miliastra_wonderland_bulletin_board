@@ -196,6 +196,26 @@ th:
         new_comment: โพสต์ความคิดเห็น
         placeholder: ใส่ความคิดเห็นของคุณ
         login_required: ต้อง%{login_link}เพื่อแสดงความคิดเห็น
+      participants:
+        title: ผู้เข้าร่วม
+        join: เข้าร่วม
+        cancel: ยกเลิกการเข้าร่วม
+        confirm_cancel: คุณแน่ใจหรือว่าต้องการยกเลิกการเข้าร่วม?
+        list: รายชื่อผู้เข้าร่วม
+        no_participants: ยังไม่มีผู้เข้าร่วม
+        login_required_html: ต้อง%{login_link}เพื่อเข้าร่วม
+        joined_at: "เข้าร่วมแล้ว %{time} ที่ผ่านมา"
+      search:
+        title: ตัวกรองการค้นหา
+        active: ใช้งาน
+        keyword: คำหลัก
+        keyword_placeholder: ค้นหาตามชื่อเรื่องหรือคำอธิบาย
+        stage_guid: Stage GUID
+        stage_guid_placeholder: "เช่น 12345678901"
+        difficulty: ความยาก
+        status: สถานะ
+        submit: ค้นหา
+        reset: รีเซ็ต
     users:
       signup_title: ลงทะเบียน
       login_title: เข้าสู่ระบบ
