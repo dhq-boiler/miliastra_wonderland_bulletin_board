@@ -13,8 +13,8 @@ class Stage < ApplicationRecord
   # 作成時にユーザーのlocaleを設定
   before_validation :set_locale_from_user, on: :create
 
-  # 最新の投稿順に並べる
-  scope :recent, -> { order(created_at: :desc) }
+  # 最新の投稿順に並べる（更新時間優先、次に作成時間）
+  scope :recent, -> { order(updated_at: :desc, created_at: :desc) }
 
   # 難易度の翻訳を取得
   def difficulty_text
