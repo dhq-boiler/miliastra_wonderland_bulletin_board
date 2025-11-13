@@ -44,7 +44,7 @@
     <% if @active_recruitments.any? %>
       <% @active_recruitments.each do |recruitment| %>
         <div class="stage-card">
-          <h3><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h3>
+          <h2><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h2>
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
@@ -82,7 +82,7 @@
     <% if @past_recruitments.any? %>
       <% @past_recruitments.each do |recruitment| %>
         <div class="stage-card">
-          <h3><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h3>
+          <h2><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h2>
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
