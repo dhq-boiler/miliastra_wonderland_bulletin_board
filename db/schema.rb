@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_10_035903) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_13_024938) do
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -22,6 +22,16 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_035903) do
     t.index ["deleted_at"], name: "index_multiplay_recruitment_comments_on_deleted_at"
     t.index ["multiplay_recruitment_id"], name: "idx_on_multiplay_recruitment_id_fedf63e60f"
     t.index ["user_id"], name: "index_multiplay_recruitment_comments_on_user_id"
+  end
+
+  create_table "multiplay_recruitment_participants", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "multiplay_recruitment_id", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["multiplay_recruitment_id", "user_id"], name: "index_multiplay_participants_on_recruitment_and_user", unique: true
+    t.index ["multiplay_recruitment_id"], name: "idx_on_multiplay_recruitment_id_564ae6d00b"
+    t.index ["user_id"], name: "index_multiplay_recruitment_participants_on_user_id"
   end
 
   create_table "multiplay_recruitments", force: :cascade do |t|
@@ -226,6 +236,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_10_035903) do
 
   add_foreign_key "multiplay_recruitment_comments", "multiplay_recruitments"
   add_foreign_key "multiplay_recruitment_comments", "users"
+  add_foreign_key "multiplay_recruitment_participants", "multiplay_recruitments"
+  add_foreign_key "multiplay_recruitment_participants", "users"
   add_foreign_key "multiplay_recruitments", "users"
   add_foreign_key "solid_queue_blocked_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_claimed_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade

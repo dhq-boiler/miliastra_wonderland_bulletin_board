@@ -200,6 +200,11 @@ en:
       new_title: New Recruitment
       tab_active: Active
       tab_past: Past
+      status:
+        recruiting: Recruiting
+        in_progress: In Progress
+        closed: Closed
+        finished: Finished
       form:
         title_label: Title
         title_placeholder: "e.g., Chapter 1 Boss Raid!"

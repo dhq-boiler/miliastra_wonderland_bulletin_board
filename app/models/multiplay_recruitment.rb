@@ -3,11 +3,21 @@ class MultiplayRecruitment < ApplicationRecord
 
   belongs_to :user
   has_many :comments, class_name: "MultiplayRecruitmentComment", dependent: :destroy
+  has_many :participants, class_name: "MultiplayRecruitmentParticipant", dependent: :destroy
+  has_many :participant_users, through: :participants, source: :user
+
+  # ステータスの定義（英語で統一）
+  STATUSES = {
+    recruiting: "recruiting",      # 募集中
+    in_progress: "in_progress",    # 開催中
+    closed: "closed",              # 募集終了
+    finished: "finished"           # 終了
+  }.freeze
 
   validates :title, presence: true
   validates :description, presence: true
   validates :max_players, presence: true, numericality: { only_integer: true, greater_than: 0, less_than_or_equal_to: 10 }
-  validates :status, presence: true, inclusion: { in: %w[募集中 募集終了 開催中 終了] }
+  validates :status, presence: true, inclusion: { in: STATUSES.values }
   validates :stage_guid, format: { with: /\A[1-9]\d*\z/, message: "は自然数（正の整数）で入力してください" }, allow_blank: true
 
   # end_timeのデフォルト値を当日の24時（翌日0時）に設定
@@ -15,8 +25,8 @@ class MultiplayRecruitment < ApplicationRecord
 
   # 最新の投稿順に並べる
   scope :recent, -> { order(created_at: :desc) }
-  scope :recruiting, -> { where(status: "募集中") }
-  scope :active, -> { where(status: [ "募集中", "開催中" ]) }
+  scope :recruiting, -> { where(status: STATUSES[:recruiting]) }
+  scope :active, -> { where(status: [ STATUSES[:recruiting], STATUSES[:in_progress] ]) }
 
   private
 

@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_many :stages, dependent: :destroy
   has_many :multiplay_recruitments, dependent: :destroy
   has_many :multiplay_recruitment_comments, dependent: :destroy
+  has_many :multiplay_recruitment_participations, class_name: "MultiplayRecruitmentParticipant", dependent: :destroy
+  has_many :participating_recruitments, through: :multiplay_recruitment_participations, source: :multiplay_recruitment
 
   # 対応言語の定義
   AVAILABLE_LOCALES = %w[ja zh-CN zh-TW en ko es fr ru th vi de id pt tr it].freeze

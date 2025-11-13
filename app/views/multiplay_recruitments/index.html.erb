@@ -46,7 +46,7 @@
         <div class="stage-card">
           <h3><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h3>
           <div class="stage-info">
-            <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
+            <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
               <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>
@@ -84,7 +84,7 @@
         <div class="stage-card">
           <h3><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h3>
           <div class="stage-info">
-            <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
+            <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
               <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>

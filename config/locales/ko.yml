@@ -171,6 +171,11 @@ ko:
       new_title: 새 모집
       tab_active: 진행중
       tab_past: 종료
+      status:
+        recruiting: 모집 중
+        in_progress: 진행 중
+        closed: 모집 종료
+        finished: 종료
       form:
         title_label: 제목
         title_placeholder: "예: 챕터 1 보스 레이드!"

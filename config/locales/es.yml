@@ -171,6 +171,11 @@ es:
       new_title: Nuevo Reclutamiento
       tab_active: Activo
       tab_past: Pasado
+      status:
+        recruiting: Reclutando
+        in_progress: En Progreso
+        closed: Cerrado
+        finished: Finalizado
       form:
         title_label: Título
         title_placeholder: "ej. ¡Raid del Jefe del Capítulo 1!"

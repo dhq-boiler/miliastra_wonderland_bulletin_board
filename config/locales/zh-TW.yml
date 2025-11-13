@@ -171,6 +171,11 @@ zh-TW:
       new_title: 新招募
       tab_active: 進行中
       tab_past: 已結束
+      status:
+        recruiting: 招募中
+        in_progress: 進行中
+        closed: 招募結束
+        finished: 已結束
       form:
         title_label: 標題
         title_placeholder: "例如：第1章Boss討伐！"

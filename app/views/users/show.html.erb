@@ -56,7 +56,7 @@
         <div class="stage-card">
           <h2><%= link_to recruitment.title, multiplay_recruitment_path(recruitment) %></h2>
           <div class="stage-info">
-            <span class="<%= status_badge_class(recruitment.status) %>"><%= recruitment.status %></span>
+            <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
               <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>

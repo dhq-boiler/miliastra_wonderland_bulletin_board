@@ -1,16 +1,22 @@
 module MultiplayRecruitmentsHelper
   def status_badge_class(status)
     case status
-    when "募集中"
+    when "recruiting"
       "status-recruiting"
-    when "募集終了"
+    when "closed"
       "status-closed"
-    when "開催中"
+    when "in_progress"
       "status-ongoing"
-    when "終了"
+    when "finished"
       "status-finished"
     else
       "status-default"
     end
+  end
+
+  # ステータスの表示用テキストを取得
+  def status_text(status)
+    key = MultiplayRecruitment::STATUSES.key(status)
+    key ? t("app.multiplay.status.#{key}") : status
   end
 end

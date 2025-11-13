@@ -171,6 +171,11 @@ th:
       new_title: การรับสมัครใหม่
       tab_active: ใช้งานอยู่
       tab_past: ที่ผ่านมา
+      status:
+        recruiting: กำลังรับสมัคร
+        in_progress: กำลังดำเนินการ
+        closed: ปิดรับสมัคร
+        finished: เสร็จสิ้น
       form:
         title_label: ชื่อเรื่อง
         title_placeholder: "เช่น การเอาชนะบอสบทที่ 1!"

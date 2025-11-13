@@ -1,0 +1,2 @@
+module MultiplayRecruitmentParticipantsHelper
+end

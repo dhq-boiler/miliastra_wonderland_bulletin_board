@@ -4,6 +4,7 @@ ja:
       stage: 幻境
       user: ユーザー
       multiplay_recruitment: マルチプレイ募集
+      multiplay_recruitment_participant: 参加者
     attributes:
       stage:
         title: タイトル
@@ -49,6 +50,7 @@ ja:
         confirmation: が一致しません
         login_required: ログインが必要です
         inclusion: は有効な値ではありません
+        recruitment_not_recruiting: この募集は現在募集中ではありません
   date:
     formats:
       default: "%Y/%m/%d"
@@ -162,6 +164,11 @@ ja:
       new_title: 新しいマルチプレイ募集
       tab_active: 募集中
       tab_past: 過去の募集
+      status:
+        recruiting: 募集中
+        in_progress: 開催中
+        closed: 募集終了
+        finished: 終了
       show:
         details_title: 詳細
         updated_at: 更新日
@@ -191,6 +198,15 @@ ja:
         new_comment: コメントを投稿
         placeholder: コメントを入力してください
         login_required: コメントするには%{login_link}が必要です。
+      participants:
+        title: 参加者
+        join: 参加する
+        cancel: 参加をキャンセル
+        confirm_cancel: 本当に参加をキャンセルしますか？
+        list: 参加者リスト
+        no_participants: まだ参加者がいません。
+        login_required_html: 参加するには%{login_link}が必要です。
+        joined_at: "%{time}前に参加"
     users:
       signup_title: 新規登録
       login_title: ログイン
@@ -280,6 +296,12 @@ ja:
       success: コメントを削除しました。
     errors:
       not_authorized_to_delete: 他のユーザーのコメントは削除できません。
+  participants:
+    create:
+      success: 参加宣言しました。
+    destroy:
+      success: 参加をキャンセルしました。
+      not_found: 参加していません。
   sessions:
     create:
       success: ログインしました。

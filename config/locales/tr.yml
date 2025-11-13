@@ -171,6 +171,11 @@ tr:
       new_title: Yeni İşe Alım
       tab_active: Aktif
       tab_past: Geçmiş
+      status:
+        recruiting: İşe Alım
+        in_progress: Devam Ediyor
+        closed: Kapalı
+        finished: Tamamlandı
       form:
         title_label: Başlık
         title_placeholder: "örn. Bölüm 1 Boss Baskını!"

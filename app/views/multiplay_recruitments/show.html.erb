@@ -3,7 +3,7 @@
     <h1 class="text-gray-800 border-b-4 border-purple-500 pb-2.5 mb-8 text-3xl font-bold"><%= @multiplay_recruitment.title %></h1>
 
     <div class="stage-info">
-      <span class="<%= status_badge_class(@multiplay_recruitment.status) %>"><%= @multiplay_recruitment.status %></span>
+      <span class="<%= status_badge_class(@multiplay_recruitment.status) %>"><%= status_text(@multiplay_recruitment.status) %></span>
       <% if @multiplay_recruitment.stage_guid.present? %>
         <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(@multiplay_recruitment.stage_guid) %></span>
       <% end %>
@@ -47,6 +47,56 @@
         <% end %>
       <% end %>
       <%= link_to t('app.common.back'), multiplay_recruitments_path, class: "btn btn-default" %>
+    </div>
+
+    <!-- 参加者セクション -->
+    <div class="participants-section mt-8 p-6 bg-gray-50 rounded-lg">
+      <h2 class="text-2xl font-bold mb-4 text-gray-800">
+        <%= t('app.multiplay.participants.title') %>
+        (<%= @multiplay_recruitment.participants.count %>/<%= @multiplay_recruitment.max_players %>)
+      </h2>
+
+      <% if logged_in? && @multiplay_recruitment.status == MultiplayRecruitment::STATUSES[:recruiting] %>
+        <div class="mb-6">
+          <% is_participating = @multiplay_recruitment.participants.exists?(user: current_user) %>
+          <% if is_participating %>
+            <%= button_to t('app.multiplay.participants.cancel'),
+                multiplay_recruitment_participants_path(@multiplay_recruitment),
+                method: :delete,
+                class: "btn btn-danger",
+                data: { turbo_confirm: t('app.multiplay.participants.confirm_cancel') } %>
+          <% else %>
+            <%= button_to t('app.multiplay.participants.join'),
+                multiplay_recruitment_participants_path(@multiplay_recruitment),
+                method: :post,
+                class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      <% elsif !logged_in? %>
+        <p class="text-gray-600 mb-4">
+          <%= t('app.multiplay.participants.login_required_html', login_link: link_to(t('app.menu.login'), login_path, class: "text-blue-600 hover:text-blue-800 underline")).html_safe %>
+        </p>
+      <% end %>
+
+      <% if @multiplay_recruitment.participants.any? %>
+        <div class="participants-list">
+          <h3 class="text-lg font-semibold mb-3 text-gray-700"><%= t('app.multiplay.participants.list') %></h3>
+          <ul class="space-y-2">
+            <% @multiplay_recruitment.participants.includes(:user).order(created_at: :asc).each do |participant| %>
+              <li class="flex items-center space-x-2 text-gray-700">
+                <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                <%= link_to participant.user.display_name, user_path(participant.user), class: "text-blue-600 hover:text-blue-800 underline" %>
+                <% if participant.user.admin? %>
+                  <span class="admin-badge"><%= t('app.common.admin_badge') %></span>
+                <% end %>
+                <%= diff_time(participant.created_at, "span", { class: "text-sm text-gray-500" }, auto_update: true) %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+        <p class="text-gray-500 italic"><%= t('app.multiplay.participants.no_participants') %></p>
+      <% end %>
     </div>
 
     <!-- コメントセクション -->

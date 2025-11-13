@@ -171,6 +171,11 @@ ru:
       new_title: Новый Набор
       tab_active: Активные
       tab_past: Прошлые
+      status:
+        recruiting: Набор
+        in_progress: В Процессе
+        closed: Закрыто
+        finished: Завершено
       form:
         title_label: Название
         title_placeholder: "напр. Рейд на Босса Главы 1!"

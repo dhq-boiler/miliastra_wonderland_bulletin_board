@@ -171,6 +171,11 @@ vi:
       new_title: Tuyển dụng Mới
       tab_active: Đang hoạt động
       tab_past: Đã qua
+      status:
+        recruiting: Đang Tuyển
+        in_progress: Đang Diễn Ra
+        closed: Đã Đóng
+        finished: Đã Kết Thúc
       form:
         title_label: Tiêu đề
         title_placeholder: "vd. Đánh Boss Chương 1!"

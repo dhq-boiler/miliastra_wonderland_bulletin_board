@@ -171,6 +171,11 @@ id:
       new_title: Rekrutmen Baru
       tab_active: Aktif
       tab_past: Sebelumnya
+      status:
+        recruiting: Merekrut
+        in_progress: Sedang Berlangsung
+        closed: Ditutup
+        finished: Selesai
       form:
         title_label: Judul
         title_placeholder: "mis. Raid Boss Bab 1!"

@@ -162,6 +162,11 @@ de:
       new_title: Neue Rekrutierung
       tab_active: Aktiv
       tab_past: Vergangen
+      status:
+        recruiting: Rekrutierung
+        in_progress: Im Gange
+        closed: Geschlossen
+        finished: Beendet
       show:
         details_title: Details
         updated_at: Aktualisiert

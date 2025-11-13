@@ -35,9 +35,8 @@ module ApplicationHelper
 
   # 募集状態セレクトオプション
   def status_options
-    [
-      [t('app.multiplay.form.status_recruiting'), t('app.multiplay.form.status_recruiting')],
-      [t('app.multiplay.form.status_closed'), t('app.multiplay.form.status_closed')]
-    ]
+    MultiplayRecruitment::STATUSES.map do |key, value|
+      [t("app.multiplay.status.#{key}"), value]
+    end
   end
 end

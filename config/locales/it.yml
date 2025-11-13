@@ -171,6 +171,11 @@ it:
       new_title: Nuovo Reclutamento
       tab_active: Attivo
       tab_past: Passato
+      status:
+        recruiting: Reclutamento
+        in_progress: In Corso
+        closed: Chiuso
+        finished: Terminato
       form:
         title_label: Titolo
         title_placeholder: "es. Raid Boss Capitolo 1!"
