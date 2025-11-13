@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :stages
   resources :multiplay_recruitments do
     resources :comments, only: [ :create, :destroy ], controller: "multiplay_recruitment_comments"
-    resources :participants, only: [ :create, :destroy ], controller: "multiplay_recruitment_participants"
+    resource :participant, only: [ :create, :destroy ], controller: "multiplay_recruitment_participants"
   end
 
   # 認証関連

@@ -61,13 +61,13 @@
           <% is_participating = @multiplay_recruitment.participants.exists?(user: current_user) %>
           <% if is_participating %>
             <%= button_to t('app.multiplay.participants.cancel'),
-                multiplay_recruitment_participants_path(@multiplay_recruitment),
+                multiplay_recruitment_participant_path(@multiplay_recruitment),
                 method: :delete,
                 class: "btn btn-danger",
                 data: { turbo_confirm: t('app.multiplay.participants.confirm_cancel') } %>
           <% else %>
             <%= button_to t('app.multiplay.participants.join'),
-                multiplay_recruitment_participants_path(@multiplay_recruitment),
+                multiplay_recruitment_participant_path(@multiplay_recruitment),
                 method: :post,
                 class: "btn btn-primary" %>
           <% end %>
