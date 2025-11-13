@@ -7,8 +7,8 @@ class MultiplayRecruitmentsController < ApplicationController
   def index
     base_query = MultiplayRecruitment.includes(:user).left_joins(:comments).group(:id).select("multiplay_recruitments.*, COUNT(multiplay_recruitment_comments.id) as comments_count")
 
-    @active_recruitments = base_query.where(status: [ "募集中", "開催中" ]).recent.to_a
-    @past_recruitments = base_query.where(status: [ "募集終了", "終了" ]).recent.to_a
+    @active_recruitments = base_query.where(status: [ MultiplayRecruitment::STATUSES[:recruiting], MultiplayRecruitment::STATUSES[:in_progress] ]).recent.to_a
+    @past_recruitments = base_query.where(status: [ MultiplayRecruitment::STATUSES[:closed], MultiplayRecruitment::STATUSES[:finished] ]).recent.to_a
   end
 
   def show
