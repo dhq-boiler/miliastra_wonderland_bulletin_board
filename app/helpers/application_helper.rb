@@ -2,7 +2,7 @@ module ApplicationHelper
   # 利用可能な言語の一覧を取得
   def available_locales
     I18n.available_locales.map do |locale|
-      [t("languages.#{locale}"), locale]
+      [ t("languages.#{locale}"), locale ]
     end
   end
 
@@ -19,24 +19,24 @@ module ApplicationHelper
 
   # エラー数の翻訳
   def errors_count_message(count)
-    t('app.stages.errors.count', count: count) + t('app.stages.errors.has_errors')
+    t("app.stages.errors.count", count: count) + t("app.stages.errors.has_errors")
   end
 
   # 難易度セレクトオプション
   def difficulty_options
     [
-      [t('app.stages.form.difficulty_placeholder'), ""],
-      [t('app.stages.form.difficulty_easy'), t('app.stages.form.difficulty_easy')],
-      [t('app.stages.form.difficulty_normal'), t('app.stages.form.difficulty_normal')],
-      [t('app.stages.form.difficulty_hard'), t('app.stages.form.difficulty_hard')],
-      [t('app.stages.form.difficulty_very_hard'), t('app.stages.form.difficulty_very_hard')]
+      [ t("app.stages.form.difficulty_placeholder"), "" ],
+      [ t("app.stages.form.difficulty_easy"), t("app.stages.form.difficulty_easy") ],
+      [ t("app.stages.form.difficulty_normal"), t("app.stages.form.difficulty_normal") ],
+      [ t("app.stages.form.difficulty_hard"), t("app.stages.form.difficulty_hard") ],
+      [ t("app.stages.form.difficulty_very_hard"), t("app.stages.form.difficulty_very_hard") ]
     ]
   end
 
   # 募集状態セレクトオプション
   def status_options
     MultiplayRecruitment::STATUSES.map do |key, value|
-      [t("app.multiplay.status.#{key}"), value]
+      [ t("app.multiplay.status.#{key}"), value ]
     end
   end
 end

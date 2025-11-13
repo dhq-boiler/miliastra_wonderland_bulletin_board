@@ -4,4 +4,3 @@ class AddLocaleToUsers < ActiveRecord::Migration[8.1]
     add_index :users, :locale
   end
 end
-

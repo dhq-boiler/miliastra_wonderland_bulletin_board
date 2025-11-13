@@ -27,17 +27,17 @@ class ApplicationController < ActionController::Base
     end
 
     def locale_from_header
-      return nil unless request.env['HTTP_ACCEPT_LANGUAGE']
+      return nil unless request.env["HTTP_ACCEPT_LANGUAGE"]
 
-      accepted = request.env['HTTP_ACCEPT_LANGUAGE'].scan(/([a-z]{2}(?:-[A-Z]{2})?)(?:;q=([0-9.]+))?/).map do |lang, quality|
-        [lang, (quality || 1.0).to_f]
+      accepted = request.env["HTTP_ACCEPT_LANGUAGE"].scan(/([a-z]{2}(?:-[A-Z]{2})?)(?:;q=([0-9.]+))?/).map do |lang, quality|
+        [ lang, (quality || 1.0).to_f ]
       end.sort_by { |_, quality| -quality }
 
       accepted.each do |lang, _|
         # 完全一致を優先
         return lang if I18n.available_locales.include?(lang.to_sym)
         # 言語コードのみの一致（例: zh-CN -> zh）
-        base_lang = lang.split('-').first
+        base_lang = lang.split("-").first
         matched = I18n.available_locales.find { |l| l.to_s.start_with?(base_lang) }
         return matched.to_s if matched
       end
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
 
     def require_login
       unless logged_in?
-        redirect_to login_path, alert: I18n.t('errors.messages.login_required')
+        redirect_to login_path, alert: I18n.t("errors.messages.login_required")
       end
     end
 

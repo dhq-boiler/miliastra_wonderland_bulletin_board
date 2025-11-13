@@ -16,16 +16,16 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(password)
       session[:user_id] = user.id
-      redirect_to stages_path, notice: t('sessions.create.success')
+      redirect_to stages_path, notice: t("sessions.create.success")
     else
       Rails.logger.info "Authentication failed - User: #{user.present?}, Password valid: #{user&.authenticate(password)}"
-      flash.now[:alert] = t('sessions.create.failure')
+      flash.now[:alert] = t("sessions.create.failure")
       render :new, status: :unprocessable_entity
     end
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_path, notice: t('sessions.destroy.success')
+    redirect_to root_path, notice: t("sessions.destroy.success")
   end
 end

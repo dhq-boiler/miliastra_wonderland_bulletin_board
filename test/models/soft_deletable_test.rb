@@ -32,7 +32,7 @@ class SoftDeletableTest < ActiveSupport::TestCase
 
   def teardown
     # テストデータをクリーンアップ（子から順に削除）
-    [@comment, @recruitment, @stage, @user].compact.each do |record|
+    [ @comment, @recruitment, @stage, @user ].compact.each do |record|
       next unless record.persisted?
 
       # 削除済みの場合は復元してから物理削除
@@ -165,4 +165,3 @@ class SoftDeletableTest < ActiveSupport::TestCase
     User.with_deleted.where(id: user_ids).each(&:destroy!)
   end
 end
-

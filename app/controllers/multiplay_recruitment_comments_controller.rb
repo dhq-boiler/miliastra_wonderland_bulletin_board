@@ -9,15 +9,15 @@ class MultiplayRecruitmentCommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_to @multiplay_recruitment, notice: t('comments.create.success')
+      redirect_to @multiplay_recruitment, notice: t("comments.create.success")
     else
-      redirect_to @multiplay_recruitment, alert: t('comments.create.failure', errors: @comment.errors.full_messages.join(', '))
+      redirect_to @multiplay_recruitment, alert: t("comments.create.failure", errors: @comment.errors.full_messages.join(", "))
     end
   end
 
   def destroy
     @comment.destroy
-    redirect_to @multiplay_recruitment, notice: t('comments.destroy.success')
+    redirect_to @multiplay_recruitment, notice: t("comments.destroy.success")
   end
 
   private
@@ -31,7 +31,7 @@ class MultiplayRecruitmentCommentsController < ApplicationController
 
     def authorize_user_or_admin
       unless @comment.user == current_user || current_user.admin?
-        redirect_to @multiplay_recruitment, alert: t('comments.errors.not_authorized_to_delete')
+        redirect_to @multiplay_recruitment, alert: t("comments.errors.not_authorized_to_delete")
       end
     end
 

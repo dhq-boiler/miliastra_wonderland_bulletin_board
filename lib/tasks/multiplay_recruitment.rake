@@ -4,7 +4,7 @@ namespace :multiplay_recruitment do
     current_time = Time.current
 
     # 終了していない募集（募集中、開催中）を取得
-    active_recruitments = MultiplayRecruitment.where(status: ["募集中", "開催中"])
+    active_recruitments = MultiplayRecruitment.where(status: [ "募集中", "開催中" ])
 
     closed_count = 0
 

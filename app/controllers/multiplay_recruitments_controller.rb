@@ -24,7 +24,7 @@ class MultiplayRecruitmentsController < ApplicationController
     @multiplay_recruitment = current_user.multiplay_recruitments.build(multiplay_recruitment_params)
 
     if @multiplay_recruitment.save
-      redirect_to @multiplay_recruitment, notice: t('multiplay_recruitments.create.success')
+      redirect_to @multiplay_recruitment, notice: t("multiplay_recruitments.create.success")
     else
       render :new, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class MultiplayRecruitmentsController < ApplicationController
 
   def update
     if @multiplay_recruitment.update(multiplay_recruitment_params)
-      redirect_to @multiplay_recruitment, notice: t('multiplay_recruitments.update.success')
+      redirect_to @multiplay_recruitment, notice: t("multiplay_recruitments.update.success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class MultiplayRecruitmentsController < ApplicationController
 
   def destroy
     @multiplay_recruitment.destroy
-    redirect_to multiplay_recruitments_url, notice: t('multiplay_recruitments.destroy.success')
+    redirect_to multiplay_recruitments_url, notice: t("multiplay_recruitments.destroy.success")
   end
 
   private
@@ -53,13 +53,13 @@ class MultiplayRecruitmentsController < ApplicationController
 
     def authorize_user
       unless @multiplay_recruitment.user == current_user
-        redirect_to multiplay_recruitments_path, alert: t('multiplay_recruitments.errors.not_authorized_to_edit')
+        redirect_to multiplay_recruitments_path, alert: t("multiplay_recruitments.errors.not_authorized_to_edit")
       end
     end
 
     def authorize_user_or_admin
       unless @multiplay_recruitment.user == current_user || current_user.admin?
-        redirect_to multiplay_recruitments_path, alert: t('multiplay_recruitments.errors.not_authorized_to_delete')
+        redirect_to multiplay_recruitments_path, alert: t("multiplay_recruitments.errors.not_authorized_to_delete")
       end
     end
 

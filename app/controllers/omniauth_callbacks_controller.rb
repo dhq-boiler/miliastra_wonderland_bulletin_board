@@ -8,24 +8,24 @@ class OmniauthCallbacksController < ApplicationController
     if user.persisted?
       # 既存のユーザー
       session[:user_id] = user.id
-      redirect_to stages_path, notice: t('omniauth.google.login_success')
+      redirect_to stages_path, notice: t("omniauth.google.login_success")
     elsif user.save
       # 新規ユーザー作成成功
       session[:user_id] = user.id
-      redirect_to stages_path, notice: t('omniauth.google.signup_success')
+      redirect_to stages_path, notice: t("omniauth.google.signup_success")
     else
       # エラー処理
-      redirect_to login_path, alert: t('omniauth.google.failure', errors: user.errors.full_messages.join(", "))
+      redirect_to login_path, alert: t("omniauth.google.failure", errors: user.errors.full_messages.join(", "))
     end
   end
 
   def failure
     error_type = params[:error_reason] || params[:error] || "unknown"
-    error_message = params[:error_description] || params[:message] || t('omniauth.errors.unknown')
+    error_message = params[:error_description] || params[:message] || t("omniauth.errors.unknown")
 
     Rails.logger.error "OAuth認証失敗: #{error_type} - #{error_message}"
     Rails.logger.error "リクエストパラメータ: #{params.inspect}"
 
-    redirect_to login_path, alert: t('omniauth.errors.authentication_failed', message: error_message)
+    redirect_to login_path, alert: t("omniauth.errors.authentication_failed", message: error_message)
   end
 end

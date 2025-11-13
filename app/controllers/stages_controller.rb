@@ -19,7 +19,7 @@ class StagesController < ApplicationController
     @stage = current_user.stages.build(stage_params)
 
     if @stage.save
-      redirect_to @stage, notice: t('stages.create.success')
+      redirect_to @stage, notice: t("stages.create.success")
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class StagesController < ApplicationController
 
   def update
     if @stage.update(stage_params)
-      redirect_to @stage, notice: t('stages.update.success')
+      redirect_to @stage, notice: t("stages.update.success")
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class StagesController < ApplicationController
 
   def destroy
     @stage.destroy
-    redirect_to stages_url, notice: t('stages.destroy.success')
+    redirect_to stages_url, notice: t("stages.destroy.success")
   end
 
   private
@@ -48,13 +48,13 @@ class StagesController < ApplicationController
 
     def authorize_user
       unless @stage.user == current_user
-        redirect_to stages_path, alert: t('stages.errors.not_authorized_to_edit')
+        redirect_to stages_path, alert: t("stages.errors.not_authorized_to_edit")
       end
     end
 
     def authorize_user_or_admin
       unless @stage.user == current_user || current_user.admin?
-        redirect_to stages_path, alert: t('stages.errors.not_authorized_to_delete')
+        redirect_to stages_path, alert: t("stages.errors.not_authorized_to_delete")
       end
     end
 

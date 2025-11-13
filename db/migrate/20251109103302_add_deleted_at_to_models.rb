@@ -13,4 +13,3 @@ class AddDeletedAtToModels < ActiveRecord::Migration[8.1]
     add_index :multiplay_recruitment_comments, :deleted_at
   end
 end
-
