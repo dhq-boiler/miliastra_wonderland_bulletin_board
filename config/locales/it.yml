@@ -127,6 +127,7 @@ it:
       new_title: Nuova Fase
       show:
         official_page: Pagina Ufficiale della Fase
+        multiplay_recruitments: Visualizza Reclutamenti Multigiocatore
         description_title: Descrizione
         tips_title: Suggerimenti & Consigli
         updated_at: Aggiornato

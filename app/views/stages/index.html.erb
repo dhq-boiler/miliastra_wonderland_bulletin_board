@@ -23,6 +23,13 @@
             <% if stage.locale.present? %>
               <span class="language"><%= t('app.common.language_label') %>: <%= t("languages.#{stage.locale}") %></span>
             <% end %>
+            <% if @multiplay_counts[stage.stage_guid].to_i > 0 %>
+              <%= link_to multiplay_recruitments_path(stage_guid: stage.stage_guid), target: "_blank", rel: "noopener noreferrer", style: "text-decoration: none; display: inline-block; margin-right: 0.625rem;" do %>
+                <span style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); color: white; padding: 0.25rem 0.625rem; border-radius: 0.25rem; display: inline-block; font-weight: 600; font-size: 0.875rem; box-shadow: 0 1px 2px rgba(16, 185, 129, 0.2);">
+                  <%= t('app.stages.show.multiplay_recruitments') %> (<%= @multiplay_counts[stage.stage_guid] %>)
+                </span>
+              <% end %>
+            <% end %>
           </div>
           <p class="description"><%= truncate(stage.description, length: 200) %></p>
           <div class="meta">

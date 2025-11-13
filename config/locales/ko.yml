@@ -127,6 +127,7 @@ ko:
       new_title: 새 스테이지
       show:
         official_page: 공식 스테이지 페이지
+        multiplay_recruitments: 멀티플레이 모집 보기
         description_title: 설명
         tips_title: 팁 & 힌트
         updated_at: 업데이트됨

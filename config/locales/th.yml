@@ -127,6 +127,7 @@ th:
       new_title: ด่านใหม่
       show:
         official_page: หน้าด่านอย่างเป็นทางการ
+        multiplay_recruitments: ดูการรับสมัครผู้เล่นหลายคน
         description_title: คำอธิบาย
         tips_title: เคล็ดลับและคำแนะนำ
         updated_at: อัปเดตแล้ว

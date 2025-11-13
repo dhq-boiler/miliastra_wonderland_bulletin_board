@@ -6,9 +6,18 @@ class StagesController < ApplicationController
 
   def index
     @stages = Stage.includes(:user).recent
+
+    # 各幻境のマルチプレイ募集件数を一括取得（N+1問題を回避）
+    stage_guids = @stages.map(&:stage_guid).compact
+    @multiplay_counts = MultiplayRecruitment.active
+                                             .where(stage_guid: stage_guids)
+                                             .group(:stage_guid)
+                                             .count
   end
 
   def show
+    # この幻境に対するマルチプレイ募集の件数を取得
+    @multiplay_recruitments_count = MultiplayRecruitment.active.where(stage_guid: @stage.stage_guid).count
   end
 
   def new

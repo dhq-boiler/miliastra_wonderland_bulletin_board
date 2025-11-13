@@ -127,6 +127,7 @@ id:
       new_title: Tahap Baru
       show:
         official_page: Halaman Tahap Resmi
+        multiplay_recruitments: Lihat Rekrutmen Multipemain
         description_title: Deskripsi
         tips_title: Tips & Petunjuk
         updated_at: Diperbarui

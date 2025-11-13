@@ -12,8 +12,13 @@
           <span class="language"><%= t('app.common.language_label') %>: <%= t("languages.#{@stage.locale}") %></span>
         <% end %>
       </div>
-      <div>
+      <div class="flex gap-2">
         <%= link_to t('app.stages.show.official_page'), "https://act.hoyolab.com/ys/ugc_community/mx/?lang=ja-jp&bbs_theme=dark&bbs_theme_device=1#/pages/level-detail/index?id=#{@stage.stage_guid}&region=os_asia", class: "btn btn-primary", target: "_blank", rel: "noopener noreferrer" %>
+        <% if @multiplay_recruitments_count > 0 %>
+          <%= link_to multiplay_recruitments_path(stage_guid: @stage.stage_guid), class: "btn btn-secondary", target: "_blank", rel: "noopener noreferrer" do %>
+            <%= t('app.stages.show.multiplay_recruitments') %> (<%= @multiplay_recruitments_count %>)
+          <% end %>
+        <% end %>
       </div>
     </div>
 

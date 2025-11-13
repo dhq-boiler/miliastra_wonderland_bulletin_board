@@ -127,6 +127,7 @@ tr:
       new_title: Yeni Aşama
       show:
         official_page: Resmi Aşama Sayfası
+        multiplay_recruitments: Çok Oyunculu Alımları Görüntüle
         description_title: Açıklama
         tips_title: İpuçları & Öneriler
         updated_at: Güncellendi
