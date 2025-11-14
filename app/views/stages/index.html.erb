@@ -11,26 +11,52 @@
   </div>
 
   <!-- 検索フォーム -->
-  <div class="search-section mb-6 p-4 bg-gray-50 rounded-lg">
-    <%= form_with url: stages_path, method: :get, local: true, class: "search-form", data: { controller: "tag-modal" } do |form| %>
-      <!-- キーワード検索 -->
-      <div class="form-group mb-4">
-        <%= form.label :keyword, t('app.stages.search.keyword_label'), class: "font-semibold mb-2 block" %>
-        <%= form.text_field :keyword, value: @search_keyword, class: "form-control w-full p-2 border rounded", placeholder: t('app.stages.search.keyword_placeholder') %>
-      </div>
-
-      <!-- タグ選択ボタン -->
-      <div class="form-group mb-4">
-        <label class="font-semibold mb-2 block"><%= t('app.stages.form.tags_label') %></label>
-        <button type="button" class="tag-selection-trigger" popovertarget="search-tag-popover">
-          <span>🏷️</span>
-          <span>タグで絞り込む</span>
-        </button>
-
-        <div class="tag-selection-summary empty" data-tag-modal-target="summary" data-empty-text="タグが選択されていません">
-          タグが選択されていません
+  <div class="mt-6 mb-6">
+    <div class="bg-white rounded-lg border border-gray-200 overflow-hidden">
+      <!-- 検索ヘッダー -->
+      <button type="button" onclick="toggleStageSearchForm()" class="search-toggle-button w-full px-6 py-4 flex items-center justify-between transition-all duration-200 cursor-pointer">
+        <div class="flex items-center gap-3">
+          <svg class="search-icon w-4 h-4 text-blue-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          <span class="search-text text-base font-semibold text-gray-800" style="white-space: nowrap;">検索条件</span>
+          <% has_search_params = @search_keyword.present? || @search_device_tag_ids&.any? || @search_category_tag_ids&.any? || @search_other_tag_ids&.any? %>
+          <% if has_search_params %>
+            <span class="px-2.5 py-0.5 text-xs font-semibold bg-blue-100 text-blue-700 rounded">検索中</span>
+          <% end %>
         </div>
-      </div>
+        <svg id="stage-search-chevron" class="search-chevron w-4 h-4 text-gray-500 flex-shrink-0 <%= has_search_params ? 'rotate-180' : '' %>" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <!-- 検索フォームコンテンツ -->
+      <div id="stage-search-form-content" class="<%= has_search_params ? '' : 'hidden' %>">
+        <%= form_with url: stages_path, method: :get, local: true, class: "p-6 border-t border-gray-200 bg-gray-50", data: { controller: "tag-modal" } do |form| %>
+          <div class="grid grid-cols-1 gap-4">
+            <!-- キーワード検索 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                <%= t('app.stages.search.keyword_label') %>
+              </label>
+              <%= form.text_field :keyword, value: @search_keyword, class: "form-control w-full", placeholder: t('app.stages.search.keyword_placeholder') %>
+            </div>
+
+            <!-- タグ選択 -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                <%= t('app.stages.form.tags_label') %>
+              </label>
+              <button type="button" class="tag-selection-trigger" popovertarget="search-tag-popover">
+                <span>🏷️</span>
+                <span>タグで絞り込む</span>
+              </button>
+
+              <div class="tag-selection-summary empty mt-2" data-tag-modal-target="summary" data-empty-text="タグが選択されていません">
+                タグが選択されていません
+              </div>
+            </div>
+          </div>
 
       <!-- タグポップオーバー (Popover API使用) -->
       <div id="search-tag-popover" popover class="tag-modal-popover" data-tag-modal-target="popover">
@@ -94,12 +120,24 @@
         </div>
       </div>
 
-      <div class="form-actions flex gap-2">
-        <%= form.submit t('app.stages.search.search_button'), class: "btn btn-primary px-4 py-2" %>
-        <%= link_to t('app.stages.search.reset_button'), stages_path, class: "btn btn-secondary px-4 py-2" %>
+          <!-- ボタン -->
+          <div class="flex gap-3 mt-4 pt-4 border-t border-gray-200">
+            <%= form.submit t('app.stages.search.search_button'), class: "btn btn-primary" %>
+            <%= link_to t('app.stages.search.reset_button'), stages_path, class: "btn btn-secondary" %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
+
+  <script>
+    function toggleStageSearchForm() {
+      const content = document.getElementById('stage-search-form-content');
+      const chevron = document.getElementById('stage-search-chevron');
+      content.classList.toggle('hidden');
+      chevron.classList.toggle('rotate-180');
+    }
+  </script>
 
   <div class="stages-list">
     <% if @stages.any? %>

@@ -1311,6 +1311,37 @@ textarea.form-control {
   font-weight: 500;
 }
 
+/* Search Toggle Button */
+.search-toggle-button {
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  border: none;
+  text-align: left;
+}
+
+.search-toggle-button:hover {
+  background: linear-gradient(to bottom, #f9fafb, #f3f4f6);
+}
+
+.search-toggle-button:active {
+  background: #f3f4f6;
+}
+
+.search-icon {
+  transition: transform 0.2s ease;
+}
+
+.search-toggle-button:hover .search-icon {
+  transform: scale(1.1);
+}
+
+.search-chevron {
+  transition: transform 0.3s ease;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 640px) {
   [popover].tag-modal-popover {
     width: 95vw;
@@ -1339,6 +1370,14 @@ textarea.form-control {
 
   .tag-category-section {
     margin-bottom: 1.5rem;
+  }
+
+  .search-toggle-button {
+    padding: 1rem 1.25rem;
+  }
+
+  .search-text {
+    font-size: 0.875rem;
   }
 }
 
