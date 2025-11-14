@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_13_024938) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_14_150227) do
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
     t.text "content", null: false
     t.datetime "created_at", null: false
@@ -193,6 +193,18 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_13_024938) do
     t.index ["key"], name: "index_solid_queue_semaphores_on_key", unique: true
   end
 
+  create_table "stage_tags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "deleted_at"
+    t.integer "stage_id", null: false
+    t.integer "tag_id", null: false
+    t.datetime "updated_at", null: false
+    t.index ["deleted_at"], name: "index_stage_tags_on_deleted_at"
+    t.index ["stage_id", "tag_id"], name: "index_stage_tags_on_stage_id_and_tag_id", unique: true
+    t.index ["stage_id"], name: "index_stage_tags_on_stage_id"
+    t.index ["tag_id"], name: "index_stage_tags_on_tag_id"
+  end
+
   create_table "stages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "deleted_at"
@@ -209,6 +221,19 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_13_024938) do
     t.index ["locale"], name: "index_stages_on_locale"
     t.index ["stage_guid"], name: "index_stages_on_stage_guid"
     t.index ["user_id"], name: "index_stages_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "category", null: false
+    t.datetime "created_at", null: false
+    t.datetime "deleted_at"
+    t.text "description"
+    t.string "name", null: false
+    t.string "slug"
+    t.datetime "updated_at", null: false
+    t.index ["category"], name: "index_tags_on_category"
+    t.index ["deleted_at"], name: "index_tags_on_deleted_at"
+    t.index ["name", "category"], name: "index_tags_on_name_and_category", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -245,4 +270,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_13_024938) do
   add_foreign_key "solid_queue_ready_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_recurring_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
   add_foreign_key "solid_queue_scheduled_executions", "solid_queue_jobs", column: "job_id", on_delete: :cascade
+  add_foreign_key "stage_tags", "stages"
+  add_foreign_key "stage_tags", "tags"
 end

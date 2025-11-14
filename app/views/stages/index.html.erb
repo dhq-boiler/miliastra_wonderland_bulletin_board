@@ -10,6 +10,97 @@
     <% end %>
   </div>
 
+  <!-- 検索フォーム -->
+  <div class="search-section mb-6 p-4 bg-gray-50 rounded-lg">
+    <%= form_with url: stages_path, method: :get, local: true, class: "search-form", data: { controller: "tag-modal" } do |form| %>
+      <!-- キーワード検索 -->
+      <div class="form-group mb-4">
+        <%= form.label :keyword, t('app.stages.search.keyword_label'), class: "font-semibold mb-2 block" %>
+        <%= form.text_field :keyword, value: @search_keyword, class: "form-control w-full p-2 border rounded", placeholder: t('app.stages.search.keyword_placeholder') %>
+      </div>
+
+      <!-- タグ選択ボタン -->
+      <div class="form-group mb-4">
+        <label class="font-semibold mb-2 block"><%= t('app.stages.form.tags_label') %></label>
+        <button type="button" class="tag-selection-trigger" popovertarget="search-tag-popover">
+          <span>🏷️</span>
+          <span>タグで絞り込む</span>
+        </button>
+
+        <div class="tag-selection-summary empty" data-tag-modal-target="summary" data-empty-text="タグが選択されていません">
+          タグが選択されていません
+        </div>
+      </div>
+
+      <!-- タグポップオーバー (Popover API使用) -->
+      <div id="search-tag-popover" popover class="tag-modal-popover" data-tag-modal-target="popover">
+        <div class="tag-modal-container">
+          <div class="tag-modal-header">
+            <h3 class="tag-modal-title">タグで絞り込む</h3>
+            <button type="button" class="tag-modal-close" popovertarget="search-tag-popover" popovertargetaction="hide">×</button>
+          </div>
+
+          <div class="tag-modal-body">
+            <!-- デバイスタグ -->
+            <% if @device_tags.any? %>
+              <div class="tag-category-section">
+                <h4 class="tag-category-title"><%= t('app.tags.categories.device') %></h4>
+                <div class="tag-checkboxes">
+                  <% @device_tags.each do |tag| %>
+                    <div class="tag-checkbox-item">
+                      <%= check_box_tag 'device_tag_ids[]', tag.id, @search_device_tag_ids&.include?(tag.id.to_s), id: "search_device_tag_#{tag.id}", data: { tag_modal_target: "checkbox", action: "change->tag-modal#toggleCheckbox" } %>
+                      <%= label_tag "search_device_tag_#{tag.id}", tag.name %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- カテゴリータグ -->
+            <% if @category_tags.any? %>
+              <div class="tag-category-section">
+                <h4 class="tag-category-title"><%= t('app.tags.categories.category') %></h4>
+                <div class="tag-checkboxes">
+                  <% @category_tags.each do |tag| %>
+                    <div class="tag-checkbox-item">
+                      <%= check_box_tag 'category_tag_ids[]', tag.id, @search_category_tag_ids&.include?(tag.id.to_s), id: "search_category_tag_#{tag.id}", data: { tag_modal_target: "checkbox", action: "change->tag-modal#toggleCheckbox" } %>
+                      <%= label_tag "search_category_tag_#{tag.id}", tag.name %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- その他のタグ -->
+            <% if @other_tags.any? %>
+              <div class="tag-category-section">
+                <h4 class="tag-category-title"><%= t('app.tags.categories.other') %></h4>
+                <div class="tag-checkboxes">
+                  <% @other_tags.each do |tag| %>
+                    <div class="tag-checkbox-item">
+                      <%= check_box_tag 'other_tag_ids[]', tag.id, @search_other_tag_ids&.include?(tag.id.to_s), id: "search_other_tag_#{tag.id}", data: { tag_modal_target: "checkbox", action: "change->tag-modal#toggleCheckbox" } %>
+                      <%= label_tag "search_other_tag_#{tag.id}", tag.name %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+
+          <div class="tag-modal-footer">
+            <button type="button" class="btn btn-secondary" data-action="click->tag-modal#clearAll">すべてクリア</button>
+            <button type="button" class="btn btn-primary" data-action="click->tag-modal#apply">適用</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-actions flex gap-2">
+        <%= form.submit t('app.stages.search.search_button'), class: "btn btn-primary px-4 py-2" %>
+        <%= link_to t('app.stages.search.reset_button'), stages_path, class: "btn btn-secondary px-4 py-2" %>
+      </div>
+    <% end %>
+  </div>
+
   <div class="stages-list">
     <% if @stages.any? %>
       <% @stages.each do |stage| %>
@@ -31,6 +122,13 @@
               <% end %>
             <% end %>
           </div>
+          <% if stage.tags.any? %>
+            <div class="stage-tags mt-2 mb-2">
+              <% stage.tags.each do |tag| %>
+                <span class="tag-badge bg-blue-100 text-blue-800 px-2 py-1 rounded text-sm mr-1"><%= tag.name %></span>
+              <% end %>
+            </div>
+          <% end %>
           <p class="description"><%= truncate(stage.description, length: 200) %></p>
           <div class="meta">
             <span class="author">

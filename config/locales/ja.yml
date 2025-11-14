@@ -119,6 +119,11 @@ ja:
       start_time: 開始予定
       end_time: 終了予定
       status: ステータス
+    tags:
+      categories:
+        device: デバイス
+        category: カテゴリー
+        other: その他
     stages:
       title: 幻境 紹介掲示板
       new_post: 新しい幻境紹介を投稿
@@ -151,6 +156,13 @@ ja:
         description_placeholder: ステージの特徴、ギミック、敵の配置などを説明してください
         tips_label: 攻略のコツ・ヒント
         tips_placeholder: クリアのコツ、注意点、おすすめの装備などを記入してください
+        tags_label: タグ
+        no_tags_available: タグがまだ登録されていません。
+      search:
+        keyword_label: キーワード
+        keyword_placeholder: タイトルまたは説明で検索
+        search_button: 検索
+        reset_button: リセット
       errors:
         count: "%{count}個のエラー"
         has_errors: があります

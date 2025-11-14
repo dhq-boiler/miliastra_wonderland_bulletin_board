@@ -1,4 +1,4 @@
-<%= form_with(model: stage) do |form| %>
+<%= form_with(model: stage, data: { controller: "tag-modal" }) do |form| %>
   <% if stage.errors.any? %>
     <div class="error-messages">
       <h3><%= t('app.stages.errors.count', count: stage.errors.count) %><%= t('app.stages.errors.has_errors') %>:</h3>
@@ -59,6 +59,88 @@
   <div class="form-group">
     <%= form.label :tips, "#{t('app.stages.form.tips_label')}#{t('app.common.optional')}" %>
     <%= form.text_area :tips, rows: 6, class: "form-control", placeholder: t('app.stages.form.tips_placeholder') %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :tag_ids, "#{t('app.stages.form.tags_label')}#{t('app.common.optional')}" %>
+
+    <button type="button" class="tag-selection-trigger" popovertarget="stage-tag-popover">
+      <span>🏷️</span>
+      <span>タグを選択</span>
+    </button>
+
+    <div class="tag-selection-summary empty" data-tag-modal-target="summary" data-empty-text="タグが選択されていません">
+      タグが選択されていません
+    </div>
+
+    <!-- タグポップオーバー (Popover API使用) -->
+    <div id="stage-tag-popover" popover class="tag-modal-popover" data-tag-modal-target="popover">
+      <div class="tag-modal-container">
+        <div class="tag-modal-header">
+          <h3 class="tag-modal-title">タグを選択</h3>
+          <button type="button" class="tag-modal-close" popovertarget="stage-tag-popover" popovertargetaction="hide">×</button>
+        </div>
+
+        <div class="tag-modal-body">
+          <% if @device_tags.present? || @category_tags.present? || @other_tags.present? %>
+            <!-- デバイスタグ -->
+            <% device_tags = Tag.device.ordered %>
+            <% if device_tags.any? %>
+              <div class="tag-category-section">
+                <h4 class="tag-category-title"><%= t('app.tags.categories.device') %></h4>
+                <div class="tag-checkboxes">
+                  <%= form.collection_check_boxes :tag_ids, device_tags, :id, :name, { checked: stage.tag_ids.include?(device_tags.map(&:id)) }, { class: 'hidden' } do |b| %>
+                    <div class="tag-checkbox-item">
+                      <%= b.check_box({ data: { tag_modal_target: "checkbox", action: "change->tag-modal#toggleCheckbox" } }) %>
+                      <%= b.label %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- カテゴリータグ -->
+            <% category_tags = Tag.category_type.ordered %>
+            <% if category_tags.any? %>
+              <div class="tag-category-section">
+                <h4 class="tag-category-title"><%= t('app.tags.categories.category') %></h4>
+                <div class="tag-checkboxes">
+                  <%= form.collection_check_boxes :tag_ids, category_tags, :id, :name, {}, { class: 'hidden' } do |b| %>
+                    <div class="tag-checkbox-item">
+                      <%= b.check_box({ data: { tag_modal_target: "checkbox", action: "change->tag-modal#toggleCheckbox" } }) %>
+                      <%= b.label %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+            <!-- その他のタグ -->
+            <% other_tags = Tag.other.ordered %>
+            <% if other_tags.any? %>
+              <div class="tag-category-section">
+                <h4 class="tag-category-title"><%= t('app.tags.categories.other') %></h4>
+                <div class="tag-checkboxes">
+                  <%= form.collection_check_boxes :tag_ids, other_tags, :id, :name, {}, { class: 'hidden' } do |b| %>
+                    <div class="tag-checkbox-item">
+                      <%= b.check_box({ data: { tag_modal_target: "checkbox", action: "change->tag-modal#toggleCheckbox" } }) %>
+                      <%= b.label %>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p class="text-muted"><%= t('app.stages.form.no_tags_available') %></p>
+          <% end %>
+        </div>
+
+        <div class="tag-modal-footer">
+          <button type="button" class="btn btn-secondary" data-action="click->tag-modal#clearAll">すべてクリア</button>
+          <button type="button" class="btn btn-primary" data-action="click->tag-modal#apply">適用</button>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">

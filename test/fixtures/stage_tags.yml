@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  stage: one
+  tag: one
+  deleted_at: 2025-11-15 00:02:27
+
+two:
+  stage: two
+  tag: two
+  deleted_at: 2025-11-15 00:02:27

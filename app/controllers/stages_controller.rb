@@ -5,7 +5,24 @@ class StagesController < ApplicationController
   before_action :authorize_user_or_admin, only: [ :destroy ]
 
   def index
-    @stages = Stage.includes(:user).recent
+    # 検索パラメータの設定
+    @search_keyword = params[:keyword]
+    @search_device_tag_ids = params[:device_tag_ids]&.reject(&:blank?)
+    @search_category_tag_ids = params[:category_tag_ids]&.reject(&:blank?)
+    @search_other_tag_ids = params[:other_tag_ids]&.reject(&:blank?)
+
+    # タグをカテゴリ別に取得
+    @device_tags = Tag.device.ordered
+    @category_tags = Tag.category_type.ordered
+    @other_tags = Tag.other.ordered
+
+    # 検索クエリの構築
+    @stages = Stage.includes(:user, :tags)
+                   .search_by_keyword(@search_keyword)
+                   .search_by_device_tags(@search_device_tag_ids)
+                   .search_by_category_tags(@search_category_tag_ids)
+                   .search_by_other_tags(@search_other_tag_ids)
+                   .recent
 
     # 各幻境のマルチプレイ募集件数を一括取得（N+1問題を回避）
     stage_guids = @stages.map(&:stage_guid).compact
@@ -22,6 +39,7 @@ class StagesController < ApplicationController
 
   def new
     @stage = Stage.new
+    load_tags
   end
 
   def create
@@ -35,6 +53,7 @@ class StagesController < ApplicationController
   end
 
   def edit
+    load_tags
   end
 
   def update
@@ -67,7 +86,13 @@ class StagesController < ApplicationController
       end
     end
 
+    def load_tags
+      @device_tags = Tag.device.ordered
+      @category_tags = Tag.category_type.ordered
+      @other_tags = Tag.other.ordered
+    end
+
     def stage_params
-      params.require(:stage).permit(:title, :description, :stage_guid, :difficulty, :tips, :locale)
+      params.require(:stage).permit(:title, :description, :stage_guid, :difficulty, :tips, :locale, tag_ids: [])
     end
 end

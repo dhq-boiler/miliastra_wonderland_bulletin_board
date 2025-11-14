@@ -145,4 +145,24 @@ if recruitment3
 end
 
 puts "Comments created: #{MultiplayRecruitmentComment.count}"
+# タグの作成
+puts "Creating tags..."
+
+# デバイスタグ
+Tag::DEVICE_TAGS.each do |tag_name|
+  Tag.find_or_create_by!(name: tag_name, category: "device")
+end
+
+# カテゴリータグ
+Tag::CATEGORY_TAGS.each do |tag_name|
+  Tag.find_or_create_by!(name: tag_name, category: "category")
+end
+
+# その他のタグ
+Tag::OTHER_TAGS.each do |tag_name|
+  Tag.find_or_create_by!(name: tag_name, category: "other")
+end
+
+puts "Tags created: #{Tag.count}"
+
 puts "Seed data creation completed!"
