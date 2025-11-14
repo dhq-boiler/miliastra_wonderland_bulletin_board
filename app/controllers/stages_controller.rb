@@ -73,7 +73,7 @@ class StagesController < ApplicationController
 
   private
     def set_stage
-      @stage = Stage.find(params[:id])
+      @stage = Stage.includes(:tags).find(params[:id])
     end
 
     def authorize_user
