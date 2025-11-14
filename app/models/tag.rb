@@ -3,7 +3,7 @@ class Tag < ApplicationRecord
 
   # Category constants
   CATEGORIES = %w[device category other].freeze
-  DEVICE_TAGS = ["キーボードとマウス", "タッチスクリーン", "コントローラー"].freeze
+  DEVICE_TAGS = [ "キーボードとマウス", "タッチスクリーン", "コントローラー" ].freeze
   CATEGORY_TAGS = [
     "アクションアドベンチャー", "FPS", "オンラインマルチ対戦", "TPS",
     "バトルロイヤル", "サバイバル", "経営シミュレーション", "ローグライク",
