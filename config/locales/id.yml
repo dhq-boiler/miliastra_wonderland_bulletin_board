@@ -117,6 +117,11 @@ id:
       start_time: Waktu Mulai
       end_time: Waktu Selesai
       status: Status
+    tags:
+      categories:
+        device: Perangkat
+        category: Kategori
+        other: Lainnya
     stages:
       title: Forum Tahap
       new_post: Posting Tahap Baru
@@ -149,6 +154,15 @@ id:
         description_placeholder: Jelaskan fitur tahap, mekanik, posisi musuh, dll.
         tips_label: Tips & Petunjuk
         tips_placeholder: Bagikan tips, catatan, dan peralatan yang direkomendasikan
+        tags_label: Tag
+        no_tags_available: Belum ada tag.
+      search:
+        keyword_label: Kata Kunci
+        keyword_placeholder: Cari berdasarkan judul atau deskripsi
+        stage_guid_label: GUID Tahap
+        stage_guid_placeholder: "mis. 20615303240"
+        search_button: Cari
+        reset_button: Reset
       errors:
         count: "%{count} kesalahan"
         has_errors: " ditemukan"

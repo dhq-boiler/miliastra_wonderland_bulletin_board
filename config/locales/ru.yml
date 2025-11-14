@@ -117,6 +117,11 @@ ru:
       start_time: Время Начала
       end_time: Время Окончания
       status: Статус
+    tags:
+      categories:
+        device: Устройство
+        category: Категория
+        other: Другое
     stages:
       title: Форум Этапов
       new_post: Опубликовать Новый Этап
@@ -149,6 +154,15 @@ ru:
         description_placeholder: Опишите особенности этапа, механики, расположение врагов и т.д.
         tips_label: Советы и Подсказки
         tips_placeholder: Поделитесь советами, заметками и рекомендуемым снаряжением
+        tags_label: Теги
+        no_tags_available: Нет доступных тегов.
+      search:
+        keyword_label: Ключевое слово
+        keyword_placeholder: Поиск по названию или описанию
+        stage_guid_label: GUID Этапа
+        stage_guid_placeholder: "напр. 20615303240"
+        search_button: Поиск
+        reset_button: Сбросить
       errors:
         count: "%{count} ошибок"
         has_errors: " найдено"

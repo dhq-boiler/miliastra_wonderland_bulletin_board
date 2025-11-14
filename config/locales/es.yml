@@ -117,6 +117,11 @@ es:
       start_time: Hora de Inicio
       end_time: Hora de Finalización
       status: Estado
+    tags:
+      categories:
+        device: Dispositivo
+        category: Categoría
+        other: Otro
     stages:
       title: Foro de Etapas
       new_post: Publicar Nueva Etapa
@@ -149,6 +154,15 @@ es:
         description_placeholder: Describe las características de la etapa, mecánicas, posición de enemigos, etc.
         tips_label: Consejos y Pistas
         tips_placeholder: Comparte consejos, notas y equipo recomendado
+        tags_label: Etiquetas
+        no_tags_available: No hay etiquetas disponibles.
+      search:
+        keyword_label: Palabra Clave
+        keyword_placeholder: Buscar por título o descripción
+        stage_guid_label: GUID de Etapa
+        stage_guid_placeholder: "ej. 20615303240"
+        search_button: Buscar
+        reset_button: Restablecer
       errors:
         count: "%{count} errores"
         has_errors: " encontrados"

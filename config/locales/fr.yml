@@ -117,6 +117,11 @@ fr:
       start_time: Heure de Début
       end_time: Heure de Fin
       status: Statut
+    tags:
+      categories:
+        device: Appareil
+        category: Catégorie
+        other: Autre
     stages:
       title: Forum des Étapes
       new_post: Publier Nouvelle Étape
@@ -149,6 +154,15 @@ fr:
         description_placeholder: Décrivez les caractéristiques de l'étape, les mécaniques, la position des ennemis, etc.
         tips_label: Conseils et Astuces
         tips_placeholder: Partagez des conseils, des notes et l'équipement recommandé
+        tags_label: Étiquettes
+        no_tags_available: Aucune étiquette disponible.
+      search:
+        keyword_label: Mot-clé
+        keyword_placeholder: Rechercher par titre ou description
+        stage_guid_label: GUID d'Étape
+        stage_guid_placeholder: "ex. 20615303240"
+        search_button: Rechercher
+        reset_button: Réinitialiser
       errors:
         count: "%{count} erreurs"
         has_errors: " trouvées"

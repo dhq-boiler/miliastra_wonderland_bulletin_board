@@ -117,6 +117,11 @@ vi:
       start_time: Thời gian bắt đầu
       end_time: Thời gian kết thúc
       status: Trạng thái
+    tags:
+      categories:
+        device: Thiết bị
+        category: Danh mục
+        other: Khác
     stages:
       title: Diễn đàn Giai đoạn
       new_post: Đăng Giai đoạn Mới
@@ -149,6 +154,15 @@ vi:
         description_placeholder: Mô tả đặc điểm giai đoạn, cơ chế, vị trí kẻ địch, v.v.
         tips_label: Mẹo & Gợi ý
         tips_placeholder: Chia sẻ mẹo, ghi chú và trang bị được khuyên dùng
+        tags_label: Thẻ
+        no_tags_available: Chưa có thẻ nào.
+      search:
+        keyword_label: Từ khóa
+        keyword_placeholder: Tìm kiếm theo tiêu đề hoặc mô tả
+        stage_guid_label: GUID Giai đoạn
+        stage_guid_placeholder: "vd. 20615303240"
+        search_button: Tìm kiếm
+        reset_button: Đặt lại
       errors:
         count: "%{count} lỗi"
         has_errors: " được tìm thấy"

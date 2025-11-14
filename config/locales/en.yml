@@ -146,6 +146,11 @@ en:
       start_time: Start Time
       end_time: End Time
       status: Status
+    tags:
+      categories:
+        device: Device
+        category: Category
+        other: Other
     stages:
       title: Stages Forum
       new_post: Post New Stage
@@ -178,6 +183,15 @@ en:
         description_placeholder: Describe stage features, gimmicks, enemy placement, etc.
         tips_label: Tips & Hints
         tips_placeholder: Share tips, notes, and recommended equipment
+        tags_label: Tags
+        no_tags_available: No tags available yet.
+      search:
+        keyword_label: Keyword
+        keyword_placeholder: Search by title or description
+        stage_guid_label: Stage GUID
+        stage_guid_placeholder: "e.g., 20615303240"
+        search_button: Search
+        reset_button: Reset
       errors:
         count: "%{count} errors"
         has_errors: " found"

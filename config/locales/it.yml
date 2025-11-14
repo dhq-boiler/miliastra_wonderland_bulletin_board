@@ -117,6 +117,11 @@ it:
       start_time: Ora di Inizio
       end_time: Ora di Fine
       status: Stato
+    tags:
+      categories:
+        device: Dispositivo
+        category: Categoria
+        other: Altro
     stages:
       title: Forum delle Fasi
       new_post: Pubblica Nuova Fase
@@ -149,6 +154,15 @@ it:
         description_placeholder: Descrivi le caratteristiche della fase, meccaniche, posizione nemici, ecc.
         tips_label: Suggerimenti & Consigli
         tips_placeholder: Condividi suggerimenti, note e equipaggiamento consigliato
+        tags_label: Tag
+        no_tags_available: Nessun tag disponibile.
+      search:
+        keyword_label: Parola Chiave
+        keyword_placeholder: Cerca per titolo o descrizione
+        stage_guid_label: GUID Fase
+        stage_guid_placeholder: "es. 20615303240"
+        search_button: Cerca
+        reset_button: Reimposta
       errors:
         count: "%{count} errori"
         has_errors: " trovati"

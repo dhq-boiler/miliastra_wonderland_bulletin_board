@@ -117,6 +117,11 @@ zh-CN:
       start_time: 开始时间
       end_time: 结束时间
       status: 状态
+    tags:
+      categories:
+        device: 设备
+        category: 类别
+        other: 其他
     stages:
       title: 关卡论坛
       new_post: 发布新关卡
@@ -149,6 +154,15 @@ zh-CN:
         description_placeholder: 描述关卡特征、机关、敌人位置等
         tips_label: 提示与技巧
         tips_placeholder: 分享提示、注意事项和推荐装备
+        tags_label: 标签
+        no_tags_available: 暂无可用标签。
+      search:
+        keyword_label: 关键词
+        keyword_placeholder: 按标题或描述搜索
+        stage_guid_label: 关卡GUID
+        stage_guid_placeholder: "例如：20615303240"
+        search_button: 搜索
+        reset_button: 重置
       errors:
         count: "%{count}个错误"
         has_errors: ""

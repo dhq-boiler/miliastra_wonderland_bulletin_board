@@ -117,6 +117,11 @@ zh-TW:
       start_time: 開始時間
       end_time: 結束時間
       status: 狀態
+    tags:
+      categories:
+        device: 裝置
+        category: 類別
+        other: 其他
     stages:
       title: 關卡論壇
       new_post: 發佈新關卡
@@ -149,6 +154,15 @@ zh-TW:
         description_placeholder: 描述關卡特徵、機關、敵人位置等
         tips_label: 提示與技巧
         tips_placeholder: 分享提示、注意事項和推薦裝備
+        tags_label: 標籤
+        no_tags_available: 暫無可用標籤。
+      search:
+        keyword_label: 關鍵詞
+        keyword_placeholder: 按標題或描述搜索
+        stage_guid_label: 關卡GUID
+        stage_guid_placeholder: "例如：20615303240"
+        search_button: 搜索
+        reset_button: 重置
       errors:
         count: "%{count}個錯誤"
         has_errors: ""
