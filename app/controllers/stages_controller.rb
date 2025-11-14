@@ -7,6 +7,7 @@ class StagesController < ApplicationController
   def index
     # 検索パラメータの設定
     @search_keyword = params[:keyword]
+    @search_stage_guid = params[:stage_guid]
     @search_device_tag_ids = params[:device_tag_ids]&.reject(&:blank?)
     @search_category_tag_ids = params[:category_tag_ids]&.reject(&:blank?)
     @search_other_tag_ids = params[:other_tag_ids]&.reject(&:blank?)
@@ -19,6 +20,7 @@ class StagesController < ApplicationController
     # 検索クエリの構築
     @stages = Stage.includes(:user, :tags)
                    .search_by_keyword(@search_keyword)
+                   .search_by_stage_guid(@search_stage_guid)
                    .search_by_device_tags(@search_device_tag_ids)
                    .search_by_category_tags(@search_category_tag_ids)
                    .search_by_other_tags(@search_other_tag_ids)

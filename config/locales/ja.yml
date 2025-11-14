@@ -161,6 +161,8 @@ ja:
       search:
         keyword_label: キーワード
         keyword_placeholder: タイトルまたは説明で検索
+        stage_guid_label: 幻境GUID
+        stage_guid_placeholder: "例: 20615303240"
         search_button: 検索
         reset_button: リセット
       errors:

@@ -44,6 +44,11 @@ class Stage < ApplicationRecord
     where("title LIKE ? OR description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
   }
 
+  scope :search_by_stage_guid, ->(stage_guid) {
+    return all if stage_guid.blank?
+    where(stage_guid: stage_guid)
+  }
+
   # 難易度の翻訳を取得
   def difficulty_text
     return nil if difficulty.blank?
