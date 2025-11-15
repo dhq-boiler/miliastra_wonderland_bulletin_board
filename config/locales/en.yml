@@ -223,8 +223,21 @@ en:
       form:
         title_label: Title
         title_placeholder: "e.g., Chapter 1 Boss Raid!"
+        stage_selector_label: Select from Stages
+        select_stage_button: Select Stage
+        no_stage_selected: No stage selected
+        manual_guid_input: Or enter GUID manually
+        select_stage_title: Select Stage
+        search_stage_placeholder: Search by stage name or GUID
+        my_stages_tab: My Stages
+        other_stages_tab: Other Stages
+        select_button: Select
+        no_my_stages: You haven't created any stages yet
+        no_other_stages: No stages from other users
+        no_search_results: No results found
         guid_label: Stage GUID
         guid_placeholder: "e.g., 20615303240"
+        guid_hint: Or enter the stage GUID directly
         difficulty_label: Difficulty
         difficulty_placeholder: Select
         max_players_label: Max Players

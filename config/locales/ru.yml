@@ -194,8 +194,21 @@ ru:
       form:
         title_label: Название
         title_placeholder: "напр. Рейд на Босса Главы 1!"
+        stage_selector_label: Выбрать из Stages
+        select_stage_button: Выбрать Stage
+        no_stage_selected: Stage не выбран
+        manual_guid_input: Или ввести GUID вручную
+        select_stage_title: Выбрать Stage
+        search_stage_placeholder: Поиск по названию stage или GUID
+        my_stages_tab: Мои Stages
+        other_stages_tab: Stages Других
+        select_button: Выбрать
+        no_my_stages: Вы еще не создали ни одного stage
+        no_other_stages: Нет stages от других пользователей
+        no_search_results: Результаты не найдены
         guid_label: GUID Этапа
         guid_placeholder: "напр. 20615303240"
+        guid_hint: Или введите GUID stage напрямую
         difficulty_label: Сложность
         difficulty_placeholder: Выбрать
         max_players_label: Макс. Игроков

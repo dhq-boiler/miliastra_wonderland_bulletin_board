@@ -194,8 +194,21 @@ es:
       form:
         title_label: Título
         title_placeholder: "ej. ¡Raid del Jefe del Capítulo 1!"
+        stage_selector_label: Seleccionar de Stages
+        select_stage_button: Seleccionar Stage
+        no_stage_selected: Ningún stage seleccionado
+        manual_guid_input: O ingresar GUID manualmente
+        select_stage_title: Seleccionar Stage
+        search_stage_placeholder: Buscar por nombre de stage o GUID
+        my_stages_tab: Mis Stages
+        other_stages_tab: Stages de Otros
+        select_button: Seleccionar
+        no_my_stages: Aún no has creado ningún stage
+        no_other_stages: No hay stages de otros usuarios
+        no_search_results: No se encontraron resultados
         guid_label: GUID de Etapa
         guid_placeholder: "ej. 20615303240"
+        guid_hint: O ingrese el GUID del stage directamente
         difficulty_label: Dificultad
         difficulty_placeholder: Seleccionar
         max_players_label: Jugadores Máx.

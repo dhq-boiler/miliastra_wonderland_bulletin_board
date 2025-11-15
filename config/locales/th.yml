@@ -194,8 +194,21 @@ th:
       form:
         title_label: ชื่อเรื่อง
         title_placeholder: "เช่น การเอาชนะบอสบทที่ 1!"
+        stage_selector_label: เลือกจาก Stage
+        select_stage_button: เลือก Stage
+        no_stage_selected: ไม่ได้เลือก stage
+        manual_guid_input: หรือป้อน GUID ด้วยตนเอง
+        select_stage_title: เลือก Stage
+        search_stage_placeholder: ค้นหาตามชื่อ stage หรือ GUID
+        my_stages_tab: Stage ของฉัน
+        other_stages_tab: Stage ของคนอื่น
+        select_button: เลือก
+        no_my_stages: คุณยังไม่ได้สร้าง stage ใดๆ
+        no_other_stages: ไม่มี stage จากผู้ใช้อื่น
+        no_search_results: ไม่พบผลลัพธ์
         guid_label: GUID ด่าน
         guid_placeholder: "เช่น 20615303240"
+        guid_hint: หรือป้อน GUID ของ stage โดยตรง
         difficulty_label: ความยาก
         difficulty_placeholder: เลือก
         max_players_label: ผู้เล่นสูงสุด

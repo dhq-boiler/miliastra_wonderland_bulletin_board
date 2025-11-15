@@ -194,8 +194,21 @@ id:
       form:
         title_label: Judul
         title_placeholder: "mis. Raid Boss Bab 1!"
+        stage_selector_label: Pilih dari Stage
+        select_stage_button: Pilih Stage
+        no_stage_selected: Tidak ada stage yang dipilih
+        manual_guid_input: Atau masukkan GUID secara manual
+        select_stage_title: Pilih Stage
+        search_stage_placeholder: Cari berdasarkan nama stage atau GUID
+        my_stages_tab: Stage Saya
+        other_stages_tab: Stage Orang Lain
+        select_button: Pilih
+        no_my_stages: Anda belum membuat stage apa pun
+        no_other_stages: Tidak ada stage dari pengguna lain
+        no_search_results: Tidak ditemukan hasil
         guid_label: GUID Tahap
         guid_placeholder: "mis. 20615303240"
+        guid_hint: Atau masukkan GUID stage secara langsung
         difficulty_label: Kesulitan
         difficulty_placeholder: Pilih
         max_players_label: Pemain Maks.

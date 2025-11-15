@@ -194,8 +194,21 @@ tr:
       form:
         title_label: Başlık
         title_placeholder: "örn. Bölüm 1 Boss Baskını!"
+        stage_selector_label: Stage'lerden Seç
+        select_stage_button: Stage Seç
+        no_stage_selected: Hiçbir stage seçilmedi
+        manual_guid_input: Veya GUID'yi manuel olarak girin
+        select_stage_title: Stage Seç
+        search_stage_placeholder: Stage adı veya GUID'ye göre ara
+        my_stages_tab: Benim Stage'lerim
+        other_stages_tab: Diğerlerinin Stage'leri
+        select_button: Seç
+        no_my_stages: Henüz hiçbir stage oluşturmadınız
+        no_other_stages: Diğer kullanıcılardan stage yok
+        no_search_results: Sonuç bulunamadı
         guid_label: Aşama GUID
         guid_placeholder: "örn. 20615303240"
+        guid_hint: Veya stage GUID'ini doğrudan girin
         difficulty_label: Zorluk
         difficulty_placeholder: Seç
         max_players_label: Maks. Oyuncu

@@ -194,8 +194,21 @@ it:
       form:
         title_label: Titolo
         title_placeholder: "es. Raid Boss Capitolo 1!"
+        stage_selector_label: Seleziona dagli Stage
+        select_stage_button: Seleziona Stage
+        no_stage_selected: Nessuno stage selezionato
+        manual_guid_input: O inserire il GUID manualmente
+        select_stage_title: Seleziona Stage
+        search_stage_placeholder: Cerca per nome stage o GUID
+        my_stages_tab: I Miei Stage
+        other_stages_tab: Stage di Altri
+        select_button: Seleziona
+        no_my_stages: Non hai ancora creato nessuno stage
+        no_other_stages: Nessuno stage di altri utenti
+        no_search_results: Nessun risultato trovato
         guid_label: GUID Fase
         guid_placeholder: "es. 20615303240"
+        guid_hint: Oppure inserire il GUID dello stage direttamente
         difficulty_label: Difficoltà
         difficulty_placeholder: Seleziona
         max_players_label: Giocatori Mass.

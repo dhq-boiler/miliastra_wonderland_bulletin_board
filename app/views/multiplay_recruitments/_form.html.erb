@@ -18,8 +18,115 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :stage_guid, "#{t('app.multiplay.form.guid_label')}#{t('app.common.optional')}" %>
-    <%= form.text_field :stage_guid, class: "form-control", placeholder: t('app.multiplay.form.guid_placeholder') %>
+    <%= form.label :stage_guid, "#{t('app.multiplay.form.stage_selector_label')}#{t('app.common.optional')}" %>
+
+    <!-- ステージ選択トリガーボタン -->
+    <button type="button" class="stage-selection-trigger" popovertarget="stage-selection-popover" data-stage-popover-trigger>
+      <span>🎮</span>
+      <span><%= t('app.multiplay.form.select_stage_button') %></span>
+    </button>
+
+    <!-- 選択されたステージの表示 -->
+    <div class="stage-selection-summary" data-stage-summary id="stage-selection-summary">
+      <% if multiplay_recruitment.stage_guid.present? %>
+        <span class="stage-selected-badge">
+          GUID: <%= multiplay_recruitment.stage_guid %>
+          <button type="button" class="stage-clear-button" data-stage-clear>×</button>
+        </span>
+      <% else %>
+        <span class="text-muted"><%= t('app.multiplay.form.no_stage_selected') %></span>
+      <% end %>
+    </div>
+
+    <!-- 隠しフィールド (実際のデータ送信用) -->
+    <%= form.hidden_field :stage_guid, data: { stage_guid_field: true } %>
+
+    <!-- または、手動でGUIDを入力 -->
+    <details class="mt-3">
+      <summary class="cursor-pointer text-sm text-blue-600 hover:text-blue-800"><%= t('app.multiplay.form.manual_guid_input') %></summary>
+      <div class="mt-2">
+        <%= form.text_field :stage_guid, class: "form-control", placeholder: t('app.multiplay.form.guid_placeholder'), data: { manual_guid_input: true } %>
+        <small class="form-text text-muted"><%= t('app.multiplay.form.guid_hint') %></small>
+      </div>
+    </details>
+  </div>
+
+  <!-- ステージ選択ポップオーバー (Popover API使用) -->
+  <div id="stage-selection-popover" popover class="stage-modal-popover" data-stage-popover>
+    <div class="stage-modal-container">
+      <div class="stage-modal-header">
+        <h3 class="stage-modal-title"><%= t('app.multiplay.form.select_stage_title') %></h3>
+        <button type="button" class="stage-modal-close" popovertarget="stage-selection-popover" popovertargetaction="hide">×</button>
+      </div>
+
+      <!-- 検索フォーム -->
+      <div class="stage-modal-search">
+        <input type="text"
+               id="stage-search-input"
+               class="form-control"
+               placeholder="<%= t('app.multiplay.form.search_stage_placeholder') %>"
+               data-stage-search-input>
+      </div>
+
+      <!-- タブ -->
+      <div class="stage-modal-tabs">
+        <button type="button" class="stage-tab active" data-tab="my-stages" data-stage-tab="my"><%= t('app.multiplay.form.my_stages_tab') %> (<span data-count="my"><%= @my_stages.size %></span>)</button>
+        <button type="button" class="stage-tab" data-tab="other-stages" data-stage-tab="other"><%= t('app.multiplay.form.other_stages_tab') %> (<span data-count="other"><%= @other_stages.size %></span>)</button>
+      </div>
+
+      <div class="stage-modal-body">
+        <!-- 自分の幻境 -->
+        <div id="my-stages-tab" class="stage-tab-content active" data-stage-tab-content="my">
+          <% if @my_stages.any? %>
+            <div class="stage-list" data-stage-list="my">
+              <% @my_stages.each do |stage| %>
+                <div class="stage-item" data-stage-item data-stage-guid="<%= stage.stage_guid %>" data-stage-title="<%= stage.title %>">
+                  <div class="stage-item-content">
+                    <div class="stage-item-title"><%= stage.title %></div>
+                    <div class="stage-item-guid">GUID: <%= stage.stage_guid %></div>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-primary" data-select-stage="<%= stage.stage_guid %>" data-stage-title="<%= stage.title %>">
+                    <%= t('app.multiplay.form.select_button') %>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="text-center text-muted py-4">
+              <%= t('app.multiplay.form.no_my_stages') %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- 他の人の幻境 -->
+        <div id="other-stages-tab" class="stage-tab-content" data-stage-tab-content="other">
+          <% if @other_stages.any? %>
+            <div class="stage-list" data-stage-list="other">
+              <% @other_stages.each do |stage| %>
+                <div class="stage-item" data-stage-item data-stage-guid="<%= stage.stage_guid %>" data-stage-title="<%= stage.title %>">
+                  <div class="stage-item-content">
+                    <div class="stage-item-title"><%= stage.title %></div>
+                    <div class="stage-item-guid">GUID: <%= stage.stage_guid %></div>
+                  </div>
+                  <button type="button" class="btn btn-sm btn-primary" data-select-stage="<%= stage.stage_guid %>" data-stage-title="<%= stage.title %>">
+                    <%= t('app.multiplay.form.select_button') %>
+                  </button>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="text-center text-muted py-4">
+              <%= t('app.multiplay.form.no_other_stages') %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- 検索結果が0件の時 -->
+        <div id="no-search-results" class="text-center text-muted py-4" style="display: none;">
+          <%= t('app.multiplay.form.no_search_results') %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="form-group">

@@ -37,6 +37,8 @@ class MultiplayRecruitmentsController < ApplicationController
 
   def new
     @multiplay_recruitment = MultiplayRecruitment.new
+    @my_stages = current_user.stages.select(:id, :title, :stage_guid, :locale, :user_id).recent
+    @other_stages = Stage.where.not(user_id: current_user.id).select(:id, :title, :stage_guid, :locale, :user_id).recent
   end
 
   def create
@@ -45,17 +47,23 @@ class MultiplayRecruitmentsController < ApplicationController
     if @multiplay_recruitment.save
       redirect_to @multiplay_recruitment, notice: t("multiplay_recruitments.create.success")
     else
+      @my_stages = current_user.stages.select(:id, :title, :stage_guid, :locale, :user_id).recent
+      @other_stages = Stage.where.not(user_id: current_user.id).select(:id, :title, :stage_guid, :locale, :user_id).recent
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    @my_stages = current_user.stages.select(:id, :title, :stage_guid, :locale, :user_id).recent
+    @other_stages = Stage.where.not(user_id: current_user.id).select(:id, :title, :stage_guid, :locale, :user_id).recent
   end
 
   def update
     if @multiplay_recruitment.update(multiplay_recruitment_params)
       redirect_to @multiplay_recruitment, notice: t("multiplay_recruitments.update.success")
     else
+      @my_stages = current_user.stages.select(:id, :title, :stage_guid, :locale, :user_id).recent
+      @other_stages = Stage.where.not(user_id: current_user.id).select(:id, :title, :stage_guid, :locale, :user_id).recent
       render :edit, status: :unprocessable_entity
     end
   end

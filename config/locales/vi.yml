@@ -194,8 +194,21 @@ vi:
       form:
         title_label: Tiêu đề
         title_placeholder: "vd. Đánh Boss Chương 1!"
+        stage_selector_label: Chọn từ Stage
+        select_stage_button: Chọn Stage
+        no_stage_selected: Chưa chọn stage
+        manual_guid_input: Hoặc nhập GUID thủ công
+        select_stage_title: Chọn Stage
+        search_stage_placeholder: Tìm kiếm theo tên stage hoặc GUID
+        my_stages_tab: Stage Của Tôi
+        other_stages_tab: Stage Của Người Khác
+        select_button: Chọn
+        no_my_stages: Bạn chưa tạo stage nào
+        no_other_stages: Không có stage từ người dùng khác
+        no_search_results: Không tìm thấy kết quả
         guid_label: GUID Giai đoạn
         guid_placeholder: "vd. 20615303240"
+        guid_hint: Hoặc nhập GUID của stage trực tiếp
         difficulty_label: Độ khó
         difficulty_placeholder: Chọn
         max_players_label: Người chơi Tối đa

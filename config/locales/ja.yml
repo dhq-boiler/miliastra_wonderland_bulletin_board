@@ -196,8 +196,21 @@ ja:
       form:
         title_label: タイトル
         title_placeholder: "例: 第1章ボス討伐募集！"
+        stage_selector_label: 幻境から選択
+        select_stage_button: ステージを選択
+        no_stage_selected: ステージが選択されていません
+        manual_guid_input: または、GUIDを手動で入力
+        select_stage_title: ステージを選択
+        search_stage_placeholder: ステージ名またはGUIDで検索
+        my_stages_tab: 自分の幻境
+        other_stages_tab: 他の人の幻境
+        select_button: 選択
+        no_my_stages: 自分の幻境がまだありません
+        no_other_stages: 他の人の幻境がありません
+        no_search_results: 検索結果が見つかりませんでした
         guid_label: ステージGUID
         guid_placeholder: "例: 20615303240"
+        guid_hint: または、ステージGUIDを直接入力してください
         difficulty_label: 難易度
         difficulty_placeholder: 選択してください
         max_players_label: 募集人数
