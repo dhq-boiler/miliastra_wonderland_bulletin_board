@@ -206,6 +206,7 @@ vi:
         select_button: Chọn
         no_my_stages: Bạn chưa tạo stage nào
         no_other_stages: Không có stage từ người dùng khác
+        no_stages_available: Không có giai đoạn nào
         no_search_results: Không tìm thấy kết quả
         guid_label: GUID Giai đoạn
         guid_placeholder: "vd. 20615303240"

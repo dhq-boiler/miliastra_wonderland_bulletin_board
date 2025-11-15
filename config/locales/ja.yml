@@ -208,6 +208,7 @@ ja:
         select_button: 選択
         no_my_stages: 自分の幻境がまだありません
         no_other_stages: 他の人の幻境がありません
+        no_stages_available: 利用可能な幻境がありません
         no_search_results: 検索結果が見つかりませんでした
         guid_label: ステージGUID
         guid_placeholder: "例: 20615303240"

@@ -206,6 +206,7 @@ pt:
         select_button: Selecionar
         no_my_stages: Você ainda não criou nenhum stage
         no_other_stages: Nenhum stage de outros usuários
+        no_stages_available: Nenhum palco disponível
         no_search_results: Nenhum resultado encontrado
         guid_label: GUID do Estágio
         guid_placeholder: "ex. 20615303240"

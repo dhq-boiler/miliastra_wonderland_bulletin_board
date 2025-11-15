@@ -206,6 +206,7 @@ de:
         select_button: Auswählen
         no_my_stages: Sie haben noch keine Stages erstellt
         no_other_stages: Keine Stages von anderen Benutzern
+        no_stages_available: Keine Bühnen verfügbar
         no_search_results: Keine Ergebnisse gefunden
         guid_label: Stufen-GUID
         guid_placeholder: "z.B. 20615303240"

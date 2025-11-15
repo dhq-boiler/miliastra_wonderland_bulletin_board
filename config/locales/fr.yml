@@ -206,6 +206,7 @@ fr:
         select_button: Sélectionner
         no_my_stages: Vous n'avez pas encore créé de stages
         no_other_stages: Aucun stage d'autres utilisateurs
+        no_stages_available: Aucune scène disponible
         no_search_results: Aucun résultat trouvé
         guid_label: GUID d'Étape
         guid_placeholder: "ex. 20615303240"

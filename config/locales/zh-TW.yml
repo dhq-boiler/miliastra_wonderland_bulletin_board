@@ -206,6 +206,7 @@ zh-TW:
         select_button: 選擇
         no_my_stages: 您還沒有建立任何幻境
         no_other_stages: 沒有其他使用者的幻境
+        no_stages_available: 沒有可用的關卡
         no_search_results: 未找到結果
         guid_label: 關卡GUID
         guid_placeholder: "例如：20615303240"

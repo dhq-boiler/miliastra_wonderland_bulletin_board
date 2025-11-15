@@ -206,6 +206,7 @@ th:
         select_button: เลือก
         no_my_stages: คุณยังไม่ได้สร้าง stage ใดๆ
         no_other_stages: ไม่มี stage จากผู้ใช้อื่น
+        no_stages_available: ไม่มีเวทีที่พร้อมใช้งาน
         no_search_results: ไม่พบผลลัพธ์
         guid_label: GUID ด่าน
         guid_placeholder: "เช่น 20615303240"

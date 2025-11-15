@@ -235,6 +235,7 @@ en:
         select_button: Select
         no_my_stages: You haven't created any stages yet
         no_other_stages: No stages from other users
+        no_stages_available: No stages available
         no_search_results: No results found
         guid_label: Stage GUID
         guid_placeholder: "e.g., 20615303240"

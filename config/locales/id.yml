@@ -206,6 +206,7 @@ id:
         select_button: Pilih
         no_my_stages: Anda belum membuat stage apa pun
         no_other_stages: Tidak ada stage dari pengguna lain
+        no_stages_available: Tidak ada panggung tersedia
         no_search_results: Tidak ditemukan hasil
         guid_label: GUID Tahap
         guid_placeholder: "mis. 20615303240"

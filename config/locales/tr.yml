@@ -206,6 +206,7 @@ tr:
         select_button: Seç
         no_my_stages: Henüz hiçbir stage oluşturmadınız
         no_other_stages: Diğer kullanıcılardan stage yok
+        no_stages_available: Kullanılabilir sahne yok
         no_search_results: Sonuç bulunamadı
         guid_label: Aşama GUID
         guid_placeholder: "örn. 20615303240"

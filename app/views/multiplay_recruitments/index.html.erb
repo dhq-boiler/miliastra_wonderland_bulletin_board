@@ -45,7 +45,44 @@
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 <%= t('app.multiplay.search.stage_guid') %>
               </label>
-              <%= f.text_field :stage_guid, value: @search_stage_guid, placeholder: t('app.multiplay.search.stage_guid_placeholder'), class: "form-control w-full" %>
+
+              <div class="flex gap-2 items-start">
+                <%= f.text_field :stage_guid, value: @search_stage_guid, placeholder: t('app.multiplay.search.stage_guid_placeholder'), class: "form-control flex-1", id: "search-stage-guid-field" %>
+
+                <button type="button" class="btn btn-secondary" popovertarget="search-stage-popover" style="white-space: nowrap;">
+                  🎮 <%= t('app.multiplay.form.select_stage_button') %>
+                </button>
+              </div>
+
+              <div id="search-stage-selection-summary" class="mt-2 text-sm">
+                <% if @search_stage_guid.present? %>
+                  <% selected_stage = Stage.find_by(stage_guid: @search_stage_guid) %>
+                  <% if selected_stage %>
+                    <span class="stage-selected-badge">
+                      <%= selected_stage.title %> (GUID: <%= @search_stage_guid %>)
+                      <button type="button" class="stage-clear-button" data-search-stage-clear>×</button>
+                    </span>
+                  <% else %>
+                    <span class="stage-selected-badge">
+                      GUID: <%= @search_stage_guid %>
+                      <button type="button" class="stage-clear-button" data-search-stage-clear>×</button>
+                    </span>
+                  <% end %>
+                <% else %>
+                  <span class="text-muted"><%= t('app.multiplay.form.no_stage_selected') %></span>
+                <% end %>
+              </div>
+
+              <!-- ステージ選択ポップオーバー -->
+              <%= render partial: 'multiplay_recruitments/stage_selector_popover',
+                         locals: {
+                           popover_id: 'search-stage-popover',
+                           data_prefix: 'search-stage',
+                           my_stages: logged_in? ? @my_stages : [],
+                           other_stages: logged_in? ? @other_stages : [],
+                           all_stages: logged_in? ? [] : @all_stages,
+                           show_close_button: false
+                         } %>
             </div>
 
             <!-- 難易度 -->

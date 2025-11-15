@@ -206,6 +206,7 @@ it:
         select_button: Seleziona
         no_my_stages: Non hai ancora creato nessuno stage
         no_other_stages: Nessuno stage di altri utenti
+        no_stages_available: Nessuno stage disponibile
         no_search_results: Nessun risultato trovato
         guid_label: GUID Fase
         guid_placeholder: "es. 20615303240"

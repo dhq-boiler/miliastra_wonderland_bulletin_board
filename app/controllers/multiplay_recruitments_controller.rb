@@ -11,6 +11,14 @@ class MultiplayRecruitmentsController < ApplicationController
     @search_difficulty = params[:difficulty]
     @search_status = params[:status]
 
+    # ステージ選択用データ（ログイン時のみ）
+    if logged_in?
+      @my_stages = current_user.stages.select(:id, :title, :stage_guid, :locale, :user_id).recent
+      @other_stages = Stage.where.not(user_id: current_user.id).select(:id, :title, :stage_guid, :locale, :user_id).recent
+    else
+      @all_stages = Stage.select(:id, :title, :stage_guid, :locale, :user_id).recent
+    end
+
     # 基本クエリに検索条件を適用
     base_query = MultiplayRecruitment.includes(:user)
                                      .left_joins(:comments)

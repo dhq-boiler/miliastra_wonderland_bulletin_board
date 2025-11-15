@@ -1,0 +1,124 @@
+<%
+  # パラメータ:
+  # - popover_id: ポップオーバーのID (必須)
+  # - data_prefix: data属性のプレフィックス (必須、例: "stage" または "search-stage")
+  # - my_stages: 自分の幻境のコレクション (ログイン時)
+  # - other_stages: 他の人の幻境のコレクション (ログイン時)
+  # - all_stages: 全ての幻境のコレクション (未ログイン時)
+  # - show_close_button: 閉じるボタンを表示するか (デフォルト: false)
+
+  my_stages ||= []
+  other_stages ||= []
+  all_stages ||= []
+  show_close_button ||= false
+  is_logged_in = logged_in?
+%>
+
+<div id="<%= popover_id %>" popover class="stage-modal-popover" data-<%= data_prefix %>-popover>
+  <div class="stage-modal-container">
+    <div class="stage-modal-header">
+      <h3 class="stage-modal-title"><%= t('app.multiplay.form.select_stage_title') %></h3>
+      <% if show_close_button %>
+        <button type="button" class="stage-modal-close" popovertarget="<%= popover_id %>" popovertargetaction="hide">×</button>
+      <% end %>
+    </div>
+
+    <!-- 検索フォーム -->
+    <div class="stage-modal-search">
+      <input type="text"
+             class="form-control"
+             placeholder="<%= t('app.multiplay.form.search_stage_placeholder') %>"
+             data-<%= data_prefix %>-search-input>
+    </div>
+
+    <% if is_logged_in %>
+      <!-- タブ (ログイン時) -->
+      <div class="stage-modal-tabs">
+        <button type="button" class="stage-tab active" data-<%= data_prefix %>-tab="my">
+          <%= t('app.multiplay.form.my_stages_tab') %> (<%= my_stages.size %>)
+        </button>
+        <button type="button" class="stage-tab" data-<%= data_prefix %>-tab="other">
+          <%= t('app.multiplay.form.other_stages_tab') %> (<%= other_stages.size %>)
+        </button>
+      </div>
+    <% end %>
+
+    <div class="stage-modal-body">
+      <% if is_logged_in %>
+        <!-- 自分の幻境 -->
+        <div class="stage-tab-content active" data-<%= data_prefix %>-tab-content="my">
+          <% if my_stages.any? %>
+            <div class="stage-list">
+              <% my_stages.each do |stage| %>
+                <div class="stage-item"
+                     data-<%= data_prefix %>-item
+                     data-stage-guid="<%= stage.stage_guid %>"
+                     data-stage-title="<%= stage.title %>">
+                  <div class="stage-item-content">
+                    <div class="stage-item-title"><%= stage.title %></div>
+                    <div class="stage-item-guid">GUID: <%= stage.stage_guid %></div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="text-center text-muted py-4">
+              <%= t('app.multiplay.form.no_my_stages') %>
+            </div>
+          <% end %>
+        </div>
+
+        <!-- 他の人の幻境 -->
+        <div class="stage-tab-content" data-<%= data_prefix %>-tab-content="other">
+          <% if other_stages.any? %>
+            <div class="stage-list">
+              <% other_stages.each do |stage| %>
+                <div class="stage-item"
+                     data-<%= data_prefix %>-item
+                     data-stage-guid="<%= stage.stage_guid %>"
+                     data-stage-title="<%= stage.title %>">
+                  <div class="stage-item-content">
+                    <div class="stage-item-title"><%= stage.title %></div>
+                    <div class="stage-item-guid">GUID: <%= stage.stage_guid %></div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="text-center text-muted py-4">
+              <%= t('app.multiplay.form.no_other_stages') %>
+            </div>
+          <% end %>
+        </div>
+      <% else %>
+        <!-- 未ログイン時: 全ての幻境 -->
+        <div class="stage-tab-content active" data-<%= data_prefix %>-tab-content="all">
+          <% if all_stages.any? %>
+            <div class="stage-list">
+              <% all_stages.each do |stage| %>
+                <div class="stage-item"
+                     data-<%= data_prefix %>-item
+                     data-stage-guid="<%= stage.stage_guid %>"
+                     data-stage-title="<%= stage.title %>">
+                  <div class="stage-item-content">
+                    <div class="stage-item-title"><%= stage.title %></div>
+                    <div class="stage-item-guid">GUID: <%= stage.stage_guid %></div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% else %>
+            <div class="text-center text-muted py-4">
+              <%= t('app.multiplay.form.no_stages_available') %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+
+      <!-- 検索結果が0件の時 -->
+      <div id="<%= data_prefix %>-no-search-results" class="text-center text-muted py-4" style="display: none;">
+        <%= t('app.multiplay.form.no_search_results') %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -206,6 +206,7 @@ ru:
         select_button: Выбрать
         no_my_stages: Вы еще не создали ни одного stage
         no_other_stages: Нет stages от других пользователей
+        no_stages_available: Нет доступных уровней
         no_search_results: Результаты не найдены
         guid_label: GUID Этапа
         guid_placeholder: "напр. 20615303240"
