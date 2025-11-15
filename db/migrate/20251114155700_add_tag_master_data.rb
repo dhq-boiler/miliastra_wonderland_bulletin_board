@@ -1,7 +1,7 @@
 class AddTagMasterData < ActiveRecord::Migration[8.1]
   def up
     # デバイスタグ
-    device_tags = ["キーボードとマウス", "タッチスクリーン", "コントローラー"]
+    device_tags = [ "キーボードとマウス", "タッチスクリーン", "コントローラー" ]
     device_tags.each do |tag_name|
       Tag.find_or_create_by!(name: tag_name, category: "device")
     end
