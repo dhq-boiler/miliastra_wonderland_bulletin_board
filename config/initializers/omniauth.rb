@@ -11,5 +11,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
            }
 end
 
-# CSRF Protection
-OmniAuth.config.allowed_request_methods = [ :post, :get ]
+# CSRF Protection - Only allow POST for security
+OmniAuth.config.allowed_request_methods = [ :post ]
