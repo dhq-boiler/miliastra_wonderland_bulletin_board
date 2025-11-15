@@ -172,6 +172,7 @@ tr:
       login_required: Göndermek için %{login_link} gerekli.
       show:
         details_title: Detaylar
+        stage_info: Sahne Bilgisi
         updated_at: Güncellendi
         confirm_delete: Silmek istediğinizden emin misiniz?
         confirm_delete_admin: Admin olarak sil. Emin misiniz?

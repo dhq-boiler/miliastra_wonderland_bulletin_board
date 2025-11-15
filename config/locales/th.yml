@@ -172,6 +172,7 @@ th:
       login_required: ต้อง%{login_link}เพื่อโพสต์
       show:
         details_title: รายละเอียด
+        stage_info: ข้อมูลเวที
         updated_at: อัปเดตแล้ว
         confirm_delete: คุณแน่ใจหรือว่าต้องการลบ?
         confirm_delete_admin: ลบในฐานะผู้ดูแล คุณแน่ใจหรือไม่?

@@ -184,6 +184,7 @@ de:
         finished: Beendet
       show:
         details_title: Details
+        stage_info: Bühneninformationen
         updated_at: Aktualisiert
         confirm_delete: Möchten Sie wirklich löschen?
         confirm_delete_admin: Als Admin löschen. Sind Sie sicher?

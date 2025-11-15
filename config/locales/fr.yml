@@ -172,6 +172,7 @@ fr:
       login_required: "%{login_link} requise pour publier."
       show:
         details_title: Détails
+        stage_info: Informations sur la Scène
         updated_at: Mis à jour
         confirm_delete: Voulez-vous vraiment supprimer?
         confirm_delete_admin: Supprimer en tant qu'admin. Êtes-vous sûr?

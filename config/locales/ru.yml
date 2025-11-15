@@ -172,6 +172,7 @@ ru:
       login_required: Требуется %{login_link} для публикации.
       show:
         details_title: Детали
+        stage_info: Информация об уровне
         updated_at: Обновлено
         confirm_delete: Вы уверены, что хотите удалить?
         confirm_delete_admin: Удалить как админ. Вы уверены?

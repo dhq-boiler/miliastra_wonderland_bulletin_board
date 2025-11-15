@@ -172,6 +172,7 @@ zh-CN:
       login_required: 发布需要%{login_link}。
       show:
         details_title: 详情
+        stage_info: 关卡信息
         updated_at: 更新时间
         confirm_delete: 确定要删除吗？
         confirm_delete_admin: 以管理员权限删除。确定吗？

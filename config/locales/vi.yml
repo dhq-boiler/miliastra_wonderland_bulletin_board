@@ -172,6 +172,7 @@ vi:
       login_required: Cần %{login_link} để đăng.
       show:
         details_title: Chi tiết
+        stage_info: Thông tin Giai đoạn
         updated_at: Đã cập nhật
         confirm_delete: Bạn có chắc chắn muốn xóa?
         confirm_delete_admin: Xóa với quyền admin. Bạn có chắc?

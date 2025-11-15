@@ -172,6 +172,7 @@ es:
       login_required: "Se requiere %{login_link} para publicar."
       show:
         details_title: Detalles
+        stage_info: Información del Escenario
         updated_at: Actualizado
         confirm_delete: ¿Está seguro de que desea eliminar?
         confirm_delete_admin: Eliminar como administrador. ¿Está seguro?

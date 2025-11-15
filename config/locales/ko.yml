@@ -172,6 +172,7 @@ ko:
       login_required: 게시하려면 %{login_link}이(가) 필요합니다.
       show:
         details_title: 상세정보
+        stage_info: 스테이지 정보
         updated_at: 업데이트됨
         confirm_delete: 정말 삭제하시겠습니까?
         confirm_delete_admin: 관리자 권한으로 삭제합니다. 확실합니까?

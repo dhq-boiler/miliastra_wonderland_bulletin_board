@@ -186,6 +186,7 @@ ja:
         finished: 終了
       show:
         details_title: 詳細
+        stage_info: ステージ情報
         updated_at: 更新日
         confirm_delete: 本当に削除しますか？
         confirm_delete_admin: 管理者権限で削除します。本当に削除しますか？

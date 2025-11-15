@@ -542,6 +542,18 @@
   gap: 0.25rem;
 }
 
+.stage-link-white {
+  color: white;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.stage-link-white:hover {
+  color: white;
+  opacity: 0.9;
+  text-decoration: underline;
+}
+
 .clipboard-container {
     display: inline-flex;
     align-items: center;

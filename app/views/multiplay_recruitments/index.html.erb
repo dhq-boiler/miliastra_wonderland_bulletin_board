@@ -123,7 +123,14 @@
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
-              <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
+              <% stage = recruitment.stage %>
+              <% if stage %>
+                <span class="stage-guid">
+                  <%= link_to stage.title, stage_path(stage), class: "stage-link-white" %> - <%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %>
+                </span>
+              <% else %>
+                <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
+              <% end %>
             <% end %>
             <% if recruitment.difficulty.present? %>
               <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= recruitment.difficulty %></span>
@@ -161,7 +168,14 @@
           <div class="stage-info">
             <span class="<%= status_badge_class(recruitment.status) %>"><%= status_text(recruitment.status) %></span>
             <% if recruitment.stage_guid.present? %>
-              <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
+              <% stage = recruitment.stage %>
+              <% if stage %>
+                <span class="stage-guid">
+                  <%= link_to stage.title, stage_path(stage), class: "stage-link-white" %> - <%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %>
+                </span>
+              <% else %>
+                <span class="stage-guid"><%= t('app.common.guid') %>: <%= clipboard_copy(recruitment.stage_guid) %></span>
+              <% end %>
             <% end %>
             <% if recruitment.difficulty.present? %>
               <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= recruitment.difficulty %></span>

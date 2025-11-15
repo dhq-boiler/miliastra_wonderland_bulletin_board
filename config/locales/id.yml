@@ -172,6 +172,7 @@ id:
       login_required: Perlu %{login_link} untuk posting.
       show:
         details_title: Detail
+        stage_info: Info Panggung
         updated_at: Diperbarui
         confirm_delete: Apakah Anda yakin ingin menghapus?
         confirm_delete_admin: Hapus sebagai admin. Apakah Anda yakin?

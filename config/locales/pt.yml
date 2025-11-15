@@ -172,6 +172,7 @@ pt:
       login_required: É necessário %{login_link} para publicar.
       show:
         details_title: Detalhes
+        stage_info: Informações do Palco
         updated_at: Atualizado
         confirm_delete: Tem certeza de que deseja excluir?
         confirm_delete_admin: Excluir como administrador. Tem certeza?

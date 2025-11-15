@@ -172,6 +172,7 @@ zh-TW:
       login_required: 發佈需要%{login_link}。
       show:
         details_title: 詳情
+        stage_info: 關卡資訊
         updated_at: 更新時間
         confirm_delete: 確定要刪除嗎？
         confirm_delete_admin: 以管理員權限刪除。確定嗎？

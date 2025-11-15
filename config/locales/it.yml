@@ -172,6 +172,7 @@ it:
       login_required: È richiesto %{login_link} per pubblicare.
       show:
         details_title: Dettagli
+        stage_info: Informazioni sullo Stage
         updated_at: Aggiornato
         confirm_delete: Sei sicuro di voler eliminare?
         confirm_delete_admin: Elimina come admin. Sei sicuro?

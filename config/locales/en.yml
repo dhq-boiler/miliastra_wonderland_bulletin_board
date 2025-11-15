@@ -201,6 +201,7 @@ en:
       login_required: "%{login_link} required to post."
       show:
         details_title: Details
+        stage_info: Stage Info
         updated_at: Updated
         confirm_delete: Are you sure you want to delete?
         confirm_delete_admin: Delete as admin. Are you sure?

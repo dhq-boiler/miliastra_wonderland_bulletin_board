@@ -49,6 +49,12 @@ class MultiplayRecruitment < ApplicationRecord
     where(status: status)
   }
 
+  # ステージ情報を取得
+  def stage
+    return nil if stage_guid.blank?
+    @stage ||= Stage.find_by(stage_guid: stage_guid)
+  end
+
   private
 
   def set_default_end_time
