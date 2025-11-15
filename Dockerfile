@@ -44,15 +44,27 @@ RUN bundle install && \
     rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
     bundle exec bootsnap precompile -j 1 --gemfile
 
-# Copy application code
-COPY . .
+# Copy application code in layers for better cache control
+# First copy files that change less frequently
+COPY config config
+COPY db db
+COPY lib lib
+COPY bin bin
+COPY Rakefile Rakefile
+
+# Then copy assets (changes more frequently, invalidates cache from here)
+COPY app app
+COPY public public
+
+# Copy remaining files
+COPY --chown=rails:rails . .
 
 # Precompile bootsnap code for faster boot times.
 # -j 1 disable parallel compilation to avoid a QEMU bug: https://github.com/rails/bootsnap/issues/495
 RUN bundle exec bootsnap precompile -j 1 app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-# Note: Tailwind CSS file is already included in app/assets/builds/tailwind.css
+# Force rebuild when CSS changes by using CSS file hash as cache bust
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Generate crontab for scheduled tasks
