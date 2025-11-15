@@ -69,8 +69,9 @@ env:
     - DB_PASSWORD
     - GOOGLE_CLIENT_ID
     - GOOGLE_CLIENT_SECRET
-    - AWS_ACCESS_KEY_ID
-    - AWS_SECRET_ACCESS_KEY
+    # AWS credentials are not needed when using IAM role on EC2
+    # - AWS_ACCESS_KEY_ID
+    # - AWS_SECRET_ACCESS_KEY
   clear:
     # Optional: Enable Solid Queue, Cache, Cable (requires database tables)
     # ENABLE_SOLID_QUEUE: true
