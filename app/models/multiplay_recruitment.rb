@@ -2,6 +2,7 @@ class MultiplayRecruitment < ApplicationRecord
   include SoftDeletable
 
   belongs_to :user
+  belongs_to :stage, primary_key: :stage_guid, foreign_key: :stage_guid, optional: true
   has_many :comments, class_name: "MultiplayRecruitmentComment", dependent: :destroy
   has_many :participants, class_name: "MultiplayRecruitmentParticipant", dependent: :destroy
   has_many :participant_users, through: :participants, source: :user
@@ -31,7 +32,12 @@ class MultiplayRecruitment < ApplicationRecord
   # 検索用スコープ
   scope :search_by_keyword, ->(keyword) {
     return all if keyword.blank?
-    where("title LIKE ? OR description LIKE ?", "%#{sanitize_sql_like(keyword)}%", "%#{sanitize_sql_like(keyword)}%")
+    left_joins(:stage).where(
+      "multiplay_recruitments.title LIKE ? OR multiplay_recruitments.description LIKE ? OR stages.title LIKE ?",
+      "%#{sanitize_sql_like(keyword)}%",
+      "%#{sanitize_sql_like(keyword)}%",
+      "%#{sanitize_sql_like(keyword)}%"
+    ).distinct
   }
 
   scope :search_by_stage_guid, ->(stage_guid) {
@@ -48,12 +54,6 @@ class MultiplayRecruitment < ApplicationRecord
     return all if status.blank?
     where(status: status)
   }
-
-  # ステージ情報を取得
-  def stage
-    return nil if stage_guid.blank?
-    @stage ||= Stage.find_by(stage_guid: stage_guid)
-  end
 
   private
 
