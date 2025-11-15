@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 200 900;
   font-display: swap;
-  src: url('/assets/NotoSerifCJKsc-VF.ttf') format('truetype');
+  src: url('/fonts/NotoSerifCJKsc-VF.ttf') format('truetype');
 }
 
 /* Noto Serif CJK TC (Traditional Chinese) - Variable Font */
@@ -15,7 +15,7 @@
   font-style: normal;
   font-weight: 200 900;
   font-display: swap;
-  src: url('/assets/NotoSerifCJKtc-VF.ttf') format('truetype');
+  src: url('/fonts/NotoSerifCJKtc-VF.ttf') format('truetype');
 }
 
 @theme {
