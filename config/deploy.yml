@@ -93,6 +93,11 @@ env:
     APP_HOST: miliastra-wonderland-bulletin-board.com
     MAILER_FROM_ADDRESS: noreply@miliastra-wonderland-bulletin-board.com
 
+    # Database backup configuration
+    BACKUP_S3_BUCKET: miliastra-wonderland-backups
+    BACKUP_S3_PREFIX: database
+    BACKUP_RETENTION_DAYS: 30
+
     # Log everything from Rails
     # RAILS_LOG_LEVEL: debug
 

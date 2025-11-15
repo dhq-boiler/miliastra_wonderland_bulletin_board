@@ -1,0 +1,96 @@
+#!/bin/bash
+# PostgreSQL restore script from S3
+# Usage: bin/restore_database [backup_filename]
+# Example: bin/restore_database miliastra_wonderland_db_20251115_120000.sql.gz
+
+set -e
+
+# Check if backup filename is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <backup_filename>"
+  echo "Example: $0 miliastra_wonderland_db_20251115_120000.sql.gz"
+  echo ""
+  echo "Available backups:"
+  aws s3 ls "s3://${BACKUP_S3_BUCKET:-miliastra-wonderland-backups}/${BACKUP_S3_PREFIX:-database}/" | awk '{print $4}'
+  exit 1
+fi
+
+BACKUP_FILE="$1"
+
+# Load environment variables
+if [ -f /rails/.env.production ]; then
+  export $(cat /rails/.env.production | grep -v '^#' | xargs)
+fi
+
+# Configuration
+BACKUP_DIR="/tmp/db_backups"
+S3_BUCKET="${BACKUP_S3_BUCKET:-miliastra-wonderland-backups}"
+S3_PREFIX="${BACKUP_S3_PREFIX:-database}"
+
+# Database configuration
+DB_HOST="${DB_HOST:-miliastra_wonderland_bulletin_board-db}"
+DB_PORT="${DB_PORT:-5432}"
+DB_NAME="${DB_NAME:-miliastra_wonderland_bulletin_board_production}"
+DB_USERNAME="${DB_USERNAME:-postgres}"
+
+# Create backup directory if it doesn't exist
+mkdir -p "${BACKUP_DIR}"
+
+echo "[$(date)] Starting database restore..."
+echo "[$(date)] Backup file: ${BACKUP_FILE}"
+
+# Download from S3
+echo "[$(date)] Downloading from S3..."
+aws s3 cp "s3://${S3_BUCKET}/${S3_PREFIX}/${BACKUP_FILE}" \
+  "${BACKUP_DIR}/${BACKUP_FILE}"
+
+if [ ! -f "${BACKUP_DIR}/${BACKUP_FILE}" ]; then
+  echo "[$(date)] ERROR: Failed to download backup file!"
+  exit 1
+fi
+
+echo "[$(date)] Download completed"
+
+# Confirmation prompt
+read -p "WARNING: This will DROP the existing database and restore from backup. Continue? (yes/no): " CONFIRM
+if [ "$CONFIRM" != "yes" ]; then
+  echo "[$(date)] Restore cancelled"
+  rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+  exit 0
+fi
+
+# Drop existing database (WARNING: This will delete all data!)
+echo "[$(date)] Dropping existing database..."
+PGPASSWORD="${DB_PASSWORD}" psql \
+  -h "${DB_HOST}" \
+  -p "${DB_PORT}" \
+  -U "${DB_USERNAME}" \
+  -d postgres \
+  -c "DROP DATABASE IF EXISTS ${DB_NAME};"
+
+# Create new database
+echo "[$(date)] Creating new database..."
+PGPASSWORD="${DB_PASSWORD}" psql \
+  -h "${DB_HOST}" \
+  -p "${DB_PORT}" \
+  -U "${DB_USERNAME}" \
+  -d postgres \
+  -c "CREATE DATABASE ${DB_NAME};"
+
+# Restore from backup
+echo "[$(date)] Restoring database..."
+gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" | \
+  PGPASSWORD="${DB_PASSWORD}" pg_restore \
+    -h "${DB_HOST}" \
+    -p "${DB_PORT}" \
+    -U "${DB_USERNAME}" \
+    -d "${DB_NAME}" \
+    --verbose \
+    --no-owner \
+    --no-acl
+
+# Clean up
+rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+
+echo "[$(date)] Restore completed successfully!"
+echo "[$(date)] Database ${DB_NAME} has been restored from ${BACKUP_FILE}"

@@ -32,3 +32,8 @@ set :output, { error: "/rails/log/cron_error.log", standard: "/rails/log/cron.lo
 every 1.minute do
   rake "multiplay_recruitment:auto_close"
 end
+
+# 毎日深夜3時にデータベースバックアップを実行
+every 1.day, at: '3:00 am' do
+  command "/rails/bin/backup_database >> /rails/log/backup.log 2>&1"
+end

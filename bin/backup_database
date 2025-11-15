@@ -1,0 +1,81 @@
+#!/bin/bash
+# PostgreSQL backup script for S3
+# Usage: bin/backup_database
+
+set -e
+
+# Load environment variables
+if [ -f /rails/.env.production ]; then
+  export $(cat /rails/.env.production | grep -v '^#' | xargs)
+fi
+
+# Configuration
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+BACKUP_DIR="/tmp/db_backups"
+BACKUP_FILE="miliastra_wonderland_db_${TIMESTAMP}.sql.gz"
+S3_BUCKET="${BACKUP_S3_BUCKET:-miliastra-wonderland-backups}"
+S3_PREFIX="${BACKUP_S3_PREFIX:-database}"
+RETENTION_DAYS="${BACKUP_RETENTION_DAYS:-30}"
+
+# Database configuration (from environment or defaults)
+DB_HOST="${DB_HOST:-miliastra_wonderland_bulletin_board-db}"
+DB_PORT="${DB_PORT:-5432}"
+DB_NAME="${DB_NAME:-miliastra_wonderland_bulletin_board_production}"
+DB_USERNAME="${DB_USERNAME:-postgres}"
+
+# Create backup directory if it doesn't exist
+mkdir -p "${BACKUP_DIR}"
+
+echo "[$(date)] Starting database backup..."
+
+# Perform backup using pg_dump
+PGPASSWORD="${DB_PASSWORD}" pg_dump \
+  -h "${DB_HOST}" \
+  -p "${DB_PORT}" \
+  -U "${DB_USERNAME}" \
+  -d "${DB_NAME}" \
+  --verbose \
+  --format=custom \
+  --compress=9 \
+  | gzip > "${BACKUP_DIR}/${BACKUP_FILE}"
+
+# Check if backup was successful
+if [ ! -f "${BACKUP_DIR}/${BACKUP_FILE}" ]; then
+  echo "[$(date)] ERROR: Backup file was not created!"
+  exit 1
+fi
+
+BACKUP_SIZE=$(du -h "${BACKUP_DIR}/${BACKUP_FILE}" | cut -f1)
+echo "[$(date)] Backup created: ${BACKUP_FILE} (${BACKUP_SIZE})"
+
+# Upload to S3
+echo "[$(date)] Uploading to S3: s3://${S3_BUCKET}/${S3_PREFIX}/${BACKUP_FILE}"
+aws s3 cp "${BACKUP_DIR}/${BACKUP_FILE}" \
+  "s3://${S3_BUCKET}/${S3_PREFIX}/${BACKUP_FILE}" \
+  --storage-class STANDARD_IA
+
+# Verify upload
+if aws s3 ls "s3://${S3_BUCKET}/${S3_PREFIX}/${BACKUP_FILE}" > /dev/null 2>&1; then
+  echo "[$(date)] Successfully uploaded to S3"
+  rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+  echo "[$(date)] Local backup file removed"
+else
+  echo "[$(date)] ERROR: Failed to upload to S3!"
+  exit 1
+fi
+
+# Clean up old backups (older than RETENTION_DAYS)
+echo "[$(date)] Cleaning up old backups (retention: ${RETENTION_DAYS} days)..."
+CUTOFF_DATE=$(date -d "${RETENTION_DAYS} days ago" +%Y%m%d || date -v-${RETENTION_DAYS}d +%Y%m%d)
+
+aws s3 ls "s3://${S3_BUCKET}/${S3_PREFIX}/" | while read -r line; do
+  FILE_DATE=$(echo "$line" | awk '{print $4}' | grep -oP '\d{8}' | head -1)
+  FILE_NAME=$(echo "$line" | awk '{print $4}')
+
+  if [ -n "$FILE_DATE" ] && [ "$FILE_DATE" -lt "$CUTOFF_DATE" ]; then
+    echo "[$(date)] Deleting old backup: ${FILE_NAME}"
+    aws s3 rm "s3://${S3_BUCKET}/${S3_PREFIX}/${FILE_NAME}"
+  fi
+done
+
+echo "[$(date)] Backup completed successfully!"
