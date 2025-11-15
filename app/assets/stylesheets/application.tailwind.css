@@ -1,7 +1,25 @@
 @import "tailwindcss";
 
+/* Noto Serif CJK SC (Simplified Chinese) - Variable Font */
+@font-face {
+  font-family: 'Noto Serif CJK SC';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/assets/NotoSerifCJKsc-VF.ttf') format('truetype');
+}
+
+/* Noto Serif CJK TC (Traditional Chinese) - Variable Font */
+@font-face {
+  font-family: 'Noto Serif CJK TC';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/assets/NotoSerifCJKtc-VF.ttf') format('truetype');
+}
+
 @theme {
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Noto Serif CJK SC", "Noto Serif CJK TC", "Microsoft YaHei", "PingFang SC", "Noto Sans SC", "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", "Malgun Gothic", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 /*
