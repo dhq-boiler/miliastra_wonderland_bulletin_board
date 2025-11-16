@@ -14,6 +14,9 @@ class ImageModerationJob < ApplicationJob
     if result[:flagged]
       # 不適切なコンテンツが検出された場合、自動的に通報を作成
       create_auto_report(attachment, result)
+
+      # 投稿を仮凍結
+      freeze_post(attachment, result)
     end
 
     Rails.logger.info "Image moderation completed for attachment ##{attachment_id}: #{result[:flagged] ? 'FLAGGED' : 'OK'}"
@@ -66,5 +69,24 @@ class ImageModerationJob < ApplicationJob
     end
 
     reasons.join("\n")
+  end
+
+  # 投稿を仮凍結
+  def freeze_post(attachment, result)
+    record = attachment.record
+    return unless record
+
+    # StageまたはMultiplayRecruitmentCommentの場合のみ凍結
+    return unless record.is_a?(Stage) || record.is_a?(MultiplayRecruitmentComment)
+
+    # 既に凍結されている場合はスキップ
+    return if record.frozen?
+
+    reason = "🤖 AI自動判定: 不適切なコンテンツが検出されたため、仮凍結されました。\n#{build_auto_report_reason(result)}"
+
+    record.freeze_post!(type: :temporary, reason: reason)
+    Rails.logger.info "Post #{record.class.name}##{record.id} has been temporarily frozen due to inappropriate content"
+  rescue StandardError => e
+    Rails.logger.error "Failed to freeze post for attachment ##{attachment.id}: #{e.message}"
   end
 end

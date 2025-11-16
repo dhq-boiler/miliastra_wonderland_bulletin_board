@@ -1,6 +1,7 @@
 class StagesController < ApplicationController
   before_action :require_login, except: [ :index, :show ]
   before_action :set_stage, only: [ :show, :edit, :update, :destroy ]
+  before_action :check_frozen_access, only: [ :show ]
   before_action :authorize_user, only: [ :edit, :update ]
   before_action :authorize_user_or_admin, only: [ :destroy ]
 
@@ -25,6 +26,9 @@ class StagesController < ApplicationController
                    .search_by_category_tags(@search_category_tag_ids)
                    .search_by_other_tags(@search_other_tag_ids)
                    .recent
+
+    # 管理者以外は凍結された投稿を非表示
+    @stages = @stages.not_frozen unless logged_in? && current_user.admin?
 
     # 各幻境のマルチプレイ募集件数を一括取得（N+1問題を回避）
     stage_guids = @stages.map(&:stage_guid).compact
@@ -82,6 +86,18 @@ class StagesController < ApplicationController
   private
     def set_stage
       @stage = Stage.includes(:tags).find(params[:id])
+    end
+
+    def check_frozen_access
+      # 凍結されている投稿は管理者と投稿者のみ閲覧可能
+      if @stage.frozen?
+        is_admin = logged_in? && current_user.admin?
+        is_owner = logged_in? && @stage.user == current_user
+
+        unless is_admin || is_owner
+          redirect_to stages_path, alert: "この投稿は現在閲覧できません。"
+        end
+      end
     end
 
     def authorize_user

@@ -40,6 +40,12 @@ class MultiplayRecruitmentsController < ApplicationController
 
   def show
     @comments = @multiplay_recruitment.comments.includes(:user).oldest_first
+
+    # 管理者以外は凍結されたコメントを非表示
+    unless logged_in? && current_user.admin?
+      @comments = @comments.not_frozen
+    end
+
     @comment = MultiplayRecruitmentComment.new if logged_in?
   end
 

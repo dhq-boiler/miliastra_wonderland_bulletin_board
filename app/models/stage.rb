@@ -2,6 +2,12 @@
 class Stage < ApplicationRecord
   include SoftDeletable
 
+  # 凍結タイプの定義
+  FROZEN_TYPES = {
+    temporary: "temporary",  # 仮凍結（AI判定）
+    permanent: "permanent"   # 永久凍結（管理者判定）
+  }.freeze
+
   belongs_to :user
   has_many :stage_tags, dependent: :destroy
   has_many :tags, through: :stage_tags
@@ -22,6 +28,12 @@ class Stage < ApplicationRecord
 
   # 最新の投稿順に並べる（更新時間優先、次に作成時間）
   scope :recent, -> { order(updated_at: :desc, created_at: :desc) }
+
+  # 凍結関連スコープ
+  scope :frozen, -> { where.not(frozen_at: nil) }
+  scope :not_frozen, -> { where(frozen_at: nil) }
+  scope :temporarily_frozen, -> { where(frozen_type: FROZEN_TYPES[:temporary]) }
+  scope :permanently_frozen, -> { where(frozen_type: FROZEN_TYPES[:permanent]) }
 
   # タグによる検索スコープ
   scope :search_by_tag_ids, ->(tag_ids) {
@@ -58,6 +70,37 @@ class Stage < ApplicationRecord
   def difficulty_text
     return nil if difficulty.blank?
     I18n.t("app.stages.form.difficulty_#{difficulty}")
+  end
+
+  # 凍結ステータスの確認
+  def frozen?
+    frozen_at.present?
+  end
+
+  def temporarily_frozen?
+    frozen? && frozen_type == FROZEN_TYPES[:temporary]
+  end
+
+  def permanently_frozen?
+    frozen? && frozen_type == FROZEN_TYPES[:permanent]
+  end
+
+  # 投稿を凍結
+  def freeze_post!(type: :temporary, reason: nil)
+    update!(
+      frozen_at: Time.current,
+      frozen_type: FROZEN_TYPES[type],
+      frozen_reason: reason
+    )
+  end
+
+  # 凍結を解除
+  def unfreeze!
+    update!(
+      frozen_at: nil,
+      frozen_type: nil,
+      frozen_reason: nil
+    )
   end
 
   private
