@@ -61,7 +61,7 @@
               <span class="stage-guid">GUID: <%= clipboard_copy(recruitment.stage_guid) %></span>
             <% end %>
             <% if recruitment.difficulty.present? %>
-              <span class="difficulty">難易度: <%= stage.difficulty_text %></span>
+              <span class="difficulty">難易度: <%= recruitment.difficulty_text %></span>
             <% end %>
             <span class="max-players">募集人数: <%= recruitment.max_players %>人</span>
             <% if recruitment.start_time.present? %>

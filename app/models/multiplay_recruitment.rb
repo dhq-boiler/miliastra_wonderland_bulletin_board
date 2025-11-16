@@ -55,6 +55,12 @@ class MultiplayRecruitment < ApplicationRecord
     where(status: status)
   }
 
+  # 難易度の翻訳を取得
+  def difficulty_text
+    return nil if difficulty.blank?
+    I18n.t("app.stages.form.difficulty_#{difficulty}")
+  end
+
   private
 
   def set_default_end_time
