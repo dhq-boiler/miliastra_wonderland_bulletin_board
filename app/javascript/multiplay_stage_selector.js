@@ -75,6 +75,11 @@ function initFormStageSelector(popover) {
     // Update hidden field
     guidField.value = stageGuid;
 
+    // Clear manual input field to prevent conflict
+    if (manualGuidInput) {
+      manualGuidInput.value = '';
+    }
+
     // Update summary display
     stageSummary.innerHTML = `
       <span class="stage-selected-badge">
@@ -96,6 +101,9 @@ function initFormStageSelector(popover) {
     if (clearBtn) {
       clearBtn.addEventListener('click', function() {
         guidField.value = '';
+        if (manualGuidInput) {
+          manualGuidInput.value = '';
+        }
         stageSummary.innerHTML = '<span class="text-muted">ステージが選択されていません</span>';
       });
     }
