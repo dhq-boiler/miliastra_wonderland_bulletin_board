@@ -8,7 +8,7 @@ class ImageReport < ApplicationRecord
   }.freeze
 
   # アソシエーション
-  belongs_to :active_storage_attachment
+  belongs_to :active_storage_attachment, class_name: "ActiveStorage::Attachment"
   belongs_to :user
   belongs_to :reviewed_by, class_name: "User", optional: true
 
