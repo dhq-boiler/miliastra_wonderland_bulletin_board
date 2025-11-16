@@ -23,8 +23,8 @@ class Stage < ApplicationRecord
   # 作成時にユーザーのlocaleを設定
   before_validation :set_locale_from_user, on: :create
 
-  # 画像の自動モデレーションを実行
-  after_create_commit :enqueue_image_moderation_jobs
+  # 画像の自動モデレーションを実行（通報時のみ実行に変更）
+  # after_create_commit :enqueue_image_moderation_jobs
 
   # 最新の投稿順に並べる（更新時間優先、次に作成時間）
   scope :recent, -> { order(updated_at: :desc, created_at: :desc) }

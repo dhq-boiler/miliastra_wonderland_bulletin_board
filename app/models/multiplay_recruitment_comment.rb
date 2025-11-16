@@ -14,8 +14,8 @@ class MultiplayRecruitmentComment < ApplicationRecord
   validates :content, presence: true, length: { minimum: 1, maximum: 1000 }
   validate :validate_images
 
-  # 画像の自動モデレーションを実行
-  after_create_commit :enqueue_image_moderation_jobs
+  # 画像の自動モデレーションを実行（通報時のみ実行に変更）
+  # after_create_commit :enqueue_image_moderation_jobs
 
   # 最新のコメント順に並べる
   scope :recent, -> { order(created_at: :desc) }

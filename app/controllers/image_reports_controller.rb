@@ -25,6 +25,11 @@ class ImageReportsController < ApplicationController
     )
 
     if @report.save
+      # 最初の通報時のみ、画像のモデレーションを実行
+      if ImageReport.where(active_storage_attachment_id: @attachment.id).count == 1
+        ImageModerationJob.perform_later(@attachment.id)
+      end
+
       respond_to do |format|
         format.json { render json: { success: true, message: "通報を受け付けました" }, status: :created }
         format.html { redirect_back fallback_location: root_path, notice: "通報を受け付けました" }
