@@ -14,6 +14,24 @@ Rails.application.routes.draw do
   # 画像通報
   resources :image_reports, only: [ :create ]
 
+  # 管理者用
+  namespace :admin do
+    resources :image_reports, only: [ :index, :show ] do
+      member do
+        patch :confirm
+        patch :dismiss
+      end
+    end
+    resources :users, only: [ :index, :show ] do
+      member do
+        patch :suspend
+        patch :unsuspend
+        patch :ban
+        patch :unban
+      end
+    end
+  end
+
   # 認証関連
   get "signup", to: "users#new", as: "signup"
   post "signup", to: "users#create"

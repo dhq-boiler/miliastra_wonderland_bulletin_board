@@ -1,0 +1,99 @@
+<div class="admin-container">
+  <h1 class="admin-header">画像通報管理</h1>
+
+  <!-- 統計情報 -->
+  <div class="admin-stats">
+    <div class="stat-card">
+      <div class="stat-label">全通報</div>
+      <div class="stat-value"><%= @stats[:total] %></div>
+    </div>
+    <div class="stat-card pending">
+      <div class="stat-label">未確認</div>
+      <div class="stat-value"><%= @stats[:pending] %></div>
+    </div>
+    <div class="stat-card confirmed">
+      <div class="stat-label">不適切</div>
+      <div class="stat-value"><%= @stats[:confirmed] %></div>
+    </div>
+    <div class="stat-card dismissed">
+      <div class="stat-label">却下</div>
+      <div class="stat-value"><%= @stats[:dismissed] %></div>
+    </div>
+    <div class="stat-card reviewed">
+      <div class="stat-label">レビュー済み</div>
+      <div class="stat-value"><%= @stats[:reviewed] %></div>
+    </div>
+  </div>
+
+  <!-- フィルター -->
+  <div class="admin-filters">
+    <%= link_to "すべて", admin_image_reports_path, class: "filter-btn #{'active' if @status_filter == 'all'}" %>
+    <%= link_to "未確認", admin_image_reports_path(status: 'pending'), class: "filter-btn #{'active' if @status_filter == 'pending'}" %>
+    <%= link_to "不適切", admin_image_reports_path(status: 'confirmed'), class: "filter-btn #{'active' if @status_filter == 'confirmed'}" %>
+    <%= link_to "却下", admin_image_reports_path(status: 'dismissed'), class: "filter-btn #{'active' if @status_filter == 'dismissed'}" %>
+    <%= link_to "レビュー済み", admin_image_reports_path(status: 'reviewed'), class: "filter-btn #{'active' if @status_filter == 'reviewed'}" %>
+  </div>
+
+  <!-- 通報一覧 -->
+  <div class="admin-reports-list">
+    <% if @reports.any? %>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>画像</th>
+            <th>通報者</th>
+            <th>通報理由</th>
+            <th>ステータス</th>
+            <th>通報日時</th>
+            <th>レビュー者</th>
+            <th>アクション</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @reports.each do |report| %>
+            <tr class="report-row status-<%= report.status %>">
+              <td class="image-cell">
+                <% if report.active_storage_attachment.present? %>
+                  <%= image_tag report.active_storage_attachment.blob, class: "admin-thumbnail", style: "max-width: 100px; max-height: 100px;" %>
+                <% else %>
+                  <span class="text-muted">削除済み</span>
+                <% end %>
+              </td>
+              <td><%= link_to report.user.display_name, user_path(report.user), class: "user-link" %></td>
+              <td class="reason-cell"><%= truncate(report.reason, length: 50) || "理由なし" %></td>
+              <td>
+                <span class="status-badge status-<%= report.status %>">
+                  <%= case report.status
+                      when ImageReport::STATUSES[:pending] then "未確認"
+                      when ImageReport::STATUSES[:confirmed] then "不適切"
+                      when ImageReport::STATUSES[:dismissed] then "却下"
+                      when ImageReport::STATUSES[:reviewed] then "レビュー済み"
+                      end %>
+                </span>
+              </td>
+              <td><%= l(report.created_at, format: :long) %></td>
+              <td>
+                <% if report.reviewed_by %>
+                  <%= report.reviewed_by.display_name %>
+                <% else %>
+                  <span class="text-muted">-</span>
+                <% end %>
+              </td>
+              <td class="actions-cell">
+                <%= link_to "詳細", admin_image_report_path(report), class: "btn-action btn-detail" %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="empty-state">
+        <p>通報がありません</p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="admin-actions">
+    <%= link_to "戻る", root_path, class: "btn btn-secondary" %>
+  </div>
+</div>

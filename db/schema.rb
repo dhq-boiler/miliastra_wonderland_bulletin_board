@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_110708) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_16_123932) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -282,6 +282,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_110708) do
 
   create_table "users", force: :cascade do |t|
     t.boolean "admin", default: false, null: false
+    t.text "ban_reason"
+    t.datetime "banned_at"
     t.datetime "created_at", null: false
     t.datetime "deleted_at"
     t.string "email"
@@ -292,6 +294,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_110708) do
     t.string "provider"
     t.datetime "reset_password_sent_at"
     t.string "reset_password_token"
+    t.datetime "suspended_at"
+    t.text "suspension_reason"
     t.string "uid"
     t.datetime "updated_at", null: false
     t.string "username"

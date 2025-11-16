@@ -76,6 +76,53 @@ class User < ApplicationRecord
     provider.present? && uid.present?
   end
 
+  # ユーザーが停止中かどうかを判定
+  def suspended?
+    suspended_at.present? && suspended_at <= Time.current
+  end
+
+  # ユーザーがBANされているかどうかを判定
+  def banned?
+    banned_at.present?
+  end
+
+  # ユーザーがアクティブかどうかを判定（停止・BANされていない）
+  def active?
+    !suspended? && !banned?
+  end
+
+  # ユーザーを停止
+  def suspend!(reason: nil, duration: 7.days)
+    update!(
+      suspended_at: duration.from_now,
+      suspension_reason: reason
+    )
+  end
+
+  # ユーザーの停止を解除
+  def unsuspend!
+    update!(
+      suspended_at: nil,
+      suspension_reason: nil
+    )
+  end
+
+  # ユーザーをBAN
+  def ban!(reason: nil)
+    update!(
+      banned_at: Time.current,
+      ban_reason: reason
+    )
+  end
+
+  # ユーザーのBANを解除
+  def unban!
+    update!(
+      banned_at: nil,
+      ban_reason: nil
+    )
+  end
+
   private
 
   # パスワードが必要かどうかを判定

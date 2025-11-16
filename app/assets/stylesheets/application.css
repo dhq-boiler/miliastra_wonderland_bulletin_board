@@ -160,6 +160,24 @@
   background-color: #dc2626;
 }
 
+.btn-success {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-warning {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.btn-warning:hover {
+  background-color: #d97706;
+}
+
 .btn-default {
   background-color: #f3f4f6;
   color: #1f2937;
@@ -1995,6 +2013,471 @@ textarea.form-control {
   .modal-image {
     max-width: 95vw;
     max-height: 95vh;
+  }
+}
+
+/* ========================================
+   Admin Dashboard
+   ======================================== */
+
+/* 管理者コンテナ */
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #ffffff;
+  min-height: 100vh;
+}
+
+.admin-header {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 3px solid #3b82f6;
+  color: #1f2937;
+}
+
+/* 統計カード */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background-color: #f3f4f6;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid #6b7280;
+  transition: transform 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+}
+
+.stat-card.pending {
+  border-left-color: #f59e0b;
+  background-color: #fef3c7;
+}
+
+.stat-card.confirmed {
+  border-left-color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.stat-card.dismissed {
+  border-left-color: #10b981;
+  background-color: #d1fae5;
+}
+
+.stat-card.reviewed {
+  border-left-color: #3b82f6;
+  background-color: #dbeafe;
+}
+
+.stat-card.active {
+  border-left-color: #10b981;
+  background-color: #d1fae5;
+}
+
+.stat-card.suspended {
+  border-left-color: #f59e0b;
+  background-color: #fef3c7;
+}
+
+.stat-card.banned {
+  border-left-color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.stat-card.admin {
+  border-left-color: #8b5cf6;
+  background-color: #ede9fe;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* フィルター */
+.admin-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+  color: #4b5563;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 0.875rem;
+}
+
+.filter-btn:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+}
+
+.filter-btn.active {
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-color: #3b82f6;
+}
+
+/* テーブル */
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.admin-table thead {
+  background-color: #f9fafb;
+}
+
+.admin-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover {
+  background-color: #f9fafb;
+}
+
+.image-cell {
+  width: 120px;
+}
+
+.admin-thumbnail {
+  border-radius: 0.25rem;
+  border: 1px solid #e5e7eb;
+}
+
+.reason-cell {
+  max-width: 300px;
+}
+
+.actions-cell {
+  white-space: nowrap;
+}
+
+/* ステータスバッジ */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.status-badge.status-pending {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.status-confirmed {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.status-badge.status-dismissed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.status-badge.status-reviewed {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+/* ユーザーステータスバッジ */
+.user-status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.user-status-badge.active {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.user-status-badge.suspended {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.user-status-badge.banned {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* 役割バッジ */
+.role-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.role-badge.admin {
+  background-color: #ede9fe;
+  color: #6b21a8;
+}
+
+.role-badge.user {
+  background-color: #e5e7eb;
+  color: #4b5563;
+}
+
+/* アクションボタン */
+.btn-action {
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+
+.btn-action.btn-detail {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+
+.btn-action.btn-detail:hover {
+  background-color: #2563eb;
+}
+
+/* 詳細セクション */
+.detail-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background-color: #f9fafb;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.detail-section h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #1f2937;
+}
+
+.detail-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.detail-table th {
+  width: 200px;
+  padding: 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: #4b5563;
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.detail-table td {
+  padding: 0.75rem;
+  border: 1px solid #e5e7eb;
+}
+
+/* 詳細アクション */
+.detail-actions {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #fef3c7;
+  border-radius: 0.5rem;
+  border: 1px solid #fbbf24;
+}
+
+.detail-actions h3,
+.detail-actions h4 {
+  margin-bottom: 1rem;
+  color: #92400e;
+}
+
+.action-group {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+}
+
+.inline-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.form-group-inline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.form-control-small {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+}
+
+/* 通報画像 */
+.reported-image-container {
+  text-align: center;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.reported-image-large {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 現在の通報ハイライト */
+.current-report {
+  background-color: #fef3c7 !important;
+}
+
+.badge-current {
+  background-color: #fbbf24;
+  color: #ffffff;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  margin-left: 0.5rem;
+}
+
+/* 活動リスト */
+.activity-list {
+  list-style: none;
+  padding: 0;
+}
+
+.activity-list li {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.activity-list li:last-child {
+  border-bottom: none;
+}
+
+.activity-link {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+.activity-link:hover {
+  text-decoration: underline;
+}
+
+.activity-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* 空の状態 */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+}
+
+.empty-state p {
+  font-size: 1.125rem;
+}
+
+/* ステータス詳細 */
+.status-detail {
+  margin-top: 0.5rem;
+  padding: 0.75rem;
+  background-color: #ffffff;
+  border-radius: 0.375rem;
+  border: 1px solid #e5e7eb;
+  font-size: 0.875rem;
+}
+
+/* 管理者アクション */
+.admin-actions {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid #e5e7eb;
+  display: flex;
+  gap: 1rem;
+}
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 1rem;
+  }
+
+  .admin-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-table {
+    font-size: 0.75rem;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.5rem;
+  }
+
+  .detail-table th {
+    width: 120px;
   }
 }
 
