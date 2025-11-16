@@ -7,6 +7,16 @@ class ImageReport < ApplicationRecord
     dismissed: "dismissed"      # 却下（問題なし）
   }.freeze
 
+  # 通報理由カテゴリ
+  REASON_CATEGORIES = {
+    r18: "R18画像（成人向けコンテンツ）",
+    r18g: "R18G画像（グロテスク・暴力的）",
+    copyright: "著作権侵害",
+    spam: "スパム・宣伝",
+    harassment: "嫌がらせ・誹謗中傷",
+    other: "その他"
+  }.freeze
+
   # アソシエーション
   belongs_to :active_storage_attachment, class_name: "ActiveStorage::Attachment"
   belongs_to :user
