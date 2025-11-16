@@ -153,7 +153,7 @@
         <div class="image-grid">
           <% stage.images.each do |image| %>
             <div class="image-item">
-              <%= image_tag image.variant(resize_to_limit: [200, 200]), class: "image-thumbnail" %>
+              <%= image_tag image, class: "image-thumbnail", style: "max-width: 200px; max-height: 200px; width: auto; height: auto;" %>
               <div class="image-actions">
                 <%= form.check_box :remove_image, { multiple: true, id: "remove_image_#{image.id}" }, image.id, nil %>
                 <%= form.label :remove_image, "削除", for: "remove_image_#{image.id}" %>

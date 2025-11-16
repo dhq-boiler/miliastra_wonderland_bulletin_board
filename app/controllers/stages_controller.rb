@@ -59,6 +59,14 @@ class StagesController < ApplicationController
   end
 
   def update
+    # 削除対象の画像を処理
+    if params[:stage][:remove_image].present?
+      params[:stage][:remove_image].each do |image_id|
+        image = @stage.images.find(image_id)
+        image.purge
+      end
+    end
+
     if @stage.update(stage_params)
       redirect_to @stage, notice: t("stages.update.success")
     else

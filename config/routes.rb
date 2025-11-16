@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  # Active Storage routes for file uploads
+  # This must be at the top to handle /rails/active_storage/* routes
+  if Rails.application.config.active_storage.draw_routes
+    # Rails 7.1+ automatically draws Active Storage routes
+  end
+
   resources :stages
   resources :multiplay_recruitments do
     resources :comments, only: [ :create, :destroy ], controller: "multiplay_recruitment_comments"
