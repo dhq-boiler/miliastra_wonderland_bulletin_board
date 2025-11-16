@@ -1,39 +1,32 @@
-<div class="container">
-  <div class="admin-header">
-    <h1>凍結された投稿の管理</h1>
-    <p>AI判定により仮凍結された投稿を確認し、本処分を決定します</p>
-  </div>
+<div class="admin-container">
+  <h1 class="admin-header">凍結された投稿の管理</h1>
 
   <!-- 統計情報 -->
   <div class="admin-stats">
     <div class="stat-card">
-      <div class="stat-value"><%= @stats[:total] %></div>
       <div class="stat-label">凍結済み合計</div>
+      <div class="stat-value"><%= @stats[:total] %></div>
     </div>
-    <div class="stat-card">
-      <div class="stat-value"><%= @stats[:temporary] %></div>
+    <div class="stat-card temporary">
       <div class="stat-label">仮凍結</div>
+      <div class="stat-value"><%= @stats[:temporary] %></div>
     </div>
-    <div class="stat-card">
-      <div class="stat-value"><%= @stats[:permanent] %></div>
+    <div class="stat-card permanent">
       <div class="stat-label">永久凍結</div>
+      <div class="stat-value"><%= @stats[:permanent] %></div>
     </div>
   </div>
 
   <!-- フィルター -->
   <div class="admin-filters">
-    <%= link_to "すべて", admin_frozen_posts_path, class: "filter-btn #{@filter == 'all' ? 'active' : ''}" %>
-    <%= link_to "仮凍結", admin_frozen_posts_path(filter: "temporary"), class: "filter-btn #{@filter == 'temporary' ? 'active' : ''}" %>
-    <%= link_to "永久凍結", admin_frozen_posts_path(filter: "permanent"), class: "filter-btn #{@filter == 'permanent' ? 'active' : ''}" %>
+    <%= link_to "すべて", admin_frozen_posts_path, class: "filter-btn #{'active' if @filter == 'all'}" %>
+    <%= link_to "仮凍結", admin_frozen_posts_path(filter: "temporary"), class: "filter-btn #{'active' if @filter == 'temporary'}" %>
+    <%= link_to "永久凍結", admin_frozen_posts_path(filter: "permanent"), class: "filter-btn #{'active' if @filter == 'permanent'}" %>
   </div>
 
   <!-- 凍結された投稿リスト -->
-  <div class="admin-table-container">
-    <% if @frozen_posts.empty? %>
-      <div class="empty-state">
-        <p>凍結された投稿はありません</p>
-      </div>
-    <% else %>
+  <div class="admin-reports-list">
+    <% if @frozen_posts.any? %>
       <table class="admin-table">
         <thead>
           <tr>
@@ -41,85 +34,95 @@
             <th>内容</th>
             <th>投稿者</th>
             <th>凍結理由</th>
-            <th>凍結タイプ</th>
+            <th>ステータス</th>
             <th>凍結日時</th>
-            <th>操作</th>
+            <th>アクション</th>
           </tr>
         </thead>
         <tbody>
           <% @frozen_posts.each do |post| %>
-            <tr class="frozen-post-row <%= post.frozen_type %>">
+            <tr class="report-row status-<%= post.frozen_type %>">
               <td>
                 <% if post.is_a?(Stage) %>
-                  <span class="badge badge-primary">ステージ</span>
+                  <span class="post-type-badge stage">ステージ</span>
                 <% else %>
-                  <span class="badge badge-secondary">コメント</span>
+                  <span class="post-type-badge comment">コメント</span>
                 <% end %>
               </td>
               <td class="content-cell">
                 <% if post.is_a?(Stage) %>
-                  <div class="post-title"><%= link_to post.title, stage_path(post), target: "_blank" %></div>
-                  <div class="post-excerpt"><%= truncate(post.description, length: 100) %></div>
+                  <div class="post-title"><%= link_to post.title, stage_path(post), target: "_blank", class: "user-link" %></div>
+                  <div class="post-excerpt"><%= truncate(post.description, length: 80) %></div>
                 <% else %>
                   <div class="post-title">
-                    <%= link_to post.multiplay_recruitment.title, multiplay_recruitment_path(post.multiplay_recruitment), target: "_blank" %>
+                    <%= link_to "コメント: #{post.multiplay_recruitment.title}", multiplay_recruitment_path(post.multiplay_recruitment), target: "_blank", class: "user-link" %>
                   </div>
-                  <div class="post-excerpt"><%= truncate(post.content, length: 100) %></div>
+                  <div class="post-excerpt"><%= truncate(post.content, length: 80) %></div>
                 <% end %>
               </td>
               <td>
-                <%= link_to post.user.display_name, admin_user_path(post.user) %>
+                <%= link_to post.user.display_name, admin_user_path(post.user), class: "user-link" %>
               </td>
               <td class="reason-cell">
-                <%= simple_format(post.frozen_reason) %>
+                <%= truncate(post.frozen_reason, length: 100) %>
               </td>
               <td>
                 <% if post.temporarily_frozen? %>
-                  <span class="status-badge status-temporary">仮凍結</span>
+                  <span class="status-badge status-pending">仮凍結</span>
                 <% elsif post.permanently_frozen? %>
-                  <span class="status-badge status-permanent">永久凍結</span>
+                  <span class="status-badge status-confirmed">永久凍結</span>
                 <% end %>
               </td>
               <td>
-                <%= time_ago_in_words(post.frozen_at) %>前
+                <%= l(post.frozen_at, format: :long) %>
               </td>
               <td class="actions-cell">
-                <% if post.is_a?(Stage) %>
-                  <% unless post.permanently_frozen? %>
-                    <%= button_to "永久凍結", admin_frozen_posts_permanent_freeze_stage_path(post),
+                <div class="action-buttons">
+                  <% if post.is_a?(Stage) %>
+                    <% unless post.permanently_frozen? %>
+                      <%= button_to "永久凍結", admin_frozen_posts_permanent_freeze_stage_path(post),
+                          method: :patch,
+                          class: "btn-action btn-warning",
+                          data: { confirm: "本当に永久凍結しますか？" } %>
+                    <% end %>
+                    <%= button_to "解除", admin_frozen_posts_unfreeze_stage_path(post),
                         method: :patch,
-                        class: "btn btn-sm btn-warning",
-                        data: { confirm: "本当に永久凍結しますか？" } %>
-                  <% end %>
-                  <%= button_to "凍結解除", admin_frozen_posts_unfreeze_stage_path(post),
-                      method: :patch,
-                      class: "btn btn-sm btn-success",
-                      data: { confirm: "凍結を解除しますか？（誤検知の場合）" } %>
-                  <%= button_to "削除", admin_frozen_posts_destroy_stage_path(post),
-                      method: :delete,
-                      class: "btn btn-sm btn-danger",
-                      data: { confirm: "本当に削除しますか？この操作は取り消せません。" } %>
-                <% else %>
-                  <% unless post.permanently_frozen? %>
-                    <%= button_to "永久凍結", admin_frozen_posts_permanent_freeze_comment_path(post),
+                        class: "btn-action btn-success",
+                        data: { confirm: "凍結を解除しますか？" } %>
+                    <%= button_to "削除", admin_frozen_posts_destroy_stage_path(post),
+                        method: :delete,
+                        class: "btn-action btn-danger",
+                        data: { confirm: "本当に削除しますか？" } %>
+                  <% else %>
+                    <% unless post.permanently_frozen? %>
+                      <%= button_to "永久凍結", admin_frozen_posts_permanent_freeze_comment_path(post),
+                          method: :patch,
+                          class: "btn-action btn-warning",
+                          data: { confirm: "本当に永久凍結しますか？" } %>
+                    <% end %>
+                    <%= button_to "解除", admin_frozen_posts_unfreeze_comment_path(post),
                         method: :patch,
-                        class: "btn btn-sm btn-warning",
-                        data: { confirm: "本当に永久凍結しますか？" } %>
+                        class: "btn-action btn-success",
+                        data: { confirm: "凍結を解除しますか？" } %>
+                    <%= button_to "削除", admin_frozen_posts_destroy_comment_path(post),
+                        method: :delete,
+                        class: "btn-action btn-danger",
+                        data: { confirm: "本当に削除しますか？" } %>
                   <% end %>
-                  <%= button_to "凍結解除", admin_frozen_posts_unfreeze_comment_path(post),
-                      method: :patch,
-                      class: "btn btn-sm btn-success",
-                      data: { confirm: "凍結を解除しますか？（誤検知の場合）" } %>
-                  <%= button_to "削除", admin_frozen_posts_destroy_comment_path(post),
-                      method: :delete,
-                      class: "btn btn-sm btn-danger",
-                      data: { confirm: "本当に削除しますか？この操作は取り消せません。" } %>
-                <% end %>
+                </div>
               </td>
             </tr>
           <% end %>
         </tbody>
       </table>
+    <% else %>
+      <div class="empty-state">
+        <p>凍結された投稿はありません</p>
+      </div>
     <% end %>
+  </div>
+
+  <div class="admin-actions">
+    <%= link_to "戻る", root_path, class: "btn btn-secondary" %>
   </div>
 </div>

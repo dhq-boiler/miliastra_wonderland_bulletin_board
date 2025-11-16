@@ -2098,6 +2098,16 @@ textarea.form-control {
   background-color: #ede9fe;
 }
 
+.stat-card.temporary {
+  border-left-color: #f59e0b;
+  background-color: #fef3c7;
+}
+
+.stat-card.permanent {
+  border-left-color: #ef4444;
+  background-color: #fee2e2;
+}
+
 .stat-label {
   font-size: 0.875rem;
   color: #6b7280;
@@ -2479,5 +2489,104 @@ textarea.form-control {
   .detail-table th {
     width: 120px;
   }
+}
+
+/* ========================================
+   Frozen Posts Admin Styles
+   ======================================== */
+
+/* 投稿タイプバッジ */
+.post-type-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.post-type-badge.stage {
+  background-color: #dbeafe;
+  color: #1e40af;
+}
+
+.post-type-badge.comment {
+  background-color: #e0e7ff;
+  color: #4338ca;
+}
+
+/* コンテンツセル */
+.content-cell {
+  max-width: 300px;
+}
+
+.post-title {
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  color: #1f2937;
+}
+
+.post-excerpt {
+  font-size: 0.875rem;
+  color: #6b7280;
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+/* 理由セル */
+.reason-cell {
+  max-width: 250px;
+  font-size: 0.875rem;
+  color: #4b5563;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+
+/* アクションボタンコンテナ */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 120px;
+}
+
+.btn-action {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-action.btn-success {
+  background-color: #10b981;
+  color: #ffffff;
+}
+
+.btn-action.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-action.btn-warning {
+  background-color: #f59e0b;
+  color: #ffffff;
+}
+
+.btn-action.btn-warning:hover {
+  background-color: #d97706;
+}
+
+.btn-action.btn-danger {
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+.btn-action.btn-danger:hover {
+  background-color: #dc2626;
 }
 
