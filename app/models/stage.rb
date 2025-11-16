@@ -17,6 +17,9 @@ class Stage < ApplicationRecord
   # 作成時にユーザーのlocaleを設定
   before_validation :set_locale_from_user, on: :create
 
+  # 画像の自動モデレーションを実行
+  after_create_commit :enqueue_image_moderation_jobs
+
   # 最新の投稿順に並べる（更新時間優先、次に作成時間）
   scope :recent, -> { order(updated_at: :desc, created_at: :desc) }
 
@@ -83,6 +86,15 @@ class Stage < ApplicationRecord
       unless image.content_type.in?(%w[image/jpeg image/png image/gif image/webp])
         errors.add(:images, "#{image.filename}は対応していない形式です（JPEG, PNG, GIF, WebPのみ）")
       end
+    end
+  end
+
+  # アップロードされた画像の自動モデレーションジョブをエンキュー
+  def enqueue_image_moderation_jobs
+    return unless images.attached?
+
+    images.each do |image|
+      ImageModerationJob.perform_later(image.id)
     end
   end
 end

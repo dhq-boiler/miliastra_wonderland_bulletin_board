@@ -8,6 +8,9 @@ class MultiplayRecruitmentComment < ApplicationRecord
   validates :content, presence: true, length: { minimum: 1, maximum: 1000 }
   validate :validate_images
 
+  # 画像の自動モデレーションを実行
+  after_create_commit :enqueue_image_moderation_jobs
+
   # 最新のコメント順に並べる
   scope :recent, -> { order(created_at: :desc) }
   scope :oldest_first, -> { order(created_at: :asc) }
@@ -33,6 +36,15 @@ class MultiplayRecruitmentComment < ApplicationRecord
       unless image.content_type.in?(%w[image/jpeg image/png image/gif image/webp])
         errors.add(:images, "#{image.filename}は対応していない形式です（JPEG, PNG, GIF, WebPのみ）")
       end
+    end
+  end
+
+  # アップロードされた画像の自動モデレーションジョブをエンキュー
+  def enqueue_image_moderation_jobs
+    return unless images.attached?
+
+    images.each do |image|
+      ImageModerationJob.perform_later(image.id)
     end
   end
 end

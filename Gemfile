@@ -67,6 +67,9 @@ gem "rails-diff-time", "~> 0.2.0"
 # Display text and copy to clipboard helper
 gem "rails-clipboard-helper", "~> 0.1.0"
 
+# OpenAI API client for image moderation
+gem "ruby-openai", "~> 6.0"
+
 # Cron job management [https://github.com/javan/whenever]
 gem "whenever", require: false
 

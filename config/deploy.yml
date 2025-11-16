@@ -73,6 +73,7 @@ env:
     # - AWS_ACCESS_KEY_ID
     # - AWS_SECRET_ACCESS_KEY
     - AWS_S3_BUCKET
+    - OPENAI_API_KEY
   clear:
     # Optional: Enable Solid Queue, Cache, Cable (requires database tables)
     # ENABLE_SOLID_QUEUE: true

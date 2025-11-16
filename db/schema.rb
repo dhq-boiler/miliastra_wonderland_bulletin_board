@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_123932) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_16_131732) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -41,6 +41,10 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_123932) do
 
   create_table "image_reports", force: :cascade do |t|
     t.integer "active_storage_attachment_id", null: false
+    t.text "ai_categories"
+    t.float "ai_confidence"
+    t.datetime "ai_detected_at"
+    t.boolean "ai_flagged"
     t.datetime "created_at", null: false
     t.text "reason"
     t.datetime "reviewed_at"
