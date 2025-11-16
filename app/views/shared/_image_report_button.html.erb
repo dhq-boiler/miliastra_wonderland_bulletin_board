@@ -1,5 +1,5 @@
 <%# 画像通報ボタンパーシャル %>
-<%# 使用例: <%= render 'shared/image_report_button', image: @image %> %>
+<%# 使用例: render 'shared/image_report_button', image: @image %>
 <%
   is_reported = ImageReport.image_reported?(image.id)
   report_count = ImageReport.report_count(image.id)
