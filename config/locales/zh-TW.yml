@@ -2,7 +2,7 @@ zh-TW:
   activerecord:
     models:
       stage: 關卡
-      user: 用戶
+      user: 使用者
       multiplay_recruitment: 多人遊戲招募
     attributes:
       stage:
@@ -31,23 +31,23 @@ zh-TW:
         created_at: 發布時間
         user: 發布者
       user:
-        username: 用戶名
+        username: 使用者名稱
         nickname: 暱稱
         ingame_uid: 遊戲內UID
-        email: 電子郵箱
+        email: 電子信箱
         password: 密碼
         password_confirmation: 確認密碼
-        current_password: 當前密碼
+        current_password: 目前密碼
         locale: 語言
     errors:
       messages:
         blank: 不能為空
-        too_short: 太短（最少%{count}個字符）
-        too_long: 太長（最多%{count}個字符）
+        too_short: 太短（最少%{count}個字元）
+        too_long: 太長（最多%{count}個字元）
         taken: 已被使用
         invalid: 無效
-        confirmation: 不匹配
-        login_required: 需要登錄
+        confirmation: 不相符
+        login_required: 需要登入
         inclusion: 不是有效值
   date:
     formats:
@@ -66,7 +66,7 @@ zh-TW:
       short: "%m/%d %H:%M"
   errors:
     messages:
-      login_required: 需要登錄
+      login_required: 需要登入
   languages:
     ja: 日語
     zh-CN: 中文（簡體）
@@ -82,7 +82,7 @@ zh-TW:
     id: 印尼語
     pt: 葡萄牙語
     tr: 土耳其語
-    it: 意大利語
+    it: 義大利語
   app:
     title: Miliastra Wonderland 論壇
     menu:
@@ -91,7 +91,7 @@ zh-TW:
       my_page: 我的頁面
       account_settings: 帳戶設定
       logout: 登出
-      login: 登錄
+      login: 登入
       signup: 註冊
     common:
       required: "*"
@@ -101,13 +101,13 @@ zh-TW:
       or: 或
       cancel: 取消
       update: 更新
-      create: 創建
+      create: 新增
       edit: 編輯
       delete: 刪除
       back: 返回
       confirm_delete: 確定要刪除嗎？
-      posted_by: 發佈者
-      posted_at: 發佈時間
+      posted_by: 發布者
+      posted_at: 發布時間
       comments_count: "%{count}條評論"
       guid: "GUID"
       difficulty_label: 難度
@@ -133,7 +133,7 @@ zh-TW:
         r18: R18圖片（成人內容）
         r18g: R18G圖片（血腥暴力）
         copyright: 侵犯版權
-        spam: 垃圾訊息/廣告
+        spam: 垃圾資訊/廣告
         harassment: 騷擾/誹謗
         other: 其他
     tags:
@@ -143,8 +143,8 @@ zh-TW:
         other: 其他
     stages:
       title: 關卡論壇
-      new_post: 發佈新關卡
-      login_required: 發佈需要%{login_link}。
+      new_post: 發布新關卡
+      login_required: 發布需要%{login_link}。
       no_posts: 暫無關卡帖子。
       show_title: 關卡詳情
       edit_title: 編輯關卡
@@ -177,19 +177,19 @@ zh-TW:
         tags_label: 標籤
         no_tags_available: 暫無可用標籤。
       search:
-        keyword_label: 關鍵詞
+        keyword_label: 關鍵字
         keyword_placeholder: 按標題或描述搜索
         stage_guid_label: 關卡GUID
         stage_guid_placeholder: "例如：20615303240"
-        search_button: 搜索
-        reset_button: 重置
+        search_button: 搜尋
+        reset_button: 重設
       errors:
         count: "%{count}個錯誤"
         has_errors: ""
     multiplay:
       title: 多人遊戲招募論壇
-      new_post: 發佈新招募
-      login_required: 發佈需要%{login_link}。
+      new_post: 發布新招募
+      login_required: 發布需要%{login_link}。
       show:
         details_title: 詳情
         stage_info: 關卡資訊
@@ -215,22 +215,22 @@ zh-TW:
       form:
         title_label: 標題
         title_placeholder: "例如：第1章Boss討伐！"
-        stage_selector_label: 從幻境中選擇
+        stage_selector_label: 從奇域中選擇
         select_stage_button: 選擇關卡
         no_stage_selected: 未選擇關卡
-        manual_guid_input: 或手動輸入GUID
+        manual_guid_input: 或是手動輸入GUID
         select_stage_title: 選擇關卡
         search_stage_placeholder: 按關卡名稱或GUID搜尋
         my_stages_tab: 我的幻境
         other_stages_tab: 其他人的幻境
         select_button: 選擇
-        no_my_stages: 您還沒有建立任何幻境
+        no_my_stages: 您還沒有新增任何幻境
         no_other_stages: 沒有其他使用者的幻境
         no_stages_available: 沒有可用的關卡
         no_search_results: 未找到結果
         guid_label: 關卡GUID
         guid_placeholder: "例如：20615303240"
-        guid_hint: 或直接輸入關卡GUID
+        guid_hint: 或是直接輸入關卡GUID
         difficulty_label: 難度
         difficulty_placeholder: 請選擇
         max_players_label: 最大人數
@@ -257,49 +257,49 @@ zh-TW:
         joined_at: "%{time}前參加"
       search:
         title: 搜尋條件
-        active: 搜尋中
-        keyword: 關鍵詞
-        keyword_placeholder: 按標題或描述搜尋
+        active: 正在搜尋
+        keyword: 關鍵字
+        keyword_placeholder: 按標題或描述搜索
         stage_guid: 關卡GUID
         stage_guid_placeholder: "例如: 12345678901"
         difficulty: 難度
         status: 狀態
         submit: 搜尋
-        reset: 重置
+        reset: 重設
     users:
       signup_title: 註冊
-      login_title: 登錄
+      login_title: 登入
       edit_title: 帳戶設定
       show_title: "%{name}的頁面"
       form:
-        username_label: 用戶名
-        username_placeholder: 3-20個字符
-        username_hint: 用戶名不能更改
+        username_label: 使用者名稱
+        username_placeholder: 3-20個字元
+        username_hint: 使用者名稱不能更改
         nickname_label: 暱稱
         nickname_placeholder: 顯示名稱
-        nickname_hint: 未填寫時顯示用戶名
+        nickname_hint: 未填寫時顯示使用者名稱
         ingame_uid_placeholder: 輸入遊戲內唯一ID
         ingame_uid_hint: 輸入您的遊戲內UID（可選）
-        email_label: 電子郵箱
+        email_label: 電子信箱
         email_placeholder: email@example.com
         password_label: 密碼
-        password_placeholder: 6個字符以上
+        password_placeholder: 6個字元以上
         password_confirmation_label: 確認密碼
         password_confirmation_placeholder: 再次輸入密碼
-        current_password_label: 當前密碼
+        current_password_label: 目前密碼
         current_password_placeholder: 修改密碼時輸入
         new_password_label: 新密碼
-        new_password_placeholder: 6個字符以上
+        new_password_placeholder: 6個字元以上
         new_password_confirmation_label: 確認新密碼
         locale_label: 語言
-        login_field_label: 用戶名或郵箱
-        login_field_placeholder: 輸入用戶名或郵箱
+        login_field_label: 使用者名稱或信箱
+        login_field_placeholder: 輸入使用者名稱或信箱
       oauth:
         google_signup: 使用Google註冊
-        google_login: 使用Google登錄
-        using_google: 已使用Google帳戶登錄
-        google_info: 此帳戶使用Google認證。電子郵箱和密碼由Google管理。
-        email_readonly: Google帳戶郵箱不能更改
+        google_login: 使用Google登入
+        using_google: 已使用Google帳戶登入
+        google_info: 此帳戶使用Google認證。電子信箱和密碼由Google管理。
+        email_readonly: Google帳戶信箱不能更改
         password_readonly: Google帳戶密碼不能更改
       links:
         have_account: 已有帳戶？
@@ -315,38 +315,38 @@ zh-TW:
         no_stages: 暫無關卡帖子。
         no_multiplay: 暫無招募帖子。
     password_resets:
-      new_title: 重置密碼
-      edit_title: 設置新密碼
+      new_title: 重設密碼
+      edit_title: 設定新密碼
       form:
-        email_label: 電子郵箱
-        email_placeholder: 輸入註冊郵箱
-        submit: 發送重置郵件
+        email_label: 電子信箱
+        email_placeholder: 輸入註冊信箱
+        submit: 發送重設郵件
         new_password_label: 新密碼
-        new_password_placeholder: 6個字符以上
+        new_password_placeholder: 6個字元以上
         new_password_confirmation_label: 確認新密碼
         update: 更新密碼
       links:
-        back_to_login: 返回登錄
+        back_to_login: 返回登入
   stages:
     create:
-      success: 關卡介紹已發佈。
+      success: 關卡介紹已發布。
     update:
       success: 關卡介紹已更新。
     destroy:
       success: 關卡介紹已刪除。
     errors:
-      not_authorized_to_edit: 無法編輯其他用戶的帖子。
-      not_authorized_to_delete: 無法刪除其他用戶的帖子。
+      not_authorized_to_edit: 無法編輯其他使用者的帖子。
+      not_authorized_to_delete: 無法刪除其他使用者的帖子。
   multiplay_recruitments:
     create:
-      success: 多人遊戲招募已發佈。
+      success: 多人遊戲招募已發布。
     update:
       success: 多人遊戲招募已更新。
     destroy:
       success: 多人遊戲招募已刪除。
     errors:
-      not_authorized_to_edit: 無法編輯其他用戶的帖子。
-      not_authorized_to_delete: 無法刪除其他用戶的帖子。
+      not_authorized_to_edit: 無法編輯其他使用者的帖子。
+      not_authorized_to_delete: 無法刪除其他使用者的帖子。
   comments:
     create:
       success: 評論已發表。
@@ -354,40 +354,39 @@ zh-TW:
     destroy:
       success: 評論已刪除。
     errors:
-      not_authorized_to_delete: 無法刪除其他用戶的評論。
+      not_authorized_to_delete: 無法刪除其他使用者的評論。
   sessions:
     create:
-      success: 登錄成功。
-      failure: 用戶名/郵箱或密碼不正確。
+      success: 登入成功。
+      failure: 使用者名稱/信箱或密碼不正確。
     destroy:
       success: 已登出。
   omniauth:
     google:
-      login_success: 已使用Google帳戶登錄。
-      signup_success: 已使用Google帳戶創建帳戶。
-      failure: "登錄失敗: %{errors}"
+      login_success: 已使用Google帳戶登入。
+      signup_success: 已使用Google帳戶建立帳戶。
+      failure: "登入失敗: %{errors}"
     errors:
       unknown: 未知錯誤
       authentication_failed: "認證失敗: %{message}"
   password_resets:
     create:
-      success: 密碼重置郵件已發送。請檢查您的郵箱。
-      email_not_found: 郵箱地址未註冊。
+      success: 密碼重設郵件已發送。請檢查您的信箱。
+      email_not_found: 電子信箱未註冊。
       cooldown: 請在上次發送郵件後等待30秒再試。
     update:
-      success: 密碼已更改。請登錄。
+      success: 密碼已更改。請重新登入。
       password_blank: 請輸入密碼。
     errors:
-      invalid_token: 無效的鏈接。
-      token_expired: 密碼重置鏈接已過期。請重新申請。
+      invalid_token: 無效的連結。
+      token_expired: 密碼重設連結已逾期。請重新申請。
   users:
     create:
-      success: 帳戶已創建。
+      success: 帳戶已建立。
     update:
       success: 個人資料已更新。
     errors:
-      oauth_email_readonly: Google帳戶郵箱不能更改
+      oauth_email_readonly: Google帳戶信箱不能更改
       oauth_password_readonly: Google帳戶密碼不能更改
       current_password_incorrect: 不正確
       new_password_required: 必填
-
