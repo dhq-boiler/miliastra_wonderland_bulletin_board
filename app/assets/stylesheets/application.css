@@ -652,6 +652,15 @@
   display: inline-block;
 }
 
+.end-time {
+  background-color: #ec4899;
+  color: white;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.25rem;
+  margin-right: 0.625rem;
+  display: inline-block;
+}
+
 .status-recruiting {
   background-color: #10b981;
   color: white;
