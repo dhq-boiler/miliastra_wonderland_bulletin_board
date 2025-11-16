@@ -215,17 +215,17 @@ zh-CN:
       form:
         title_label: 标题
         title_placeholder: "例如：第1章Boss讨伐！"
-        stage_selector_label: 从幻境中选择
+        stage_selector_label: 从奇域中选择
         select_stage_button: 选择关卡
         no_stage_selected: 未选择关卡
         manual_guid_input: 或手动输入GUID
         select_stage_title: 选择关卡
         search_stage_placeholder: 按关卡名称或GUID搜索
-        my_stages_tab: 我的幻境
-        other_stages_tab: 其他人的幻境
+        my_stages_tab: 我的奇域
+        other_stages_tab: 其他人的奇域
         select_button: 选择
-        no_my_stages: 您还没有创建任何幻境
-        no_other_stages: 没有其他用户的幻境
+        no_my_stages: 您还没有创建任何奇域
+        no_other_stages: 没有其他用户的奇域
         no_stages_available: 没有可用的关卡
         no_search_results: 未找到结果
         guid_label: 关卡GUID
