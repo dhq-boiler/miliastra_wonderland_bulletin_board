@@ -173,6 +173,9 @@
               <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= recruitment.difficulty %></span>
             <% end %>
             <span class="max-players"><%= t('app.common.max_players') %>: <%= recruitment.max_players %><%= t('app.common.people') %></span>
+            <% if recruitment.start_time.present? %>
+              <span class="start-time"><%= t('app.common.start_time') %>: <%= l(recruitment.start_time, format: :short) %></span>
+            <% end %>
             <% if recruitment.end_time.present? %>
               <span class="end-time"><%= t('app.common.end_time') %>: <%= l(recruitment.end_time, format: :short) %></span>
             <% end %>
@@ -218,6 +221,9 @@
               <span class="difficulty"><%= t('app.common.difficulty_label') %>: <%= recruitment.difficulty %></span>
             <% end %>
             <span class="max-players"><%= t('app.common.max_players') %>: <%= recruitment.max_players %><%= t('app.common.people') %></span>
+            <% if recruitment.start_time.present? %>
+              <span class="start-time"><%= t('app.common.start_time') %>: <%= l(recruitment.start_time, format: :short) %></span>
+            <% end %>
             <% if recruitment.end_time.present? %>
               <span class="end-time"><%= t('app.common.end_time') %>: <%= l(recruitment.end_time, format: :short) %></span>
             <% end %>
