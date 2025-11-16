@@ -4,11 +4,20 @@
 # This handles both fresh installs and volume-mounted directories
 echo "Setting up log directory permissions..."
 mkdir -p /rails/log
-touch /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log
+touch /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log /rails/log/backup.log
 chown -R rails:rails /rails/log
 chmod -R 775 /rails/log
-chmod 664 /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log
+chmod 664 /rails/log/production.log /rails/log/cron.log /rails/log/cron_error.log /rails/log/backup.log
 echo "Log directory setup complete!"
+
+# Setup crontab for rails user
+echo "Setting up crontab for rails user..."
+cd /rails
+gosu rails bundle exec whenever --update-crontab --set environment=production
+# Verify crontab was set
+echo "Crontab for rails user:"
+gosu rails crontab -l || echo "No crontab for rails user"
+echo "Crontab setup complete!"
 
 # cronをバックグラウンドで起動
 echo "Starting cron daemon in background..."

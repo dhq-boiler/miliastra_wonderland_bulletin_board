@@ -68,8 +68,7 @@ RUN bundle exec bootsnap precompile -j 1 app/ lib/
 # Force rebuild when CSS changes by using CSS file hash as cache bust
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-# Generate crontab for scheduled tasks
-RUN bundle exec whenever --update-crontab --set environment=production
+# Crontab will be set up in the entrypoint script after rails user is available
 
 
 
