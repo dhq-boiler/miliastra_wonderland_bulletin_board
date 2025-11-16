@@ -221,11 +221,11 @@ zh-TW:
         manual_guid_input: 或是手動輸入GUID
         select_stage_title: 選擇關卡
         search_stage_placeholder: 按關卡名稱或GUID搜尋
-        my_stages_tab: 我的幻境
-        other_stages_tab: 其他人的幻境
+        my_stages_tab: 我的奇域
+        other_stages_tab: 其他人的奇域
         select_button: 選擇
-        no_my_stages: 您還沒有新增任何幻境
-        no_other_stages: 沒有其他使用者的幻境
+        no_my_stages: 您還沒有新增任何奇域
+        no_other_stages: 沒有其他使用者的奇域
         no_stages_available: 沒有可用的關卡
         no_search_results: 未找到結果
         guid_label: 關卡GUID
