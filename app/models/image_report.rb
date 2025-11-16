@@ -7,15 +7,18 @@ class ImageReport < ApplicationRecord
     dismissed: "dismissed"      # 却下（問題なし）
   }.freeze
 
-  # 通報理由カテゴリ
-  REASON_CATEGORIES = {
-    r18: "R18画像（成人向けコンテンツ）",
-    r18g: "R18G画像（グロテスク・暴力的）",
-    copyright: "著作権侵害",
-    spam: "スパム・宣伝",
-    harassment: "嫌がらせ・誹謗中傷",
-    other: "その他"
-  }.freeze
+  # 通報理由カテゴリのキー（翻訳は I18n.t("app.image_report.categories.#{key}") で取得）
+  REASON_CATEGORIES = %i[r18 r18g copyright spam harassment other].freeze
+
+  # カテゴリの翻訳テキストを取得
+  def self.category_text(key)
+    I18n.t("app.image_report.categories.#{key}")
+  end
+
+  # カテゴリの一覧を取得（ビューで使用）
+  def self.categories_for_select
+    REASON_CATEGORIES.map { |key| [key, category_text(key)] }
+  end
 
   # アソシエーション
   belongs_to :active_storage_attachment, class_name: "ActiveStorage::Attachment"

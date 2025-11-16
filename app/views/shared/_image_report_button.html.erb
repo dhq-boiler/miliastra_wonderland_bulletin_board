@@ -1,0 +1,26 @@
+<%# 画像通報ボタンパーシャル %>
+<%# 使用例: <%= render 'shared/image_report_button', image: @image %> %>
+<%
+  is_reported = ImageReport.image_reported?(image.id)
+  report_count = ImageReport.report_count(image.id)
+  user_reported = logged_in? && ImageReport.exists?(active_storage_attachment_id: image.id, user_id: current_user.id)
+%>
+
+<div class="image-report-info">
+  <% if report_count > 0 %>
+    <span class="report-count"><%= t('app.image_report.report_count', count: report_count) %></span>
+  <% end %>
+
+  <% if logged_in? %>
+    <% if user_reported %>
+      <span class="reported-badge"><%= t('app.image_report.reported_badge') %></span>
+    <% else %>
+      <button type="button"
+              class="btn-report"
+              data-attachment-id="<%= image.id %>"
+              data-action="click->image-report#openModal">
+        <%= t('app.image_report.button') %>
+      </button>
+    <% end %>
+  <% end %>
+</div>

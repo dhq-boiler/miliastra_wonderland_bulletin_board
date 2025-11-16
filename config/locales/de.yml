@@ -117,6 +117,25 @@ de:
       start_time: Startzeit
       end_time: Endzeit
       status: Status
+    image_report:
+      modal_title: Bild Melden
+      select_reason: Bitte wählen Sie einen Meldegrund
+      details_label: Details (Erforderlich)
+      details_placeholder: Bitte geben Sie Details zu Ihrer Meldung an
+      details_help: Bitte geben Sie spezifische Informationen zur ausgewählten Kategorie an.
+      submit: Meldung Absenden
+      button: Dieses Bild melden
+      reported_badge: Gemeldet
+      report_count: "⚠️ Meldungen: %{count}"
+      alert_select_category: Bitte wählen Sie einen Meldegrund
+      alert_enter_details: Bitte geben Sie Details ein
+      categories:
+        r18: R18 Inhalt (Erwachseneninhalte)
+        r18g: R18G Inhalt (Gore/Gewalt)
+        copyright: Urheberrechtsverletzung
+        spam: Spam/Werbung
+        harassment: Belästigung/Verleumdung
+        other: Andere
     tags:
       categories:
         device: Gerät
@@ -135,6 +154,7 @@ de:
         multiplay_recruitments: Mehrspieler-Rekrutierungen anzeigen
         description_title: Beschreibung
         tips_title: Tipps & Hinweise
+        images_title: Bilder
         updated_at: Aktualisiert
         confirm_delete: Möchten Sie wirklich löschen?
         confirm_delete_admin: Als Admin löschen. Sind Sie sicher?

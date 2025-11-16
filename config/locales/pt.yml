@@ -117,6 +117,25 @@ pt:
       start_time: Hora de Início
       end_time: Hora de Término
       status: Status
+    image_report:
+      modal_title: Denunciar Imagem
+      select_reason: Por favor selecione um motivo de denúncia
+      details_label: Detalhes (Obrigatório)
+      details_placeholder: Por favor forneça detalhes sobre sua denúncia
+      details_help: Por favor forneça informações específicas sobre a categoria selecionada.
+      submit: Enviar Denúncia
+      button: Denunciar esta imagem
+      reported_badge: Denunciado
+      report_count: "⚠️ Denúncias: %{count}"
+      alert_select_category: Por favor selecione um motivo de denúncia
+      alert_enter_details: Por favor insira detalhes
+      categories:
+        r18: Conteúdo R18 (Conteúdo Adulto)
+        r18g: Conteúdo R18G (Gore/Violência)
+        copyright: Violação de Direitos Autorais
+        spam: Spam/Publicidade
+        harassment: Assédio/Difamação
+        other: Outro
     tags:
       categories:
         device: Dispositivo
@@ -135,6 +154,7 @@ pt:
         multiplay_recruitments: Ver Recrutamentos Multiplayer
         description_title: Descrição
         tips_title: Dicas & Sugestões
+        images_title: Imagens
         updated_at: Atualizado
         confirm_delete: Tem certeza de que deseja excluir?
         confirm_delete_admin: Excluir como administrador. Tem certeza?

@@ -117,6 +117,25 @@ vi:
       start_time: Thời gian bắt đầu
       end_time: Thời gian kết thúc
       status: Trạng thái
+    image_report:
+      modal_title: Báo Cáo Hình Ảnh
+      select_reason: Vui lòng chọn lý do báo cáo
+      details_label: Chi Tiết (Bắt Buộc)
+      details_placeholder: Vui lòng cung cấp chi tiết về báo cáo của bạn
+      details_help: Vui lòng cung cấp thông tin cụ thể về danh mục đã chọn.
+      submit: Gửi Báo Cáo
+      button: Báo cáo hình ảnh này
+      reported_badge: Đã Báo Cáo
+      report_count: "⚠️ Báo Cáo: %{count}"
+      alert_select_category: Vui lòng chọn lý do báo cáo
+      alert_enter_details: Vui lòng nhập chi tiết
+      categories:
+        r18: Nội Dung R18 (Nội Dung Người Lớn)
+        r18g: Nội Dung R18G (Bạo Lực/Máu Me)
+        copyright: Vi Phạm Bản Quyền
+        spam: Spam/Quảng Cáo
+        harassment: Quấy Rối/Phỉ Báng
+        other: Khác
     tags:
       categories:
         device: Thiết bị
@@ -135,6 +154,7 @@ vi:
         multiplay_recruitments: Xem Tuyển dụng Nhiều người chơi
         description_title: Mô tả
         tips_title: Mẹo & Gợi ý
+        images_title: Hình Ảnh
         updated_at: Đã cập nhật
         confirm_delete: Bạn có chắc chắn muốn xóa?
         confirm_delete_admin: Xóa với quyền admin. Bạn có chắc?

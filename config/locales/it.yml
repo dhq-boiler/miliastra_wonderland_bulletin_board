@@ -117,6 +117,25 @@ it:
       start_time: Ora di Inizio
       end_time: Ora di Fine
       status: Stato
+    image_report:
+      modal_title: Segnala Immagine
+      select_reason: Seleziona un motivo di segnalazione
+      details_label: Dettagli (Richiesto)
+      details_placeholder: Fornisci i dettagli sulla tua segnalazione
+      details_help: Fornisci informazioni specifiche sulla categoria selezionata.
+      submit: Invia Segnalazione
+      button: Segnala questa immagine
+      reported_badge: Segnalato
+      report_count: "⚠️ Segnalazioni: %{count}"
+      alert_select_category: Seleziona un motivo di segnalazione
+      alert_enter_details: Inserisci i dettagli
+      categories:
+        r18: Contenuto R18 (Contenuto per Adulti)
+        r18g: Contenuto R18G (Gore/Violenza)
+        copyright: Violazione del Copyright
+        spam: Spam/Pubblicità
+        harassment: Molestie/Diffamazione
+        other: Altro
     tags:
       categories:
         device: Dispositivo
@@ -135,6 +154,7 @@ it:
         multiplay_recruitments: Visualizza Reclutamenti Multigiocatore
         description_title: Descrizione
         tips_title: Suggerimenti & Consigli
+        images_title: Immagini
         updated_at: Aggiornato
         confirm_delete: Sei sicuro di voler eliminare?
         confirm_delete_admin: Elimina come admin. Sei sicuro?

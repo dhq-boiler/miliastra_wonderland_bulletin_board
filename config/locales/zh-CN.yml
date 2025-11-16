@@ -117,6 +117,25 @@ zh-CN:
       start_time: 开始时间
       end_time: 结束时间
       status: 状态
+    image_report:
+      modal_title: 举报图片
+      select_reason: 请选择举报理由
+      details_label: 详细说明（必填）
+      details_placeholder: 请提供举报的详细信息
+      details_help: 请提供所选类别的具体信息。
+      submit: 提交举报
+      button: 举报此图片
+      reported_badge: 已举报
+      report_count: "⚠️ 举报数：%{count}"
+      alert_select_category: 请选择举报理由
+      alert_enter_details: 请输入详细说明
+      categories:
+        r18: R18图片（成人内容）
+        r18g: R18G图片（血腥暴力）
+        copyright: 侵犯版权
+        spam: 垃圾信息/广告
+        harassment: 骚扰/诽谤
+        other: 其他
     tags:
       categories:
         device: 设备
@@ -135,6 +154,7 @@ zh-CN:
         multiplay_recruitments: 查看多人游戏招募
         description_title: 描述
         tips_title: 提示与技巧
+        images_title: 图片
         updated_at: 更新时间
         confirm_delete: 确定要删除吗？
         confirm_delete_admin: 以管理员权限删除。确定吗？

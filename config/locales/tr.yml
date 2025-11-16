@@ -117,6 +117,25 @@ tr:
       start_time: Başlangıç Zamanı
       end_time: Bitiş Zamanı
       status: Durum
+    image_report:
+      modal_title: Resmi Bildir
+      select_reason: Lütfen bir bildirim nedeni seçin
+      details_label: Detaylar (Gerekli)
+      details_placeholder: Lütfen bildriminiz hakkında detay verin
+      details_help: Lütfen seçilen kategori hakkında belirli bilgiler sağlayın.
+      submit: Bildirimi Gönder
+      button: Bu resmi bildir
+      reported_badge: Bildirildi
+      report_count: "⚠️ Bildirimler: %{count}"
+      alert_select_category: Lütfen bir bildirim nedeni seçin
+      alert_enter_details: Lütfen detayları girin
+      categories:
+        r18: R18 İçerik (Yetişkin İçeriği)
+        r18g: R18G İçerik (Şiddet/Kan)
+        copyright: Telif Hakkı İhlali
+        spam: Spam/Reklam
+        harassment: Taciz/İftira
+        other: Diğer
     tags:
       categories:
         device: Cihaz
@@ -135,6 +154,7 @@ tr:
         multiplay_recruitments: Çok Oyunculu Alımları Görüntüle
         description_title: Açıklama
         tips_title: İpuçları & Öneriler
+        images_title: Resimler
         updated_at: Güncellendi
         confirm_delete: Silmek istediğinizden emin misiniz?
         confirm_delete_admin: Admin olarak sil. Emin misiniz?

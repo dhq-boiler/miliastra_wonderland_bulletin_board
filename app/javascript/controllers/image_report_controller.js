@@ -47,13 +47,15 @@ export default class extends Controller {
     // 選択されたカテゴリを確認
     const selectedCategory = this.categoryTargets.find(btn => btn.classList.contains("selected"))
     if (!selectedCategory) {
-      alert("通報理由を選択してください")
+      const alertMessage = this.modalTarget.dataset.alertSelectCategory || "通報理由を選択してください"
+      alert(alertMessage)
       return
     }
 
     // 詳細が入力されているか確認
     if (!this.detailsTarget.value.trim()) {
-      alert("詳細を入力してください")
+      const alertMessage = this.modalTarget.dataset.alertEnterDetails || "詳細を入力してください"
+      alert(alertMessage)
       return
     }
 

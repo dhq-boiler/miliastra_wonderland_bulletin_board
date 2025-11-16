@@ -117,6 +117,25 @@ zh-TW:
       start_time: 開始時間
       end_time: 結束時間
       status: 狀態
+    image_report:
+      modal_title: 檢舉圖片
+      select_reason: 請選擇檢舉理由
+      details_label: 詳細說明（必填）
+      details_placeholder: 請提供檢舉的詳細資訊
+      details_help: 請提供所選類別的具體資訊。
+      submit: 提交檢舉
+      button: 檢舉此圖片
+      reported_badge: 已檢舉
+      report_count: "⚠️ 檢舉數：%{count}"
+      alert_select_category: 請選擇檢舉理由
+      alert_enter_details: 請輸入詳細說明
+      categories:
+        r18: R18圖片（成人內容）
+        r18g: R18G圖片（血腥暴力）
+        copyright: 侵犯版權
+        spam: 垃圾訊息/廣告
+        harassment: 騷擾/誹謗
+        other: 其他
     tags:
       categories:
         device: 裝置
@@ -135,6 +154,7 @@ zh-TW:
         multiplay_recruitments: 查看多人遊戲招募
         description_title: 描述
         tips_title: 提示與技巧
+        images_title: 圖片
         updated_at: 更新時間
         confirm_delete: 確定要刪除嗎？
         confirm_delete_admin: 以管理員權限刪除。確定嗎？

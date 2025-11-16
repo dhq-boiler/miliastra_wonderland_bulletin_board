@@ -117,6 +117,25 @@ th:
       start_time: เวลาเริ่ม
       end_time: เวลาสิ้นสุด
       status: สถานะ
+    image_report:
+      modal_title: รายงานภาพ
+      select_reason: กรุณาเลือกเหตุผลในการรายงาน
+      details_label: รายละเอียด (จำเป็น)
+      details_placeholder: กรุณาให้รายละเอียดเกี่ยวกับการรายงานของคุณ
+      details_help: กรุณาให้ข้อมูลเฉพาะเจาะจงเกี่ยวกับหมวดหมู่ที่เลือก
+      submit: ส่งรายงาน
+      button: รายงานภาพนี้
+      reported_badge: รายงานแล้ว
+      report_count: "⚠️ รายงาน: %{count}"
+      alert_select_category: กรุณาเลือกเหตุผลในการรายงาน
+      alert_enter_details: กรุณาใส่รายละเอียด
+      categories:
+        r18: เนื้อหา R18 (เนื้อหาสำหรับผู้ใหญ่)
+        r18g: เนื้อหา R18G (ความรุนแรง/เลือด)
+        copyright: ละเมิดลิขสิทธิ์
+        spam: สแปม/โฆษณา
+        harassment: การล่วงละเมิด/หมิ่นประมาท
+        other: อื่นๆ
     tags:
       categories:
         device: อุปกรณ์
@@ -135,6 +154,7 @@ th:
         multiplay_recruitments: ดูการรับสมัครผู้เล่นหลายคน
         description_title: คำอธิบาย
         tips_title: เคล็ดลับและคำแนะนำ
+        images_title: ภาพ
         updated_at: อัปเดตแล้ว
         confirm_delete: คุณแน่ใจหรือว่าต้องการลบ?
         confirm_delete_admin: ลบในฐานะผู้ดูแล คุณแน่ใจหรือไม่?

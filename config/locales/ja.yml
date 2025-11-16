@@ -119,6 +119,25 @@ ja:
       start_time: 開始予定
       end_time: 終了予定
       status: ステータス
+    image_report:
+      modal_title: 画像を通報
+      select_reason: 通報理由を選択してください
+      details_label: 詳細（必須）
+      details_placeholder: 通報理由の詳細を入力してください
+      details_help: 選択したカテゴリについて、具体的な内容を記載してください。
+      submit: 通報する
+      button: この画像を通報
+      reported_badge: 通報済み
+      report_count: "⚠️ 通報数: %{count}"
+      alert_select_category: 通報理由を選択してください
+      alert_enter_details: 詳細を入力してください
+      categories:
+        r18: R18画像（成人向けコンテンツ）
+        r18g: R18G画像（グロテスク・暴力的）
+        copyright: 著作権侵害
+        spam: スパム・宣伝
+        harassment: 嫌がらせ・誹謗中傷
+        other: その他
     tags:
       categories:
         device: デバイス
@@ -137,6 +156,7 @@ ja:
         multiplay_recruitments: マルチプレイ募集を見る
         description_title: 説明
         tips_title: ヒント・攻略情報
+        images_title: 画像
         updated_at: 更新日時
         confirm_delete: 本当に削除しますか？
         confirm_delete_admin: 管理者権限で削除します。本当によろしいですか？

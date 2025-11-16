@@ -146,6 +146,25 @@ en:
       start_time: Start Time
       end_time: End Time
       status: Status
+    image_report:
+      modal_title: Report Image
+      select_reason: Please select a report reason
+      details_label: Details (Required)
+      details_placeholder: Please provide details about your report
+      details_help: Please provide specific information about the selected category.
+      submit: Submit Report
+      button: Report this image
+      reported_badge: Reported
+      report_count: "⚠️ Reports: %{count}"
+      alert_select_category: Please select a report reason
+      alert_enter_details: Please enter details
+      categories:
+        r18: R18 Content (Adult Content)
+        r18g: R18G Content (Gore/Violence)
+        copyright: Copyright Infringement
+        spam: Spam/Advertisement
+        harassment: Harassment/Defamation
+        other: Other
     tags:
       categories:
         device: Device
@@ -164,6 +183,7 @@ en:
         multiplay_recruitments: View Multiplayer Recruitments
         description_title: Description
         tips_title: Tips & Hints
+        images_title: Images
         updated_at: Updated
         confirm_delete: Are you sure you want to delete?
         confirm_delete_admin: Delete as admin. Are you sure?

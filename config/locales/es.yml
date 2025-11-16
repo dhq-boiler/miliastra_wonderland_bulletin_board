@@ -117,6 +117,25 @@ es:
       start_time: Hora de Inicio
       end_time: Hora de Finalización
       status: Estado
+    image_report:
+      modal_title: Reportar Imagen
+      select_reason: Por favor seleccione un motivo de reporte
+      details_label: Detalles (Requerido)
+      details_placeholder: Por favor proporcione detalles sobre su reporte
+      details_help: Por favor proporcione información específica sobre la categoría seleccionada.
+      submit: Enviar Reporte
+      button: Reportar esta imagen
+      reported_badge: Reportado
+      report_count: "⚠️ Reportes: %{count}"
+      alert_select_category: Por favor seleccione un motivo de reporte
+      alert_enter_details: Por favor ingrese detalles
+      categories:
+        r18: Contenido R18 (Contenido para Adultos)
+        r18g: Contenido R18G (Gore/Violencia)
+        copyright: Infracción de Derechos de Autor
+        spam: Spam/Publicidad
+        harassment: Acoso/Difamación
+        other: Otro
     tags:
       categories:
         device: Dispositivo
@@ -135,6 +154,7 @@ es:
         multiplay_recruitments: Ver Reclutamientos Multijugador
         description_title: Descripción
         tips_title: Consejos y Pistas
+        images_title: Imágenes
         updated_at: Actualizado
         confirm_delete: ¿Está seguro de que desea eliminar?
         confirm_delete_admin: Eliminar como administrador. ¿Está seguro?

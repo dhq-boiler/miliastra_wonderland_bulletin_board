@@ -17,35 +17,14 @@
     <%= simple_format(comment.content) %>
   </div>
   <% if comment.images.attached? %>
-    <div class="comment-images" data-controller="image-viewer">
+    <div class="comment-images" data-controller="image-viewer image-report" data-action="keydown@window->image-report#handleKeydown">
       <% comment.images.each do |image| %>
         <% is_reported = ImageReport.image_reported?(image.id) %>
-        <% report_count = ImageReport.report_count(image.id) %>
-        <% user_reported = logged_in? && ImageReport.exists?(active_storage_attachment_id: image.id, user_id: current_user.id) %>
 
         <div class="image-container <%= 'reported-image' if is_reported %>">
           <%= image_tag image, class: "comment-image #{'blurred' if is_reported}", style: "max-width: 400px; max-height: 300px; width: auto; height: auto; cursor: pointer;", data: { action: "click->image-viewer#openModal" } %>
 
-          <div class="image-report-info">
-            <% if report_count > 0 %>
-              <span class="report-count">⚠️ 通報数: <%= report_count %></span>
-            <% end %>
-
-            <% if logged_in? %>
-              <% if user_reported %>
-                <span class="reported-badge">通報済み</span>
-              <% else %>
-                <%= button_to "この画像を通報", image_reports_path(attachment_id: image.id),
-                    method: :post,
-                    class: "btn-report",
-                    data: {
-                      turbo: false,
-                      confirm: "この画像を通報しますか？"
-                    },
-                    form: { data: { turbo: false } } %>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render 'shared/image_report_button', image: image %>
         </div>
       <% end %>
     </div>
