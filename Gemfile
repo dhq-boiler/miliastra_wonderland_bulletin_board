@@ -27,9 +27,13 @@ gem "omniauth", "~> 2.1"
 gem "omniauth-google-oauth2", "~> 1.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
-# AWS SDK for SES (Simple Email Service)
+# AWS SDK for SES (Simple Email Service) and S3
 gem "aws-sdk-ses", "~> 1"
+gem "aws-sdk-s3", "~> 1", require: false
 gem "aws-sdk-rails", "~> 5"
+
+# Image processing for Active Storage
+gem "image_processing", "~> 1.2"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
@@ -49,7 +53,7 @@ gem "kamal", require: false
 gem "thruster", require: false
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
-gem "image_processing", "~> 1.2"
+# (image_processing gem is already defined above)
 
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"

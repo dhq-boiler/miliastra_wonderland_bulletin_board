@@ -16,6 +16,15 @@
   <div class="comment-content">
     <%= simple_format(comment.content) %>
   </div>
+  <% if comment.images.attached? %>
+    <div class="comment-images">
+      <% comment.images.each do |image| %>
+        <div class="image-container">
+          <%= image_tag image.variant(resize_to_limit: [400, 300]), class: "comment-image" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
   <% if can_delete_comment?(comment) %>
     <div class="comment-actions">
       <%= button_to t('app.common.delete'), multiplay_recruitment_comment_path(multiplay_recruitment, comment),

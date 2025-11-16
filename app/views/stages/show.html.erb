@@ -39,6 +39,17 @@
         <h3><%= t('app.stages.show.tips_title') %></h3>
         <div class="tips"><%= simple_format(@stage.tips) %></div>
       <% end %>
+
+      <% if @stage.images.attached? %>
+        <h3>画像</h3>
+        <div class="stage-images">
+          <% @stage.images.each do |image| %>
+            <div class="image-container">
+              <%= image_tag image.variant(resize_to_limit: [800, 600]), class: "stage-image", data: { action: "click->lightbox#open" } %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
 
     <div class="meta">

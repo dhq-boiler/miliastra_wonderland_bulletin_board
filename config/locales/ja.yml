@@ -158,6 +158,7 @@ ja:
         tips_placeholder: クリアのコツ、注意点、おすすめの装備などを記入してください
         tags_label: タグ
         no_tags_available: タグがまだ登録されていません。
+        images_label: 画像
       search:
         keyword_label: キーワード
         keyword_placeholder: タイトルまたは説明で検索

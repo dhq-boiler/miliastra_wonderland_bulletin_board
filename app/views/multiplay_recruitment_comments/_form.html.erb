@@ -16,6 +16,12 @@
       <%= form.text_area :content, rows: 4, class: "form-control", placeholder: "コメントを入力してください（1000文字以内）" %>
     </div>
 
+    <div class="form-group">
+      <%= form.label :images, "画像（任意）" %>
+      <p class="form-help-text">最大4枚まで、1枚あたり最大6MB（JPEG、PNG、GIF、WebP）</p>
+      <%= form.file_field :images, multiple: true, accept: "image/jpeg,image/png,image/gif,image/webp", class: "form-control" %>
+    </div>
+
     <div class="form-actions">
       <%= form.submit "コメントを投稿", class: "btn btn-primary" %>
     </div>

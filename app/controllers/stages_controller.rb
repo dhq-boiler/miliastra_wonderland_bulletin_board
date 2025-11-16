@@ -95,6 +95,6 @@ class StagesController < ApplicationController
     end
 
     def stage_params
-      params.require(:stage).permit(:title, :description, :stage_guid, :difficulty, :tips, :locale, tag_ids: [])
+      params.require(:stage).permit(:title, :description, :stage_guid, :difficulty, :tips, :locale, tag_ids: [], images: [])
     end
 end

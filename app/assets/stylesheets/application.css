@@ -1682,3 +1682,133 @@ textarea.form-control {
   }
 }
 
+/* ========================================
+   Image Upload and Display
+   ======================================== */
+
+/* Image upload field styling */
+.form-help-text {
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.existing-images {
+  margin-bottom: 1.5rem;
+}
+
+.existing-images h4 {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  background-color: #f9fafb;
+}
+
+.image-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  object-fit: cover;
+}
+
+.image-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+}
+
+.image-actions input[type="checkbox"] {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+
+.image-actions label {
+  cursor: pointer;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+/* Stage images display */
+.stage-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.stage-images .image-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background-color: #f9fafb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stage-images .image-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.stage-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* Comment images display */
+.comment-images {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.comment-images .image-container {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.375rem;
+  overflow: hidden;
+  background-color: #f9fafb;
+}
+
+.comment-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Responsive image grid */
+@media (max-width: 768px) {
+  .image-grid,
+  .stage-images,
+  .comment-images {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .image-grid,
+  .stage-images,
+  .comment-images {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+

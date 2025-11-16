@@ -36,6 +36,6 @@ class MultiplayRecruitmentCommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:multiplay_recruitment_comment).permit(:content)
+      params.require(:multiplay_recruitment_comment).permit(:content, images: [])
     end
 end
