@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  active_storage_attachment: one
+  user: one
+  reason: MyText
+  status: MyString
+  reviewed_at: 2025-11-16 20:07:08
+  reviewed_by_id: 1
+
+two:
+  active_storage_attachment: two
+  user: two
+  reason: MyText
+  status: MyString
+  reviewed_at: 2025-11-16 20:07:08
+  reviewed_by_id: 1

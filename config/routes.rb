@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     resource :participant, only: [ :create, :destroy ], controller: "multiplay_recruitment_participants"
   end
 
+  # 画像通報
+  resources :image_reports, only: [ :create ]
+
   # 認証関連
   get "signup", to: "users#new", as: "signup"
   post "signup", to: "users#create"

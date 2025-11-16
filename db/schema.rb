@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_100305) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_16_110708) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -37,6 +37,22 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_100305) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "image_reports", force: :cascade do |t|
+    t.integer "active_storage_attachment_id", null: false
+    t.datetime "created_at", null: false
+    t.text "reason"
+    t.datetime "reviewed_at"
+    t.integer "reviewed_by_id"
+    t.string "status", default: "pending", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["active_storage_attachment_id", "user_id"], name: "index_image_reports_on_attachment_and_user", unique: true
+    t.index ["active_storage_attachment_id"], name: "index_image_reports_on_active_storage_attachment_id"
+    t.index ["reviewed_by_id"], name: "index_image_reports_on_reviewed_by_id"
+    t.index ["status"], name: "index_image_reports_on_status"
+    t.index ["user_id"], name: "index_image_reports_on_user_id"
   end
 
   create_table "multiplay_recruitment_comments", force: :cascade do |t|
@@ -289,6 +305,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_100305) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "image_reports", "active_storage_attachments"
+  add_foreign_key "image_reports", "users"
   add_foreign_key "multiplay_recruitment_comments", "multiplay_recruitments"
   add_foreign_key "multiplay_recruitment_comments", "users"
   add_foreign_key "multiplay_recruitment_participants", "multiplay_recruitments"
