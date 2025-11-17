@@ -126,7 +126,9 @@ zh-TW:
       submit: 提交檢舉
       button: 檢舉此圖片
       reported_badge: 已檢舉
-      report_count: "⚠️ 檢舉數：%{count}"
+      report_count:
+        one: "⚠️ 檢舉數：%{count}"
+        other: "⚠️ 檢舉數：%{count}"
       alert_select_category: 請選擇檢舉理由
       alert_enter_details: 請輸入詳細說明
       categories:

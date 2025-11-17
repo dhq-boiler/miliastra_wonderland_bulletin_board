@@ -126,7 +126,9 @@ es:
       submit: Enviar Reporte
       button: Reportar esta imagen
       reported_badge: Reportado
-      report_count: "⚠️ Reportes: %{count}"
+      report_count:
+        one: "⚠️ %{count} Reporte"
+        other: "⚠️ %{count} Reportes"
       alert_select_category: Por favor seleccione un motivo de reporte
       alert_enter_details: Por favor ingrese detalles
       categories:

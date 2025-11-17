@@ -126,7 +126,9 @@ ko:
       submit: 신고 제출
       button: 이 이미지 신고하기
       reported_badge: 신고됨
-      report_count: "⚠️ 신고 수: %{count}"
+      report_count:
+        one: "⚠️ 신고 수: %{count}건"
+        other: "⚠️ 신고 수: %{count}건"
       alert_select_category: 신고 사유를 선택해주세요
       alert_enter_details: 상세 내용을 입력해주세요
       categories:

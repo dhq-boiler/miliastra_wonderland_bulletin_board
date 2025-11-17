@@ -126,7 +126,9 @@ it:
       submit: Invia Segnalazione
       button: Segnala questa immagine
       reported_badge: Segnalato
-      report_count: "⚠️ Segnalazioni: %{count}"
+      report_count:
+        one: "⚠️ %{count} Segnalazione"
+        other: "⚠️ %{count} Segnalazioni"
       alert_select_category: Seleziona un motivo di segnalazione
       alert_enter_details: Inserisci i dettagli
       categories:

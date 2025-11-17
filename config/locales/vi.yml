@@ -126,7 +126,9 @@ vi:
       submit: Gửi Báo Cáo
       button: Báo cáo hình ảnh này
       reported_badge: Đã Báo Cáo
-      report_count: "⚠️ Báo Cáo: %{count}"
+      report_count:
+        one: "⚠️ Báo Cáo: %{count}"
+        other: "⚠️ Báo Cáo: %{count}"
       alert_select_category: Vui lòng chọn lý do báo cáo
       alert_enter_details: Vui lòng nhập chi tiết
       categories:

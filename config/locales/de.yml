@@ -126,7 +126,9 @@ de:
       submit: Meldung Absenden
       button: Dieses Bild melden
       reported_badge: Gemeldet
-      report_count: "⚠️ Meldungen: %{count}"
+      report_count:
+        one: "⚠️ %{count} Meldung"
+        other: "⚠️ %{count} Meldungen"
       alert_select_category: Bitte wählen Sie einen Meldegrund
       alert_enter_details: Bitte geben Sie Details ein
       categories:

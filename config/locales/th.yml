@@ -126,7 +126,9 @@ th:
       submit: ส่งรายงาน
       button: รายงานภาพนี้
       reported_badge: รายงานแล้ว
-      report_count: "⚠️ รายงาน: %{count}"
+      report_count:
+        one: "⚠️ รายงาน: %{count}"
+        other: "⚠️ รายงาน: %{count}"
       alert_select_category: กรุณาเลือกเหตุผลในการรายงาน
       alert_enter_details: กรุณาใส่รายละเอียด
       categories:

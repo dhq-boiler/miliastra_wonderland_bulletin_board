@@ -128,7 +128,9 @@ ja:
       submit: 通報する
       button: この画像を通報
       reported_badge: 通報済み
-      report_count: "⚠️ 通報数: %{count}"
+      report_count:
+        one: "⚠️ 通報数: %{count}件"
+        other: "⚠️ 通報数: %{count}件"
       alert_select_category: 通報理由を選択してください
       alert_enter_details: 詳細を入力してください
       categories:

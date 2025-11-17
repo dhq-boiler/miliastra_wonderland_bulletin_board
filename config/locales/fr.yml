@@ -126,7 +126,9 @@ fr:
       submit: Soumettre le Signalement
       button: Signaler cette image
       reported_badge: Signalé
-      report_count: "⚠️ Signalements: %{count}"
+      report_count:
+        one: "⚠️ %{count} Signalement"
+        other: "⚠️ %{count} Signalements"
       alert_select_category: Veuillez sélectionner une raison de signalement
       alert_enter_details: Veuillez entrer des détails
       categories:

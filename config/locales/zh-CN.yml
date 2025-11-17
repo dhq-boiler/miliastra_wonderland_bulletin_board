@@ -126,7 +126,9 @@ zh-CN:
       submit: 提交举报
       button: 举报此图片
       reported_badge: 已举报
-      report_count: "⚠️ 举报数：%{count}"
+      report_count:
+        one: "⚠️ 举报数：%{count}"
+        other: "⚠️ 举报数：%{count}"
       alert_select_category: 请选择举报理由
       alert_enter_details: 请输入详细说明
       categories:

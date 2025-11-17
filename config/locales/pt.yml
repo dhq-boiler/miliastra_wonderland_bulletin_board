@@ -126,7 +126,9 @@ pt:
       submit: Enviar Denúncia
       button: Denunciar esta imagem
       reported_badge: Denunciado
-      report_count: "⚠️ Denúncias: %{count}"
+      report_count:
+        one: "⚠️ %{count} Denúncia"
+        other: "⚠️ %{count} Denúncias"
       alert_select_category: Por favor selecione um motivo de denúncia
       alert_enter_details: Por favor insira detalhes
       categories:

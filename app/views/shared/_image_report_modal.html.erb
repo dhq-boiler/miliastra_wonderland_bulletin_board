@@ -1,0 +1,45 @@
+<% if logged_in? %>
+  <!-- Image report modal -->
+  <div class="image-report-modal"
+       data-image-report-target="modal"
+       data-action="click->image-report#closeModal"
+       data-alert-select-category="<%= t('app.image_report.alert_select_category') %>"
+       data-alert-enter-details="<%= t('app.image_report.alert_enter_details') %>">
+    <div class="modal-content-report" data-action="click->image-report#closeModal:stop">
+      <div class="modal-header">
+        <h2><%= t('app.image_report.modal_title') %></h2>
+        <button type="button" class="modal-close" data-action="click->image-report#closeModal">&times;</button>
+      </div>
+
+      <%= form_with url: rails_image_post_solution.image_reports_path, method: :post, data: { image_report_target: "form", turbo: false, action: "submit->image-report#submitReport" } do |f| %>
+        <%= f.hidden_field :attachment_id, data: { image_report_target: "attachmentId" } %>
+
+        <div class="modal-body">
+          <h3><%= t('app.image_report.select_reason') %></h3>
+          <div class="report-categories">
+            <% ImageReport::REASON_CATEGORIES.each do |key| %>
+              <button type="button"
+                      class="category-btn"
+                      data-category="<%= key %>"
+                      data-image-report-target="category"
+                      data-action="click->image-report#selectCategory">
+                <%= t("app.image_report.categories.#{key}") %>
+              </button>
+            <% end %>
+          </div>
+
+          <div class="report-details">
+            <label for="report_details"><%= t('app.image_report.details_label') %></label>
+            <%= f.text_area :reason, id: "report_details", data: { image_report_target: "details" }, placeholder: t('app.image_report.details_placeholder'), rows: 4 %>
+            <p class="help-text"><%= t('app.image_report.details_help') %></p>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-action="click->image-report#closeModal"><%= t('app.common.cancel') %></button>
+          <%= f.submit t('app.image_report.submit'), class: "btn btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>

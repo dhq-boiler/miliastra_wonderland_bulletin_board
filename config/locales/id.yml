@@ -126,7 +126,9 @@ id:
       submit: Kirim Laporan
       button: Laporkan gambar ini
       reported_badge: Dilaporkan
-      report_count: "⚠️ Laporan: %{count}"
+      report_count:
+        one: "⚠️ Laporan: %{count}"
+        other: "⚠️ Laporan: %{count}"
       alert_select_category: Silakan pilih alasan pelaporan
       alert_enter_details: Silakan masukkan detail
       categories:

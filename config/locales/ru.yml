@@ -126,7 +126,9 @@ ru:
       submit: Отправить Жалобу
       button: Пожаловаться на это изображение
       reported_badge: Пожаловались
-      report_count: "⚠️ Жалобы: %{count}"
+      report_count:
+        one: "⚠️ %{count} Жалоба"
+        other: "⚠️ %{count} Жалобы"
       alert_select_category: Пожалуйста, выберите причину жалобы
       alert_enter_details: Пожалуйста, введите детали
       categories:

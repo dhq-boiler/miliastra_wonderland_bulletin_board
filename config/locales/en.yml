@@ -155,7 +155,9 @@ en:
       submit: Submit Report
       button: Report this image
       reported_badge: Reported
-      report_count: "⚠️ Reports: %{count}"
+      report_count:
+        one: "⚠️ %{count} Report"
+        other: "⚠️ %{count} Reports"
       alert_select_category: Please select a report reason
       alert_enter_details: Please enter details
       categories:
