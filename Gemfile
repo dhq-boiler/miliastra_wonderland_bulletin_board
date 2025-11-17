@@ -71,7 +71,7 @@ gem "rails-clipboard-helper", "~> 0.1.0"
 gem "ruby-openai", "~> 6.0"
 
 # Rails Image Post Solution - Image reporting and moderation engine
-gem "rails-image-post-solution", path: "../rails-image-post-solution"
+gem "rails-image-post-solution", "~> 0.1.27"
 
 # Cron job management [https://github.com/javan/whenever]
 gem "whenever", require: false
