@@ -17,7 +17,7 @@ class ImageReport < ApplicationRecord
 
   # カテゴリの一覧を取得（ビューで使用）
   def self.categories_for_select
-    REASON_CATEGORIES.map { |key| [key, category_text(key)] }
+    REASON_CATEGORIES.map { |key| [ key, category_text(key) ] }
   end
 
   # アソシエーション
@@ -40,7 +40,7 @@ class ImageReport < ApplicationRecord
   # 画像が不適切と判定されているか
   def self.image_reported?(attachment_id)
     where(active_storage_attachment_id: attachment_id)
-      .where(status: [STATUSES[:pending], STATUSES[:confirmed]])
+      .where(status: [ STATUSES[:pending], STATUSES[:confirmed] ])
       .exists?
   end
 

@@ -181,5 +181,4 @@ class MultiplayRecruitmentStageSelectionTest < ApplicationSystemTestCase
     assert_not_nil recruitment, "募集が作成されていません"
     assert_equal @other_stage.stage_guid, recruitment.stage_guid
   end
-
 end
