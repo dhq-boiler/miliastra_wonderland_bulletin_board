@@ -1,21 +1,52 @@
 #!/bin/bash
-# PostgreSQL restore script from S3
-# Usage: bin/restore_database [backup_filename]
-# Example: bin/restore_database miliastra_wonderland_db_20251115_120000.sql.gz
+# Database restore script from S3
+# Supports both PostgreSQL (production) and SQLite (development)
+# Usage: bin/restore_database [--sqlite] <backup_filename>
+#
+# Requirements for --sqlite mode:
+#   - Docker or Podman must be installed
+#   - Backup file must be a PostgreSQL dump (.sql.gz format)
+#
+# Examples:
+#   bin/restore_database miliastra_wonderland_db_20251115_120000.sql.gz          # PostgreSQL restore
+#   bin/restore_database --sqlite miliastra_wonderland_db_20251115_120000.sql.gz # Convert to SQLite
 
 set -e
 
+# Parse options
+USE_SQLITE=false
+BACKUP_FILE=""
+
+while [[ $# -gt 0 ]]; do
+  case $1 in
+    --sqlite)
+      USE_SQLITE=true
+      shift
+      ;;
+    *)
+      BACKUP_FILE="$1"
+      shift
+      ;;
+  esac
+done
+
 # Check if backup filename is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <backup_filename>"
-  echo "Example: $0 miliastra_wonderland_db_20251115_120000.sql.gz"
+if [ -z "$BACKUP_FILE" ]; then
+  echo "Usage: $0 [--sqlite] <backup_filename>"
+  echo ""
+  echo "Options:"
+  echo "  --sqlite    Restore to SQLite database (development)"
+  echo ""
+  echo "Examples:"
+  echo "  $0 miliastra_wonderland_db_20251115_120000.sql.gz"
+  echo "  $0 --sqlite miliastra_wonderland_db_20251115_120000.sql.gz"
+  echo ""
+  echo "Note: --sqlite mode requires Docker or Podman and converts PostgreSQL dumps to SQLite"
   echo ""
   echo "Available backups:"
   aws s3 ls "s3://${BACKUP_S3_BUCKET:-miliastra-wonderland-backups}/${BACKUP_S3_PREFIX:-database}/" | awk '{print $4}'
   exit 1
 fi
-
-BACKUP_FILE="$1"
 
 # Load environment variables
 if [ -f /rails/.env.production ]; then
@@ -27,11 +58,15 @@ BACKUP_DIR="/tmp/db_backups"
 S3_BUCKET="${BACKUP_S3_BUCKET:-miliastra-wonderland-backups}"
 S3_PREFIX="${BACKUP_S3_PREFIX:-database}"
 
-# Database configuration
+# Database configuration (PostgreSQL)
 DB_HOST="${DB_HOST:-miliastra_wonderland_bulletin_board-db}"
 DB_PORT="${DB_PORT:-5432}"
 DB_NAME="${DB_NAME:-miliastra_wonderland_bulletin_board_production}"
 DB_USERNAME="${DB_USERNAME:-postgres}"
+
+# SQLite configuration
+# Default: db/development.sqlite3
+# Override with: SQLITE_DB_PATH=path/to/database.sqlite3
 
 # Create backup directory if it doesn't exist
 mkdir -p "${BACKUP_DIR}"
@@ -51,46 +86,193 @@ fi
 
 echo "[$(date)] Download completed"
 
-# Confirmation prompt
-read -p "WARNING: This will DROP the existing database and restore from backup. Continue? (yes/no): " CONFIRM
-if [ "$CONFIRM" != "yes" ]; then
-  echo "[$(date)] Restore cancelled"
+# Perform restore based on database type
+if [ "$USE_SQLITE" = true ]; then
+  # SQLite restore (convert from PostgreSQL dump)
+  SQLITE_DB_PATH="${SQLITE_DB_PATH:-storage/development.sqlite3}"
+
+  echo "[$(date)] Target SQLite database: ${SQLITE_DB_PATH}"
+  echo "[$(date)] This will convert PostgreSQL dump to SQLite format"
+
+  # Check if Docker or Podman is available
+  if command -v docker &> /dev/null; then
+    CONTAINER_CMD="docker"
+  elif command -v podman &> /dev/null; then
+    CONTAINER_CMD="podman"
+  else
+    echo "[$(date)] ERROR: Neither Docker nor Podman is installed"
+    echo "[$(date)] Please install Docker or Podman to use SQLite restore"
+    rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+    exit 1
+  fi
+
+  echo "[$(date)] Using container runtime: ${CONTAINER_CMD}"
+
+  # Confirmation prompt
+  read -p "WARNING: This will REPLACE the existing SQLite database. Continue? (yes/no): " CONFIRM
+  if [ "$CONFIRM" != "yes" ]; then
+    echo "[$(date)] Restore cancelled"
+    rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+    exit 0
+  fi
+
+  # Backup existing database if it exists
+  if [ -f "${SQLITE_DB_PATH}" ]; then
+    BACKUP_TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+    echo "[$(date)] Backing up existing database to ${SQLITE_DB_PATH}.backup_${BACKUP_TIMESTAMP}"
+    cp "${SQLITE_DB_PATH}" "${SQLITE_DB_PATH}.backup_${BACKUP_TIMESTAMP}"
+  fi
+
+  # Generate temporary PostgreSQL credentials
+  TEMP_DB_NAME="temp_restore_db"
+  TEMP_DB_USER="restore_user"
+  TEMP_DB_PASSWORD="restore_pass_$(date +%s)"
+  TEMP_PG_PORT="${RESTORE_PG_PORT:-54321}"
+  TEMP_CONTAINER_NAME="pg_restore_temp_$(date +%s)"
+
+  echo "[$(date)] Starting temporary PostgreSQL container..."
+  ${CONTAINER_CMD} run -d \
+    --name "${TEMP_CONTAINER_NAME}" \
+    -e POSTGRES_DB="${TEMP_DB_NAME}" \
+    -e POSTGRES_USER="${TEMP_DB_USER}" \
+    -e POSTGRES_PASSWORD="${TEMP_DB_PASSWORD}" \
+    -p "${TEMP_PG_PORT}:5432" \
+    postgres:latest
+
+  # Wait for PostgreSQL to be ready
+  echo "[$(date)] Waiting for PostgreSQL to be ready..."
+  for i in {1..30}; do
+    if ${CONTAINER_CMD} exec "${TEMP_CONTAINER_NAME}" pg_isready -U "${TEMP_DB_USER}" &> /dev/null; then
+      echo "[$(date)] PostgreSQL is ready"
+      break
+    fi
+    if [ $i -eq 30 ]; then
+      echo "[$(date)] ERROR: PostgreSQL failed to start"
+      ${CONTAINER_CMD} stop "${TEMP_CONTAINER_NAME}" &> /dev/null
+      ${CONTAINER_CMD} rm "${TEMP_CONTAINER_NAME}" &> /dev/null
+      rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+      exit 1
+    fi
+    sleep 1
+  done
+
+  # Detect dump format and restore PostgreSQL dump to temporary database
+  echo "[$(date)] Detecting dump format..."
+
+  # Check if it's a custom format (binary) or plain SQL format (text)
+  gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" 2>/dev/null | head -c 5 > "${BACKUP_DIR}/format_check"
+
+  if grep -q "PGDMP" "${BACKUP_DIR}/format_check" 2>/dev/null; then
+    # Custom/binary format - use pg_restore
+    echo "[$(date)] Detected custom/binary format, using pg_restore..."
+    gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" | \
+      ${CONTAINER_CMD} exec -i "${TEMP_CONTAINER_NAME}" \
+      pg_restore \
+        -U "${TEMP_DB_USER}" \
+        -d "${TEMP_DB_NAME}" \
+        --no-owner \
+        --no-acl \
+        2>&1 | grep -v "WARNING:" || true
+  else
+    # Plain SQL format - use psql
+    echo "[$(date)] Detected plain SQL format, using psql..."
+    gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" | \
+      ${CONTAINER_CMD} exec -i "${TEMP_CONTAINER_NAME}" \
+      psql \
+        -U "${TEMP_DB_USER}" \
+        -d "${TEMP_DB_NAME}" \
+        -v ON_ERROR_STOP=0 \
+        2>&1 | grep -v "WARNING:" | grep -v "ERROR:" || true
+  fi
+
+  rm -f "${BACKUP_DIR}/format_check"
+  echo "[$(date)] PostgreSQL restore completed"
+
+  # Run Rails migration task to convert to SQLite
+  echo "[$(date)] Converting PostgreSQL data to SQLite..."
+  RESTORE_DB_NAME="${TEMP_DB_NAME}" \
+  RESTORE_DB_USERNAME="${TEMP_DB_USER}" \
+  RESTORE_DB_PASSWORD="${TEMP_DB_PASSWORD}" \
+  RESTORE_DB_HOST="localhost" \
+  RESTORE_DB_PORT="${TEMP_PG_PORT}" \
+  RAILS_ENV=development \
+  bundle exec rails db:convert:pg_to_sqlite
+
+  # Stop and remove temporary container
+  echo "[$(date)] Cleaning up temporary PostgreSQL container..."
+  ${CONTAINER_CMD} stop "${TEMP_CONTAINER_NAME}" &> /dev/null
+  ${CONTAINER_CMD} rm "${TEMP_CONTAINER_NAME}" &> /dev/null
+
+  # Clean up backup file
   rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
-  exit 0
-fi
 
-# Drop existing database (WARNING: This will delete all data!)
-echo "[$(date)] Dropping existing database..."
-PGPASSWORD="${DB_PASSWORD}" psql \
-  -h "${DB_HOST}" \
-  -p "${DB_PORT}" \
-  -U "${DB_USERNAME}" \
-  -d postgres \
-  -c "DROP DATABASE IF EXISTS ${DB_NAME};"
+  echo "[$(date)] Restore completed successfully!"
+  echo "[$(date)] SQLite database ${SQLITE_DB_PATH} has been restored from ${BACKUP_FILE}"
 
-# Create new database
-echo "[$(date)] Creating new database..."
-PGPASSWORD="${DB_PASSWORD}" psql \
-  -h "${DB_HOST}" \
-  -p "${DB_PORT}" \
-  -U "${DB_USERNAME}" \
-  -d postgres \
-  -c "CREATE DATABASE ${DB_NAME};"
+else
+  # PostgreSQL restore
 
-# Restore from backup
-echo "[$(date)] Restoring database..."
-gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" | \
-  PGPASSWORD="${DB_PASSWORD}" pg_restore \
+  # Confirmation prompt
+  read -p "WARNING: This will DROP the existing database and restore from backup. Continue? (yes/no): " CONFIRM
+  if [ "$CONFIRM" != "yes" ]; then
+    echo "[$(date)] Restore cancelled"
+    rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+    exit 0
+  fi
+
+  # Drop existing database (WARNING: This will delete all data!)
+  echo "[$(date)] Dropping existing database..."
+  PGPASSWORD="${DB_PASSWORD}" psql \
     -h "${DB_HOST}" \
     -p "${DB_PORT}" \
     -U "${DB_USERNAME}" \
-    -d "${DB_NAME}" \
-    --verbose \
-    --no-owner \
-    --no-acl
+    -d postgres \
+    -c "DROP DATABASE IF EXISTS ${DB_NAME};"
 
-# Clean up
-rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+  # Create new database
+  echo "[$(date)] Creating new database..."
+  PGPASSWORD="${DB_PASSWORD}" psql \
+    -h "${DB_HOST}" \
+    -p "${DB_PORT}" \
+    -U "${DB_USERNAME}" \
+    -d postgres \
+    -c "CREATE DATABASE ${DB_NAME};"
 
-echo "[$(date)] Restore completed successfully!"
-echo "[$(date)] Database ${DB_NAME} has been restored from ${BACKUP_FILE}"
+  # Detect dump format and restore from backup
+  echo "[$(date)] Detecting dump format..."
+
+  # Check if it's a custom format (binary) or plain SQL format (text)
+  gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" 2>/dev/null | head -c 5 > "${BACKUP_DIR}/format_check"
+
+  if grep -q "PGDMP" "${BACKUP_DIR}/format_check" 2>/dev/null; then
+    # Custom/binary format - use pg_restore
+    echo "[$(date)] Detected custom/binary format, using pg_restore..."
+    gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" | \
+      PGPASSWORD="${DB_PASSWORD}" pg_restore \
+        -h "${DB_HOST}" \
+        -p "${DB_PORT}" \
+        -U "${DB_USERNAME}" \
+        -d "${DB_NAME}" \
+        --verbose \
+        --no-owner \
+        --no-acl
+  else
+    # Plain SQL format - use psql
+    echo "[$(date)] Detected plain SQL format, using psql..."
+    gunzip -c "${BACKUP_DIR}/${BACKUP_FILE}" | \
+      PGPASSWORD="${DB_PASSWORD}" psql \
+        -h "${DB_HOST}" \
+        -p "${DB_PORT}" \
+        -U "${DB_USERNAME}" \
+        -d "${DB_NAME}" \
+        -v ON_ERROR_STOP=1
+  fi
+
+  rm -f "${BACKUP_DIR}/format_check"
+
+  # Clean up
+  rm -f "${BACKUP_DIR}/${BACKUP_FILE}"
+
+  echo "[$(date)] Restore completed successfully!"
+  echo "[$(date)] Database ${DB_NAME} has been restored from ${BACKUP_FILE}"
+fi

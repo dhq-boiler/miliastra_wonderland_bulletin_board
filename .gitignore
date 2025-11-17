@@ -186,3 +186,4 @@ zeus.json
 /app/assets/builds/*
 !/app/assets/builds/.keep
 .claude/settings.json
+db/development.sqlite3
