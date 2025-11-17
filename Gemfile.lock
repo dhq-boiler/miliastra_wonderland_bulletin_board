@@ -1,10 +1,3 @@
-PATH
-  remote: ../rails-image-post-solution
-  specs:
-    rails-image-post-solution (0.1.27)
-      rails (>= 8.1)
-      ruby-openai (~> 6.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -352,6 +345,9 @@ GEM
     rails-html-sanitizer (1.6.2)
       loofah (~> 2.21)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
+    rails-image-post-solution (0.1.27)
+      rails (>= 8.1)
+      ruby-openai (~> 6.0)
     railties (8.1.1)
       actionpack (= 8.1.1)
       activesupport (= 8.1.1)
@@ -530,7 +526,7 @@ DEPENDENCIES
   rails (~> 8.1.1)
   rails-clipboard-helper (~> 0.1.0)
   rails-diff-time (~> 0.2.0)
-  rails-image-post-solution!
+  rails-image-post-solution (~> 0.1.27)
   rubocop-rails-omakase
   ruby-openai (~> 6.0)
   selenium-webdriver
