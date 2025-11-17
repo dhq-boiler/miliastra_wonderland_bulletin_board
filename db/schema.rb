@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_11_16_132942) do
+ActiveRecord::Schema[8.1].define(version: 2025_11_17_010018) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
@@ -51,7 +51,7 @@ ActiveRecord::Schema[8.1].define(version: 2025_11_16_132942) do
     t.integer "reviewed_by_id"
     t.string "status", default: "pending", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["active_storage_attachment_id", "user_id"], name: "index_image_reports_on_attachment_and_user", unique: true
     t.index ["active_storage_attachment_id"], name: "index_image_reports_on_active_storage_attachment_id"
     t.index ["reviewed_by_id"], name: "index_image_reports_on_reviewed_by_id"

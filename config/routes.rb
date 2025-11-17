@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # Mount Rails Image Post Solution engine
+  mount RailsImagePostSolution::Engine => "/moderation"
+
   # Active Storage routes for file uploads
   # This must be at the top to handle /rails/active_storage/* routes
   if Rails.application.config.active_storage.draw_routes
@@ -9,38 +12,6 @@ Rails.application.routes.draw do
   resources :multiplay_recruitments do
     resources :comments, only: [ :create, :destroy ], controller: "multiplay_recruitment_comments"
     resource :participant, only: [ :create, :destroy ], controller: "multiplay_recruitment_participants"
-  end
-
-  # 画像通報
-  resources :image_reports, only: [ :create ]
-
-  # 管理者用
-  namespace :admin do
-    resources :image_reports, only: [ :index, :show ] do
-      member do
-        patch :confirm
-        patch :dismiss
-      end
-    end
-    resources :users, only: [ :index, :show ] do
-      member do
-        patch :suspend
-        patch :unsuspend
-        patch :ban
-        patch :unban
-      end
-    end
-    # 凍結された投稿の管理
-    resources :frozen_posts, only: [ :index ] do
-      collection do
-        patch "unfreeze_stage/:id", to: "frozen_posts#unfreeze_stage", as: :unfreeze_stage
-        patch "unfreeze_comment/:id", to: "frozen_posts#unfreeze_comment", as: :unfreeze_comment
-        patch "permanent_freeze_stage/:id", to: "frozen_posts#permanent_freeze_stage", as: :permanent_freeze_stage
-        patch "permanent_freeze_comment/:id", to: "frozen_posts#permanent_freeze_comment", as: :permanent_freeze_comment
-        delete "destroy_stage/:id", to: "frozen_posts#destroy_stage", as: :destroy_stage
-        delete "destroy_comment/:id", to: "frozen_posts#destroy_comment", as: :destroy_comment
-      end
-    end
   end
 
   # 認証関連
