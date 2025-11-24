@@ -25,7 +25,7 @@ gem "bcrypt", "~> 3.1.7"
 # OmniAuth for OAuth authentication
 gem "omniauth", "~> 2.1"
 gem "omniauth-google-oauth2", "~> 1.1"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-rails_csrf_protection", "~> 2.0"
 
 # AWS SDK for SES (Simple Email Service) and S3
 gem "aws-sdk-ses", "~> 1"
